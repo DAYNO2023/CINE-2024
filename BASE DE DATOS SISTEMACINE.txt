@@ -1,0 +1,103 @@
+CREATE DATABASE dbSsitemascines
+GO
+USE dbSsitemascines
+GO
+CREATE SCHEMA Gral
+GO
+CREATE SCHEMA Acce
+GO
+CREATE SCHEMA Fact
+GO
+CREATE SCHEMA Cine
+GO
+CREATE SCHEMA Regi
+GO
+CREATE TABLE Acce.tbUsuario(
+	Usua_Id INT IDENTITY (1,1) PRIMARY KEY,
+	Usua_Nombre VARCHAR(60) UNIQUE,
+	Usua_Contraseña VARCHAR (MAX),
+	Empl_Id INT,
+	------------
+	Id_Rol INT,
+	------------
+	Usua_Creacion INT,
+	Usua_Fecha_Creacion DATE,
+	Usua_Modifica INT,
+	Usua_Fecha_Modifica DATE,
+	Usua_Estado BIT DEFAULT 1
+)
+GO
+CREATE TABLE Gral.tbDepartamento(
+	Depa_Codigo VARCHAR(2) PRIMARY KEY UNIQUE,
+	Depa_Descripcion VARCHAR(100) UNIQUE,
+	Depa_Usuario_Creacion INT,
+	Depa_Fecha_Creacion DATE,
+	Depa_Usuario_Modificacion INT,
+	Depa_Fecha_Modificacion DATE
+)
+GO
+CREATE TABLE Gral.tbMunicpio(
+	Muni_Codigo VARCHAR(4) PRIMARY KEY UNIQUE,
+	Muni_Descipcion VARCHAR(100) UNIQUE,
+	Muni_Usuario_Creacion INT,
+	Muni_Fecha_Creacion DATE,
+	Muni_Usuario_Modificacion INT,
+	Muni_Fecha_Modificacion DATE
+)
+GO
+CREATE TABLE Gral.tbEstado_Civil(
+	Esta_Id INT PRIMARY KEY IDENTITY(1,1),
+	Esta_Descripcion VARCHAR(100) UNIQUE,
+	Esta_Usuario_Creacion INT,
+	Esta_Fecha_Creacion DATE,
+	Esta_Usuario_Modificacion INT,
+	Esta_Fecha_Modificacion DATE
+)
+GO
+CREATE TABLE Gral.Categoria_Pelicula(
+	Cate_Id INT PRIMARY KEY IDENTITY(1,1),
+	Cate_Descripcion VARCHAR UNIQUE,
+	Cate_Usuario_Creacion INT,
+	Cate_Fecha_Creacion DATE,
+	Cate_Usuario_Modificacion INT,
+	Cate_Fecha_Modificacion DATE
+)
+GO
+CREATE TABLE Gral.Tipo_Pago(
+	Tipo_Id INT PRIMARY KEY IDENTITY(1,1),
+	Tipo_Descripcion VARCHAR(100) UNIQUE,
+	Cate_Usuario_Creacion INT,
+	Cate_Fecha_Creacion DATE,
+	Cate_Usuario_Modificacion INT,
+	Cate_Fecha_Modificacion DATE
+)
+GO
+CREATE TABLE Gral.Sala(
+	Sala_Id INT PRIMARY KEY IDENTITY(1,1),
+	Sala_Descripcion VARCHAR(10) UNIQUE,
+	Cate_Usuario_Creacion INT,
+	Cate_Fecha_Creacion DATE,
+	Cate_Usuario_Modificacion INT,
+	Cate_Fecha_Modificacion DATE
+)
+GO
+CREATE TABLE Gral.Cargos(
+	Carg_Id INT PRIMARY KEY IDENTITY(1,1),
+	Carg_Descripcion VARCHAR(100),
+	Carg_Usuario_Creacion INT,
+	Carg_Fecha_Creacion DATE,
+	Carg_Usuario_Modificacion INT,
+	Carg_Fecha_Modificacion DATE
+)
+GO
+CREATE TABLE Gral.Promocione(
+	Prom_Id INT PRIMARY KEY IDENTITY(1,1),
+	Prom_Descuento DOUBLE,
+	Prom_Descripcion VARCHAR(100),
+	Prom_Usuario_Creacion INT,
+	Prom_Fecha_Creacion DATE,
+	Prom_Usuario_Modificacion INT,
+	Prom_Fecha_Modificacion DATE
+)
+GO
+CREATE TABLE Gral. 

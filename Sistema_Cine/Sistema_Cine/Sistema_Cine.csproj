@@ -144,6 +144,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SistemaCine.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\sysdiagrams.cs">
+      <DependentUpon>SistemaCine.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\tbButacas_Salas.cs">
       <DependentUpon>SistemaCine.tt</DependentUpon>
     </Compile>
@@ -714,8 +717,8 @@
     <Content Include="Content\js\popper.min.js" />
     <Content Include="Controllers\SistemaCine.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>SistemaCine.Context.cs</LastGenOutput>
       <DependentUpon>SistemaCine.edmx</DependentUpon>
+      <LastGenOutput>SistemaCine.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Controllers\SistemaCine.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -815,13 +818,6 @@
     <Content Include="Content\font-awesome\webfonts\fa-solid-900.ttf" />
     <Content Include="Content\font-awesome\webfonts\fa-solid-900.woff" />
     <Content Include="Content\font-awesome\webfonts\fa-solid-900.woff2" />
-    <EntityDeploy Include="Controllers\SistemaCine.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SistemaCine.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Controllers\SistemaCine.edmx.diagram">
-      <DependentUpon>SistemaCine.edmx</DependentUpon>
-    </Content>
     <Content Include="CodeTemplates\MVCView\Create.cs.t4" />
     <Content Include="CodeTemplates\MVCView\Delete.cs.t4" />
     <Content Include="CodeTemplates\MVCView\Details.cs.t4" />
@@ -830,9 +826,14 @@
     <Content Include="CodeTemplates\MVCView\Imports.include.t4" />
     <Content Include="CodeTemplates\MVCView\List.cs.t4" />
     <Content Include="CodeTemplates\MVCView\ModelMetadataFunctions.cs.include.t4" />
+    <EntityDeploy Include="Controllers\SistemaCine.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SistemaCine.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Controllers\SistemaCine.edmx.diagram">
+      <DependentUpon>SistemaCine.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.4.1.js" />
-    <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

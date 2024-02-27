@@ -87,6 +87,16 @@
     <Property Name="Sucu_Usuario_Modificacion" Type="int" />
     <Property Name="Sucu_Fecha_Modificacion" Type="date" />
   </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
   <EntityType Name="tbFacturas_Detalles">
     <Key>
       <PropertyRef Name="Fade_Id" />
@@ -562,6 +572,7 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbBitacora_Promociones'
     <EntitySet Name="tbCarteleras" EntityType="Self.tbCarteleras" Schema="Cine" store:Type="Tables" />
     <EntitySet Name="tbEntradas" EntityType="Self.tbEntradas" Schema="Cine" store:Type="Tables" />
     <EntitySet Name="tbSucursales" EntityType="Self.tbSucursales" Schema="Cine" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbFacturas_Detalles" EntityType="Self.tbFacturas_Detalles" Schema="Fact" store:Type="Tables" />
     <EntitySet Name="tbFacturas_Encabezados" EntityType="Self.tbFacturas_Encabezados" Schema="Fact" store:Type="Tables" />
     <EntitySet Name="tbButacas_Salas" EntityType="Self.tbButacas_Salas" Schema="Gral" store:Type="Tables" />

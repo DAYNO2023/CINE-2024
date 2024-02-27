@@ -101,6 +101,16 @@
     <Property Name="Sucu_Fecha_Modificacion" Type="DateTime" Precision="0" />
     <NavigationProperty Name="tbMunicipio" Relationship="Self.FK_tbSucursales_tbMunicipio_Muni_Codigo" FromRole="tbSucursales" ToRole="tbMunicipio" />
   </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
   <EntityType Name="tbFacturas_Detalles">
     <Key>
       <PropertyRef Name="Fade_Id" />
@@ -576,7 +586,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="dbSsitemascinesEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="dbSsitemascinesEntities2" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="tbPantalla_Roles" EntityType="Self.tbPantalla_Roles" />
     <EntitySet Name="tbPantallas" EntityType="Self.tbPantallas" />
     <EntitySet Name="tbRoles" EntityType="Self.tbRoles" />
@@ -584,6 +594,7 @@
     <EntitySet Name="tbCarteleras" EntityType="Self.tbCarteleras" />
     <EntitySet Name="tbEntradas" EntityType="Self.tbEntradas" />
     <EntitySet Name="tbSucursales" EntityType="Self.tbSucursales" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="tbFacturas_Detalles" EntityType="Self.tbFacturas_Detalles" />
     <EntitySet Name="tbFacturas_Encabezados" EntityType="Self.tbFacturas_Encabezados" />
     <EntitySet Name="tbButacas_Salas" EntityType="Self.tbButacas_Salas" />

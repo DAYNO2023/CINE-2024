@@ -1,0 +1,67 @@
+﻿@model Sistema_Cine.Models.tbMunicipio
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbMunicipio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Muni_Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Muni_Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Muni_Usuario_Creacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Muni_Usuario_Creacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Muni_Fecha_Creacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Muni_Fecha_Creacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Muni_Usuario_Modificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Muni_Usuario_Modificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Muni_Fecha_Modificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Muni_Fecha_Modificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbDepartamentos.Depa_Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbDepartamentos.Depa_Descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Muni_Codigo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

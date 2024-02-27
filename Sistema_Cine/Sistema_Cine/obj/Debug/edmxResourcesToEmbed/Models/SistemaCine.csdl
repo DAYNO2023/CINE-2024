@@ -586,7 +586,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="dbSsitemascinesEntities3" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="dbSsitemascinesEntities4" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="tbPantalla_Roles" EntityType="Self.tbPantalla_Roles" />
     <EntitySet Name="tbPantallas" EntityType="Self.tbPantallas" />
     <EntitySet Name="tbRoles" EntityType="Self.tbRoles" />

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="dbSsitemascinesModelStoreContainer" CdmEntityContainer="dbSsitemascinesEntities3">
+  <EntityContainerMapping StorageEntityContainer="dbSsitemascinesModelStoreContainer" CdmEntityContainer="dbSsitemascinesEntities4">
     <EntitySetMapping Name="tbPantalla_Roles">
       <EntityTypeMapping TypeName="dbSsitemascinesModel.tbPantalla_Roles">
         <MappingFragment StoreEntitySet="tbPantalla_Roles">

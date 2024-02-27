@@ -129,9 +129,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\tbMunicipiosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Municipio.cs" />
     <Compile Include="Models\sistemaCine.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -856,6 +858,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\tbMunicipios\Create.cshtml" />
+    <Content Include="Views\tbMunicipios\Delete.cshtml" />
+    <Content Include="Views\tbMunicipios\Details.cshtml" />
+    <Content Include="Views\tbMunicipios\Edit.cshtml" />
+    <Content Include="Views\tbMunicipios\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

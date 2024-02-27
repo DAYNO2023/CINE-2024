@@ -87,6 +87,10 @@ C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\obj\Debug\Sistema_C
 C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\obj\Debug\Sistema_Cine.csproj.CopyComplete
 C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\obj\Debug\Sistema_Cine.dll
 C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\obj\Debug\Sistema_Cine.pdb
+C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\bin\roslyn\System.Threading.Tasks.Extensions.dll
 C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\bin\Sistema_Cine.dll.config
 C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\bin\Sistema_Cine.dll
 C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\bin\Sistema_Cine.pdb
@@ -101,7 +105,6 @@ C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\bin\roslyn\Mi
 C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
 C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\bin\roslyn\Microsoft.CodeAnalysis.dll
 C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\bin\roslyn\Microsoft.CSharp.Core.targets
 C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
 C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
@@ -124,11 +127,8 @@ C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\bin\roslyn\Sy
 C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\bin\roslyn\System.Reflection.Metadata.dll
 C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
 C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\bin\roslyn\System.Security.Cryptography.Algorithms.dll
-C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\bin\roslyn\System.Security.Cryptography.Encoding.dll
 C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\bin\roslyn\System.Security.Cryptography.Primitives.dll
-C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
 C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\bin\roslyn\System.Text.Encoding.CodePages.dll
-C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\bin\roslyn\System.Threading.Tasks.Extensions.dll
 C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\bin\roslyn\System.ValueTuple.dll
 C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\bin\roslyn\System.Xml.ReaderWriter.dll
 C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\bin\roslyn\System.Xml.XmlDocument.dll
@@ -176,4 +176,3 @@ C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\obj\Debug\Sis
 C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\obj\Debug\Sistema_Cine.csproj.CopyComplete
 C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\obj\Debug\Sistema_Cine.dll
 C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\obj\Debug\Sistema_Cine.pdb
-C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\obj\Debug\Sistema_Cine.csproj.AssemblyReference.cache

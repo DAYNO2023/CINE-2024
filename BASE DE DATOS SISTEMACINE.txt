@@ -2,6 +2,7 @@ CREATE DATABASE dbSsitemascines
 GO
 USE dbSsitemascines
 GO
+
 CREATE SCHEMA Gral
 GO
 CREATE SCHEMA Acce
@@ -11,93 +12,272 @@ GO
 CREATE SCHEMA Cine
 GO
 CREATE SCHEMA Regi
+
 GO
-CREATE TABLE Acce.tbUsuario(
-	Usua_Id INT IDENTITY (1,1) PRIMARY KEY,
-	Usua_Nombre VARCHAR(60) UNIQUE,
-	Usua_Contraseña VARCHAR (MAX),
-	Empl_Id INT,
-	------------
-	Id_Rol INT,
-	------------
-	Usua_Creacion INT,
-	Usua_Fecha_Creacion DATE,
-	Usua_Modifica INT,
-	Usua_Fecha_Modifica DATE,
-	Usua_Estado BIT DEFAULT 1
+CREATE TABLE Acce.tbRoles(
+    Role_Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+    Role_Descripcion VARCHAR(60) NULL,
+    Role_Creacion INT NULL,
+    Role_Fecha_Creacion DATE NULL,
+    Role_Modifica INT NULL,
+    Role_Fecha_Modifica DATE NULL,
+    Role_Estado BIT DEFAULT 1
 )
 GO
-CREATE TABLE Gral.tbDepartamento(
-	Depa_Codigo VARCHAR(2) PRIMARY KEY UNIQUE,
-	Depa_Descripcion VARCHAR(100) UNIQUE,
-	Depa_Usuario_Creacion INT,
-	Depa_Fecha_Creacion DATE,
-	Depa_Usuario_Modificacion INT,
-	Depa_Fecha_Modificacion DATE
+CREATE TABLE Acce.tbPantallas(
+    Pant_Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+    Pant_Descripcion VARCHAR(60) NULL,
+    Pant_Identificador BIT,
+    Pant_Creacion INT NULL,
+    Pant_Fecha_Creacion DATE NULL,
+    Pant_Modifica INT NULL,
+    Pant_Fecha_Modifica DATE NULL,
+    Pant_Estado BIT DEFAULT 1
+)
+CREATE TABLE Acce.tbPantalla_Roles(
+    Paro_Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+    Role_Id INT NULL,
+    Pant_Id INT NULL,
+    CONSTRAINT FK_tbPantalla_Roles_tbPantallas_Pant_Id FOREIGN KEY (Pant_Id) REFERENCES Acce.tbPantallas (Pant_Id),
+    CONSTRAINT FK_tbPantalla_Roles_tbRoles_Role_Id FOREIGN KEY (Role_Id) REFERENCES Acce.tbRoles (Role_Id)
 )
 GO
-CREATE TABLE Gral.tbMunicpio(
-	Muni_Codigo VARCHAR(4) PRIMARY KEY UNIQUE,
-	Muni_Descipcion VARCHAR(100) UNIQUE,
-	Muni_Usuario_Creacion INT,
-	Muni_Fecha_Creacion DATE,
-	Muni_Usuario_Modificacion INT,
-	Muni_Fecha_Modificacion DATE
+CREATE TABLE Gral.tbDepartamentos(
+    Depa_Codigo VARCHAR(2) PRIMARY KEY NOT NULL,
+    Depa_Descripcion VARCHAR(100) UNIQUE NULL,
+    Depa_Usuario_Creacion INT NULL,
+    Depa_Fecha_Creacion DATE NULL,
+    Depa_Usuario_Modificacion INT NULL,
+    Depa_Fecha_Modificacion DATE NULL
+)
+GO
+CREATE TABLE Gral.tbMunicipio(
+    Muni_Codigo VARCHAR(4) PRIMARY KEY,
+    Muni_Descripcion VARCHAR(100) UNIQUE NULL,
+    Depa_Codigo VARCHAR(2) NULL,
+    Muni_Usuario_Creacion INT NULL,
+    Muni_Fecha_Creacion DATE NULL,
+    Muni_Usuario_Modificacion INT NULL,
+    Muni_Fecha_Modificacion DATE NULL,
+    CONSTRAINT FK_tbMunicipios_tbDepartamentos_Depa_Codigo FOREIGN KEY (Depa_Codigo) REFERENCES Gral.tbDepartamentos (Depa_Codigo)
 )
 GO
 CREATE TABLE Gral.tbEstado_Civil(
-	Esta_Id INT PRIMARY KEY IDENTITY(1,1),
-	Esta_Descripcion VARCHAR(100) UNIQUE,
-	Esta_Usuario_Creacion INT,
-	Esta_Fecha_Creacion DATE,
-	Esta_Usuario_Modificacion INT,
-	Esta_Fecha_Modificacion DATE
+    Esta_Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+    Esta_Descripcion VARCHAR(100) UNIQUE NULL,
+    Esta_Usuario_Creacion INT NULL,
+    Esta_Fecha_Creacion DATE NULL,
+    Esta_Usuario_Modificacion INT NULL,
+    Esta_Fecha_Modificacion DATE NULL
 )
 GO
-CREATE TABLE Gral.Categoria_Pelicula(
-	Cate_Id INT PRIMARY KEY IDENTITY(1,1),
-	Cate_Descripcion VARCHAR UNIQUE,
-	Cate_Usuario_Creacion INT,
-	Cate_Fecha_Creacion DATE,
-	Cate_Usuario_Modificacion INT,
-	Cate_Fecha_Modificacion DATE
+CREATE TABLE Gral.tbCargos(
+    Carg_Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+    Carg_Descripcion VARCHAR(100) UNIQUE NULL,
+    Carg_Usuario_Creacion INT NULL,
+    Carg_Fecha_Creacion DATE NULL,
+    Carg_Usuario_Modificacion INT NULL,
+    Carg_Fecha_Modificacion DATE NULL
 )
 GO
-CREATE TABLE Gral.Tipo_Pago(
-	Tipo_Id INT PRIMARY KEY IDENTITY(1,1),
-	Tipo_Descripcion VARCHAR(100) UNIQUE,
-	Cate_Usuario_Creacion INT,
-	Cate_Fecha_Creacion DATE,
-	Cate_Usuario_Modificacion INT,
-	Cate_Fecha_Modificacion DATE
+CREATE TABLE Regi.tbEmpleado(
+    Empl_Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+    Empl_Nombre VARCHAR(50) NULL,
+    Empl_Apellido VARCHAR(50) NULL,
+    Empl_Identidad VARCHAR(50) NULL,
+    Empl_Sexo CHAR(1) NULL,
+    Empl_Telefono INT NULL,
+    Esta_Id INT NULL,
+    Empl_FecNacimiento DATE NULL,
+    Muni_Id VARCHAR(4) NULL,
+    Carg_Id INT NULL,
+    Empl_Usua_Creacion INT NULL,
+    Empl_Fecha_Creacion DATE NULL,
+    Empl_Usua_Modifica INT NULL,
+    Empl_Fecha_Modifica DATE NULL,
+    Empl_Estado BIT NULL,
+    CONSTRAINT FK_tbEmpleado_tbMunicipio_Muni_Id FOREIGN KEY (Muni_Id) REFERENCES Gral.tbMunicipio (Muni_Codigo),
+    CONSTRAINT FK_tbEmpleado_tbEstado_Civil_Esta_Id FOREIGN KEY (Esta_Id) REFERENCES Gral.tbEstado_Civil (Esta_Id),
+    CONSTRAINT FK_tbEmpleado_tbCargos_Carg_Id FOREIGN KEY (Carg_Id) REFERENCES Gral.tbCargos (Carg_Id)
 )
 GO
-CREATE TABLE Gral.Sala(
-	Sala_Id INT PRIMARY KEY IDENTITY(1,1),
-	Sala_Descripcion VARCHAR(10) UNIQUE,
-	Cate_Usuario_Creacion INT,
-	Cate_Fecha_Creacion DATE,
-	Cate_Usuario_Modificacion INT,
-	Cate_Fecha_Modificacion DATE
+CREATE TABLE Acce.tbUsuario(
+    Usua_Id INT IDENTITY (1,1) PRIMARY KEY,
+    Usua_Nombre VARCHAR(60) UNIQUE,
+    Usua_Contraseña VARCHAR(MAX),
+    Empl_Id INT,
+    Paro_Id INT,
+    Usua_Creacion INT,
+    Usua_Fecha_Creacion DATE,
+    Usua_Modifica INT,
+    Usua_Fecha_Modifica DATE,
+    Usua_Estado BIT DEFAULT 1,
+    CONSTRAINT FK_tbUsuario_tbPantalla_Roles_Paro_Id FOREIGN KEY (Paro_Id) REFERENCES Acce.tbPantalla_Roles (Paro_Id),
+    CONSTRAINT FK_tbUsuario_tbEmpleado_Empl_Id FOREIGN KEY (Empl_Id) REFERENCES Regi.tbEmpleado (Empl_Id)
+)
+
+GO
+CREATE TABLE Gral.tbTipo_Pagos(
+    Tipo_Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+    Tipo_Descripcion VARCHAR(100) UNIQUE NULL,
+    Cate_Usuario_Creacion INT NULL,
+    Cate_Fecha_Creacion DATE NULL,
+    Cate_Usuario_Modificacion INT NULL,
+    Cate_Fecha_Modificacion DATE NULL
 )
 GO
-CREATE TABLE Gral.Cargos(
-	Carg_Id INT PRIMARY KEY IDENTITY(1,1),
-	Carg_Descripcion VARCHAR(100),
-	Carg_Usuario_Creacion INT,
-	Carg_Fecha_Creacion DATE,
-	Carg_Usuario_Modificacion INT,
-	Carg_Fecha_Modificacion DATE
+CREATE TABLE Gral.tbPromociones(
+    Prom_Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+    Prom_Descuento DECIMAL UNIQUE NULL,
+    Prom_Descripcion VARCHAR(100) NULL,
+    Prom_Usuario_Creacion INT NULL,
+    Prom_Fecha_Creacion DATE NULL,
+    Prom_Usuario_Modificacion INT NULL,
+    Prom_Fecha_Modificacion DATE NULL
 )
 GO
-CREATE TABLE Gral.Promocione(
-	Prom_Id INT PRIMARY KEY IDENTITY(1,1),
-	Prom_Descuento DOUBLE,
-	Prom_Descripcion VARCHAR(100),
-	Prom_Usuario_Creacion INT,
-	Prom_Fecha_Creacion DATE,
-	Prom_Usuario_Modificacion INT,
-	Prom_Fecha_Modificacion DATE
+CREATE TABLE Gral.tbPrecios(
+    Prec_Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+    Prec_Descripcion DECIMAL NULL,
+    Prec_Usuario_Creacion INT NULL,
+    Prec_Fecha_Creacion DATE NULL,
+    Prec_Usuario_Modificacion INT NULL,
+    Prec_Fecha_Modificacion DATE NULL
 )
 GO
-CREATE TABLE Gral. 
+CREATE TABLE Gral.tbGeneros(
+    Gene_Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+    Gene_Descripcion VARCHAR(30) UNIQUE NULL,
+    Prom_Id INT NULL,
+    Gene_Usuario_Creacion INT NULL,
+    Gene_Fecha_Creacion DATE NULL,
+    Gene_Usuario_Modificacion INT NULL,
+    Gene_Fecha_Modificacion DATE NULL,
+    CONSTRAINT FK_tbGeneros_tbPromociones_Prom_Id FOREIGN KEY (Prom_Id) REFERENCES Gral.tbPromociones (Prom_Id)
+)
+GO
+CREATE TABLE Gral.tbButacas_Salas(
+    Buta_Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+    Buta_Descripcion VARCHAR(20) UNIQUE NULL,
+    Buta_Usuario_Creacion INT NULL,
+    Buta_Fecha_Creacion DATE NULL,
+    Buta_Usuario_Modificacion INT NULL,
+    Buta_Fecha_Modificacion DATE NULL
+)
+GO
+CREATE TABLE Gral.tbSalas(
+    Sala_Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+    Sala_Descripcion VARCHAR(10) UNIQUE NULL,
+    Buta_Id INT NULL,
+    Cate_Usuario_Creacion INT NULL,
+    Cate_Fecha_Creacion DATE NULL,
+    Cate_Usuario_Modificacion INT NULL,
+    Cate_Fecha_Modificacion DATE NULL,
+    CONSTRAINT FK_tbSalas_tbButacas_Salas_Buta_Id FOREIGN KEY (Buta_Id) REFERENCES Gral.tbButacas_Salas (Buta_Id)
+)
+GO
+CREATE TABLE Gral.tbBitacora_Promociones(
+    Bita_Id INT NULL,
+    Bita_Descuento DECIMAL NULL,
+    Bita_Descripcion VARCHAR(100) NULL,
+    Bita_Usuario_Creacion INT NULL,
+    Bita_Fecha_Creacion DATE NULL,
+    Bita_Usuario_Modificacion INT NULL,
+    Bita_Fecha_Modificacion DATE NULL
+)
+GO
+CREATE TABLE Gral.tbBitacora_Precios(
+    Bitp_Id INT NULL,
+    Bitp_Descuento DECIMAL UNIQUE NULL,
+    Bitp_Descripcion VARCHAR(100) NULL,
+    Bitp_Usuario_Creacion INT NULL,
+    Bitp_Fecha_Creacion DATE NULL,
+    Bitp_Usuario_Modificacion INT NULL,
+    Bitp_Fecha_Modificacion DATE NULL
+)
+GO
+CREATE TABLE Cine.tbEntradas(
+    Entra_Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+    Entra_Cantidad INT NULL,
+    Sala_Id INT NULL,
+    Entra_Usuario_Creacion INT NULL,
+    Entra_Fecha_Creacion DATE NULL,
+    Entra_Usuario_Modificacion INT NULL,
+    Entra_Fecha_Modificacion DATE NULL,
+    CONSTRAINT FK_tbEntradas_tbSalas_Sala_Id FOREIGN KEY (Sala_Id) REFERENCES Gral.tbSalas (Sala_Id)
+)
+GO
+CREATE TABLE Cine.tbCarteleras(
+    Cart_Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+    Cart_Descripcion VARCHAR(100) UNIQUE NULL,
+    Gene_Id INT NULL,
+    Prec_Id INT NULL,
+    Entra_Id INT NULL,
+    Cart_Usuario_Creacion INT NULL,
+    Cart_Fecha_Creacion DATE NULL,
+    Cart_Usuario_Modificacion INT NULL,
+    Cart_Fecha_Modificacion DATE NULL,
+    CONSTRAINT FK_tbCarteleras_tbGeneros_Gene_Id FOREIGN KEY (Gene_Id) REFERENCES Gral.tbGeneros (Gene_Id),
+    CONSTRAINT FK_tbCarteleras_tbPrecios_Prec_Id FOREIGN KEY (Prec_Id) REFERENCES Gral.tbPrecios (Prec_Id),
+    CONSTRAINT FK_tbCarteleras_tbEntradas_Entra_Id FOREIGN KEY (Entra_Id) REFERENCES Cine.tbEntradas (Entra_Id)
+)
+GO
+CREATE TABLE Cine.tbSucursales(
+    Sucu_Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+    Sucu_Descripcion VARCHAR(100) UNIQUE,
+    Sucu_Direccion VARCHAR(100),
+    Muni_Codigo VARCHAR(4) NULL,
+    Sucu_Usuario_Creacion INT NULL,
+    Sucu_Fecha_Creacion DATE NULL,
+    Sucu_Usuario_Modificacion INT NULL,
+    Sucu_Fecha_Modificacion DATE NULL,
+    CONSTRAINT FK_tbSucursales_tbMunicipio_Muni_Codigo FOREIGN KEY (Muni_Codigo) REFERENCES Gral.tbMunicipio (Muni_Codigo)
+)
+GO
+CREATE TABLE Regi.tbClientes(
+    Clie_Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+    Clie_Nombre VARCHAR(50) NULL,
+    Clie_Apellido VARCHAR(50) NULL,
+    Clie_Identidad VARCHAR(50) NULL,
+    Clie_Sexo CHAR(1) NULL,
+    Clie_Telefono INT NULL,
+    Esta_Id INT NULL,
+    Clie_FecNacimiento DATE NULL,
+    Muni_Id VARCHAR(4) NULL,
+    Clie_Usua_Creacion INT NULL,
+    Clie_Fecha_Creacion DATE NULL,
+    Clie_Usua_Modifica INT NULL,
+    Clie_Fecha_Modifica DATE NULL,
+    Clie_Estado BIT NULL,
+    CONSTRAINT FK_tbClientes_tbMunicipio_Muni_Id FOREIGN KEY (Muni_Id) REFERENCES Gral.tbMunicipio (Muni_Codigo),
+    CONSTRAINT FK_tbClientes_tbEstado_Civil_Esta_Id FOREIGN KEY (Esta_Id) REFERENCES Gral.tbEstado_Civil (Esta_Id)
+)
+GO
+CREATE TABLE Fact.tbFacturas_Encabezados(
+    Fact_Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+    Fact_Fecha DATE NULL,
+    Clie_Id INT NULL,
+    Empl_Id INT NULL,
+	Tipo_Id INT NULL,
+    Fact_Usua_Creacion INT NULL,
+    Fact_Fecha_Creacion DATE NULL,
+    Fact_Usua_Modifica INT NULL,
+    Fact_Fecha_Modifica DATE NULL,
+    Fact_Estado BIT NULL,
+    CONSTRAINT FK_tbFacturas_Encabezados_tbClientes_Clie_Id FOREIGN KEY (Clie_Id) REFERENCES Regi.tbClientes (Clie_Id),
+    CONSTRAINT FK_tbFacturas_Encabezados_tbEmpleado_Empl_Id FOREIGN KEY (Empl_Id) REFERENCES Regi.tbEmpleado (Empl_Id),
+	CONSTRAINT FK_tbFacturas_Encabezados_tbTipo_Pagos_Tipo_Id FOREIGN KEY (Tipo_Id) REFERENCES Gral.tbTipo_Pagos (Tipo_Id)
+)
+GO
+CREATE TABLE Fact.tbFacturas_Detalles(
+    Fade_Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+    Fact_Id INT NULL,
+    Cart_Id INT NULL,
+    Fade_Usua_Creacion INT NULL,
+    Fade_Fecha_Creacion DATE NULL,
+    Fade_Usua_Modifica INT NULL,
+    Fade_Fecha_Modifica DATE NULL,
+    Fade_Estado BIT NULL,
+    CONSTRAINT FK_tbFacturas_Detalles_tbFacturas_Encabezados_Fact_Id FOREIGN KEY (Fact_Id) REFERENCES Fact.tbFacturas_Encabezados (Fact_Id),
+    CONSTRAINT FK_tbFacturas_Detalles_tbCarteleras_Cart_Id FOREIGN KEY (Cart_Id) REFERENCES Cine.tbCarteleras (Cart_Id)
+)

@@ -41,14 +41,21 @@ if (!String.IsNullOrEmpty(LayoutPageFile)) {
 </head>
 <body>
 <#
-    PushIndent("    ");
+PushIndent("    ");
 }
 #>
 <h3>Are you sure you want to delete this?</h3>
 <div>
     <h4><#= ViewDataTypeShortName #></h4>
     <hr />
-    <dl class="dl-horizontal">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Property</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
 <#
 foreach (PropertyMetadata property in ModelMetadata.Properties) {
     if (property.Scaffold && !property.IsPrimaryKey && !property.IsForeignKey) {
@@ -60,19 +67,16 @@ foreach (PropertyMetadata property in ModelMetadata.Properties) {
             continue;
         }
 #>
-        <dt>
-            @Html.DisplayNameFor(model => model.<#= GetValueExpression(property) #>)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.<#= GetValueExpression(property) #>)
-        </dd>
-
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.<#= GetValueExpression(property) #>)</td>
+                <td>@Html.DisplayFor(model => model.<#= GetValueExpression(property) #>)</td>
+            </tr>
 <#
     }
 }
 #>
-    </dl>
+        </tbody>
+    </table>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()

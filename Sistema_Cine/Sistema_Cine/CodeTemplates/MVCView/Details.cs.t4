@@ -41,13 +41,15 @@ if (!String.IsNullOrEmpty(LayoutPageFile)) {
 </head>
 <body>
 <#
-    PushIndent("    ");
+PushIndent("    ");
 }
 #>
-<div>
-    <h4><#= ViewDataTypeShortName #></h4>
-    <hr />
-    <dl class="dl-horizontal">
+<div class="card">
+    <div class="card-header">
+        <h4><#= ViewDataTypeShortName #></h4>
+    </div>
+    <div class="card-body">
+        <dl class="dl-horizontal">
 <#
 foreach (PropertyMetadata property in ModelMetadata.Properties) {
     if (property.Scaffold && !property.IsPrimaryKey && !property.IsForeignKey) {
@@ -59,36 +61,36 @@ foreach (PropertyMetadata property in ModelMetadata.Properties) {
             continue;
         }
 #>
-        <dt>
-            @Html.DisplayNameFor(model => model.<#= GetValueExpression(property) #>)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.<#= GetValueExpression(property) #>)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.<#= GetValueExpression(property) #>)
-        </dd>
-
+            <dd>
+                @Html.DisplayFor(model => model.<#= GetValueExpression(property) #>)
+            </dd>
 <#
     }
 }
 #>
-    </dl>
-</div>
-<p>
+        </dl>
+        <p>
 <#
 string pkName = GetPrimaryKeyName();
 if (pkName != null) {
 #>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.<#= pkName #> }) |
-    @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("Edit", "Edit", new { id = Model.<#= pkName #> }) |
+            @Html.ActionLink("Back to List", "Index")
 <#
 } else {
 #>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+            @Html.ActionLink("Back to List", "Index")
 <#
 }
 #>
-</p>
+        </p>
+    </div>
+</div>
 <#
 // The following code closes the tag used in the case of a view using a layout page and the body and html tags in the case of a regular view page
 #>
@@ -96,6 +98,7 @@ if (pkName != null) {
 if(!IsPartialView && !IsLayoutPageSelected) {
     ClearIndent();
 #>
+
 </body>
 </html>
 <#

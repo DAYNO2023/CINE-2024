@@ -47,7 +47,7 @@ if (!String.IsNullOrEmpty(LayoutPageFile)) {
 <p>
     @Html.ActionLink("Crear", "Create")
 </p>
-<table id="example"  class="table table-striped" style="width:100%">
+<table   class="table">
     <tr>
 <#
 IEnumerable<PropertyMetadata> properties = ModelMetadata.Properties;
@@ -121,9 +121,6 @@ if (pkName != null) {
 if(!IsPartialView && !IsLayoutPageSelected) {
     ClearIndent();
 #>
-
-
-
 
 
 </body>

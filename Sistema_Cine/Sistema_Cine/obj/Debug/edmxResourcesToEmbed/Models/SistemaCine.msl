@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbSsitemascinesModelStoreContainer" CdmEntityContainer="dbSsitemascinesEntities3">
+    <EntitySetMapping Name="tbPantalla_Roles">
+      <EntityTypeMapping TypeName="dbSsitemascinesModel.tbPantalla_Roles">
+        <MappingFragment StoreEntitySet="tbPantalla_Roles">
+          <ScalarProperty Name="Paro_Id" ColumnName="Paro_Id" />
+          <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+          <ScalarProperty Name="Pant_Id" ColumnName="Pant_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbPantallas">
+      <EntityTypeMapping TypeName="dbSsitemascinesModel.tbPantallas">
+        <MappingFragment StoreEntitySet="tbPantallas">
+          <ScalarProperty Name="Pant_Id" ColumnName="Pant_Id" />
+          <ScalarProperty Name="Pant_Descripcion" ColumnName="Pant_Descripcion" />
+          <ScalarProperty Name="Pant_Identificador" ColumnName="Pant_Identificador" />
+          <ScalarProperty Name="Pant_Creacion" ColumnName="Pant_Creacion" />
+          <ScalarProperty Name="Pant_Fecha_Creacion" ColumnName="Pant_Fecha_Creacion" />
+          <ScalarProperty Name="Pant_Modifica" ColumnName="Pant_Modifica" />
+          <ScalarProperty Name="Pant_Fecha_Modifica" ColumnName="Pant_Fecha_Modifica" />
+          <ScalarProperty Name="Pant_Estado" ColumnName="Pant_Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbRoles">
+      <EntityTypeMapping TypeName="dbSsitemascinesModel.tbRoles">
+        <MappingFragment StoreEntitySet="tbRoles">
+          <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+          <ScalarProperty Name="Role_Descripcion" ColumnName="Role_Descripcion" />
+          <ScalarProperty Name="Role_Creacion" ColumnName="Role_Creacion" />
+          <ScalarProperty Name="Role_Fecha_Creacion" ColumnName="Role_Fecha_Creacion" />
+          <ScalarProperty Name="Role_Modifica" ColumnName="Role_Modifica" />
+          <ScalarProperty Name="Role_Fecha_Modifica" ColumnName="Role_Fecha_Modifica" />
+          <ScalarProperty Name="Role_Estado" ColumnName="Role_Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbUsuario">
+      <EntityTypeMapping TypeName="dbSsitemascinesModel.tbUsuario">
+        <MappingFragment StoreEntitySet="tbUsuario">
+          <ScalarProperty Name="Usua_Id" ColumnName="Usua_Id" />
+          <ScalarProperty Name="Usua_Nombre" ColumnName="Usua_Nombre" />
+          <ScalarProperty Name="Usua_Contraseña" ColumnName="Usua_Contraseña" />
+          <ScalarProperty Name="Empl_Id" ColumnName="Empl_Id" />
+          <ScalarProperty Name="Paro_Id" ColumnName="Paro_Id" />
+          <ScalarProperty Name="Usua_Creacion" ColumnName="Usua_Creacion" />
+          <ScalarProperty Name="Usua_Fecha_Creacion" ColumnName="Usua_Fecha_Creacion" />
+          <ScalarProperty Name="Usua_Modifica" ColumnName="Usua_Modifica" />
+          <ScalarProperty Name="Usua_Fecha_Modifica" ColumnName="Usua_Fecha_Modifica" />
+          <ScalarProperty Name="Usua_Estado" ColumnName="Usua_Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbCarteleras">
+      <EntityTypeMapping TypeName="dbSsitemascinesModel.tbCarteleras">
+        <MappingFragment StoreEntitySet="tbCarteleras">
+          <ScalarProperty Name="Cart_Id" ColumnName="Cart_Id" />
+          <ScalarProperty Name="Cart_Descripcion" ColumnName="Cart_Descripcion" />
+          <ScalarProperty Name="Gene_Id" ColumnName="Gene_Id" />
+          <ScalarProperty Name="Prec_Id" ColumnName="Prec_Id" />
+          <ScalarProperty Name="Entra_Id" ColumnName="Entra_Id" />
+          <ScalarProperty Name="Cart_Usuario_Creacion" ColumnName="Cart_Usuario_Creacion" />
+          <ScalarProperty Name="Cart_Fecha_Creacion" ColumnName="Cart_Fecha_Creacion" />
+          <ScalarProperty Name="Cart_Usuario_Modificacion" ColumnName="Cart_Usuario_Modificacion" />
+          <ScalarProperty Name="Cart_Fecha_Modificacion" ColumnName="Cart_Fecha_Modificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbEntradas">
+      <EntityTypeMapping TypeName="dbSsitemascinesModel.tbEntradas">
+        <MappingFragment StoreEntitySet="tbEntradas">
+          <ScalarProperty Name="Entra_Id" ColumnName="Entra_Id" />
+          <ScalarProperty Name="Entra_Cantidad" ColumnName="Entra_Cantidad" />
+          <ScalarProperty Name="Sala_Id" ColumnName="Sala_Id" />
+          <ScalarProperty Name="Entra_Usuario_Creacion" ColumnName="Entra_Usuario_Creacion" />
+          <ScalarProperty Name="Entra_Fecha_Creacion" ColumnName="Entra_Fecha_Creacion" />
+          <ScalarProperty Name="Entra_Usuario_Modificacion" ColumnName="Entra_Usuario_Modificacion" />
+          <ScalarProperty Name="Entra_Fecha_Modificacion" ColumnName="Entra_Fecha_Modificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbSucursales">
+      <EntityTypeMapping TypeName="dbSsitemascinesModel.tbSucursales">
+        <MappingFragment StoreEntitySet="tbSucursales">
+          <ScalarProperty Name="Sucu_Id" ColumnName="Sucu_Id" />
+          <ScalarProperty Name="Sucu_Descripcion" ColumnName="Sucu_Descripcion" />
+          <ScalarProperty Name="Sucu_Direccion" ColumnName="Sucu_Direccion" />
+          <ScalarProperty Name="Muni_Codigo" ColumnName="Muni_Codigo" />
+          <ScalarProperty Name="Sucu_Usuario_Creacion" ColumnName="Sucu_Usuario_Creacion" />
+          <ScalarProperty Name="Sucu_Fecha_Creacion" ColumnName="Sucu_Fecha_Creacion" />
+          <ScalarProperty Name="Sucu_Usuario_Modificacion" ColumnName="Sucu_Usuario_Modificacion" />
+          <ScalarProperty Name="Sucu_Fecha_Modificacion" ColumnName="Sucu_Fecha_Modificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="dbSsitemascinesModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbFacturas_Detalles">
+      <EntityTypeMapping TypeName="dbSsitemascinesModel.tbFacturas_Detalles">
+        <MappingFragment StoreEntitySet="tbFacturas_Detalles">
+          <ScalarProperty Name="Fade_Id" ColumnName="Fade_Id" />
+          <ScalarProperty Name="Fact_Id" ColumnName="Fact_Id" />
+          <ScalarProperty Name="Cart_Id" ColumnName="Cart_Id" />
+          <ScalarProperty Name="Fade_Usua_Creacion" ColumnName="Fade_Usua_Creacion" />
+          <ScalarProperty Name="Fade_Fecha_Creacion" ColumnName="Fade_Fecha_Creacion" />
+          <ScalarProperty Name="Fade_Usua_Modifica" ColumnName="Fade_Usua_Modifica" />
+          <ScalarProperty Name="Fade_Fecha_Modifica" ColumnName="Fade_Fecha_Modifica" />
+          <ScalarProperty Name="Fade_Estado" ColumnName="Fade_Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbFacturas_Encabezados">
+      <EntityTypeMapping TypeName="dbSsitemascinesModel.tbFacturas_Encabezados">
+        <MappingFragment StoreEntitySet="tbFacturas_Encabezados">
+          <ScalarProperty Name="Fact_Id" ColumnName="Fact_Id" />
+          <ScalarProperty Name="Fact_Fecha" ColumnName="Fact_Fecha" />
+          <ScalarProperty Name="Clie_Id" ColumnName="Clie_Id" />
+          <ScalarProperty Name="Empl_Id" ColumnName="Empl_Id" />
+          <ScalarProperty Name="Tipo_Id" ColumnName="Tipo_Id" />
+          <ScalarProperty Name="Fact_Usua_Creacion" ColumnName="Fact_Usua_Creacion" />
+          <ScalarProperty Name="Fact_Fecha_Creacion" ColumnName="Fact_Fecha_Creacion" />
+          <ScalarProperty Name="Fact_Usua_Modifica" ColumnName="Fact_Usua_Modifica" />
+          <ScalarProperty Name="Fact_Fecha_Modifica" ColumnName="Fact_Fecha_Modifica" />
+          <ScalarProperty Name="Fact_Estado" ColumnName="Fact_Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbButacas_Salas">
+      <EntityTypeMapping TypeName="dbSsitemascinesModel.tbButacas_Salas">
+        <MappingFragment StoreEntitySet="tbButacas_Salas">
+          <ScalarProperty Name="Buta_Id" ColumnName="Buta_Id" />
+          <ScalarProperty Name="Buta_Descripcion" ColumnName="Buta_Descripcion" />
+          <ScalarProperty Name="Buta_Usuario_Creacion" ColumnName="Buta_Usuario_Creacion" />
+          <ScalarProperty Name="Buta_Fecha_Creacion" ColumnName="Buta_Fecha_Creacion" />
+          <ScalarProperty Name="Buta_Usuario_Modificacion" ColumnName="Buta_Usuario_Modificacion" />
+          <ScalarProperty Name="Buta_Fecha_Modificacion" ColumnName="Buta_Fecha_Modificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbCargos">
+      <EntityTypeMapping TypeName="dbSsitemascinesModel.tbCargos">
+        <MappingFragment StoreEntitySet="tbCargos">
+          <ScalarProperty Name="Carg_Id" ColumnName="Carg_Id" />
+          <ScalarProperty Name="Carg_Descripcion" ColumnName="Carg_Descripcion" />
+          <ScalarProperty Name="Carg_Usuario_Creacion" ColumnName="Carg_Usuario_Creacion" />
+          <ScalarProperty Name="Carg_Fecha_Creacion" ColumnName="Carg_Fecha_Creacion" />
+          <ScalarProperty Name="Carg_Usuario_Modificacion" ColumnName="Carg_Usuario_Modificacion" />
+          <ScalarProperty Name="Carg_Fecha_Modificacion" ColumnName="Carg_Fecha_Modificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbDepartamentos">
+      <EntityTypeMapping TypeName="dbSsitemascinesModel.tbDepartamentos">
+        <MappingFragment StoreEntitySet="tbDepartamentos">
+          <ScalarProperty Name="Depa_Codigo" ColumnName="Depa_Codigo" />
+          <ScalarProperty Name="Depa_Descripcion" ColumnName="Depa_Descripcion" />
+          <ScalarProperty Name="Depa_Usuario_Creacion" ColumnName="Depa_Usuario_Creacion" />
+          <ScalarProperty Name="Depa_Fecha_Creacion" ColumnName="Depa_Fecha_Creacion" />
+          <ScalarProperty Name="Depa_Usuario_Modificacion" ColumnName="Depa_Usuario_Modificacion" />
+          <ScalarProperty Name="Depa_Fecha_Modificacion" ColumnName="Depa_Fecha_Modificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbEstado_Civil">
+      <EntityTypeMapping TypeName="dbSsitemascinesModel.tbEstado_Civil">
+        <MappingFragment StoreEntitySet="tbEstado_Civil">
+          <ScalarProperty Name="Esta_Id" ColumnName="Esta_Id" />
+          <ScalarProperty Name="Esta_Descripcion" ColumnName="Esta_Descripcion" />
+          <ScalarProperty Name="Esta_Usuario_Creacion" ColumnName="Esta_Usuario_Creacion" />
+          <ScalarProperty Name="Esta_Fecha_Creacion" ColumnName="Esta_Fecha_Creacion" />
+          <ScalarProperty Name="Esta_Usuario_Modificacion" ColumnName="Esta_Usuario_Modificacion" />
+          <ScalarProperty Name="Esta_Fecha_Modificacion" ColumnName="Esta_Fecha_Modificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbGeneros">
+      <EntityTypeMapping TypeName="dbSsitemascinesModel.tbGeneros">
+        <MappingFragment StoreEntitySet="tbGeneros">
+          <ScalarProperty Name="Gene_Id" ColumnName="Gene_Id" />
+          <ScalarProperty Name="Gene_Descripcion" ColumnName="Gene_Descripcion" />
+          <ScalarProperty Name="Prom_Id" ColumnName="Prom_Id" />
+          <ScalarProperty Name="Gene_Usuario_Creacion" ColumnName="Gene_Usuario_Creacion" />
+          <ScalarProperty Name="Gene_Fecha_Creacion" ColumnName="Gene_Fecha_Creacion" />
+          <ScalarProperty Name="Gene_Usuario_Modificacion" ColumnName="Gene_Usuario_Modificacion" />
+          <ScalarProperty Name="Gene_Fecha_Modificacion" ColumnName="Gene_Fecha_Modificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbMunicipio">
+      <EntityTypeMapping TypeName="dbSsitemascinesModel.tbMunicipio">
+        <MappingFragment StoreEntitySet="tbMunicipio">
+          <ScalarProperty Name="Muni_Codigo" ColumnName="Muni_Codigo" />
+          <ScalarProperty Name="Muni_Descripcion" ColumnName="Muni_Descripcion" />
+          <ScalarProperty Name="Depa_Codigo" ColumnName="Depa_Codigo" />
+          <ScalarProperty Name="Muni_Usuario_Creacion" ColumnName="Muni_Usuario_Creacion" />
+          <ScalarProperty Name="Muni_Fecha_Creacion" ColumnName="Muni_Fecha_Creacion" />
+          <ScalarProperty Name="Muni_Usuario_Modificacion" ColumnName="Muni_Usuario_Modificacion" />
+          <ScalarProperty Name="Muni_Fecha_Modificacion" ColumnName="Muni_Fecha_Modificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbPrecios">
+      <EntityTypeMapping TypeName="dbSsitemascinesModel.tbPrecios">
+        <MappingFragment StoreEntitySet="tbPrecios">
+          <ScalarProperty Name="Prec_Id" ColumnName="Prec_Id" />
+          <ScalarProperty Name="Prec_Descripcion" ColumnName="Prec_Descripcion" />
+          <ScalarProperty Name="Prec_Usuario_Creacion" ColumnName="Prec_Usuario_Creacion" />
+          <ScalarProperty Name="Prec_Fecha_Creacion" ColumnName="Prec_Fecha_Creacion" />
+          <ScalarProperty Name="Prec_Usuario_Modificacion" ColumnName="Prec_Usuario_Modificacion" />
+          <ScalarProperty Name="Prec_Fecha_Modificacion" ColumnName="Prec_Fecha_Modificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbPromociones">
+      <EntityTypeMapping TypeName="dbSsitemascinesModel.tbPromociones">
+        <MappingFragment StoreEntitySet="tbPromociones">
+          <ScalarProperty Name="Prom_Id" ColumnName="Prom_Id" />
+          <ScalarProperty Name="Prom_Descuento" ColumnName="Prom_Descuento" />
+          <ScalarProperty Name="Prom_Descripcion" ColumnName="Prom_Descripcion" />
+          <ScalarProperty Name="Prom_Usuario_Creacion" ColumnName="Prom_Usuario_Creacion" />
+          <ScalarProperty Name="Prom_Fecha_Creacion" ColumnName="Prom_Fecha_Creacion" />
+          <ScalarProperty Name="Prom_Usuario_Modificacion" ColumnName="Prom_Usuario_Modificacion" />
+          <ScalarProperty Name="Prom_Fecha_Modificacion" ColumnName="Prom_Fecha_Modificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbSalas">
+      <EntityTypeMapping TypeName="dbSsitemascinesModel.tbSalas">
+        <MappingFragment StoreEntitySet="tbSalas">
+          <ScalarProperty Name="Sala_Id" ColumnName="Sala_Id" />
+          <ScalarProperty Name="Sala_Descripcion" ColumnName="Sala_Descripcion" />
+          <ScalarProperty Name="Buta_Id" ColumnName="Buta_Id" />
+          <ScalarProperty Name="Cate_Usuario_Creacion" ColumnName="Cate_Usuario_Creacion" />
+          <ScalarProperty Name="Cate_Fecha_Creacion" ColumnName="Cate_Fecha_Creacion" />
+          <ScalarProperty Name="Cate_Usuario_Modificacion" ColumnName="Cate_Usuario_Modificacion" />
+          <ScalarProperty Name="Cate_Fecha_Modificacion" ColumnName="Cate_Fecha_Modificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbTipo_Pagos">
+      <EntityTypeMapping TypeName="dbSsitemascinesModel.tbTipo_Pagos">
+        <MappingFragment StoreEntitySet="tbTipo_Pagos">
+          <ScalarProperty Name="Tipo_Id" ColumnName="Tipo_Id" />
+          <ScalarProperty Name="Tipo_Descripcion" ColumnName="Tipo_Descripcion" />
+          <ScalarProperty Name="Cate_Usuario_Creacion" ColumnName="Cate_Usuario_Creacion" />
+          <ScalarProperty Name="Cate_Fecha_Creacion" ColumnName="Cate_Fecha_Creacion" />
+          <ScalarProperty Name="Cate_Usuario_Modificacion" ColumnName="Cate_Usuario_Modificacion" />
+          <ScalarProperty Name="Cate_Fecha_Modificacion" ColumnName="Cate_Fecha_Modificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbClientes">
+      <EntityTypeMapping TypeName="dbSsitemascinesModel.tbClientes">
+        <MappingFragment StoreEntitySet="tbClientes">
+          <ScalarProperty Name="Clie_Id" ColumnName="Clie_Id" />
+          <ScalarProperty Name="Clie_Nombre" ColumnName="Clie_Nombre" />
+          <ScalarProperty Name="Clie_Apellido" ColumnName="Clie_Apellido" />
+          <ScalarProperty Name="Clie_Identidad" ColumnName="Clie_Identidad" />
+          <ScalarProperty Name="Clie_Sexo" ColumnName="Clie_Sexo" />
+          <ScalarProperty Name="Clie_Telefono" ColumnName="Clie_Telefono" />
+          <ScalarProperty Name="Esta_Id" ColumnName="Esta_Id" />
+          <ScalarProperty Name="Clie_FecNacimiento" ColumnName="Clie_FecNacimiento" />
+          <ScalarProperty Name="Muni_Id" ColumnName="Muni_Id" />
+          <ScalarProperty Name="Clie_Usua_Creacion" ColumnName="Clie_Usua_Creacion" />
+          <ScalarProperty Name="Clie_Fecha_Creacion" ColumnName="Clie_Fecha_Creacion" />
+          <ScalarProperty Name="Clie_Usua_Modifica" ColumnName="Clie_Usua_Modifica" />
+          <ScalarProperty Name="Clie_Fecha_Modifica" ColumnName="Clie_Fecha_Modifica" />
+          <ScalarProperty Name="Clie_Estado" ColumnName="Clie_Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbEmpleado">
+      <EntityTypeMapping TypeName="dbSsitemascinesModel.tbEmpleado">
+        <MappingFragment StoreEntitySet="tbEmpleado">
+          <ScalarProperty Name="Empl_Id" ColumnName="Empl_Id" />
+          <ScalarProperty Name="Empl_Nombre" ColumnName="Empl_Nombre" />
+          <ScalarProperty Name="Empl_Apellido" ColumnName="Empl_Apellido" />
+          <ScalarProperty Name="Empl_Identidad" ColumnName="Empl_Identidad" />
+          <ScalarProperty Name="Empl_Sexo" ColumnName="Empl_Sexo" />
+          <ScalarProperty Name="Empl_Telefono" ColumnName="Empl_Telefono" />
+          <ScalarProperty Name="Esta_Id" ColumnName="Esta_Id" />
+          <ScalarProperty Name="Empl_FecNacimiento" ColumnName="Empl_FecNacimiento" />
+          <ScalarProperty Name="Muni_Id" ColumnName="Muni_Id" />
+          <ScalarProperty Name="Carg_Id" ColumnName="Carg_Id" />
+          <ScalarProperty Name="Empl_Usua_Creacion" ColumnName="Empl_Usua_Creacion" />
+          <ScalarProperty Name="Empl_Fecha_Creacion" ColumnName="Empl_Fecha_Creacion" />
+          <ScalarProperty Name="Empl_Usua_Modifica" ColumnName="Empl_Usua_Modifica" />
+          <ScalarProperty Name="Empl_Fecha_Modifica" ColumnName="Empl_Fecha_Modifica" />
+          <ScalarProperty Name="Empl_Estado" ColumnName="Empl_Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

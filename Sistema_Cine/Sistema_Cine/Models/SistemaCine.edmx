@@ -1272,7 +1272,7 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbBitacora_Promociones'
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="dbSsitemascinesEntities3" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="dbSsitemascinesEntities4" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tbPantalla_Roles" EntityType="Self.tbPantalla_Roles" />
           <EntitySet Name="tbPantallas" EntityType="Self.tbPantallas" />
           <EntitySet Name="tbRoles" EntityType="Self.tbRoles" />
@@ -1389,7 +1389,7 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbBitacora_Promociones'
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="dbSsitemascinesModelStoreContainer" CdmEntityContainer="dbSsitemascinesEntities3">
+        <EntityContainerMapping StorageEntityContainer="dbSsitemascinesModelStoreContainer" CdmEntityContainer="dbSsitemascinesEntities4">
           <EntitySetMapping Name="tbPantalla_Roles">
             <EntityTypeMapping TypeName="dbSsitemascinesModel.tbPantalla_Roles">
               <MappingFragment StoreEntitySet="tbPantalla_Roles">

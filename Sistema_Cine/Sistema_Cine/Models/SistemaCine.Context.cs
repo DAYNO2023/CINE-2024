@@ -13,10 +13,10 @@ namespace Sistema_Cine.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class dbSsitemascinesEntities3 : DbContext
+    public partial class dbSsitemascinesEntities4 : DbContext
     {
-        public dbSsitemascinesEntities3()
-            : base("name=dbSsitemascinesEntities3")
+        public dbSsitemascinesEntities4()
+            : base("name=dbSsitemascinesEntities4")
         {
         }
     

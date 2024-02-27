@@ -129,89 +129,89 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\SistemaCine.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SistemaCine.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\SistemaCine.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SistemaCine.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\SistemaCine.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SistemaCine.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\sysdiagrams.cs">
-      <DependentUpon>SistemaCine.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\tbButacas_Salas.cs">
-      <DependentUpon>SistemaCine.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\tbCargos.cs">
-      <DependentUpon>SistemaCine.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\tbCarteleras.cs">
-      <DependentUpon>SistemaCine.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\tbClientes.cs">
-      <DependentUpon>SistemaCine.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\tbDepartamentos.cs">
-      <DependentUpon>SistemaCine.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\tbEmpleado.cs">
-      <DependentUpon>SistemaCine.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\tbEntradas.cs">
-      <DependentUpon>SistemaCine.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\tbEstado_Civil.cs">
-      <DependentUpon>SistemaCine.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\tbFacturas_Detalles.cs">
-      <DependentUpon>SistemaCine.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\tbFacturas_Encabezados.cs">
-      <DependentUpon>SistemaCine.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\tbGeneros.cs">
-      <DependentUpon>SistemaCine.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\tbMunicipio.cs">
-      <DependentUpon>SistemaCine.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\tbPantallas.cs">
-      <DependentUpon>SistemaCine.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\tbPantalla_Roles.cs">
-      <DependentUpon>SistemaCine.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\tbPrecios.cs">
-      <DependentUpon>SistemaCine.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\tbPromociones.cs">
-      <DependentUpon>SistemaCine.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\tbRoles.cs">
-      <DependentUpon>SistemaCine.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\tbSalas.cs">
-      <DependentUpon>SistemaCine.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\tbSucursales.cs">
-      <DependentUpon>SistemaCine.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\tbTipo_Pagos.cs">
-      <DependentUpon>SistemaCine.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\tbUsuario.cs">
-      <DependentUpon>SistemaCine.tt</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sistemaCine.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>sistemaCine.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sistemaCine.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>sistemaCine.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sistemaCine.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>sistemaCine.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>sistemaCine.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbButacas_Salas.cs">
+      <DependentUpon>sistemaCine.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbCargos.cs">
+      <DependentUpon>sistemaCine.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbCarteleras.cs">
+      <DependentUpon>sistemaCine.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbClientes.cs">
+      <DependentUpon>sistemaCine.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbDepartamentos.cs">
+      <DependentUpon>sistemaCine.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbEmpleado.cs">
+      <DependentUpon>sistemaCine.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbEntradas.cs">
+      <DependentUpon>sistemaCine.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbEstado_Civil.cs">
+      <DependentUpon>sistemaCine.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbFacturas_Detalles.cs">
+      <DependentUpon>sistemaCine.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbFacturas_Encabezados.cs">
+      <DependentUpon>sistemaCine.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbGeneros.cs">
+      <DependentUpon>sistemaCine.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbMunicipio.cs">
+      <DependentUpon>sistemaCine.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbPantallas.cs">
+      <DependentUpon>sistemaCine.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbPantalla_Roles.cs">
+      <DependentUpon>sistemaCine.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbPrecios.cs">
+      <DependentUpon>sistemaCine.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbPromociones.cs">
+      <DependentUpon>sistemaCine.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbRoles.cs">
+      <DependentUpon>sistemaCine.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbSalas.cs">
+      <DependentUpon>sistemaCine.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbSucursales.cs">
+      <DependentUpon>sistemaCine.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbTipo_Pagos.cs">
+      <DependentUpon>sistemaCine.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbUsuario.cs">
+      <DependentUpon>sistemaCine.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -715,32 +715,30 @@
     <Content Include="Content\js\plugins\video\responsible-video.js" />
     <Content Include="Content\js\plugins\wow\wow.min.js" />
     <Content Include="Content\js\popper.min.js" />
-    <Content Include="Controllers\SistemaCine.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SistemaCine.edmx</DependentUpon>
-      <LastGenOutput>SistemaCine.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Controllers\SistemaCine.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SistemaCine.edmx</DependentUpon>
-      <LastGenOutput>SistemaCine.cs</LastGenOutput>
-    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\sistemaCine.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>sistemaCine.edmx</DependentUpon>
+      <LastGenOutput>sistemaCine.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\sistemaCine.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>sistemaCine.edmx</DependentUpon>
+      <LastGenOutput>sistemaCine.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Content\js\api\typehead_collection.json" />
-    <Content Include="Content\js\bootstrap.js.map" />
-    <Content Include="Content\js\bootstrap.min.js.map" />
-    <Content Include="Content\js\plugins\chartist\chartist.min.js.map" />
-    <Content Include="Content\js\plugins\d3\LICENSE" />
-    <Content Include="Content\js\plugins\diff_match_patch\COPYING" />
-    <Content Include="Content\js\plugins\justified-gallery\README.md" />
-    <Content Include="Content\js\plugins\pdfjs\pdf.js.map" />
-    <Content Include="Content\js\plugins\pdfjs\pdf.worker.js.map" />
-    <Content Include="Content\js\plugins\topojson\LICENSE" />
+    <Content Include="CodeTemplates\MVCView\Create.cs.t4" />
+    <Content Include="CodeTemplates\MVCView\Delete.cs.t4" />
+    <Content Include="CodeTemplates\MVCView\Details.cs.t4" />
+    <Content Include="CodeTemplates\MVCView\Edit.cs.t4" />
+    <Content Include="CodeTemplates\MVCView\Empty.cs.t4" />
+    <Content Include="CodeTemplates\MVCView\Imports.include.t4" />
+    <Content Include="CodeTemplates\MVCView\List.cs.t4" />
+    <Content Include="CodeTemplates\MVCView\ModelMetadataFunctions.cs.include.t4" />
     <Content Include="Content\css\bootstrap.css.map" />
     <Content Include="Content\css\bootstrap.min.css.map" />
     <Content Include="Content\css\plugins\bootstrap-rtl\bootstrap-rtl.css.map" />
@@ -818,20 +816,22 @@
     <Content Include="Content\font-awesome\webfonts\fa-solid-900.ttf" />
     <Content Include="Content\font-awesome\webfonts\fa-solid-900.woff" />
     <Content Include="Content\font-awesome\webfonts\fa-solid-900.woff2" />
-    <Content Include="CodeTemplates\MVCView\Create.cs.t4" />
-    <Content Include="CodeTemplates\MVCView\Delete.cs.t4" />
-    <Content Include="CodeTemplates\MVCView\Details.cs.t4" />
-    <Content Include="CodeTemplates\MVCView\Edit.cs.t4" />
-    <Content Include="CodeTemplates\MVCView\Empty.cs.t4" />
-    <Content Include="CodeTemplates\MVCView\Imports.include.t4" />
-    <Content Include="CodeTemplates\MVCView\List.cs.t4" />
-    <Content Include="CodeTemplates\MVCView\ModelMetadataFunctions.cs.include.t4" />
-    <EntityDeploy Include="Controllers\SistemaCine.edmx">
+    <Content Include="Content\js\api\typehead_collection.json" />
+    <Content Include="Content\js\bootstrap.js.map" />
+    <Content Include="Content\js\bootstrap.min.js.map" />
+    <Content Include="Content\js\plugins\chartist\chartist.min.js.map" />
+    <Content Include="Content\js\plugins\d3\LICENSE" />
+    <Content Include="Content\js\plugins\diff_match_patch\COPYING" />
+    <Content Include="Content\js\plugins\justified-gallery\README.md" />
+    <Content Include="Content\js\plugins\pdfjs\pdf.js.map" />
+    <Content Include="Content\js\plugins\pdfjs\pdf.worker.js.map" />
+    <Content Include="Content\js\plugins\topojson\LICENSE" />
+    <EntityDeploy Include="Models\sistemaCine.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SistemaCine.Designer.cs</LastGenOutput>
+      <LastGenOutput>sistemaCine.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Controllers\SistemaCine.edmx.diagram">
-      <DependentUpon>SistemaCine.edmx</DependentUpon>
+    <Content Include="Models\sistemaCine.edmx.diagram">
+      <DependentUpon>sistemaCine.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -859,7 +859,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

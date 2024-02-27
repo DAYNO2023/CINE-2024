@@ -176,4 +176,3 @@ C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\obj\Debug\Sis
 C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\obj\Debug\Sistema_Cine.csproj.CopyComplete
 C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\obj\Debug\Sistema_Cine.dll
 C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\obj\Debug\Sistema_Cine.pdb
-C:\Users\LAB1\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\obj\Debug\Sistema_Cine.csproj.AssemblyReference.cache

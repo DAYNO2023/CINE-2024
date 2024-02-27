@@ -866,7 +866,7 @@ h5 {
   display: block;
 }
 .nav.navbar-right > li > a {
-  color: #ffffff;
+  color: #999c9e;
 }
 .nav > li.active > a {
   color: #ffffff;
@@ -1208,7 +1208,7 @@ body.mini-navbar .navbar-default .nav > li > .nav-second-level li a {
 .navbar-fixed-top .navbar-form-custom .form-control { height: 50px}
 .navbar-fixed-top,
 .navbar-static-top {
-  background: #000000;
+  background: #f3f3f4;
 }
 .fixed-nav #wrapper {
   margin-top: 0;
@@ -4373,7 +4373,7 @@ samp {
 }
 body {
   font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #100101;
+  background-color: #2f4050;
   font-size: 13px;
   color: #676a6c;
   overflow-x: hidden;

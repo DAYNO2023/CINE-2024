@@ -41,56 +41,59 @@ if (!String.IsNullOrEmpty(LayoutPageFile)) {
 </head>
 <body>
 <#
-PushIndent("    ");
+    PushIndent("    ");
 }
-#>
-<div class="card">
+#><div class="card">
     <div class="card-header">
-        <h4><#= ViewDataTypeShortName #></h4>
+        <h4 class="card-title"><#= ViewDataTypeShortName #></h4>
     </div>
     <div class="card-body">
         <dl class="dl-horizontal">
-<#
-foreach (PropertyMetadata property in ModelMetadata.Properties) {
-    if (property.Scaffold && !property.IsPrimaryKey && !property.IsForeignKey) {
-#>
-<#
-        // We do not want to show any association properties for which there is
-        // no associated foreign key.
-        if (property.IsAssociation && GetRelatedModelMetadata(property) == null) {
-            continue;
-        }
-#>
-            <dt>
-                @Html.DisplayNameFor(model => model.<#= GetValueExpression(property) #>)
-            </dt>
+        <#
+        foreach (PropertyMetadata property in ModelMetadata.Properties) {
+            if (property.Scaffold && !property.IsPrimaryKey && !property.IsForeignKey) {
+        #>
+        <#
+                // We do not want to show any association properties for which there is
+                // no associated foreign key.
+                if (property.IsAssociation && GetRelatedModelMetadata(property) == null) {
+                    continue;
+                }
+        #>
+                <dt>
+                    @Html.DisplayNameFor(model => model.<#= GetValueExpression(property) #>)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.<#= GetValueExpression(property) #>)
-            </dd>
-<#
-    }
-}
-#>
+                <dd>
+                    @Html.DisplayFor(model => model.<#= GetValueExpression(property) #>)
+                </dd>
+
+        <#
+            }
+        }
+        #>
         </dl>
+    </div>
+    <div class="card-footer">
         <p>
-<#
-string pkName = GetPrimaryKeyName();
-if (pkName != null) {
-#>
+        <#
+        string pkName = GetPrimaryKeyName();
+        if (pkName != null) {
+        #>
             @Html.ActionLink("Edit", "Edit", new { id = Model.<#= pkName #> }) |
             @Html.ActionLink("Back to List", "Index")
-<#
-} else {
-#>
+        <#
+        } else {
+        #>
             @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
             @Html.ActionLink("Back to List", "Index")
-<#
-}
-#>
+        <#
+        }
+        #>
         </p>
     </div>
 </div>
+
 <#
 // The following code closes the tag used in the case of a view using a layout page and the body and html tags in the case of a regular view page
 #>
@@ -98,7 +101,6 @@ if (pkName != null) {
 if(!IsPartialView && !IsLayoutPageSelected) {
     ClearIndent();
 #>
-
 </body>
 </html>
 <#

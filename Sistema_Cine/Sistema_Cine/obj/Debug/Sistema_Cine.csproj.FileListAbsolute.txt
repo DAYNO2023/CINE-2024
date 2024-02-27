@@ -51,6 +51,8 @@ C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\bin\roslyn\vbc.rsp
 C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\bin\roslyn\VBCSCompiler.exe
 C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\bin\Antlr3.Runtime.dll
+C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\bin\EntityFramework.dll
+C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\bin\EntityFramework.SqlServer.dll
 C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\bin\Newtonsoft.Json.dll
@@ -62,6 +64,8 @@ C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\bin\System.Web.WebP
 C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\bin\System.Web.WebPages.dll
 C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\bin\System.Web.WebPages.Razor.dll
 C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\bin\WebGrease.dll
+C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\bin\EntityFramework.xml
+C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\bin\EntityFramework.SqlServer.xml
 C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\bin\System.Web.Helpers.xml
 C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\bin\System.Web.Mvc.xml
 C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\bin\System.Web.Optimization.xml
@@ -79,7 +83,6 @@ C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\bin\es\System.Web.R
 C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\bin\es\System.Web.WebPages.resources.dll
 C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\bin\es\System.Web.WebPages.Razor.resources.dll
-C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\obj\Debug\Sistema_Cine.csproj.AssemblyReference.cache
 C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\obj\Debug\Sistema_Cine.csproj.CoreCompileInputs.cache
 C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\obj\Debug\Sistema_Cine.csproj.CopyComplete
 C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\obj\Debug\Sistema_Cine.dll

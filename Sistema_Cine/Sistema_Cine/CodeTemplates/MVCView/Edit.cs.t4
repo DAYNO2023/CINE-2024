@@ -45,7 +45,7 @@ if (!String.IsNullOrEmpty(LayoutPageFile)) {
 </head>
 <body>
 <#
-PushIndent("    ");
+    PushIndent("    ");
 }
 #>
 <#
@@ -74,131 +74,125 @@ if (ReferenceScriptLibraries) {
 <#
 }
 #>
-<div class="card">
-    <div class="card-header">
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
         <h4><#= ViewDataTypeShortName #></h4>
-    </div>
-    <div class="card-body">
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-            
-            <div class="form-horizontal">
-                <hr />
-<#  
+        <hr />
+<# 
+    if (isControlHtmlAttributesSupported) {
+#>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<#        
+    } else {
+#>
+        @Html.ValidationSummary(true)
+<#      
+    }
+#>
+<#
+foreach (PropertyMetadata property in ModelMetadata.Properties) {
+    if (property.Scaffold && !property.IsAssociation) {
+        if (property.IsPrimaryKey) {
+#>
+        @Html.HiddenFor(model => model.<#= property.PropertyName #>)
+
+<#
+        } else if (!property.IsReadOnly) {
+#>
+        <div class="form-group">
+<#
+            if (property.IsForeignKey) {
+#>
+            @Html.LabelFor(model => model.<#= property.PropertyName #>, "<#= GetAssociationName(property) #>", htmlAttributes: new { @class = "control-label col-md-2" })
+<#
+            } else {
+#>
+            @Html.LabelFor(model => model.<#= property.PropertyName #>, htmlAttributes: new { @class = "control-label col-md-2" })
+<#
+            }
+#>
+            <div class="col-md-10">
+<#
+            bool isCheckbox = property.TypeName.Equals(boolType);
+            if (property.IsForeignKey) {
+#>
+<# 
             if (isControlHtmlAttributesSupported) {
 #>
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.DropDownList("<#= property.PropertyName #>", null, htmlAttributes: new { @class = "form-control" })
+<#
+            } else {
+#>
+                @Html.DropDownList("<#= property.PropertyName #>", String.Empty)
+<#
+            }
+#>
+<#
+            } else  if (isControlHtmlAttributesSupported) {
+                if (isCheckbox) {
+#>
+                <div class="checkbox">
+<#
+                    PushIndent("    ");
+#>
+                @Html.EditorFor(model => model.<#= property.PropertyName #>)
+<#
+                } else if (property.IsEnum && !property.IsEnumFlags) {
+#>
+                @Html.EnumDropDownListFor(model => model.<#= property.PropertyName #>, htmlAttributes: new { @class = "form-control" })
+<#
+                } else {
+#>
+                @Html.EditorFor(model => model.<#= property.PropertyName #>, new { htmlAttributes = new { @class = "form-control" } })
+<#
+                }
+            } else {
+#>
+                @Html.EditorFor(model => model.<#= property.PropertyName #>)
+<#
+            }
+#>
+<# 
+            if (isControlHtmlAttributesSupported) {
+#>
+                @Html.ValidationMessageFor(model => model.<#= property.PropertyName #>, "", new { @class = "text-danger" })
 <#        
             } else {
 #>
-                @Html.ValidationSummary(true)
+                @Html.ValidationMessageFor(model => model.<#= property.PropertyName #>)
 <#      
             }
 #>
 <#
-            foreach (PropertyMetadata property in ModelMetadata.Properties) {
-                if (property.Scaffold && !property.IsAssociation) {
-                    if (property.IsPrimaryKey) {
+            if (isCheckbox && isControlHtmlAttributesSupported) {
+                PopIndent();
 #>
-                    @Html.HiddenFor(model => model.<#= property.PropertyName #>)
-
-<#
-                    } else if (!property.IsReadOnly) {
-#>
-                    <div class="form-group">
-<#
-                        if (property.IsForeignKey) {
-#>
-                        @Html.LabelFor(model => model.<#= property.PropertyName #>, "<#= GetAssociationName(property) #>", htmlAttributes: new { @class = "control-label col-md-2" })
-<#
-                        } else {
-#>
-                        @Html.LabelFor(model => model.<#= property.PropertyName #>, htmlAttributes: new { @class = "control-label col-md-2" })
-<#
-                        }
-#>
-                        <div class="col-md-10">
-<#
-                        bool isCheckbox = property.TypeName.Equals(boolType);
-                        if (property.IsForeignKey) {
-#>
-<#  
-                            if (isControlHtmlAttributesSupported) {
-#>
-                                @Html.DropDownList("<#= property.PropertyName #>", null, htmlAttributes: new { @class = "form-control" })
-<#
-                            } else {
-#>
-                                @Html.DropDownList("<#= property.PropertyName #>", String.Empty)
-<#
-                            }
-#>
-<#
-                        } else  if (isControlHtmlAttributesSupported) {
-                            if (isCheckbox) {
-#>
-                            <div class="checkbox">
-<#
-                                PushIndent("    ");
-#>
-                            @Html.EditorFor(model => model.<#= property.PropertyName #>)
-<#
-                            } else if (property.IsEnum && !property.IsEnumFlags) {
-#>
-                            @Html.EnumDropDownListFor(model => model.<#= property.PropertyName #>, htmlAttributes: new { @class = "form-control" })
-<#
-                            } else {
-#>
-                            @Html.EditorFor(model => model.<#= property.PropertyName #>, new { htmlAttributes = new { @class = "form-control" } })
-<#
-                            }
-                        } else {
-#>
-                            @Html.EditorFor(model => model.<#= property.PropertyName #>)
-<#
-                        }
-#>
-<#  
-                        if (isControlHtmlAttributesSupported) {
-#>
-                                @Html.ValidationMessageFor(model => model.<#= property.PropertyName #>, "", new { @class = "text-danger" })
-<#        
-                        } else {
-#>
-                                @Html.ValidationMessageFor(model => model.<#= property.PropertyName #>)
-<#      
-                        }
-#>
-<#
-                        if (isCheckbox && isControlHtmlAttributesSupported) {
-                            PopIndent();
-#>
-                            </div>
-<#
-                        }
-#>
-                        </div>
-                    </div>
-
-<#
-                    }
-                }
-            }
-#>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Save" class="btn btn-default" />
-                    </div>
                 </div>
+<#
+            }
+#>
             </div>
+        </div>
+
+<#
         }
-        <div>
-            @Html.ActionLink("Back to List", "Index")
+    }
+}
+#>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
         </div>
     </div>
-</div>
+}
 
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
 <#
 if(IsLayoutPageSelected && ReferenceScriptLibraries && IsBundleConfigPresent) {
 #>
@@ -226,7 +220,6 @@ else if(IsLayoutPageSelected && ReferenceScriptLibraries) {
 if(!IsPartialView && !IsLayoutPageSelected) {
     ClearIndent();
 #>
-
 </body>
 </html>
 <#

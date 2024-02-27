@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e4dd06c21a3f4722973ef6fcd1ea7ea5" Name="Diagram1">
+        <EntityTypeShape EntityType="dbSsitemascinesModel.tbPantalla_Roles" Width="1.5" PointX="9" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbSsitemascinesModel.tbPantallas" Width="1.5" PointX="6.75" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbSsitemascinesModel.tbRoles" Width="1.5" PointX="6.75" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbSsitemascinesModel.tbUsuario" Width="1.5" PointX="11.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbSsitemascinesModel.tbCarteleras" Width="1.5" PointX="11.25" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbSsitemascinesModel.tbEntradas" Width="1.5" PointX="9" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbSsitemascinesModel.tbSucursales" Width="1.5" PointX="3" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbSsitemascinesModel.tbFacturas_Detalles" Width="1.5" PointX="13.5" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbSsitemascinesModel.tbFacturas_Encabezados" Width="1.5" PointX="8.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbSsitemascinesModel.tbButacas_Salas" Width="1.5" PointX="4.5" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbSsitemascinesModel.tbCargos" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbSsitemascinesModel.tbDepartamentos" Width="1.5" PointX="1.5" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbSsitemascinesModel.tbEstado_Civil" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbSsitemascinesModel.tbGeneros" Width="1.5" PointX="9" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbSsitemascinesModel.tbMunicipio" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbSsitemascinesModel.tbPrecios" Width="1.5" PointX="9" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbSsitemascinesModel.tbPromociones" Width="1.5" PointX="6.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbSsitemascinesModel.tbSalas" Width="1.5" PointX="6.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbSsitemascinesModel.tbTipo_Pagos" Width="1.5" PointX="6" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbSsitemascinesModel.tbClientes" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbSsitemascinesModel.tbEmpleado" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="dbSsitemascinesModel.FK_tbPantalla_Roles_tbPantallas_Pant_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="dbSsitemascinesModel.FK_tbPantalla_Roles_tbRoles_Role_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="dbSsitemascinesModel.FK_tbUsuario_tbPantalla_Roles_Paro_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="dbSsitemascinesModel.FK_tbUsuario_tbEmpleado_Empl_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="dbSsitemascinesModel.FK_tbCarteleras_tbEntradas_Entra_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="dbSsitemascinesModel.FK_tbCarteleras_tbGeneros_Gene_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="dbSsitemascinesModel.FK_tbCarteleras_tbPrecios_Prec_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="dbSsitemascinesModel.FK_tbFacturas_Detalles_tbCarteleras_Cart_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="dbSsitemascinesModel.FK_tbEntradas_tbSalas_Sala_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="dbSsitemascinesModel.FK_tbSucursales_tbMunicipio_Muni_Codigo" ManuallyRouted="false" />
+        <AssociationConnector Association="dbSsitemascinesModel.FK_tbFacturas_Detalles_tbFacturas_Encabezados_Fact_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="dbSsitemascinesModel.FK_tbFacturas_Encabezados_tbClientes_Clie_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="dbSsitemascinesModel.FK_tbFacturas_Encabezados_tbEmpleado_Empl_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="dbSsitemascinesModel.FK_tbFacturas_Encabezados_tbTipo_Pagos_Tipo_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="dbSsitemascinesModel.FK_tbSalas_tbButacas_Salas_Buta_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="dbSsitemascinesModel.FK_tbEmpleado_tbCargos_Carg_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="dbSsitemascinesModel.FK_tbMunicipios_tbDepartamentos_Depa_Codigo" ManuallyRouted="false" />
+        <AssociationConnector Association="dbSsitemascinesModel.FK_tbClientes_tbEstado_Civil_Esta_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="dbSsitemascinesModel.FK_tbEmpleado_tbEstado_Civil_Esta_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="dbSsitemascinesModel.FK_tbGeneros_tbPromociones_Prom_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="dbSsitemascinesModel.FK_tbClientes_tbMunicipio_Muni_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="dbSsitemascinesModel.FK_tbEmpleado_tbMunicipio_Muni_Id" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

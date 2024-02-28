@@ -1,0 +1,129 @@
+﻿@model Sistema_Cine.Models.tbClientes
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>tbClientes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Clie_Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clie_Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clie_Apellido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clie_Apellido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clie_Identidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clie_Identidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clie_Sexo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clie_Sexo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clie_Telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clie_Telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clie_FecNacimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clie_FecNacimiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clie_Usua_Creacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clie_Usua_Creacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clie_Fecha_Creacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clie_Fecha_Creacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clie_Usua_Modifica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clie_Usua_Modifica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clie_Fecha_Modifica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clie_Fecha_Modifica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clie_Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clie_Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbEstado_Civil.Esta_Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbEstado_Civil.Esta_Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbMunicipio.Muni_Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbMunicipio.Muni_Descripcion)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

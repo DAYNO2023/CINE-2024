@@ -1,0 +1,101 @@
+﻿@model Sistema_Cine.Models.tbPromociones
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbPromociones</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Prom_Descuento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prom_Descuento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prom_Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prom_Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prom_Usuario_Creacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prom_Usuario_Creacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prom_Fecha_Creacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prom_Fecha_Creacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prom_Usuario_Modificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prom_Usuario_Modificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prom_Fecha_Modificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prom_Fecha_Modificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbPrecios.Prec_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbPrecios.Prec_Id)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Prom_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th >Acciones</th>
+      <th >Usuario</th>
+      <th >Fecha</th>
+    
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Creador</th>
+      <td></td>
+      <td></td>
+  
+    </tr>
+    <tr>
+      <th scope="row">Modificar</th>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+
+

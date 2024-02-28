@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Sistema_Cine.Models.tbCarteleras>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Crear", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<div class="table-responsive">
+<table   class="table table-striped table-bordered table-hover dataTables-example ">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cart_Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cart_Fecha_Estreno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cart_Usuario_Creacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cart_Fecha_Creacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cart_Usuario_Modificacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cart_Fecha_Modificacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbEntradas.Entra_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbGeneros.Gene_Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbPromociones.Prom_Descripcion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cart_Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cart_Fecha_Estreno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cart_Usuario_Creacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cart_Fecha_Creacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cart_Usuario_Modificacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cart_Fecha_Modificacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbEntradas.Entra_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbGeneros.Gene_Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbPromociones.Prom_Descripcion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Cart_Id },new {@class = "btn btn-warning"} ) |
+            @Html.ActionLink("Details", "Details", new { id=item.Cart_Id },new {@class = "btn btn-default"}) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Cart_Id },new {@class = "btn btn-danger"})
+        </td>
+    </tr>
+}
+
+</table>
+</div>

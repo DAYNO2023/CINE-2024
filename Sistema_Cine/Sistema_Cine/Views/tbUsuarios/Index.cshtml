@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Sistema_Cine.Models.tbUsuarios>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="card-body"></div>
+<div class="card-body"></div>
+<div class="card">
+    <div class="card-header">
+        <h3>Usuario</h3>
+    </div>
+    <div class="card-body">
+
+        <p>
+            @Html.ActionLink("Crear", "Create", null, new { @class = "btn btn-primary" })
+        </p>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover dataTables-example ">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Usua_Nombre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Usua_Contraseña)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Usua_Creacion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Usua_Fecha_Creacion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Usua_Modifica)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Usua_Fecha_Modifica)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Usua_Estado)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.tbPantalla_Roles.Paro_Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.tbEmpleados.Empl_Nombre)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Usua_Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Usua_Contraseña)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Usua_Creacion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Usua_Fecha_Creacion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Usua_Modifica)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Usua_Fecha_Modifica)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Usua_Estado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.tbPantalla_Roles.Paro_Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.tbEmpleados.Empl_Nombre)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Usua_Id }, new { @class = "btn btn-warning" }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Usua_Id }, new { @class = "btn btn-default" }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Usua_Id }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>

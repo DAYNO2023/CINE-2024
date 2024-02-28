@@ -1,0 +1,73 @@
+﻿@model Sistema_Cine.Models.tbEntradas
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>tbEntradas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Entra_Cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Entra_Cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Entra_Usuario_Creacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Entra_Usuario_Creacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Entra_Fecha_Creacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Entra_Fecha_Creacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Entra_Usuario_Modificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Entra_Usuario_Modificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Entra_Fecha_Modificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Entra_Fecha_Modificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbSalas.Sala_Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbSalas.Sala_Descripcion)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -5,56 +5,64 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="card">
+    <div class="card-header">
+        <h3>Butacas</h3>
+    </div>
+    <div class="card-body">
 
-<p>
-    @Html.ActionLink("Crear", "Create")
-</p>
-<div class="table-responsive">
-<table   class="table table-striped table-bordered table-hover dataTables-example ">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Buta_Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Buta_Usuario_Creacion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Buta_Fecha_Creacion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Buta_Usuario_Modificacion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Buta_Fecha_Modificacion)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Buta_Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Buta_Usuario_Creacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Buta_Fecha_Creacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Buta_Usuario_Modificacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Buta_Fecha_Modificacion)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Buta_Id },new {@class = "btn btn-warning"} ) |
-            @Html.ActionLink("Details", "Details", new { id=item.Buta_Id },new {@class = "btn btn-default"}) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Buta_Id },new {@class = "btn btn-danger"})
-        </td>
-    </tr>
-}
+        <p>
+            @Html.ActionLink("Crear", "Create", null, new { @class = "btn btn-primary" })
+        </p>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover dataTables-example ">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Buta_Descripcion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Buta_Usuario_Creacion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Buta_Fecha_Creacion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Buta_Usuario_Modificacion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Buta_Fecha_Modificacion)
+                    </th>
+                    <th></th>
+                </tr>
 
-</table>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Buta_Descripcion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Buta_Usuario_Creacion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Buta_Fecha_Creacion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Buta_Usuario_Modificacion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Buta_Fecha_Modificacion)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Buta_Id }, new { @class = "btn btn-warning" }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Buta_Id }, new { @class = "btn btn-default" }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Buta_Id }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
 </div>

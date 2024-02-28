@@ -22,6 +22,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 .glyphicon-asterisk:before {
   content: "\002a";
 }
@@ -999,9 +1000,9 @@ h5 {
   font-size: 12px;
 }
 .nav-header {
-  padding: 33px 25px;
-  background-color: #2f4050;
-  background-image: url("patterns/header-profile.png");
+    padding: 33px 25px;
+    background: linear-gradient(red, black);
+    //background-image: url("patterns/header-profile-skin-3.png");
 }
 .caret {
   display: inline-block;
@@ -1023,8 +1024,8 @@ ul.nav-second-level {
   background: #293846;
 }
 .nav > li.active {
-  border-left: 4px solid #19aa8d;
-  background: #293846;
+    border-left: 4px solid red;
+    background: #1c1c1c;
 }
 .nav.nav-second-level > li.active {
   border: none;
@@ -1208,7 +1209,7 @@ body.mini-navbar .navbar-default .nav > li > .nav-second-level li a {
 .navbar-fixed-top .navbar-form-custom .form-control { height: 50px}
 .navbar-fixed-top,
 .navbar-static-top {
-  background: #f3f3f4;
+    background: black;
 }
 .fixed-nav #wrapper {
   margin-top: 0;
@@ -1553,14 +1554,14 @@ button:focus {
 }
 .btn-primary {
   color: #fff;
-  background-color: #1ab394;
-  border-color: #1ab394;
+  background-color: red;
+  border-color: red;
 }
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary.focus {
-  background-color: #18a689;
-  border-color: #18a689;
+  background-color: red;
+  border-color: red;
   color: #FFFFFF;
 }
 .btn-primary.disabled,
@@ -4372,11 +4373,11 @@ samp {
   border-bottom: 1px solid #e7eaec;
 }
 body {
-  font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #2f4050;
-  font-size: 13px;
-  color: #676a6c;
-  overflow-x: hidden;
+    font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: black;
+    font-size: 13px;
+    color: #676a6c;
+    overflow-x: hidden;
 }
 html,
 body {
@@ -4420,7 +4421,7 @@ a:focus {
   text-decoration: none;
 }
 .border-bottom {
-  border-bottom: 1px solid #e7eaec !important;
+    border-bottom: 1px solid #17202A !important;
 }
 .font-bold {
   font-weight: 600;
@@ -4574,8 +4575,8 @@ ol.unstyled {
 }
 /* FOOTER */
 .footer {
-  background: none repeat scroll 0 0 white;
-  border-top: 1px solid #e7eaec;
+  background: none repeat scroll 0 0 black;
+  border-top: 1px solid black;
   bottom: 0;
   left: 0;
   padding: 10px 20px;
@@ -4998,7 +4999,7 @@ table.table-mail tr td {
 /* BACKGROUNDS */
 .gray-bg,
 .bg-muted {
-  background-color: #f3f3f4;
+    background-color: #17202A;
 }
 .white-bg {
   background-color: #ffffff;

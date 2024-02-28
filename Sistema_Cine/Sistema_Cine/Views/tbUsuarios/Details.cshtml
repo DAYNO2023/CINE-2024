@@ -1,0 +1,117 @@
+﻿@model Sistema_Cine.Models.tbUsuarios
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbUsuarios</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Usua_Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usua_Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usua_Contraseña)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usua_Contraseña)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usua_Creacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usua_Creacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usua_Fecha_Creacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usua_Fecha_Creacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usua_Modifica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usua_Modifica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usua_Fecha_Modifica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usua_Fecha_Modifica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usua_Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usua_Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbPantalla_Roles.Paro_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbPantalla_Roles.Paro_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbEmpleados.Empl_Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbEmpleados.Empl_Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Usua_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th >Acciones</th>
+      <th >Usuario</th>
+      <th >Fecha</th>
+    
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Creador</th>
+      <td></td>
+      <td></td>
+  
+    </tr>
+    <tr>
+      <th scope="row">Modificar</th>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+
+

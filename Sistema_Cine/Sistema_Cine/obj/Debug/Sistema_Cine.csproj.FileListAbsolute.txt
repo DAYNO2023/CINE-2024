@@ -356,3 +356,4 @@ C:\Users\Latitude x360\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\obj\
 C:\Users\Latitude x360\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\obj\Debug\Sistema_Cine.csproj.CopyComplete
 C:\Users\Latitude x360\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\obj\Debug\Sistema_Cine.dll
 C:\Users\Latitude x360\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\obj\Debug\Sistema_Cine.pdb
+C:\Users\Latitude x360\Documents\GitHub\CINE-2024\Sistema_Cine\Sistema_Cine\obj\Debug\Sistema_Cine.csproj.AssemblyReference.cache

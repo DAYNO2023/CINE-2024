@@ -1,0 +1,97 @@
+﻿@model Sistema_Cine.Models.tbFacturas_Encabezados
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>tbFacturas_Encabezados</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Fact_Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fact_Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fact_Usua_Creacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fact_Usua_Creacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fact_Fecha_Creacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fact_Fecha_Creacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fact_Usua_Modifica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fact_Usua_Modifica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fact_Fecha_Modifica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fact_Fecha_Modifica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fact_Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fact_Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbClientes.Clie_Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbClientes.Clie_Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbEmpleados.Empl_Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbEmpleados.Empl_Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbTipo_Pagos.Tipo_Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbTipo_Pagos.Tipo_Descripcion)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

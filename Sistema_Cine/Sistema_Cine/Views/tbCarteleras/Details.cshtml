@@ -1,0 +1,117 @@
+﻿@model Sistema_Cine.Models.tbCarteleras
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbCarteleras</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cart_Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cart_Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cart_Fecha_Estreno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cart_Fecha_Estreno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cart_Usuario_Creacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cart_Usuario_Creacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cart_Fecha_Creacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cart_Fecha_Creacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cart_Usuario_Modificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cart_Usuario_Modificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cart_Fecha_Modificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cart_Fecha_Modificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbEntradas.Entra_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbEntradas.Entra_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbGeneros.Gene_Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbGeneros.Gene_Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbPromociones.Prom_Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbPromociones.Prom_Descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Cart_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th >Acciones</th>
+      <th >Usuario</th>
+      <th >Fecha</th>
+    
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Creador</th>
+      <td></td>
+      <td></td>
+  
+    </tr>
+    <tr>
+      <th scope="row">Modificar</th>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+
+

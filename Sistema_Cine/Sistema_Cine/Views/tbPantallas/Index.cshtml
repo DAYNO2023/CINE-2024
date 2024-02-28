@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Sistema_Cine.Models.tbPantallas>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="card">
+    <div class="card-header">
+        <h3>Pantalla</h3>
+    </div>
+    <div class="card-body">
+
+
+        <p>
+            @Html.ActionLink("Crear", "Create", null, new { @class = "btn btn-primary" })
+        </p>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover dataTables-example ">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Pant_Descripcion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Pant_Identificador)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Pant_Creacion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Pant_Fecha_Creacion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Pant_Modifica)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Pant_Fecha_Modifica)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Pant_Estado)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Pant_Descripcion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Pant_Identificador)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Pant_Creacion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Pant_Fecha_Creacion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Pant_Modifica)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Pant_Fecha_Modifica)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Pant_Estado)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Pant_Id }, new { @class = "btn btn-warning" }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Pant_Id }, new { @class = "btn btn-default" }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Pant_Id }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>

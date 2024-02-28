@@ -129,6 +129,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\tbButacas_SalasController.cs" />
     <Compile Include="Controllers\tbGenerosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1747,6 +1748,11 @@
     <Content Include="Views\tbGeneros\Details.cshtml" />
     <Content Include="Views\tbGeneros\Edit.cshtml" />
     <Content Include="Views\tbGeneros\Index.cshtml" />
+    <Content Include="Views\tbButacas_Salas\Create.cshtml" />
+    <Content Include="Views\tbButacas_Salas\Delete.cshtml" />
+    <Content Include="Views\tbButacas_Salas\Details.cshtml" />
+    <Content Include="Views\tbButacas_Salas\Edit.cshtml" />
+    <Content Include="Views\tbButacas_Salas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -18,39 +18,7 @@
         <dd>
             @Html.DisplayFor(model => model.Gene_Descripcion)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Gene_Usuario_Creacion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Gene_Usuario_Creacion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Gene_Fecha_Creacion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Gene_Fecha_Creacion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Gene_Usuario_Modificacion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Gene_Usuario_Modificacion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Gene_Fecha_Modificacion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Gene_Fecha_Modificacion)
-        </dd>
-
+       
         <dt>
             @Html.DisplayNameFor(model => model.tbPromociones.Prom_Descripcion)
         </dt>
@@ -65,3 +33,29 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.Gene_Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th >Acciones</th>
+      <th >Usuario</th>
+      <th >Fecha</th>
+    
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Creador</th>
+      <td>@Html.DisplayFor(model => model.Gene_Usuario_Creacion)</td>
+      <td> @Html.DisplayFor(model => model.Gene_Fecha_Creacion)</td>
+  
+    </tr>
+    <tr>
+      <th scope="row">Modificar</th>
+      <td> @Html.DisplayFor(model => model.Gene_Usuario_Modificacion)</td>
+      <td> @Html.DisplayFor(model => model.Gene_Fecha_Modificacion)</td>
+    </tr>
+  </tbody>
+</table>
+
+
+

@@ -12,7 +12,7 @@ namespace Sistema_Cine.Controllers
 {
     public class tbGenerosController : Controller
     {
-        private dbSsitemascinesEntities4 db = new dbSsitemascinesEntities4();
+        private dbSsitemascinesEntities5 db = new dbSsitemascinesEntities5();
 
         // GET: tbGeneros
         public ActionResult Index()

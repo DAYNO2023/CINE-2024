@@ -133,88 +133,100 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ButacasSalas.cs" />
+    <Compile Include="Models\Cargo.cs" />
+    <Compile Include="Models\Cartelera.cs" />
+    <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\Empleados.cs" />
+    <Compile Include="Models\Entradas.cs" />
+    <Compile Include="Models\Generos.cs" />
     <Compile Include="Models\Municipio.cs" />
-    <Compile Include="Models\sistemaCine.Context.cs">
+    <Compile Include="Models\Precios.cs" />
+    <Compile Include="Models\Promociones.cs" />
+    <Compile Include="Models\Salas.cs" />
+    <Compile Include="Models\SistemaCines.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>sistemaCine.Context.tt</DependentUpon>
+      <DependentUpon>SistemaCines.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sistemaCine.cs">
+    <Compile Include="Models\SistemaCines.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>sistemaCine.tt</DependentUpon>
+      <DependentUpon>SistemaCines.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sistemaCine.Designer.cs">
+    <Compile Include="Models\SistemaCines.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>sistemaCine.edmx</DependentUpon>
+      <DependentUpon>SistemaCines.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Sucursales.cs" />
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>sistemaCine.tt</DependentUpon>
+      <DependentUpon>SistemaCines.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbButacas_Salas.cs">
-      <DependentUpon>sistemaCine.tt</DependentUpon>
+      <DependentUpon>SistemaCines.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbCargos.cs">
-      <DependentUpon>sistemaCine.tt</DependentUpon>
+      <DependentUpon>SistemaCines.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbCarteleras.cs">
-      <DependentUpon>sistemaCine.tt</DependentUpon>
+      <DependentUpon>SistemaCines.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbClientes.cs">
-      <DependentUpon>sistemaCine.tt</DependentUpon>
+      <DependentUpon>SistemaCines.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbDepartamentos.cs">
-      <DependentUpon>sistemaCine.tt</DependentUpon>
+      <DependentUpon>SistemaCines.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\tbEmpleado.cs">
-      <DependentUpon>sistemaCine.tt</DependentUpon>
+    <Compile Include="Models\tbEmpleados.cs">
+      <DependentUpon>SistemaCines.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbEntradas.cs">
-      <DependentUpon>sistemaCine.tt</DependentUpon>
+      <DependentUpon>SistemaCines.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbEstado_Civil.cs">
-      <DependentUpon>sistemaCine.tt</DependentUpon>
+      <DependentUpon>SistemaCines.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbFacturas_Detalles.cs">
-      <DependentUpon>sistemaCine.tt</DependentUpon>
+      <DependentUpon>SistemaCines.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbFacturas_Encabezados.cs">
-      <DependentUpon>sistemaCine.tt</DependentUpon>
+      <DependentUpon>SistemaCines.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbGeneros.cs">
-      <DependentUpon>sistemaCine.tt</DependentUpon>
+      <DependentUpon>SistemaCines.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbMunicipio.cs">
-      <DependentUpon>sistemaCine.tt</DependentUpon>
+      <DependentUpon>SistemaCines.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbPantallas.cs">
-      <DependentUpon>sistemaCine.tt</DependentUpon>
+      <DependentUpon>SistemaCines.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbPantalla_Roles.cs">
-      <DependentUpon>sistemaCine.tt</DependentUpon>
+      <DependentUpon>SistemaCines.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbPrecios.cs">
-      <DependentUpon>sistemaCine.tt</DependentUpon>
+      <DependentUpon>SistemaCines.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbPromociones.cs">
-      <DependentUpon>sistemaCine.tt</DependentUpon>
+      <DependentUpon>SistemaCines.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbRoles.cs">
-      <DependentUpon>sistemaCine.tt</DependentUpon>
+      <DependentUpon>SistemaCines.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbSalas.cs">
-      <DependentUpon>sistemaCine.tt</DependentUpon>
+      <DependentUpon>SistemaCines.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbSucursales.cs">
-      <DependentUpon>sistemaCine.tt</DependentUpon>
+      <DependentUpon>SistemaCines.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbTipo_Pagos.cs">
-      <DependentUpon>sistemaCine.tt</DependentUpon>
+      <DependentUpon>SistemaCines.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\tbUsuario.cs">
-      <DependentUpon>sistemaCine.tt</DependentUpon>
+    <Compile Include="Models\tbUsuarios.cs">
+      <DependentUpon>SistemaCines.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TiposDePagos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1586,15 +1598,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\sistemaCine.Context.tt">
+    <Content Include="Models\SistemaCines.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>sistemaCine.edmx</DependentUpon>
-      <LastGenOutput>sistemaCine.Context.cs</LastGenOutput>
+      <DependentUpon>SistemaCines.edmx</DependentUpon>
+      <LastGenOutput>SistemaCines.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\sistemaCine.tt">
+    <Content Include="Models\SistemaCines.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>sistemaCine.edmx</DependentUpon>
-      <LastGenOutput>sistemaCine.cs</LastGenOutput>
+      <DependentUpon>SistemaCines.edmx</DependentUpon>
+      <LastGenOutput>SistemaCines.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1606,13 +1618,6 @@
     <Content Include="CodeTemplates\MVCView\Imports.include.t4" />
     <Content Include="CodeTemplates\MVCView\List.cs.t4" />
     <Content Include="CodeTemplates\MVCView\ModelMetadataFunctions.cs.include.t4" />
-    <EntityDeploy Include="Models\sistemaCine.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>sistemaCine.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\sistemaCine.edmx.diagram">
-      <DependentUpon>sistemaCine.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\js\api\typehead_collection.json" />
     <Content Include="Content\js\bootstrap.js.map" />
     <Content Include="Content\js\bootstrap.min.js.map" />
@@ -1707,6 +1712,13 @@
     <Content Include="Content\locales\en.json" />
     <Content Include="Content\locales\es.json" />
     <Content Include="Content\pdf\example.pdf" />
+    <EntityDeploy Include="Models\SistemaCines.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SistemaCines.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\SistemaCines.edmx.diagram">
+      <DependentUpon>SistemaCines.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
@@ -1730,10 +1742,10 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\tbGeneros\Create.cshtml" />
     <Content Include="Views\tbGeneros\Delete.cshtml" />
     <Content Include="Views\tbGeneros\Details.cshtml" />
     <Content Include="Views\tbGeneros\Edit.cshtml" />
-    <Content Include="Views\tbGeneros\Create.cshtml" />
     <Content Include="Views\tbGeneros\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

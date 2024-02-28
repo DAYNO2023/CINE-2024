@@ -13,10 +13,10 @@ namespace Sistema_Cine.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class dbSsitemascinesEntities4 : DbContext
+    public partial class dbSsitemascinesEntities5 : DbContext
     {
-        public dbSsitemascinesEntities4()
-            : base("name=dbSsitemascinesEntities4")
+        public dbSsitemascinesEntities5()
+            : base("name=dbSsitemascinesEntities5")
         {
         }
     
@@ -28,7 +28,7 @@ namespace Sistema_Cine.Models
         public virtual DbSet<tbPantalla_Roles> tbPantalla_Roles { get; set; }
         public virtual DbSet<tbPantallas> tbPantallas { get; set; }
         public virtual DbSet<tbRoles> tbRoles { get; set; }
-        public virtual DbSet<tbUsuario> tbUsuario { get; set; }
+        public virtual DbSet<tbUsuarios> tbUsuarios { get; set; }
         public virtual DbSet<tbCarteleras> tbCarteleras { get; set; }
         public virtual DbSet<tbEntradas> tbEntradas { get; set; }
         public virtual DbSet<tbSucursales> tbSucursales { get; set; }
@@ -46,6 +46,6 @@ namespace Sistema_Cine.Models
         public virtual DbSet<tbSalas> tbSalas { get; set; }
         public virtual DbSet<tbTipo_Pagos> tbTipo_Pagos { get; set; }
         public virtual DbSet<tbClientes> tbClientes { get; set; }
-        public virtual DbSet<tbEmpleado> tbEmpleado { get; set; }
+        public virtual DbSet<tbEmpleados> tbEmpleados { get; set; }
     }
 }

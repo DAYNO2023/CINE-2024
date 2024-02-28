@@ -1786,21 +1786,11 @@
     <Content Include="Views\tbPantalla_Roles\Details.cshtml" />
     <Content Include="Views\tbPantalla_Roles\Edit.cshtml" />
     <Content Include="Views\tbPantalla_Roles\Index.cshtml" />
-    <Content Include="Views\tbUsuarios\Create.cshtml" />
-    <Content Include="Views\tbUsuarios\Delete.cshtml" />
-    <Content Include="Views\tbUsuarios\Details.cshtml" />
-    <Content Include="Views\tbUsuarios\Edit.cshtml" />
-    <Content Include="Views\tbUsuarios\Index.cshtml" />
     <Content Include="Views\tbCargos\Create.cshtml" />
     <Content Include="Views\tbCargos\Delete.cshtml" />
     <Content Include="Views\tbCargos\Details.cshtml" />
     <Content Include="Views\tbCargos\Edit.cshtml" />
     <Content Include="Views\tbCargos\Index.cshtml" />
-    <Content Include="Views\tbDepartamentos\Create.cshtml" />
-    <Content Include="Views\tbDepartamentos\Delete.cshtml" />
-    <Content Include="Views\tbDepartamentos\Details.cshtml" />
-    <Content Include="Views\tbDepartamentos\Edit.cshtml" />
-    <Content Include="Views\tbDepartamentos\Index.cshtml" />
     <Content Include="Views\tbMunicipios\Create.cshtml" />
     <Content Include="Views\tbMunicipios\Delete.cshtml" />
     <Content Include="Views\tbMunicipios\Details.cshtml" />
@@ -1861,6 +1851,16 @@
     <Content Include="Views\tbFacturas_Detalles\Details.cshtml" />
     <Content Include="Views\tbFacturas_Detalles\Edit.cshtml" />
     <Content Include="Views\tbFacturas_Detalles\Index.cshtml" />
+    <Content Include="Views\tbUsuarios\Create.cshtml" />
+    <Content Include="Views\tbUsuarios\Delete.cshtml" />
+    <Content Include="Views\tbUsuarios\Details.cshtml" />
+    <Content Include="Views\tbUsuarios\Edit.cshtml" />
+    <Content Include="Views\tbUsuarios\Index.cshtml" />
+    <Content Include="Views\tbDepartamentos\Create.cshtml" />
+    <Content Include="Views\tbDepartamentos\Delete.cshtml" />
+    <Content Include="Views\tbDepartamentos\Details.cshtml" />
+    <Content Include="Views\tbDepartamentos\Edit.cshtml" />
+    <Content Include="Views\tbDepartamentos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

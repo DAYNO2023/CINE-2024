@@ -1825,22 +1825,18 @@
     <Content Include="Views\tbTipo_Pagos\Delete.cshtml" />
     <Content Include="Views\tbTipo_Pagos\Details.cshtml" />
     <Content Include="Views\tbTipo_Pagos\Edit.cshtml" />
-    <Content Include="Views\tbTipo_Pagos\Index.cshtml" />
     <Content Include="Views\tbClientes\Create.cshtml" />
     <Content Include="Views\tbClientes\Delete.cshtml" />
     <Content Include="Views\tbClientes\Details.cshtml" />
     <Content Include="Views\tbClientes\Edit.cshtml" />
-    <Content Include="Views\tbClientes\Index.cshtml" />
     <Content Include="Views\tbEmpleados\Create.cshtml" />
     <Content Include="Views\tbEmpleados\Delete.cshtml" />
     <Content Include="Views\tbEmpleados\Details.cshtml" />
     <Content Include="Views\tbEmpleados\Edit.cshtml" />
-    <Content Include="Views\tbEmpleados\Index.cshtml" />
     <Content Include="Views\tbSucursales\Create.cshtml" />
     <Content Include="Views\tbSucursales\Delete.cshtml" />
     <Content Include="Views\tbSucursales\Details.cshtml" />
     <Content Include="Views\tbSucursales\Edit.cshtml" />
-    <Content Include="Views\tbSucursales\Index.cshtml" />
     <Content Include="Views\tbEntradas\Create.cshtml" />
     <Content Include="Views\tbEntradas\Delete.cshtml" />
     <Content Include="Views\tbEntradas\Details.cshtml" />
@@ -1885,6 +1881,11 @@
     <Content Include="Views\tbSalas\Index.cshtml" />
     <Content Include="Views\tbSalas\_Create.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\tbSucursales\Index.cshtml" />
+    <Content Include="Views\tbTipo_Pagos\Index.cshtml" />
+    <Content Include="Views\tbTipo_Pagos\_Create.cshtml" />
+    <Content Include="Views\tbClientes\Index.cshtml" />
+    <Content Include="Views\tbEmpleados\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

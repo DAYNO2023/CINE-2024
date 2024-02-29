@@ -5,104 +5,113 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="card">
+    <div class="card-header">
+        <h3>Cliente</h3>
+    </div>
+    <div class="card-body">
+        <p>
+            @Html.ActionLink("Crear", "Create")
+        </p>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover dataTables-example " id="tablaOne">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Clie_Nombre)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Clie_Apellido)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Clie_Identidad)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Clie_Sexo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Clie_Telefono)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Clie_FecNacimiento)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Clie_Usua_Creacion)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Clie_Fecha_Creacion)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Clie_Usua_Modifica)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Clie_Fecha_Modifica)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Clie_Estado)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.tbEstado_Civil.Esta_Descripcion)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.tbMunicipio.Muni_Descripcion)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Clie_Nombre)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Clie_Apellido)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Clie_Identidad)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Clie_Sexo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Clie_Telefono)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Clie_FecNacimiento)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Clie_Usua_Creacion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Clie_Fecha_Creacion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Clie_Usua_Modifica)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Clie_Fecha_Modifica)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Clie_Estado)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tbEstado_Civil.Esta_Descripcion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tbMunicipio.Muni_Descripcion)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Clie_Id }, new { @class = "btn btn-warning" }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.Clie_Id }, new { @class = "btn btn-default" }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Clie_Id }, new { @class = "btn btn-danger" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
 
-<p>
-    @Html.ActionLink("Crear", "Create", null, new { @class = "btn btn-primary" })
-</p>
-<div class="table-responsive">
-<table   class="table table-striped table-bordered table-hover dataTables-example ">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Clie_Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Clie_Apellido)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Clie_Identidad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Clie_Sexo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Clie_Telefono)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Clie_FecNacimiento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Clie_Usua_Creacion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Clie_Fecha_Creacion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Clie_Usua_Modifica)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Clie_Fecha_Modifica)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Clie_Estado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tbEstado_Civil.Esta_Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tbMunicipio.Muni_Descripcion)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Clie_Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Clie_Apellido)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Clie_Identidad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Clie_Sexo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Clie_Telefono)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Clie_FecNacimiento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Clie_Usua_Creacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Clie_Fecha_Creacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Clie_Usua_Modifica)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Clie_Fecha_Modifica)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Clie_Estado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tbEstado_Civil.Esta_Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tbMunicipio.Muni_Descripcion)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Clie_Id },new {@class = "btn btn-warning"} ) |
-            @Html.ActionLink("Details", "Details", new { id=item.Clie_Id },new {@class = "btn btn-default"}) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Clie_Id },new {@class = "btn btn-danger"})
-        </td>
-    </tr>
-}
-
-</table>
+            </table>
+        </div>
+    </div>
 </div>

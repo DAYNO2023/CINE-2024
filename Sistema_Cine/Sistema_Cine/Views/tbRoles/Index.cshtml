@@ -12,8 +12,7 @@
     </div>
     <div class="card-body">
         <p>
-            @Html.ActionLink("Crear", "Create", null, new { @class = "btn btn-primary" })
-            <button class="btn btn-primary" id="btnmodal">Modal</button>
+            <button class="btn btn-primary" id="btnmodal">Crear</button>
         </p>
         <div class="table-responsive">
             <table class="table table-striped table-bordered table-hover dataTables-example " id="tablaOne">
@@ -22,7 +21,7 @@
                         <th>
                             @Html.DisplayNameFor(model => model.Role_Descripcion)
                         </th>
-                        <th>
+                        @*<th>
                             @Html.DisplayNameFor(model => model.Role_Creacion)
                         </th>
                         <th>
@@ -36,7 +35,7 @@
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Role_Estado)
-                        </th>
+                        </th>*@
                         <th></th>
                     </tr>
                 </thead>
@@ -48,7 +47,7 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Role_Descripcion)
                             </td>
-                            <td>
+                            @*<td>
                                 @Html.DisplayFor(modelItem => item.Role_Creacion)
                             </td>
                             <td>
@@ -62,7 +61,7 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Role_Estado)
-                            </td>
+                            </td>*@
                             <td>
                                 @Html.ActionLink("Edit", "Edit", new { id = item.Role_Id }, new { @class = "btn btn-warning" }) |
                                 @Html.ActionLink("Details", "Details", new { id = item.Role_Id }, new { @class = "btn btn-default" }) |

@@ -1269,6 +1269,7 @@
     <Content Include="Content\img\p_big3.jpg" />
     <Content Include="Content\img\R.jfif" />
     <Content Include="Content\img\rails_logo.png" />
+    <Content Include="Content\img\sala.jpg" />
     <Content Include="Content\img\starter_logo.jpg" />
     <Content Include="Content\img\zender_logo.png" />
     <Content Include="Content\js\bootstrap.js" />

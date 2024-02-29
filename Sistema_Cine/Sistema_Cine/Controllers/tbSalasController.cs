@@ -17,6 +17,7 @@ namespace Sistema_Cine.Controllers
         // GET: tbSalas
         public ActionResult Index()
         {
+           
             var tbSalas = db.tbSalas.Include(t => t.tbButacas_Salas);
             return View(tbSalas.ToList());
         }

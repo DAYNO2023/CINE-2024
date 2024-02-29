@@ -412,6 +412,7 @@
     <Content Include="Content\img\a6.jpg" />
     <Content Include="Content\img\a7.jpg" />
     <Content Include="Content\img\a8.jpg" />
+    <Content Include="Content\img\ahora si.png" />
     <Content Include="Content\img\angular_logo.png" />
     <Content Include="Content\img\dashboard4_1.jpg" />
     <Content Include="Content\img\dashboard4_2.jpg" />
@@ -1263,6 +1264,7 @@
     <Content Include="Content\img\p_big1.jpg" />
     <Content Include="Content\img\p_big2.jpg" />
     <Content Include="Content\img\p_big3.jpg" />
+    <Content Include="Content\img\R.jfif" />
     <Content Include="Content\img\rails_logo.png" />
     <Content Include="Content\img\starter_logo.jpg" />
     <Content Include="Content\img\zender_logo.png" />
@@ -1811,17 +1813,14 @@
     <Content Include="Views\tbPrecios\Delete.cshtml" />
     <Content Include="Views\tbPrecios\Details.cshtml" />
     <Content Include="Views\tbPrecios\Edit.cshtml" />
-    <Content Include="Views\tbPrecios\Index.cshtml" />
     <Content Include="Views\tbPromociones\Create.cshtml" />
     <Content Include="Views\tbPromociones\Delete.cshtml" />
     <Content Include="Views\tbPromociones\Details.cshtml" />
     <Content Include="Views\tbPromociones\Edit.cshtml" />
-    <Content Include="Views\tbPromociones\Index.cshtml" />
     <Content Include="Views\tbSalas\Create.cshtml" />
     <Content Include="Views\tbSalas\Delete.cshtml" />
     <Content Include="Views\tbSalas\Details.cshtml" />
     <Content Include="Views\tbSalas\Edit.cshtml" />
-    <Content Include="Views\tbSalas\Index.cshtml" />
     <Content Include="Views\tbTipo_Pagos\Create.cshtml" />
     <Content Include="Views\tbTipo_Pagos\Delete.cshtml" />
     <Content Include="Views\tbTipo_Pagos\Details.cshtml" />
@@ -1879,6 +1878,13 @@
     <Content Include="Views\tbPantalla_Roles\_Create.cshtml" />
     <Content Include="Views\tbGeneros\_Create.cshtml" />
     <Content Include="Views\tbButacas_Salas\_Create.cshtml" />
+    <Content Include="Views\tbPrecios\Index.cshtml" />
+    <Content Include="Views\tbPrecios\_Create.cshtml" />
+    <Content Include="Views\tbPromociones\_Create.cshtml" />
+    <Content Include="Views\tbPromociones\Index.cshtml" />
+    <Content Include="Views\tbSalas\Index.cshtml" />
+    <Content Include="Views\tbSalas\_Create.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -48,6 +48,11 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Prec_Id,Prec_Descripcion,Prec_Usuario_Creacion,Prec_Fecha_Creacion,Prec_Usuario_Modificacion,Prec_Fecha_Modificacion")] tbPrecios tbPrecios)
         {
+            
+
+
+
+
             if (ModelState.IsValid)
             {
                 db.tbPrecios.Add(tbPrecios);

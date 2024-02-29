@@ -17,6 +17,7 @@ namespace Sistema_Cine.Controllers
         // GET: tbPromociones
         public ActionResult Index()
         {
+            
             var tbPromociones = db.tbPromociones.Include(t => t.tbPrecios);
             return View(tbPromociones.ToList());
         }

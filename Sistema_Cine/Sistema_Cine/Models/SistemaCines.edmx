@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="dbSsitemascinesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="dbSsitemascinesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tbPantalla_Roles">
           <Key>
             <PropertyRef Name="Paro_Id" />
@@ -50,6 +50,7 @@
           <Property Name="Usua_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Usua_Nombre" Type="varchar" MaxLength="60" />
           <Property Name="Usua_Contraseña" Type="varchar(max)" />
+          <Property Name="Usua_Administrador" Type="bit" />
           <Property Name="Empl_Id" Type="int" />
           <Property Name="Paro_Id" Type="int" />
           <Property Name="Usua_Creacion" Type="int" />
@@ -218,17 +219,6 @@
           <Property Name="Prec_Usuario_Modificacion" Type="int" />
           <Property Name="Prec_Fecha_Modificacion" Type="date" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPrecios_Bitacora' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="tbPrecios_Bitacora">
-          <Property Name="Bitp_Id" Type="int" />
-          <Property Name="Bitp_Descuento" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="Bitp_Descripcion" Type="varchar" MaxLength="100" />
-          <Property Name="Bitp_Usuario_Creacion" Type="int" />
-          <Property Name="Bitp_Fecha_Creacion" Type="date" />
-          <Property Name="Bitp_Usuario_Modificacion" Type="int" />
-          <Property Name="Bitp_Fecha_Modificacion" Type="date" />
-        </EntityType>-->
         <EntityType Name="tbPromociones">
           <Key>
             <PropertyRef Name="Prom_Id" />
@@ -242,17 +232,6 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPrecios_Bitacora' no 
           <Property Name="Prom_Usuario_Modificacion" Type="int" />
           <Property Name="Prom_Fecha_Modificacion" Type="date" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="tbPromociones_Bitacora">
-          <Property Name="Bita_Id" Type="int" />
-          <Property Name="Bita_Descuento" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="Bita_Descripcion" Type="varchar" MaxLength="100" />
-          <Property Name="Bita_Usuario_Creacion" Type="int" />
-          <Property Name="Bita_Fecha_Creacion" Type="date" />
-          <Property Name="Bita_Usuario_Modificacion" Type="int" />
-          <Property Name="Bita_Fecha_Modificacion" Type="date" />
-        </EntityType>-->
         <EntityType Name="tbSalas">
           <Key>
             <PropertyRef Name="Sala_Id" />
@@ -615,6 +594,10 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="SP_tbUsuarios_InicioSesion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce">
+          <Parameter Name="Usuario" Type="varchar" Mode="In" />
+          <Parameter Name="Contra" Type="varchar" Mode="In" />
+        </Function>
         <EntityContainer Name="dbSsitemascinesModelStoreContainer">
           <EntitySet Name="tbPantalla_Roles" EntityType="Self.tbPantalla_Roles" Schema="Acce" store:Type="Tables" />
           <EntitySet Name="tbPantallas" EntityType="Self.tbPantallas" Schema="Acce" store:Type="Tables" />
@@ -739,8 +722,7 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
             <End Role="tbUsuarios" EntitySet="tbUsuarios" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="dbSsitemascinesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -803,6 +785,7 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
           <Property Name="Usua_Estado" Type="Boolean" />
           <NavigationProperty Name="tbPantalla_Roles" Relationship="Self.FK_tbUsuario_tbPantalla_Roles_Paro_Id" FromRole="tbUsuarios" ToRole="tbPantalla_Roles" />
           <NavigationProperty Name="tbEmpleados" Relationship="Self.FK_tbUsuario_tbEmpleados_Empl_Id" FromRole="tbUsuarios" ToRole="tbEmpleados" />
+          <Property Name="Usua_Administrador" Type="Boolean" />
         </EntityType>
         <EntityType Name="tbCarteleras">
           <Key>
@@ -1505,7 +1488,18 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
             <End Role="tbPrecios" EntitySet="tbPrecios" />
             <End Role="tbPromociones" EntitySet="tbPromociones" />
           </AssociationSet>
+          <FunctionImport Name="SP_tbUsuarios_InicioSesion" ReturnType="Collection(dbSsitemascinesModel.SP_tbUsuarios_InicioSesion_Result)">
+            <Parameter Name="Usuario" Mode="In" Type="String" />
+            <Parameter Name="Contra" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="SP_tbUsuarios_InicioSesion_Result">
+          <Property Type="Int32" Name="Usua_Id" Nullable="false" />
+          <Property Type="String" Name="Usua_Nombre" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="Usua_Contraseña" Nullable="true" />
+          <Property Type="String" Name="Empl_Empleado" Nullable="true" MaxLength="101" />
+          <Property Type="String" Name="Usua_Administrador" Nullable="false" MaxLength="2" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1556,6 +1550,7 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
           <EntitySetMapping Name="tbUsuarios">
             <EntityTypeMapping TypeName="dbSsitemascinesModel.tbUsuarios">
               <MappingFragment StoreEntitySet="tbUsuarios">
+                <ScalarProperty Name="Usua_Administrador" ColumnName="Usua_Administrador" />
                 <ScalarProperty Name="Usua_Id" ColumnName="Usua_Id" />
                 <ScalarProperty Name="Usua_Nombre" ColumnName="Usua_Nombre" />
                 <ScalarProperty Name="Usua_Contraseña" ColumnName="Usua_Contraseña" />
@@ -1822,6 +1817,17 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_tbUsuarios_InicioSesion" FunctionName="dbSsitemascinesModel.Store.SP_tbUsuarios_InicioSesion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbSsitemascinesModel.SP_tbUsuarios_InicioSesion_Result">
+                <ScalarProperty Name="Usua_Id" ColumnName="Usua_Id" />
+                <ScalarProperty Name="Usua_Nombre" ColumnName="Usua_Nombre" />
+                <ScalarProperty Name="Usua_Contraseña" ColumnName="Usua_Contraseña" />
+                <ScalarProperty Name="Empl_Empleado" ColumnName="Empl_Empleado" />
+                <ScalarProperty Name="Usua_Administrador" ColumnName="Usua_Administrador" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

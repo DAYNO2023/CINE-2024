@@ -45,6 +45,7 @@
     <EntitySetMapping Name="tbUsuarios">
       <EntityTypeMapping TypeName="dbSsitemascinesModel.tbUsuarios">
         <MappingFragment StoreEntitySet="tbUsuarios">
+          <ScalarProperty Name="Usua_Administrador" ColumnName="Usua_Administrador" />
           <ScalarProperty Name="Usua_Id" ColumnName="Usua_Id" />
           <ScalarProperty Name="Usua_Nombre" ColumnName="Usua_Nombre" />
           <ScalarProperty Name="Usua_Contraseña" ColumnName="Usua_Contraseña" />
@@ -311,5 +312,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_tbUsuarios_InicioSesion" FunctionName="dbSsitemascinesModel.Store.SP_tbUsuarios_InicioSesion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbSsitemascinesModel.SP_tbUsuarios_InicioSesion_Result">
+          <ScalarProperty Name="Usua_Id" ColumnName="Usua_Id" />
+          <ScalarProperty Name="Usua_Nombre" ColumnName="Usua_Nombre" />
+          <ScalarProperty Name="Usua_Contraseña" ColumnName="Usua_Contraseña" />
+          <ScalarProperty Name="Empl_Empleado" ColumnName="Empl_Empleado" />
+          <ScalarProperty Name="Usua_Administrador" ColumnName="Usua_Administrador" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

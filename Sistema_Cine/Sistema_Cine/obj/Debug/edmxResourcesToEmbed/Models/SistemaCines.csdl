@@ -59,6 +59,7 @@
     <Property Name="Usua_Estado" Type="Boolean" />
     <NavigationProperty Name="tbPantalla_Roles" Relationship="Self.FK_tbUsuario_tbPantalla_Roles_Paro_Id" FromRole="tbUsuarios" ToRole="tbPantalla_Roles" />
     <NavigationProperty Name="tbEmpleados" Relationship="Self.FK_tbUsuario_tbEmpleados_Empl_Id" FromRole="tbUsuarios" ToRole="tbEmpleados" />
+    <Property Name="Usua_Administrador" Type="Boolean" />
   </EntityType>
   <EntityType Name="tbCarteleras">
     <Key>
@@ -761,5 +762,16 @@
       <End Role="tbPrecios" EntitySet="tbPrecios" />
       <End Role="tbPromociones" EntitySet="tbPromociones" />
     </AssociationSet>
+    <FunctionImport Name="SP_tbUsuarios_InicioSesion" ReturnType="Collection(dbSsitemascinesModel.SP_tbUsuarios_InicioSesion_Result)">
+      <Parameter Name="Usuario" Mode="In" Type="String" />
+      <Parameter Name="Contra" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
+  <ComplexType Name="SP_tbUsuarios_InicioSesion_Result">
+    <Property Type="Int32" Name="Usua_Id" Nullable="false" />
+    <Property Type="String" Name="Usua_Nombre" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="Usua_Contraseña" Nullable="true" />
+    <Property Type="String" Name="Empl_Empleado" Nullable="true" MaxLength="101" />
+    <Property Type="String" Name="Usua_Administrador" Nullable="false" MaxLength="2" />
+  </ComplexType>
 </Schema>

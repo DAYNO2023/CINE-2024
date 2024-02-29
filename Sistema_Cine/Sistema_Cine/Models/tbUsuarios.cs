@@ -24,6 +24,7 @@ namespace Sistema_Cine.Models
         public Nullable<int> Usua_Modifica { get; set; }
         public Nullable<System.DateTime> Usua_Fecha_Modifica { get; set; }
         public Nullable<bool> Usua_Estado { get; set; }
+        public Nullable<bool> Usua_Administrador { get; set; }
     
         public virtual tbPantalla_Roles tbPantalla_Roles { get; set; }
         public virtual tbEmpleados tbEmpleados { get; set; }

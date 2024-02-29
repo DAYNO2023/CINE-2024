@@ -12,6 +12,8 @@ namespace Sistema_Cine.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class dbSsitemascinesEntities5 : DbContext
     {
@@ -47,5 +49,18 @@ namespace Sistema_Cine.Models
         public virtual DbSet<tbTipo_Pagos> tbTipo_Pagos { get; set; }
         public virtual DbSet<tbClientes> tbClientes { get; set; }
         public virtual DbSet<tbEmpleados> tbEmpleados { get; set; }
+    
+        public virtual ObjectResult<SP_tbUsuarios_InicioSesion_Result> SP_tbUsuarios_InicioSesion(string usuario, string contra)
+        {
+            var usuarioParameter = usuario != null ?
+                new ObjectParameter("Usuario", usuario) :
+                new ObjectParameter("Usuario", typeof(string));
+    
+            var contraParameter = contra != null ?
+                new ObjectParameter("Contra", contra) :
+                new ObjectParameter("Contra", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_tbUsuarios_InicioSesion_Result>("SP_tbUsuarios_InicioSesion", usuarioParameter, contraParameter);
+        }
     }
 }

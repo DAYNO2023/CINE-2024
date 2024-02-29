@@ -38,18 +38,20 @@
             </div>
             <h3>Welcome to 𝒞𝒾𝓃𝑒 𝓅𝓁𝓊𝓈</h3>
             <p>
-                Perfectly designed and precisely prepared admin theme with over 50 pages with extra new web app views.
+                <!--Perfectly designed and precisely prepared admin theme with over 50 pages with extra new web app views.-->
                 <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
             </p>
             <p>Login in. To see it in action.</p>
-            <form class="m-t" role="form" action="@Url.Action("Index","Home")">
+            <form class="m-t" role="form" action="@Url.Action("Login","Home")" method="post">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Username" name="txtUser" required="">
+                    <input type="text" class="form-control" placeholder="Username" name="txtUser" >
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password" name="txtContra" required="">
+                    <input type="password" class="form-control" placeholder="Password" name="txtContra" >
                 </div>
                 <p style="color:red;">@Html.ValidationMessage("ErrorLogin")</p>
+
+
                 <button type="submit" class="btn btn-primary">Login</button>
 
                 <a href="#"><small>Forgot password?</small></a>

@@ -185,6 +185,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SistemaCines.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\SP_tbUsuarios_InicioSesion_Result.cs">
+      <DependentUpon>SistemaCines.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Sucursales.cs" />
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>SistemaCines.tt</DependentUpon>

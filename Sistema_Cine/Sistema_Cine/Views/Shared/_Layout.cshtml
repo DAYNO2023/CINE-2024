@@ -663,7 +663,9 @@
     </div>
 
 
-
+    @Scripts.Render("~/bundles/jquery")
+    @*@Scripts.Render("~/bundles/bootstrap")*@
+    @RenderSection("scripts", required: false)
 
     <!-- Mainly scripts -->
 
@@ -684,8 +686,8 @@
     <script src="~/Content/js/plugins/flot/jquery.flot.pie.js"></script>
 
     <!-- Peity -->
-    @*<script src="~/Content/js/plugins/peity/jquery.peity.min.js"></script>
-        <script src="~/Content/js/demo/peity-demo.js"></script>*@
+    <script src="~/Content/js/plugins/peity/jquery.peity.min.js"></script>
+    <script src="~/Content/js/demo/peity-demo.js"></script>
 
     <!-- Custom and plugin javascript -->
     <script src="~/Content/js/inspinia.js"></script>
@@ -695,13 +697,13 @@
     <script src="~/Content/js/plugins/jquery-ui/jquery-ui.min.js"></script>
 
     <!-- GITTER -->
-    @*<script src="~/Content/js/plugins/gritter/jquery.gritter.min.js"></script>*@
+    <script src="~/Content/js/plugins/gritter/jquery.gritter.min.js"></script>
 
     <!-- Sparkline -->
-    @*<script src="~/Content/js/plugins/sparkline/jquery.sparkline.min.js"></script>*@
+    <script src="~/Content/js/plugins/sparkline/jquery.sparkline.min.js"></script>
 
     <!-- Sparkline demo data  -->
-    @*<script src="~/Content/js/demo/sparkline-demo.js"></script>*@
+    <script src="~/Content/js/demo/sparkline-demo.js"></script>
 
     <!-- ChartJS-->
     <script src="~/Content/js/plugins/chartJs/Chart.min.js"></script>
@@ -710,22 +712,18 @@
     <script src="~/Content/js/plugins/toastr/toastr.min.js"></script>
 
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-
     <script>
         $(document).ready(function () {
-            setTimeout(function () {
-                toastr.options = {
-                    closeButton: true,
-                    progressBar: true,
-                    showMethod: 'slideDown',
-                    timeOut: 4000
-                };
-                toastr.success('Responsive Admin Theme', 'Welcome to INSPINIA');
+            //setTimeout(function () {
+            //    toastr.options = {
+            //        closeButton: true,
+            //        progressBar: true,
+            //        showMethod: 'slideDown',
+            //        timeOut: 4000
+            //    };
+            //    toastr.success('Responsive Admin Theme', 'Welcome to INSPINIA');
 
-            }, 1300);
+            //}, 1300);
 
 
             var data1 = [

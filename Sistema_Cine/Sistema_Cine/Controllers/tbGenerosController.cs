@@ -17,6 +17,7 @@ namespace Sistema_Cine.Controllers
         // GET: tbGeneros
         public ActionResult Index()
         {
+            ViewBag.Prom_Id = new SelectList(db.tbPromociones, "Prom_Id", "Prom_Descripcion");
             var tbGeneros = db.tbGeneros.Include(t => t.tbPromociones);
             return View(tbGeneros.ToList());
         }

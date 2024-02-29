@@ -17,7 +17,7 @@ namespace Sistema_Cine.Models
     {
         [Display(Name ="Codigo")]
         public string Muni_Codigo { get; set; }
-        [Display(Name = "Municipio2")]
+        [Display(Name = "Municipio")]
         [Required(ErrorMessage ="El campos {0} es requerido")]
         public string Muni_Descripcion { get; set; }
         [Display(Name = "Creacion")]

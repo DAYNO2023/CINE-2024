@@ -17,6 +17,8 @@ namespace Sistema_Cine.Controllers
         // GET: tbPantalla_Roles
         public ActionResult Index()
         {
+            ViewBag.Pant_Id = new SelectList(db.tbPantallas, "Pant_Id", "Pant_Descripcion");
+            ViewBag.Role_Id = new SelectList(db.tbRoles, "Role_Id", "Role_Descripcion");
             var tbPantalla_Roles = db.tbPantalla_Roles.Include(t => t.tbPantallas).Include(t => t.tbRoles);
             return View(tbPantalla_Roles.ToList());
         }

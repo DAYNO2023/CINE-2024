@@ -18,6 +18,7 @@
 
     <link href="~/Content/css/animate.css" rel="stylesheet">
     <link href="~/Content/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 
 </head>
 
@@ -28,7 +29,7 @@
                 <ul class="nav metismenu" id="side-menu">
                     <li class="nav-header">
                         <div class="dropdown profile-element">
-                            <img alt="image" class="rounded-circle" src="" />
+                            <a href="https://localhost:44307/Home/Index"><img alt="image" class="rounded-circle" src="~/Content/img/jugador.png" /></a>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="block m-t-xs font-bold">Yordin Sanchez</span>
                                 <span class="text-muted text-xs block">Administrados <b class="caret"></b></span>
@@ -102,7 +103,7 @@
                         <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
                         <form role="search" class="navbar-form-custom" action="search_results.html">
                             <div class="form-group">
-                                <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+                                <input type="text" placeholder="Buscar..." class="form-control" name="top-search" id="top-search">
                             </div>
                         </form>
                     </div>
@@ -167,14 +168,14 @@
 
                         <li>
                             <a href="login.html">
-                                <i class="fa fa-sign-out"></i> Log out
+                                <i class="fa fa-sign-out"></i> Cerrar Seccion
                             </a>
                         </li>
-                        <li>
+                        <!--<li>
                             <a class="right-sidebar-toggle">
                                 <i class="fa fa-tasks"></i>
                             </a>
-                        </li>
+                        </li>-->
                     </ul>
 
                 </nav>
@@ -662,14 +663,16 @@
     </div>
 
 
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
     <!-- Mainly scripts -->
 
 
     <script src="~/Content/js/jquery-3.1.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
     <script src="~/Content/js/popper.min.js"></script>
     <script src="~/Content/js/bootstrap.js"></script>
     <script src="~/Content/js/plugins/metisMenu/jquery.metisMenu.js"></script>
@@ -708,7 +711,7 @@
     <!-- Toastr -->
     <script src="~/Content/js/plugins/toastr/toastr.min.js"></script>
 
-    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
 
 
     <script>

@@ -1,0 +1,39 @@
+﻿@model Sistema_Cine.Models.tbButacas_Salas
+
+
+@using (Html.BeginForm("Create", "tbButacas_Salas")) 
+{
+    @Html.AntiForgeryToken()
+     <div class="card">
+    <div class="card-body">
+    <div class="form-group">
+   
+
+        <h4>tbButacas_Salas</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Buta_Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.Buta_Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Buta_Descripcion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+       
+        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-20">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+     </div>
+    </div>
+    
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

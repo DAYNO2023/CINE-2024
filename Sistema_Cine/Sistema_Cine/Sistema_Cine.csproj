@@ -156,12 +156,19 @@
     <Compile Include="Models\Cargo.cs" />
     <Compile Include="Models\Cartelera.cs" />
     <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\Departamento.cs" />
+    <Compile Include="Models\DetalleFactura.cs" />
     <Compile Include="Models\Empleados.cs" />
+    <Compile Include="Models\EncabezadoFactura.cs" />
     <Compile Include="Models\Entradas.cs" />
+    <Compile Include="Models\Estado_Civiles.cs" />
     <Compile Include="Models\Generos.cs" />
     <Compile Include="Models\Municipio.cs" />
+    <Compile Include="Models\Pantalla.cs" />
+    <Compile Include="Models\PantallaRoles.cs" />
     <Compile Include="Models\Precios.cs" />
     <Compile Include="Models\Promociones.cs" />
+    <Compile Include="Models\Roles.cs" />
     <Compile Include="Models\Salas.cs" />
     <Compile Include="Models\SistemaCines.Context.cs">
       <AutoGen>True</AutoGen>
@@ -246,6 +253,7 @@
       <DependentUpon>SistemaCines.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TiposDePagos.cs" />
+    <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1217,6 +1225,9 @@
     <Content Include="Content\img\gallery\9s.jpg" />
     <Content Include="Content\img\headphones.jpg" />
     <Content Include="Content\img\html_logo.png" />
+    <Content Include="Content\img\jugador %281%29.png" />
+    <Content Include="Content\img\jugador.png" />
+    <Content Include="Content\img\la mejor imagen.jpg" />
     <Content Include="Content\img\landing\avatar1.jpg" />
     <Content Include="Content\img\landing\avatar2.jpg" />
     <Content Include="Content\img\landing\avatar3.jpg" />
@@ -1851,16 +1862,23 @@
     <Content Include="Views\tbFacturas_Detalles\Details.cshtml" />
     <Content Include="Views\tbFacturas_Detalles\Edit.cshtml" />
     <Content Include="Views\tbFacturas_Detalles\Index.cshtml" />
-    <Content Include="Views\tbUsuarios\Create.cshtml" />
-    <Content Include="Views\tbUsuarios\Delete.cshtml" />
-    <Content Include="Views\tbUsuarios\Details.cshtml" />
-    <Content Include="Views\tbUsuarios\Edit.cshtml" />
-    <Content Include="Views\tbUsuarios\Index.cshtml" />
     <Content Include="Views\tbDepartamentos\Create.cshtml" />
     <Content Include="Views\tbDepartamentos\Delete.cshtml" />
     <Content Include="Views\tbDepartamentos\Details.cshtml" />
     <Content Include="Views\tbDepartamentos\Edit.cshtml" />
     <Content Include="Views\tbDepartamentos\Index.cshtml" />
+    <Content Include="Views\tbCargos\_Create.cshtml" />
+    <Content Include="Views\tbUsuarios\Create.cshtml" />
+    <Content Include="Views\tbUsuarios\Delete.cshtml" />
+    <Content Include="Views\tbUsuarios\Details.cshtml" />
+    <Content Include="Views\tbUsuarios\Edit.cshtml" />
+    <Content Include="Views\tbUsuarios\Index.cshtml" />
+    <Content Include="Views\tbDepartamentos\_Create.cshtml" />
+    <Content Include="Views\tbRoles\_Create.cshtml" />
+    <Content Include="Views\tbPantallas\_Create.cshtml" />
+    <Content Include="Views\tbPantalla_Roles\_Create.cshtml" />
+    <Content Include="Views\tbGeneros\_Create.cshtml" />
+    <Content Include="Views\tbButacas_Salas\_Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

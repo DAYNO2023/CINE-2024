@@ -14,7 +14,6 @@ namespace Sistema_Cine.Models
     }
 
 
-
     public class CargoMeta
     {
         [Display(Name = "Cargo Id")]

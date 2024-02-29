@@ -852,7 +852,7 @@ h5 {
   font-weight: 600;
 }
 .nav > li > a {
-  color: #a7b1c2;
+  color: #FFF;
   font-weight: 600;
   padding: 14px 20px 14px 25px;
   display: block;
@@ -874,7 +874,7 @@ h5 {
 }
 .navbar-default .nav > li > a:hover,
 .navbar-default .nav > li > a:focus {
-  background-color: #293846;
+  background-color: red;
   color: white;
 }
 .nav .open > a,
@@ -1001,7 +1001,7 @@ h5 {
 }
 .nav-header {
     padding: 33px 25px;
-    background: linear-gradient(red, black);
+    background-color: #B5121C;
     //background-image: url("patterns/header-profile-skin-3.png");
 }
 .caret {
@@ -1021,11 +1021,11 @@ h5 {
   transition: all 0.4s;
 }
 ul.nav-second-level {
-  background: #293846;
+  background: red;
 }
 .nav > li.active {
     border-left: 4px solid red;
-    background: #1c1c1c;
+    background: repeat;
 }
 .nav.nav-second-level > li.active {
   border: none;
@@ -1148,7 +1148,7 @@ body.mini-navbar .navbar-default .nav > li > .nav-second-level li a {
   font-size: 12px;
 }
 .canvas-menu.mini-navbar .nav-second-level {
-  background: #293846;
+  background: red;
 }
 .mini-navbar li.active .nav-second-level {
   left: 65px;
@@ -1178,12 +1178,13 @@ body.mini-navbar .navbar-default .nav > li > .nav-second-level li a {
   color: #1cc09f;
 }
 .logo-element {
-  text-align: center;
-  font-size: 18px;
-  font-weight: 600;
-  color: white;
-  display: none;
-  padding: 18px 0;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    display: none;
+    padding: 18px 0;
+    background-color: red;
 }
 .pace-done .navbar-static-side,
 .pace-done .nav-header,
@@ -1198,7 +1199,7 @@ body.mini-navbar .navbar-default .nav > li > .nav-second-level li a {
 .navbar-fixed-top {
   background: #fff;
   transition-duration: 0.4s;
-  border-bottom: 1px solid #e7eaec !important;
+  border-bottom: 1px solid red !important;
   z-index: 2030;
   position: fixed;
   right: 0;
@@ -1209,7 +1210,8 @@ body.mini-navbar .navbar-default .nav > li > .nav-second-level li a {
 .navbar-fixed-top .navbar-form-custom .form-control { height: 50px}
 .navbar-fixed-top,
 .navbar-static-top {
-    background: black;
+    background: #ECF0F1;
+    border-bottom: solid 1px #ECF0F1;
 }
 .fixed-nav #wrapper {
   margin-top: 0;
@@ -4374,7 +4376,7 @@ samp {
 }
 body {
     font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    background-color: black;
+    background-color: #B5121C;
     font-size: 13px;
     color: #676a6c;
     overflow-x: hidden;
@@ -4421,7 +4423,7 @@ a:focus {
   text-decoration: none;
 }
 .border-bottom {
-    border-bottom: 1px solid #17202A !important;
+    border-bottom: 1px solid #fff !important;
 }
 .font-bold {
   font-weight: 600;
@@ -4575,13 +4577,13 @@ ol.unstyled {
 }
 /* FOOTER */
 .footer {
-  background: none repeat scroll 0 0 black;
-  border-top: 1px solid black;
-  bottom: 0;
-  left: 0;
-  padding: 10px 20px;
-  position: absolute;
-  right: 0;
+    background: none repeat scroll 0 0 #ECF0F1;
+    border-top: 1px solid #ECF0F1;
+    bottom: 0;
+    left: 0;
+    padding: 10px 20px;
+    position: absolute;
+    right: 0;
 }
 .footer.fixed_full {
   position: fixed;
@@ -4999,7 +5001,7 @@ table.table-mail tr td {
 /* BACKGROUNDS */
 .gray-bg,
 .bg-muted {
-    background-color: #17202A;
+    background-color: #fff;
 }
 .white-bg {
   background-color: #ffffff;
@@ -8759,7 +8761,7 @@ body.rtls.top-navigation .footer.fixed {
   background-image: url('patterns/header-profile-skin-1.png');
 }
 .skin-1.mini-navbar .nav-second-level {
-  background: #3e495f;
+    background: #3e495f;
 }
 .skin-1 .breadcrumb {
   background: transparent;

@@ -48,8 +48,14 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Carg_Id,Carg_Descripcion,Carg_Usuario_Creacion,Carg_Fecha_Creacion,Carg_Usuario_Modificacion,Carg_Fecha_Modificacion")] tbCargos tbCargos)
         {
+            ModelState.Remove("Carg_Fecha_Creacion");
+            ModelState.Remove("Carg_Fecha_Modificacion");
+
+
+
             if (ModelState.IsValid)
             {
+                // db.SP_tbCategoria_Insert()
                 db.tbCargos.Add(tbCargos);
                 db.SaveChanges();
                 return RedirectToAction("Index");

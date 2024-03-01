@@ -4,13 +4,12 @@
 @using (Html.BeginForm("Create", "tbCargos"))
 {
     @Html.AntiForgeryToken()
-     <div class="card">
-    <div class="card-body">
+    
     <div class="form-group">
    
 
         <h4>Crear Cargo</h4>
-        <hr />
+        
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Carg_Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -27,8 +26,7 @@
             </div>
         </div>
     </div>
-     </div>
-    </div>
+
     
 }
 

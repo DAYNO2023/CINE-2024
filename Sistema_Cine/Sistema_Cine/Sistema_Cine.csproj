@@ -1227,6 +1227,8 @@
     <Content Include="Content\img\gallery\8s.jpg" />
     <Content Include="Content\img\gallery\9.jpg" />
     <Content Include="Content\img\gallery\9s.jpg" />
+    <Content Include="Content\img\gallery\CIne.jpg" />
+    <Content Include="Content\img\gallery\exhibicion-sala-cine-sostenible.jpg" />
     <Content Include="Content\img\headphones.jpg" />
     <Content Include="Content\img\html_logo.png" />
     <Content Include="Content\img\jugador %281%29.png" />
@@ -1755,6 +1757,7 @@
     <Content Include="Models\SistemaCines.edmx.diagram">
       <DependentUpon>SistemaCines.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\img\la imagen de fondo.webp" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />

@@ -20,7 +20,7 @@ namespace Sistema_Cine.Models
     {
         [Display(Name = "Precio Id:")]
         public int Prec_Id { get; set; }
-        [Display(Name = "Precio:")]
+        [Display(Name = "Precio")]
         [Required(ErrorMessage = "El campos {0} es requerido")]
         public Nullable<decimal> Prec_Descripcion { get; set; }
         [Display(Name = "User creacion:")]

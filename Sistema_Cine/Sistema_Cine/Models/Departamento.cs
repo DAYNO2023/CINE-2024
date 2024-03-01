@@ -17,7 +17,7 @@ namespace Sistema_Cine.Models
     public class DepartamentoMeta
     {
 
-        [Display(Name = "Codigo Departamento")]
+        [Display(Name = "CodigoDepa")]
         public string Depa_Codigo { get; set; }
         [Display(Name = "Descripcion")]
         [Required(ErrorMessage = "El campos {0} es requerido")]

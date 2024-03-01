@@ -18,17 +18,17 @@ namespace Sistema_Cine.Models
     {
         [Display(Name = "Sucursales Id:")]
         public int Sucu_Id { get; set; }
-        [Display(Name = "Descripcion :")]
+        [Display(Name = "Descripcion")]
         [Required(ErrorMessage = "El campos {0} es requerido")]
         public string Sucu_Descripcion { get; set; }
-        [Display(Name = "Direccion:")]
+        [Display(Name = "Direccion")]
         [Required(ErrorMessage = "El campos {0} es requerido")]
         public string Sucu_Direccion { get; set; }
-        [Display(Name = "Municipio :")]
+        [Display(Name = "Municipio")]
         public string Muni_Codigo { get; set; }
-        [Display(Name = "Cartelera :")]
+        [Display(Name = "Cartelera")]
         public Nullable<int> Cart_Id { get; set; }
-        [Display(Name = "Entradas:")]
+        [Display(Name = "Entradas")]
         public Nullable<int> Entra_Id { get; set; }
         [Display(Name = "User Creacion:")]
         public Nullable<int> Sucu_Usuario_Creacion { get; set; }

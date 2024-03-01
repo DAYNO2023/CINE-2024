@@ -13,19 +13,17 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Sala_Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-6">
+            <div class="col-sm-6">
                 @Html.EditorFor(model => model.Sala_Descripcion, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Sala_Descripcion, "", new { @class = "text-danger" })
             </div>
-        </div>
-        
-        <div class="form-group">
+       
             @Html.LabelFor(model => model.Buta_Id, "Buta_Id", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-6">
+            <div class="col-sm-6">
                 @Html.DropDownList("Buta_Id", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Buta_Id, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div><br />
         
         
         <div class="form-group">

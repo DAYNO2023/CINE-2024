@@ -128,5 +128,23 @@ namespace Sistema_Cine.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public JsonResult cargardepartamento(string Dep_Id)
+        {
+            var ddlMuni = db.(Dep_Id);
+            return Json(ddlMuni);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

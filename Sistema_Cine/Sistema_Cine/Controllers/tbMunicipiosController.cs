@@ -17,6 +17,7 @@ namespace Sistema_Cine.Controllers
         // GET: tbMunicipios
         public ActionResult Index()
         {
+            ViewBag.Depa_Codigo = new SelectList(db.tbDepartamentos, "Depa_Codigo", "Depa_Descripcion");
             var tbMunicipio = db.tbMunicipio.Include(t => t.tbDepartamentos);
             return View(tbMunicipio.ToList());
         }
@@ -128,23 +129,5 @@ namespace Sistema_Cine.Controllers
             }
             base.Dispose(disposing);
         }
-
-        public JsonResult cargardepartamento(string Dep_Id)
-        {
-            var ddlMuni = db.(Dep_Id);
-            return Json(ddlMuni);
-        }
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

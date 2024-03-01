@@ -5,6 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="card-body"></div>
+
 <div class="card">
     <div class="card-header">
         <h3>Butacas</h3>
@@ -13,9 +14,9 @@
 
 
         <p>
-            @Html.ActionLink("Crear", "Create", null, new { @class = "btn btn-primary" })
             <button class="btn btn-primary" id="btnmodal">Modal</button>
         </p>
+        <hr />
         <div class="table-responsive">
             <table class="table table-striped table-bordered table-hover dataTables-example " id="tablaOne">
                 <thead>
@@ -23,7 +24,7 @@
                         <th>
                             @Html.DisplayNameFor(model => model.Buta_Descripcion)
                         </th>
-                        <th>
+                        @*<th>
                             @Html.DisplayNameFor(model => model.Buta_Usuario_Creacion)
                         </th>
                         <th>
@@ -34,7 +35,7 @@
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Buta_Fecha_Modificacion)
-                        </th>
+                        </th>*@
                         <th></th>
                     </tr>
                 </thead>
@@ -45,7 +46,7 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Buta_Descripcion)
                             </td>
-                            <td>
+                            @*<td>
                                 @Html.DisplayFor(modelItem => item.Buta_Usuario_Creacion)
                             </td>
                             <td>
@@ -56,7 +57,7 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Buta_Fecha_Modificacion)
-                            </td>
+                            </td>*@
                             <td>
                                 @Html.ActionLink("Edit", "Edit", new { id = item.Buta_Id }, new { @class = "btn btn-warning" }) |
                                 @Html.ActionLink("Details", "Details", new { id = item.Buta_Id }, new { @class = "btn btn-default" }) |

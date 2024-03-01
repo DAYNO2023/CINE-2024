@@ -6,7 +6,6 @@
 }
 
 <div class="card-body"></div>
-<div class="card-body"></div>
 <div class="card center-block">
     <div class="card-header">
         <h3>Precio</h3>
@@ -23,7 +22,7 @@
                         <th>
                             @Html.DisplayNameFor(model => model.Prec_Descripcion)
                         </th>
-                        <th>
+                        @*<th>
                             @Html.DisplayNameFor(model => model.Prec_Usuario_Creacion)
                         </th>
                         <th>
@@ -34,7 +33,7 @@
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Prec_Fecha_Modificacion)
-                        </th>
+                        </th>*@
                         <th></th>
                     </tr>
                 </thead>
@@ -45,7 +44,7 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Prec_Descripcion)
                             </td>
-                            <td>
+                            @*<td>
                                 @Html.DisplayFor(modelItem => item.Prec_Usuario_Creacion)
                             </td>
                             <td>
@@ -56,7 +55,7 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Prec_Fecha_Modificacion)
-                            </td>
+                            </td>*@
                             <td>
                                 @Html.ActionLink("Edit", "Edit", new { id = item.Prec_Id }, new { @class = "btn btn-warning" }) |
                                 @Html.ActionLink("Details", "Details", new { id = item.Prec_Id }, new { @class = "btn btn-default" }) |

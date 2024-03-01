@@ -15,16 +15,20 @@ namespace Sistema_Cine.Models
 
     public class MunicipioMeta
     {
-        [Display(Name ="Codigo")]
+
+
+        [Display(Name = "Codigo")]
         public string Muni_Codigo { get; set; }
         [Display(Name = "Municipio")]
-        [Required(ErrorMessage ="El campos {0} es requerido")]
+        [Required(ErrorMessage = "El campos {0} es requerido")]
         public string Muni_Descripcion { get; set; }
-        [Display(Name = "Creacion")]
+        [Display(Name = "Departamento")]
+        [Required(ErrorMessage = "El campos {0} es requerido")]
+        public string Depa_Codigo { get; set; }
         public Nullable<int> Muni_Usuario_Creacion { get; set; }
-        [Display(Name = "Fecha")]
-
         public Nullable<System.DateTime> Muni_Fecha_Creacion { get; set; }
+        public Nullable<int> Muni_Usuario_Modificacion { get; set; }
+        public Nullable<System.DateTime> Muni_Fecha_Modificacion { get; set; }
 
 
 

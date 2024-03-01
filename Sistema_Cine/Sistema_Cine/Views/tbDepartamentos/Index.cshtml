@@ -5,15 +5,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="card-body"></div>
+<div class="card-body"></div>
     <div class="card">
         <div class="card-header">
             <h3>Departamento</h3>
         </div>
         <div class="card-body">
             <p>
-                @Html.ActionLink("Crear", "Create", null, new { @class = "btn btn-primary" })
-                <button class="btn btn-primary" id="btnmodal">Modal</button>
+                <button class="btn btn-primary" id="btnmodal">Crear</button>
             </p>
+            <hr />
             <div class="table-responsive">
                 <table class="table table-striped table-bordered table-hover dataTables-example " id="tablaOne">
                     <thead>
@@ -21,18 +22,18 @@
                             <th>
                                 @Html.DisplayNameFor(model => model.Depa_Descripcion)
                             </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Depa_Usuario_Creacion)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Depa_Fecha_Creacion)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Depa_Usuario_Modificacion)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Depa_Fecha_Modificacion)
-                            </th>
+                            @*<th>
+                            @Html.DisplayNameFor(model => model.Depa_Usuario_Creacion)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Depa_Fecha_Creacion)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Depa_Usuario_Modificacion)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Depa_Fecha_Modificacion)
+                        </th>*@
                             <th></th>
                         </tr>
                     </thead>
@@ -44,18 +45,18 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Depa_Descripcion)
                                 </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Depa_Usuario_Creacion)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Depa_Fecha_Creacion)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Depa_Usuario_Modificacion)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Depa_Fecha_Modificacion)
-                                </td>
+                                @*<td>
+                                @Html.DisplayFor(modelItem => item.Depa_Usuario_Creacion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Depa_Fecha_Creacion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Depa_Usuario_Modificacion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Depa_Fecha_Modificacion)
+                            </td>*@
                                 <td>
                                     @Html.ActionLink("Edit", "Edit", new { id = item.Depa_Codigo }, new { @class = "btn btn-warning" }) |
                                     @Html.ActionLink("Details", "Details", new { id = item.Depa_Codigo }, new { @class = "btn btn-default" }) |

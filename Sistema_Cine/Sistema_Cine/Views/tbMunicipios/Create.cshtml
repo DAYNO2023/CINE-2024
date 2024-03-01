@@ -22,8 +22,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Muni_Codigo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-6">
-                <select id="Muni_Codigo" class="Form-Control">
-                </select>
+                @Html.EditorFor(model => model.Muni_Codigo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Muni_Codigo, "", new { @class = "text-danger" })
             </div>
         </div>
         
@@ -96,36 +96,3 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
-
-<script>
-    $("#Dep_ID").change(Function(){
-        var Dep_Id = $("#Dep_Id").Val();
-        Console.log(Dep_Id);
-    })
-    $.ajax({
-        url: "/Controlador/CargarMunicipio",
-        method: "POST",
-        dataType: "json",
-        contentType: "application/json; charset=utf-8",
-        data: JSON.stringify({ Dep_Id: Dep_Id }),
-        success: function (data) {
-            console.Log(data);
-            $("#Muni_Id").empty();
-            $("#Muni_Id").append("<option values ='0'>Seleccione un Municipio</option>");
-            $.each(data, Funtion(Key, Value){
-                $("#Muni_Id").append("<option values=" + Value.Mun_id + " >" + Value.Mun_Descripcion + "</option>")
-            })
-
-        }
-    })
-
-
-
-
-</script>
-
-
-
-
-
-

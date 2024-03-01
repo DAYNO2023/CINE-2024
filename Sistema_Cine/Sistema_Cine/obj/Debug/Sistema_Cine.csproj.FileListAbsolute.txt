@@ -445,3 +445,4 @@ C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\obj\Debug\Sistema_C
 C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\obj\Debug\Sistema_Cine.csproj.CopyComplete
 C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\obj\Debug\Sistema_Cine.dll
 C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\obj\Debug\Sistema_Cine.pdb
+C:\Users\JafethG\Desktop\CINE-2024\Sistema_Cine\Sistema_Cine\obj\Debug\Sistema_Cine.csproj.AssemblyReference.cache

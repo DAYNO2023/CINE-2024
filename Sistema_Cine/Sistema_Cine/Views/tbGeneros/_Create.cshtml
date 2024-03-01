@@ -4,39 +4,40 @@
 @using (Html.BeginForm("Create", "tbGeneros")) 
 {
     @Html.AntiForgeryToken()
-    <div class="form-group" style="background-color:darkred">
-   
+<div class="card-body">
+    <div class="container">
 
-        <h4>tbGeneros</h4>
+
+        <h2 style="text-align:center">Crear Generos</h2><br />
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Gene_Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-sm-6">
+            <div class="col">
                 @Html.EditorFor(model => model.Gene_Descripcion, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Gene_Descripcion, "", new { @class = "text-danger" })
-            </div>
-     
+            </div><br />
+
             @Html.LabelFor(model => model.Prom_Id, "Prom_Id", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-sm-6">
+            <div class="col">
                 @Html.DropDownList("Prom_Id", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Prom_Id, "", new { @class = "text-danger" })
             </div>
-        </div>
-        
-      
-        
-        <div class="form-group">
+        </div><br />
+
+
+
+        <div class="form-group"  style="text-align:right">
             <div class="col-md-offset-2 col-md-20">
-                <input type="submit" value="Crear" class="btn btn-primary" />
+                <input type="submit" style="text-align:center" value="Crear" class="btn btn-primary" />
             </div>
         </div>
     </div>
-  
-    
-}
+</div>
+
+    }
 
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

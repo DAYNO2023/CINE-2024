@@ -19,7 +19,7 @@ namespace Sistema_Cine.Models
 
         [Display(Name = "CodigoDepa")]
         public string Depa_Codigo { get; set; }
-        [Display(Name = "Descripcion")]
+        [Display(Name = "Departamento")]
         [Required(ErrorMessage = "El campos {0} es requerido")]
 
         public string Depa_Descripcion { get; set; }

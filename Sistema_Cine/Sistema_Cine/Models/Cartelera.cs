@@ -19,9 +19,9 @@ namespace Sistema_Cine.Models
         [Display(Name = "Cartelera")]
         [Required(ErrorMessage = "El campos {0} es requerido")]
         public string Cart_Descripcion { get; set; }
-        [Display(Name = "Genero ID")]
+        [Display(Name = "Genero ")]
         public Nullable<int> Gene_Id { get; set; }
-        [Display(Name = "Promocion ID")]
+        [Display(Name = "Promocion ")]
         public Nullable<int> Prom_Id { get; set; }
         [Display(Name = "Entradas Id")]
         public Nullable<int> Entra_Id { get; set; }

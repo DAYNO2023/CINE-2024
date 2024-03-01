@@ -8,142 +8,114 @@
 <h2>Details</h2>
 
 <div>
-    <h4>tbClientes</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Clie_Nombre)
-        </dt>
+    <div class="card-body" style="background-color: #f2f2f2;">
+        <h4>tbClientes</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Clie_Nombre)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Clie_Nombre)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Clie_Nombre)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Clie_Apellido)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Clie_Apellido)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Clie_Apellido)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Clie_Apellido)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Clie_Identidad)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Clie_Identidad)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Clie_Identidad)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Clie_Identidad)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Clie_Sexo)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Clie_Sexo)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Clie_Sexo)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Clie_Sexo)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Clie_Telefono)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Clie_Telefono)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Clie_Telefono)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Clie_Telefono)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Clie_FecNacimiento)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Clie_FecNacimiento)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Clie_FecNacimiento)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Clie_FecNacimiento)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Clie_Usua_Creacion)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Clie_Estado)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Clie_Usua_Creacion)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Clie_Estado)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Clie_Fecha_Creacion)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.tbEstado_Civil.Esta_Descripcion)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Clie_Fecha_Creacion)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.tbEstado_Civil.Esta_Descripcion)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Clie_Usua_Modifica)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.tbMunicipio.Muni_Descripcion)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Clie_Usua_Modifica)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.tbMunicipio.Muni_Descripcion)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Clie_Fecha_Modifica)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Clie_Fecha_Modifica)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Clie_Estado)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Clie_Estado)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.tbEstado_Civil.Esta_Descripcion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.tbEstado_Civil.Esta_Descripcion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.tbMunicipio.Muni_Descripcion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.tbMunicipio.Muni_Descripcion)
-        </dd>
-
-    </dl>
+        </dl>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Clie_Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
-<table class="table table-dark">
-  <thead>
-    <tr>
-      <th >Acciones</th>
-      <th >Usuario</th>
-      <th >Fecha</th>
-    
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Creador</th>
-      <td></td>
-      <td></td>
-  
-    </tr>
-    <tr>
-      <th scope="row">Modificar</th>
-      <td></td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
+<hr />
+    <p style="background-color: #f2f2f2;">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Clie_Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+    <hr />
+    <table class="table table-striped table-bordered table-hover dataTables-example" id="tablaOne">
+        <thead>
+            <tr>
+                <th>Acciones</th>
+                <th>Usuario</th>
+                <th>Fecha</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Creador</th>
+                <td> @Html.DisplayFor(model => model.Clie_Usua_Creacion)</td>
+                <td>@Html.DisplayFor(model => model.Clie_Fecha_Creacion)</td>
+
+            </tr>
+            <tr>
+                <th scope="row">Modificar</th>
+                <td>@Html.DisplayFor(model => model.Clie_Usua_Modifica)</td>
+                <td>@Html.DisplayFor(model => model.Clie_Fecha_Modifica)</td>
+            </tr>
+        </tbody>
+    </table>
 
 
 

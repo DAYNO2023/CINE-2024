@@ -11,12 +11,13 @@
     <div class="card-body" style="background-color: #f2f2f2;">
         <h4>tbCarteleras</h4>
         <hr />
-        <dl class="dl-horizontal">
+        <dl class="dl-horizontal" style="flex: 0 0 50%; max-width: 50%;">
+         
             <dt>
                 @Html.DisplayNameFor(model => model.Cart_Descripcion)
             </dt>
 
-            <dd>
+            <dd >
                 @Html.DisplayFor(model => model.Cart_Descripcion)
             </dd>
 
@@ -24,7 +25,7 @@
                 @Html.DisplayNameFor(model => model.Cart_Fecha_Estreno)
             </dt>
 
-            <dd>
+            <dd >
                 @Html.DisplayFor(model => model.Cart_Fecha_Estreno)
             </dd>
 
@@ -40,7 +41,7 @@
                 @Html.DisplayNameFor(model => model.tbGeneros.Gene_Descripcion)
             </dt>
 
-            <dd>
+            <dd >
                 @Html.DisplayFor(model => model.tbGeneros.Gene_Descripcion)
             </dd>
 
@@ -48,10 +49,10 @@
                 @Html.DisplayNameFor(model => model.tbPromociones.Prom_Descripcion)
             </dt>
 
-            <dd>
+            <dd >
                 @Html.DisplayFor(model => model.tbPromociones.Prom_Descripcion)
             </dd>
-
+          
         </dl>
     </div>
 </div>

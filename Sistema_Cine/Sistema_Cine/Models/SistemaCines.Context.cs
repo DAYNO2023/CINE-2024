@@ -62,5 +62,1247 @@ namespace Sistema_Cine.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_tbUsuarios_InicioSesion_Result>("SP_tbUsuarios_InicioSesion", usuarioParameter, contraParameter);
         }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbPantalla_Roles_Editar(Nullable<int> id, Nullable<int> roleId, Nullable<int> pantId, Nullable<int> modifica, Nullable<System.DateTime> fechaModifica, Nullable<bool> estado)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            var roleIdParameter = roleId.HasValue ?
+                new ObjectParameter("RoleId", roleId) :
+                new ObjectParameter("RoleId", typeof(int));
+    
+            var pantIdParameter = pantId.HasValue ?
+                new ObjectParameter("PantId", pantId) :
+                new ObjectParameter("PantId", typeof(int));
+    
+            var modificaParameter = modifica.HasValue ?
+                new ObjectParameter("Modifica", modifica) :
+                new ObjectParameter("Modifica", typeof(int));
+    
+            var fechaModificaParameter = fechaModifica.HasValue ?
+                new ObjectParameter("FechaModifica", fechaModifica) :
+                new ObjectParameter("FechaModifica", typeof(System.DateTime));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbPantalla_Roles_Editar", idParameter, roleIdParameter, pantIdParameter, modificaParameter, fechaModificaParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbPantalla_Roles_Eliminar(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbPantalla_Roles_Eliminar", idParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbPantalla_Roles_Insertar(Nullable<int> roleId, Nullable<int> pantId, Nullable<int> creacion, Nullable<System.DateTime> fechaCreacion, Nullable<bool> estado)
+        {
+            var roleIdParameter = roleId.HasValue ?
+                new ObjectParameter("RoleId", roleId) :
+                new ObjectParameter("RoleId", typeof(int));
+    
+            var pantIdParameter = pantId.HasValue ?
+                new ObjectParameter("PantId", pantId) :
+                new ObjectParameter("PantId", typeof(int));
+    
+            var creacionParameter = creacion.HasValue ?
+                new ObjectParameter("Creacion", creacion) :
+                new ObjectParameter("Creacion", typeof(int));
+    
+            var fechaCreacionParameter = fechaCreacion.HasValue ?
+                new ObjectParameter("FechaCreacion", fechaCreacion) :
+                new ObjectParameter("FechaCreacion", typeof(System.DateTime));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbPantalla_Roles_Insertar", roleIdParameter, pantIdParameter, creacionParameter, fechaCreacionParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<Sp_tbPantalla_Roles_Mostrar_Result> Sp_tbPantalla_Roles_Mostrar()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_tbPantalla_Roles_Mostrar_Result>("Sp_tbPantalla_Roles_Mostrar");
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbPantallas_Editar(Nullable<int> id, string descripcion, Nullable<bool> identificador, Nullable<int> modifica, Nullable<System.DateTime> fechaModifica, Nullable<bool> estado)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            var identificadorParameter = identificador.HasValue ?
+                new ObjectParameter("Identificador", identificador) :
+                new ObjectParameter("Identificador", typeof(bool));
+    
+            var modificaParameter = modifica.HasValue ?
+                new ObjectParameter("Modifica", modifica) :
+                new ObjectParameter("Modifica", typeof(int));
+    
+            var fechaModificaParameter = fechaModifica.HasValue ?
+                new ObjectParameter("FechaModifica", fechaModifica) :
+                new ObjectParameter("FechaModifica", typeof(System.DateTime));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbPantallas_Editar", idParameter, descripcionParameter, identificadorParameter, modificaParameter, fechaModificaParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbPantallas_Eliminar(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbPantallas_Eliminar", idParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbPantallas_Insertar(string descripcion, Nullable<bool> identificador, Nullable<int> creacion, Nullable<System.DateTime> fechaCreacion, Nullable<bool> estado)
+        {
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            var identificadorParameter = identificador.HasValue ?
+                new ObjectParameter("Identificador", identificador) :
+                new ObjectParameter("Identificador", typeof(bool));
+    
+            var creacionParameter = creacion.HasValue ?
+                new ObjectParameter("Creacion", creacion) :
+                new ObjectParameter("Creacion", typeof(int));
+    
+            var fechaCreacionParameter = fechaCreacion.HasValue ?
+                new ObjectParameter("FechaCreacion", fechaCreacion) :
+                new ObjectParameter("FechaCreacion", typeof(System.DateTime));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbPantallas_Insertar", descripcionParameter, identificadorParameter, creacionParameter, fechaCreacionParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<Sp_tbPantallas_Mostrar_Result> Sp_tbPantallas_Mostrar()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_tbPantallas_Mostrar_Result>("Sp_tbPantallas_Mostrar");
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbRoles_Editar(Nullable<int> id, string descripcion, Nullable<int> modifica, Nullable<System.DateTime> fechaModifica, Nullable<bool> estado)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            var modificaParameter = modifica.HasValue ?
+                new ObjectParameter("Modifica", modifica) :
+                new ObjectParameter("Modifica", typeof(int));
+    
+            var fechaModificaParameter = fechaModifica.HasValue ?
+                new ObjectParameter("FechaModifica", fechaModifica) :
+                new ObjectParameter("FechaModifica", typeof(System.DateTime));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbRoles_Editar", idParameter, descripcionParameter, modificaParameter, fechaModificaParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbRoles_Eliminar(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbRoles_Eliminar", idParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbRoles_Insertar(string descripcion, Nullable<int> creacion, Nullable<System.DateTime> fechaCreacion)
+        {
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            var creacionParameter = creacion.HasValue ?
+                new ObjectParameter("Creacion", creacion) :
+                new ObjectParameter("Creacion", typeof(int));
+    
+            var fechaCreacionParameter = fechaCreacion.HasValue ?
+                new ObjectParameter("FechaCreacion", fechaCreacion) :
+                new ObjectParameter("FechaCreacion", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbRoles_Insertar", descripcionParameter, creacionParameter, fechaCreacionParameter);
+        }
+    
+        public virtual ObjectResult<Sp_tbRoles_Mostrar_Result> Sp_tbRoles_Mostrar()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_tbRoles_Mostrar_Result>("Sp_tbRoles_Mostrar");
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbUsuarios_Editar(Nullable<int> id, string nombre, string contraseña, Nullable<int> empleadoId, Nullable<int> rolId, Nullable<int> modifica, Nullable<System.DateTime> fechaModifica, Nullable<bool> estado)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var contraseñaParameter = contraseña != null ?
+                new ObjectParameter("Contraseña", contraseña) :
+                new ObjectParameter("Contraseña", typeof(string));
+    
+            var empleadoIdParameter = empleadoId.HasValue ?
+                new ObjectParameter("EmpleadoId", empleadoId) :
+                new ObjectParameter("EmpleadoId", typeof(int));
+    
+            var rolIdParameter = rolId.HasValue ?
+                new ObjectParameter("RolId", rolId) :
+                new ObjectParameter("RolId", typeof(int));
+    
+            var modificaParameter = modifica.HasValue ?
+                new ObjectParameter("Modifica", modifica) :
+                new ObjectParameter("Modifica", typeof(int));
+    
+            var fechaModificaParameter = fechaModifica.HasValue ?
+                new ObjectParameter("FechaModifica", fechaModifica) :
+                new ObjectParameter("FechaModifica", typeof(System.DateTime));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbUsuarios_Editar", idParameter, nombreParameter, contraseñaParameter, empleadoIdParameter, rolIdParameter, modificaParameter, fechaModificaParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbUsuarios_Eliminar(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbUsuarios_Eliminar", idParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbUsuarios_Insertar(string nombre, string contraseña, Nullable<int> empleadoId, Nullable<int> rolId, Nullable<int> creacion, Nullable<System.DateTime> fechaCreacion, Nullable<bool> estado)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var contraseñaParameter = contraseña != null ?
+                new ObjectParameter("Contraseña", contraseña) :
+                new ObjectParameter("Contraseña", typeof(string));
+    
+            var empleadoIdParameter = empleadoId.HasValue ?
+                new ObjectParameter("EmpleadoId", empleadoId) :
+                new ObjectParameter("EmpleadoId", typeof(int));
+    
+            var rolIdParameter = rolId.HasValue ?
+                new ObjectParameter("RolId", rolId) :
+                new ObjectParameter("RolId", typeof(int));
+    
+            var creacionParameter = creacion.HasValue ?
+                new ObjectParameter("Creacion", creacion) :
+                new ObjectParameter("Creacion", typeof(int));
+    
+            var fechaCreacionParameter = fechaCreacion.HasValue ?
+                new ObjectParameter("FechaCreacion", fechaCreacion) :
+                new ObjectParameter("FechaCreacion", typeof(System.DateTime));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbUsuarios_Insertar", nombreParameter, contraseñaParameter, empleadoIdParameter, rolIdParameter, creacionParameter, fechaCreacionParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<Sp_tbUsuarios_Mostrar_Result> Sp_tbUsuarios_Mostrar()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_tbUsuarios_Mostrar_Result>("Sp_tbUsuarios_Mostrar");
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbCarteleras_Editar(Nullable<int> id, string descripcion, Nullable<int> gene_Id, Nullable<int> prom_Id, Nullable<int> entra_Id, Nullable<int> fechaEstreno, Nullable<int> modifica, Nullable<System.DateTime> fechaModifica, Nullable<bool> estado)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            var gene_IdParameter = gene_Id.HasValue ?
+                new ObjectParameter("Gene_Id", gene_Id) :
+                new ObjectParameter("Gene_Id", typeof(int));
+    
+            var prom_IdParameter = prom_Id.HasValue ?
+                new ObjectParameter("Prom_Id", prom_Id) :
+                new ObjectParameter("Prom_Id", typeof(int));
+    
+            var entra_IdParameter = entra_Id.HasValue ?
+                new ObjectParameter("Entra_Id", entra_Id) :
+                new ObjectParameter("Entra_Id", typeof(int));
+    
+            var fechaEstrenoParameter = fechaEstreno.HasValue ?
+                new ObjectParameter("FechaEstreno", fechaEstreno) :
+                new ObjectParameter("FechaEstreno", typeof(int));
+    
+            var modificaParameter = modifica.HasValue ?
+                new ObjectParameter("Modifica", modifica) :
+                new ObjectParameter("Modifica", typeof(int));
+    
+            var fechaModificaParameter = fechaModifica.HasValue ?
+                new ObjectParameter("FechaModifica", fechaModifica) :
+                new ObjectParameter("FechaModifica", typeof(System.DateTime));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbCarteleras_Editar", idParameter, descripcionParameter, gene_IdParameter, prom_IdParameter, entra_IdParameter, fechaEstrenoParameter, modificaParameter, fechaModificaParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbCarteleras_Eliminar(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbCarteleras_Eliminar", idParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbCarteleras_Insertar(string descripcion, Nullable<int> gene_Id, Nullable<int> prom_Id, Nullable<int> entra_Id, Nullable<int> fechaEstreno, Nullable<int> creacion, Nullable<System.DateTime> fechaCreacion, Nullable<int> modifica, Nullable<System.DateTime> fechaModifica, Nullable<bool> estado)
+        {
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            var gene_IdParameter = gene_Id.HasValue ?
+                new ObjectParameter("Gene_Id", gene_Id) :
+                new ObjectParameter("Gene_Id", typeof(int));
+    
+            var prom_IdParameter = prom_Id.HasValue ?
+                new ObjectParameter("Prom_Id", prom_Id) :
+                new ObjectParameter("Prom_Id", typeof(int));
+    
+            var entra_IdParameter = entra_Id.HasValue ?
+                new ObjectParameter("Entra_Id", entra_Id) :
+                new ObjectParameter("Entra_Id", typeof(int));
+    
+            var fechaEstrenoParameter = fechaEstreno.HasValue ?
+                new ObjectParameter("FechaEstreno", fechaEstreno) :
+                new ObjectParameter("FechaEstreno", typeof(int));
+    
+            var creacionParameter = creacion.HasValue ?
+                new ObjectParameter("Creacion", creacion) :
+                new ObjectParameter("Creacion", typeof(int));
+    
+            var fechaCreacionParameter = fechaCreacion.HasValue ?
+                new ObjectParameter("FechaCreacion", fechaCreacion) :
+                new ObjectParameter("FechaCreacion", typeof(System.DateTime));
+    
+            var modificaParameter = modifica.HasValue ?
+                new ObjectParameter("Modifica", modifica) :
+                new ObjectParameter("Modifica", typeof(int));
+    
+            var fechaModificaParameter = fechaModifica.HasValue ?
+                new ObjectParameter("FechaModifica", fechaModifica) :
+                new ObjectParameter("FechaModifica", typeof(System.DateTime));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbCarteleras_Insertar", descripcionParameter, gene_IdParameter, prom_IdParameter, entra_IdParameter, fechaEstrenoParameter, creacionParameter, fechaCreacionParameter, modificaParameter, fechaModificaParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<Sp_tbCarteleras_Mostrar_Result> Sp_tbCarteleras_Mostrar()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_tbCarteleras_Mostrar_Result>("Sp_tbCarteleras_Mostrar");
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbEntradas_Editar(Nullable<int> id, Nullable<int> cantidad, Nullable<int> salaId, Nullable<int> modifica, Nullable<System.DateTime> fechaModifica, Nullable<bool> estado)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            var cantidadParameter = cantidad.HasValue ?
+                new ObjectParameter("Cantidad", cantidad) :
+                new ObjectParameter("Cantidad", typeof(int));
+    
+            var salaIdParameter = salaId.HasValue ?
+                new ObjectParameter("SalaId", salaId) :
+                new ObjectParameter("SalaId", typeof(int));
+    
+            var modificaParameter = modifica.HasValue ?
+                new ObjectParameter("Modifica", modifica) :
+                new ObjectParameter("Modifica", typeof(int));
+    
+            var fechaModificaParameter = fechaModifica.HasValue ?
+                new ObjectParameter("FechaModifica", fechaModifica) :
+                new ObjectParameter("FechaModifica", typeof(System.DateTime));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbEntradas_Editar", idParameter, cantidadParameter, salaIdParameter, modificaParameter, fechaModificaParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbEntradas_Insertar(Nullable<int> cantidad, Nullable<int> salaId, Nullable<int> creacion, Nullable<System.DateTime> fechaCreacion, Nullable<bool> estado)
+        {
+            var cantidadParameter = cantidad.HasValue ?
+                new ObjectParameter("Cantidad", cantidad) :
+                new ObjectParameter("Cantidad", typeof(int));
+    
+            var salaIdParameter = salaId.HasValue ?
+                new ObjectParameter("SalaId", salaId) :
+                new ObjectParameter("SalaId", typeof(int));
+    
+            var creacionParameter = creacion.HasValue ?
+                new ObjectParameter("Creacion", creacion) :
+                new ObjectParameter("Creacion", typeof(int));
+    
+            var fechaCreacionParameter = fechaCreacion.HasValue ?
+                new ObjectParameter("FechaCreacion", fechaCreacion) :
+                new ObjectParameter("FechaCreacion", typeof(System.DateTime));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbEntradas_Insertar", cantidadParameter, salaIdParameter, creacionParameter, fechaCreacionParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<Sp_tbEntradas_Mostrar_Result> Sp_tbEntradas_Mostrar()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_tbEntradas_Mostrar_Result>("Sp_tbEntradas_Mostrar");
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbSucursales_Editar(Nullable<int> id, string descripcion, string direccion, string municipioCodigo, Nullable<int> modifica, Nullable<System.DateTime> fechaModifica, Nullable<bool> estado)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            var direccionParameter = direccion != null ?
+                new ObjectParameter("Direccion", direccion) :
+                new ObjectParameter("Direccion", typeof(string));
+    
+            var municipioCodigoParameter = municipioCodigo != null ?
+                new ObjectParameter("MunicipioCodigo", municipioCodigo) :
+                new ObjectParameter("MunicipioCodigo", typeof(string));
+    
+            var modificaParameter = modifica.HasValue ?
+                new ObjectParameter("Modifica", modifica) :
+                new ObjectParameter("Modifica", typeof(int));
+    
+            var fechaModificaParameter = fechaModifica.HasValue ?
+                new ObjectParameter("FechaModifica", fechaModifica) :
+                new ObjectParameter("FechaModifica", typeof(System.DateTime));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbSucursales_Editar", idParameter, descripcionParameter, direccionParameter, municipioCodigoParameter, modificaParameter, fechaModificaParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbSucursales_Eliminar(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbSucursales_Eliminar", idParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbSucursales_Insertar(string descripcion, string direccion, string municipioCodigo, Nullable<int> creacion, Nullable<System.DateTime> fechaCreacion, Nullable<bool> estado)
+        {
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            var direccionParameter = direccion != null ?
+                new ObjectParameter("Direccion", direccion) :
+                new ObjectParameter("Direccion", typeof(string));
+    
+            var municipioCodigoParameter = municipioCodigo != null ?
+                new ObjectParameter("MunicipioCodigo", municipioCodigo) :
+                new ObjectParameter("MunicipioCodigo", typeof(string));
+    
+            var creacionParameter = creacion.HasValue ?
+                new ObjectParameter("Creacion", creacion) :
+                new ObjectParameter("Creacion", typeof(int));
+    
+            var fechaCreacionParameter = fechaCreacion.HasValue ?
+                new ObjectParameter("FechaCreacion", fechaCreacion) :
+                new ObjectParameter("FechaCreacion", typeof(System.DateTime));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbSucursales_Insertar", descripcionParameter, direccionParameter, municipioCodigoParameter, creacionParameter, fechaCreacionParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<Sp_tbSucursales_Mostrar_Result> Sp_tbSucursales_Mostrar()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_tbSucursales_Mostrar_Result>("Sp_tbSucursales_Mostrar");
+        }
+    
+        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var new_diagramnameParameter = new_diagramname != null ?
+                new ObjectParameter("new_diagramname", new_diagramname) :
+                new ObjectParameter("new_diagramname", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
+        }
+    
+        public virtual int sp_upgraddiagrams()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbButacas_Salas_Editar(Nullable<int> id, string descripcion, Nullable<int> modifica, Nullable<System.DateTime> fechaModifica, Nullable<bool> estado)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            var modificaParameter = modifica.HasValue ?
+                new ObjectParameter("Modifica", modifica) :
+                new ObjectParameter("Modifica", typeof(int));
+    
+            var fechaModificaParameter = fechaModifica.HasValue ?
+                new ObjectParameter("FechaModifica", fechaModifica) :
+                new ObjectParameter("FechaModifica", typeof(System.DateTime));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbButacas_Salas_Editar", idParameter, descripcionParameter, modificaParameter, fechaModificaParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbButacas_Salas_Eliminar(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbButacas_Salas_Eliminar", idParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbButacas_Salas_Insertar(string descripcion, Nullable<int> creacion, Nullable<System.DateTime> fechaCreacion, Nullable<bool> estado)
+        {
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            var creacionParameter = creacion.HasValue ?
+                new ObjectParameter("Creacion", creacion) :
+                new ObjectParameter("Creacion", typeof(int));
+    
+            var fechaCreacionParameter = fechaCreacion.HasValue ?
+                new ObjectParameter("FechaCreacion", fechaCreacion) :
+                new ObjectParameter("FechaCreacion", typeof(System.DateTime));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbButacas_Salas_Insertar", descripcionParameter, creacionParameter, fechaCreacionParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<Sp_tbButacas_Salas_Mostrar_Result> Sp_tbButacas_Salas_Mostrar()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_tbButacas_Salas_Mostrar_Result>("Sp_tbButacas_Salas_Mostrar");
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbCargos_Editar(Nullable<int> id, string descripcion, Nullable<int> modifica, Nullable<System.DateTime> fechaModifica, Nullable<bool> estado)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            var modificaParameter = modifica.HasValue ?
+                new ObjectParameter("Modifica", modifica) :
+                new ObjectParameter("Modifica", typeof(int));
+    
+            var fechaModificaParameter = fechaModifica.HasValue ?
+                new ObjectParameter("FechaModifica", fechaModifica) :
+                new ObjectParameter("FechaModifica", typeof(System.DateTime));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbCargos_Editar", idParameter, descripcionParameter, modificaParameter, fechaModificaParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbCargos_Eliminar(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbCargos_Eliminar", idParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbCargos_Insertar(string descripcion, Nullable<int> creacion, Nullable<System.DateTime> fechaCreacion, Nullable<bool> estado)
+        {
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            var creacionParameter = creacion.HasValue ?
+                new ObjectParameter("Creacion", creacion) :
+                new ObjectParameter("Creacion", typeof(int));
+    
+            var fechaCreacionParameter = fechaCreacion.HasValue ?
+                new ObjectParameter("FechaCreacion", fechaCreacion) :
+                new ObjectParameter("FechaCreacion", typeof(System.DateTime));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbCargos_Insertar", descripcionParameter, creacionParameter, fechaCreacionParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<Sp_tbCargos_Mostrar_Result> Sp_tbCargos_Mostrar()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_tbCargos_Mostrar_Result>("Sp_tbCargos_Mostrar");
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbPrecios_Editar(Nullable<int> id, Nullable<decimal> descripcion, Nullable<int> modifica, Nullable<System.DateTime> fechaModifica, Nullable<bool> estado)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            var descripcionParameter = descripcion.HasValue ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(decimal));
+    
+            var modificaParameter = modifica.HasValue ?
+                new ObjectParameter("Modifica", modifica) :
+                new ObjectParameter("Modifica", typeof(int));
+    
+            var fechaModificaParameter = fechaModifica.HasValue ?
+                new ObjectParameter("FechaModifica", fechaModifica) :
+                new ObjectParameter("FechaModifica", typeof(System.DateTime));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbPrecios_Editar", idParameter, descripcionParameter, modificaParameter, fechaModificaParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbPrecios_Eliminar(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbPrecios_Eliminar", idParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbPrecios_Insertar(Nullable<decimal> descripcion, Nullable<int> creacion, Nullable<System.DateTime> fechaCreacion, Nullable<bool> estado)
+        {
+            var descripcionParameter = descripcion.HasValue ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(decimal));
+    
+            var creacionParameter = creacion.HasValue ?
+                new ObjectParameter("Creacion", creacion) :
+                new ObjectParameter("Creacion", typeof(int));
+    
+            var fechaCreacionParameter = fechaCreacion.HasValue ?
+                new ObjectParameter("FechaCreacion", fechaCreacion) :
+                new ObjectParameter("FechaCreacion", typeof(System.DateTime));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbPrecios_Insertar", descripcionParameter, creacionParameter, fechaCreacionParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<Sp_tbPrecios_Mostrar_Result> Sp_tbPrecios_Mostrar()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_tbPrecios_Mostrar_Result>("Sp_tbPrecios_Mostrar");
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbPromociones_Editar(Nullable<int> id, Nullable<decimal> descuento, string descripcion, Nullable<int> precioId, Nullable<int> modifica, Nullable<System.DateTime> fechaModifica, Nullable<bool> estado)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            var descuentoParameter = descuento.HasValue ?
+                new ObjectParameter("Descuento", descuento) :
+                new ObjectParameter("Descuento", typeof(decimal));
+    
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            var precioIdParameter = precioId.HasValue ?
+                new ObjectParameter("PrecioId", precioId) :
+                new ObjectParameter("PrecioId", typeof(int));
+    
+            var modificaParameter = modifica.HasValue ?
+                new ObjectParameter("Modifica", modifica) :
+                new ObjectParameter("Modifica", typeof(int));
+    
+            var fechaModificaParameter = fechaModifica.HasValue ?
+                new ObjectParameter("FechaModifica", fechaModifica) :
+                new ObjectParameter("FechaModifica", typeof(System.DateTime));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbPromociones_Editar", idParameter, descuentoParameter, descripcionParameter, precioIdParameter, modificaParameter, fechaModificaParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbPromociones_Eliminar(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbPromociones_Eliminar", idParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbPromociones_Insertar(Nullable<decimal> descuento, string descripcion, Nullable<int> precioId, Nullable<int> creacion, Nullable<System.DateTime> fechaCreacion, Nullable<bool> estado)
+        {
+            var descuentoParameter = descuento.HasValue ?
+                new ObjectParameter("Descuento", descuento) :
+                new ObjectParameter("Descuento", typeof(decimal));
+    
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            var precioIdParameter = precioId.HasValue ?
+                new ObjectParameter("PrecioId", precioId) :
+                new ObjectParameter("PrecioId", typeof(int));
+    
+            var creacionParameter = creacion.HasValue ?
+                new ObjectParameter("Creacion", creacion) :
+                new ObjectParameter("Creacion", typeof(int));
+    
+            var fechaCreacionParameter = fechaCreacion.HasValue ?
+                new ObjectParameter("FechaCreacion", fechaCreacion) :
+                new ObjectParameter("FechaCreacion", typeof(System.DateTime));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbPromociones_Insertar", descuentoParameter, descripcionParameter, precioIdParameter, creacionParameter, fechaCreacionParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<Sp_tbPromociones_Mostrar_Result> Sp_tbPromociones_Mostrar()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_tbPromociones_Mostrar_Result>("Sp_tbPromociones_Mostrar");
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbSalas_Editar(Nullable<int> id, string descripcion, Nullable<int> butacaId, Nullable<int> modifica, Nullable<System.DateTime> fechaModifica, Nullable<bool> estado)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            var butacaIdParameter = butacaId.HasValue ?
+                new ObjectParameter("ButacaId", butacaId) :
+                new ObjectParameter("ButacaId", typeof(int));
+    
+            var modificaParameter = modifica.HasValue ?
+                new ObjectParameter("Modifica", modifica) :
+                new ObjectParameter("Modifica", typeof(int));
+    
+            var fechaModificaParameter = fechaModifica.HasValue ?
+                new ObjectParameter("FechaModifica", fechaModifica) :
+                new ObjectParameter("FechaModifica", typeof(System.DateTime));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbSalas_Editar", idParameter, descripcionParameter, butacaIdParameter, modificaParameter, fechaModificaParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbSalas_Eliminar(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbSalas_Eliminar", idParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbSalas_Insertar(string descripcion, Nullable<int> butacaId, Nullable<int> creacion, Nullable<System.DateTime> fechaCreacion, Nullable<bool> estado)
+        {
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            var butacaIdParameter = butacaId.HasValue ?
+                new ObjectParameter("ButacaId", butacaId) :
+                new ObjectParameter("ButacaId", typeof(int));
+    
+            var creacionParameter = creacion.HasValue ?
+                new ObjectParameter("Creacion", creacion) :
+                new ObjectParameter("Creacion", typeof(int));
+    
+            var fechaCreacionParameter = fechaCreacion.HasValue ?
+                new ObjectParameter("FechaCreacion", fechaCreacion) :
+                new ObjectParameter("FechaCreacion", typeof(System.DateTime));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbSalas_Insertar", descripcionParameter, butacaIdParameter, creacionParameter, fechaCreacionParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<Sp_tbSalas_Mostrar_Result> Sp_tbSalas_Mostrar()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_tbSalas_Mostrar_Result>("Sp_tbSalas_Mostrar");
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbTipo_Pagos_Editar(Nullable<int> tipo_Id, string tipo_Descripcion, string cate_Usuario_Modificacion, Nullable<System.DateTime> cate_Fecha_Modificacion)
+        {
+            var tipo_IdParameter = tipo_Id.HasValue ?
+                new ObjectParameter("Tipo_Id", tipo_Id) :
+                new ObjectParameter("Tipo_Id", typeof(int));
+    
+            var tipo_DescripcionParameter = tipo_Descripcion != null ?
+                new ObjectParameter("Tipo_Descripcion", tipo_Descripcion) :
+                new ObjectParameter("Tipo_Descripcion", typeof(string));
+    
+            var cate_Usuario_ModificacionParameter = cate_Usuario_Modificacion != null ?
+                new ObjectParameter("Cate_Usuario_Modificacion", cate_Usuario_Modificacion) :
+                new ObjectParameter("Cate_Usuario_Modificacion", typeof(string));
+    
+            var cate_Fecha_ModificacionParameter = cate_Fecha_Modificacion.HasValue ?
+                new ObjectParameter("Cate_Fecha_Modificacion", cate_Fecha_Modificacion) :
+                new ObjectParameter("Cate_Fecha_Modificacion", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbTipo_Pagos_Editar", tipo_IdParameter, tipo_DescripcionParameter, cate_Usuario_ModificacionParameter, cate_Fecha_ModificacionParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbTipo_Pagos_Eliminar(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbTipo_Pagos_Eliminar", idParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbTipo_Pagos_Insertar(string descripcion, Nullable<int> creacion, Nullable<System.DateTime> fechaCreacion, Nullable<bool> estado)
+        {
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            var creacionParameter = creacion.HasValue ?
+                new ObjectParameter("Creacion", creacion) :
+                new ObjectParameter("Creacion", typeof(int));
+    
+            var fechaCreacionParameter = fechaCreacion.HasValue ?
+                new ObjectParameter("FechaCreacion", fechaCreacion) :
+                new ObjectParameter("FechaCreacion", typeof(System.DateTime));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbTipo_Pagos_Insertar", descripcionParameter, creacionParameter, fechaCreacionParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<Sp_tbTipo_Pagos_Select_Result> Sp_tbTipo_Pagos_Select()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_tbTipo_Pagos_Select_Result>("Sp_tbTipo_Pagos_Select");
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbClientes_Editar(Nullable<int> id, string nombre, string apellido, string identidad, string sexo, Nullable<int> telefono, Nullable<int> esta_Id, Nullable<System.DateTime> fecNacimiento, string muni_Id, Nullable<int> usuaModifica, Nullable<System.DateTime> fechaModifica, Nullable<bool> estado)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var apellidoParameter = apellido != null ?
+                new ObjectParameter("Apellido", apellido) :
+                new ObjectParameter("Apellido", typeof(string));
+    
+            var identidadParameter = identidad != null ?
+                new ObjectParameter("Identidad", identidad) :
+                new ObjectParameter("Identidad", typeof(string));
+    
+            var sexoParameter = sexo != null ?
+                new ObjectParameter("Sexo", sexo) :
+                new ObjectParameter("Sexo", typeof(string));
+    
+            var telefonoParameter = telefono.HasValue ?
+                new ObjectParameter("Telefono", telefono) :
+                new ObjectParameter("Telefono", typeof(int));
+    
+            var esta_IdParameter = esta_Id.HasValue ?
+                new ObjectParameter("Esta_Id", esta_Id) :
+                new ObjectParameter("Esta_Id", typeof(int));
+    
+            var fecNacimientoParameter = fecNacimiento.HasValue ?
+                new ObjectParameter("FecNacimiento", fecNacimiento) :
+                new ObjectParameter("FecNacimiento", typeof(System.DateTime));
+    
+            var muni_IdParameter = muni_Id != null ?
+                new ObjectParameter("Muni_Id", muni_Id) :
+                new ObjectParameter("Muni_Id", typeof(string));
+    
+            var usuaModificaParameter = usuaModifica.HasValue ?
+                new ObjectParameter("UsuaModifica", usuaModifica) :
+                new ObjectParameter("UsuaModifica", typeof(int));
+    
+            var fechaModificaParameter = fechaModifica.HasValue ?
+                new ObjectParameter("FechaModifica", fechaModifica) :
+                new ObjectParameter("FechaModifica", typeof(System.DateTime));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbClientes_Editar", idParameter, nombreParameter, apellidoParameter, identidadParameter, sexoParameter, telefonoParameter, esta_IdParameter, fecNacimientoParameter, muni_IdParameter, usuaModificaParameter, fechaModificaParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbClientes_Eliminar(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbClientes_Eliminar", idParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbClientes_Insertar(string nombre, string apellido, string identidad, string sexo, Nullable<int> telefono, Nullable<int> esta_Id, Nullable<System.DateTime> fecNacimiento, string muni_Id, Nullable<int> usuaCreacion, Nullable<System.DateTime> fechaCreacion, Nullable<int> usuaModifica, Nullable<System.DateTime> fechaModifica, Nullable<bool> estado)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var apellidoParameter = apellido != null ?
+                new ObjectParameter("Apellido", apellido) :
+                new ObjectParameter("Apellido", typeof(string));
+    
+            var identidadParameter = identidad != null ?
+                new ObjectParameter("Identidad", identidad) :
+                new ObjectParameter("Identidad", typeof(string));
+    
+            var sexoParameter = sexo != null ?
+                new ObjectParameter("Sexo", sexo) :
+                new ObjectParameter("Sexo", typeof(string));
+    
+            var telefonoParameter = telefono.HasValue ?
+                new ObjectParameter("Telefono", telefono) :
+                new ObjectParameter("Telefono", typeof(int));
+    
+            var esta_IdParameter = esta_Id.HasValue ?
+                new ObjectParameter("Esta_Id", esta_Id) :
+                new ObjectParameter("Esta_Id", typeof(int));
+    
+            var fecNacimientoParameter = fecNacimiento.HasValue ?
+                new ObjectParameter("FecNacimiento", fecNacimiento) :
+                new ObjectParameter("FecNacimiento", typeof(System.DateTime));
+    
+            var muni_IdParameter = muni_Id != null ?
+                new ObjectParameter("Muni_Id", muni_Id) :
+                new ObjectParameter("Muni_Id", typeof(string));
+    
+            var usuaCreacionParameter = usuaCreacion.HasValue ?
+                new ObjectParameter("UsuaCreacion", usuaCreacion) :
+                new ObjectParameter("UsuaCreacion", typeof(int));
+    
+            var fechaCreacionParameter = fechaCreacion.HasValue ?
+                new ObjectParameter("FechaCreacion", fechaCreacion) :
+                new ObjectParameter("FechaCreacion", typeof(System.DateTime));
+    
+            var usuaModificaParameter = usuaModifica.HasValue ?
+                new ObjectParameter("UsuaModifica", usuaModifica) :
+                new ObjectParameter("UsuaModifica", typeof(int));
+    
+            var fechaModificaParameter = fechaModifica.HasValue ?
+                new ObjectParameter("FechaModifica", fechaModifica) :
+                new ObjectParameter("FechaModifica", typeof(System.DateTime));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbClientes_Insertar", nombreParameter, apellidoParameter, identidadParameter, sexoParameter, telefonoParameter, esta_IdParameter, fecNacimientoParameter, muni_IdParameter, usuaCreacionParameter, fechaCreacionParameter, usuaModificaParameter, fechaModificaParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<Sp_tbClientes_Mostrar_Result> Sp_tbClientes_Mostrar()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_tbClientes_Mostrar_Result>("Sp_tbClientes_Mostrar");
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbEmpleados_Editar(Nullable<int> id, string nombre, string apellido, string identidad, string sexo, Nullable<int> telefono, Nullable<int> estadoCivilId, Nullable<System.DateTime> fechaNacimiento, string municipioId, Nullable<int> cargoId, Nullable<int> usuarioModificacion, Nullable<System.DateTime> fechaModificacion, Nullable<bool> estado)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var apellidoParameter = apellido != null ?
+                new ObjectParameter("Apellido", apellido) :
+                new ObjectParameter("Apellido", typeof(string));
+    
+            var identidadParameter = identidad != null ?
+                new ObjectParameter("Identidad", identidad) :
+                new ObjectParameter("Identidad", typeof(string));
+    
+            var sexoParameter = sexo != null ?
+                new ObjectParameter("Sexo", sexo) :
+                new ObjectParameter("Sexo", typeof(string));
+    
+            var telefonoParameter = telefono.HasValue ?
+                new ObjectParameter("Telefono", telefono) :
+                new ObjectParameter("Telefono", typeof(int));
+    
+            var estadoCivilIdParameter = estadoCivilId.HasValue ?
+                new ObjectParameter("EstadoCivilId", estadoCivilId) :
+                new ObjectParameter("EstadoCivilId", typeof(int));
+    
+            var fechaNacimientoParameter = fechaNacimiento.HasValue ?
+                new ObjectParameter("FechaNacimiento", fechaNacimiento) :
+                new ObjectParameter("FechaNacimiento", typeof(System.DateTime));
+    
+            var municipioIdParameter = municipioId != null ?
+                new ObjectParameter("MunicipioId", municipioId) :
+                new ObjectParameter("MunicipioId", typeof(string));
+    
+            var cargoIdParameter = cargoId.HasValue ?
+                new ObjectParameter("CargoId", cargoId) :
+                new ObjectParameter("CargoId", typeof(int));
+    
+            var usuarioModificacionParameter = usuarioModificacion.HasValue ?
+                new ObjectParameter("UsuarioModificacion", usuarioModificacion) :
+                new ObjectParameter("UsuarioModificacion", typeof(int));
+    
+            var fechaModificacionParameter = fechaModificacion.HasValue ?
+                new ObjectParameter("FechaModificacion", fechaModificacion) :
+                new ObjectParameter("FechaModificacion", typeof(System.DateTime));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbEmpleados_Editar", idParameter, nombreParameter, apellidoParameter, identidadParameter, sexoParameter, telefonoParameter, estadoCivilIdParameter, fechaNacimientoParameter, municipioIdParameter, cargoIdParameter, usuarioModificacionParameter, fechaModificacionParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbEmpleados_Eliminar(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbEmpleados_Eliminar", idParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbEmpleados_Insertar(string nombre, string apellido, string identidad, string sexo, Nullable<int> telefono, Nullable<int> estadoCivilId, Nullable<System.DateTime> fechaNacimiento, string municipioId, Nullable<int> cargoId, Nullable<int> usuarioCreacion, Nullable<System.DateTime> fechaCreacion, Nullable<bool> estado)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var apellidoParameter = apellido != null ?
+                new ObjectParameter("Apellido", apellido) :
+                new ObjectParameter("Apellido", typeof(string));
+    
+            var identidadParameter = identidad != null ?
+                new ObjectParameter("Identidad", identidad) :
+                new ObjectParameter("Identidad", typeof(string));
+    
+            var sexoParameter = sexo != null ?
+                new ObjectParameter("Sexo", sexo) :
+                new ObjectParameter("Sexo", typeof(string));
+    
+            var telefonoParameter = telefono.HasValue ?
+                new ObjectParameter("Telefono", telefono) :
+                new ObjectParameter("Telefono", typeof(int));
+    
+            var estadoCivilIdParameter = estadoCivilId.HasValue ?
+                new ObjectParameter("EstadoCivilId", estadoCivilId) :
+                new ObjectParameter("EstadoCivilId", typeof(int));
+    
+            var fechaNacimientoParameter = fechaNacimiento.HasValue ?
+                new ObjectParameter("FechaNacimiento", fechaNacimiento) :
+                new ObjectParameter("FechaNacimiento", typeof(System.DateTime));
+    
+            var municipioIdParameter = municipioId != null ?
+                new ObjectParameter("MunicipioId", municipioId) :
+                new ObjectParameter("MunicipioId", typeof(string));
+    
+            var cargoIdParameter = cargoId.HasValue ?
+                new ObjectParameter("CargoId", cargoId) :
+                new ObjectParameter("CargoId", typeof(int));
+    
+            var usuarioCreacionParameter = usuarioCreacion.HasValue ?
+                new ObjectParameter("UsuarioCreacion", usuarioCreacion) :
+                new ObjectParameter("UsuarioCreacion", typeof(int));
+    
+            var fechaCreacionParameter = fechaCreacion.HasValue ?
+                new ObjectParameter("FechaCreacion", fechaCreacion) :
+                new ObjectParameter("FechaCreacion", typeof(System.DateTime));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbEmpleados_Insertar", nombreParameter, apellidoParameter, identidadParameter, sexoParameter, telefonoParameter, estadoCivilIdParameter, fechaNacimientoParameter, municipioIdParameter, cargoIdParameter, usuarioCreacionParameter, fechaCreacionParameter, estadoParameter);
+        }
+    
+        public virtual ObjectResult<Sp_tbEmpleados_Mostrar_Result> Sp_tbEmpleados_Mostrar()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_tbEmpleados_Mostrar_Result>("Sp_tbEmpleados_Mostrar");
+        }
     }
 }

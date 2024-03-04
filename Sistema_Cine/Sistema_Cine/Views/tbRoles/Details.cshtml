@@ -8,60 +8,85 @@
 <h2>Details</h2>
 
 <div>
-    <div class="card-body" style="background-color: #f2f2f2;">
+    <h4>tbRoles</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Role_Descripcion)
+        </dt>
 
-        <h4>tbRoles</h4>
-        <hr />
-        <div class="row">
-            <div class="col" style="font-weight:700">
-                @Html.DisplayNameFor(model => model.Role_Descripcion)
-            </div>
+        <dd>
+            @Html.DisplayFor(model => model.Role_Descripcion)
+        </dd>
 
-            <div class="col" style="font-weight:700">
-                @Html.DisplayFor(model => model.Role_Descripcion)
-            </div>
+        <dt>
+            @Html.DisplayNameFor(model => model.Role_Creacion)
+        </dt>
 
-            <div class="col" style="font-weight:700">
-                @Html.DisplayNameFor(model => model.Role_Estado)
-            </div>
+        <dd>
+            @Html.DisplayFor(model => model.Role_Creacion)
+        </dd>
 
-            <div class="col" style="font-weight:700">
-                @Html.DisplayFor(model => model.Role_Estado)
-            </div>
+        <dt>
+            @Html.DisplayNameFor(model => model.Role_Fecha_Creacion)
+        </dt>
 
-        </div>
-    </div>
+        <dd>
+            @Html.DisplayFor(model => model.Role_Fecha_Creacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Role_Modifica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Role_Modifica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Role_Fecha_Modifica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Role_Fecha_Modifica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Role_Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Role_Estado)
+        </dd>
+
+    </dl>
 </div>
-<hr />
-<p style="background-color: #f2f2f2;">
+<p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Role_Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
-<hr />
-<h3>Tabla Detalle</h3>
-<br />
-<table class="table table-striped table-bordered table-hover dataTables-example" id="tablaOne">
-    <thead>
-        <tr>
-            <th>Acciones</th>
-            <th>Usuario</th>
-            <th>Fecha</th>
-
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">Creador</th>
-            <td>   @Html.DisplayFor(model => model.Role_Creacion)</td>
-            <td>  @Html.DisplayFor(model => model.Role_Fecha_Creacion)</td>
-
-        </tr>
-        <tr>
-            <th scope="row">Modificar</th>
-            <td> @Html.DisplayFor(model => model.Role_Modifica)</td>
-            <td>   @Html.DisplayFor(model => model.Role_Fecha_Modifica)</td>
-        </tr>
-    </tbody>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th >Acciones</th>
+      <th >Usuario</th>
+      <th >Fecha</th>
+    
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Creador</th>
+      <td></td>
+      <td></td>
+  
+    </tr>
+    <tr>
+      <th scope="row">Modificar</th>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
 
 

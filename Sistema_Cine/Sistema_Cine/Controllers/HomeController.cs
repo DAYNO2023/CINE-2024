@@ -43,14 +43,22 @@ namespace Sistema_Cine.Controllers
             }
         //return View();
     }
-         
-    
+        public JsonResult obtenerID(int tipoID)
+        {
+            var tipo = db.tbTipo_Pagos.Find(tipoID);
+            Session["idtipo"] = tipoID;
+
+
+            return Json(new { success = true, description = tipo.Tipo_Descripcion }, JsonRequestBehavior.AllowGet);
+
+        }
 
 
 
 
 
-    public ActionResult About()
+
+        public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 

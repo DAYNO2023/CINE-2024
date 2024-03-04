@@ -16,12 +16,12 @@ namespace Sistema_Cine.Models
 
     public class GenerosMeta
     {
-        [Display(Name = "Genero Id")]
+        [Display(Name = "Genero Id:")]
         public int Gene_Id { get; set; }
-        [Display(Name = "Genero")]
+        [Display(Name = "Genero :")]
         [Required(ErrorMessage = "El campos {0} es requerido")]
         public string Gene_Descripcion { get; set; }
-        [Display(Name = "Promocion")]
+        [Display(Name = "Promocion:")]
 
         public Nullable<int> Prom_Id { get; set; }
         [Display(Name = "User creacion:")]

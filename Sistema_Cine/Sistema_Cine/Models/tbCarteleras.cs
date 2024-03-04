@@ -31,6 +31,7 @@ namespace Sistema_Cine.Models
         public Nullable<System.DateTime> Cart_Fecha_Creacion { get; set; }
         public Nullable<int> Cart_Usuario_Modificacion { get; set; }
         public Nullable<System.DateTime> Cart_Fecha_Modificacion { get; set; }
+        public Nullable<bool> Cart_Estado { get; set; }
     
         public virtual tbEntradas tbEntradas { get; set; }
         public virtual tbGeneros tbGeneros { get; set; }

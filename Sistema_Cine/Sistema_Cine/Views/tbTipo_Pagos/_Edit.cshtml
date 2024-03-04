@@ -1,0 +1,38 @@
+﻿@model Sistema_Cine.Models.tbTipo_Pagos
+
+
+@using (Html.BeginForm("Edit", "tbTipo_Pagos"))
+{
+    @Html.AntiForgeryToken()
+     <div class="card">
+    <div class="card-body">
+    <div class="form-group">
+        <h4>Modificar Tipo Pagos</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Tipo_Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Tipo_Descripcion, htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-6">
+                @*<input type="text" name="" id="prueba" class="form-control" />*@
+                @Html.EditorFor(model => model.Tipo_Descripcion, new { htmlAttributes = new { @class = "form-control", id = "prueba" } })
+                @*@Html.ValidationMessageFor(model => model.Tipo_Descripcion, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-20">
+                <input type="submit" value="Modificar" class="btn btn-warning" />
+            </div>
+        </div>
+    </div>
+     </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

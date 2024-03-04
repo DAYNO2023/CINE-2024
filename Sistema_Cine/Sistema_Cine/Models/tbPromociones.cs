@@ -29,6 +29,7 @@ namespace Sistema_Cine.Models
         public Nullable<System.DateTime> Prom_Fecha_Creacion { get; set; }
         public Nullable<int> Prom_Usuario_Modificacion { get; set; }
         public Nullable<System.DateTime> Prom_Fecha_Modificacion { get; set; }
+        public Nullable<bool> Prom_Estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbCarteleras> tbCarteleras { get; set; }

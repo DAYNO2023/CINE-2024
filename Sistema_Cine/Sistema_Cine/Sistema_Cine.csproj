@@ -168,6 +168,7 @@
     <Compile Include="Models\PantallaRoles.cs" />
     <Compile Include="Models\Precios.cs" />
     <Compile Include="Models\Promociones.cs" />
+    <Compile Include="Models\Prueba.cs" />
     <Compile Include="Models\Roles.cs" />
     <Compile Include="Models\Salas.cs" />
     <Compile Include="Models\SistemaCines.Context.cs">
@@ -185,7 +186,58 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SistemaCines.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>SistemaCines.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>SistemaCines.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sp_tbButacas_Salas_Mostrar_Result.cs">
+      <DependentUpon>SistemaCines.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sp_tbCargos_Mostrar_Result.cs">
+      <DependentUpon>SistemaCines.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sp_tbCarteleras_Mostrar_Result.cs">
+      <DependentUpon>SistemaCines.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sp_tbClientes_Mostrar_Result.cs">
+      <DependentUpon>SistemaCines.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sp_tbEmpleados_Mostrar_Result.cs">
+      <DependentUpon>SistemaCines.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sp_tbEntradas_Mostrar_Result.cs">
+      <DependentUpon>SistemaCines.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sp_tbPantallas_Mostrar_Result.cs">
+      <DependentUpon>SistemaCines.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sp_tbPantalla_Roles_Mostrar_Result.cs">
+      <DependentUpon>SistemaCines.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sp_tbPrecios_Mostrar_Result.cs">
+      <DependentUpon>SistemaCines.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sp_tbPromociones_Mostrar_Result.cs">
+      <DependentUpon>SistemaCines.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sp_tbRoles_Mostrar_Result.cs">
+      <DependentUpon>SistemaCines.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sp_tbSalas_Mostrar_Result.cs">
+      <DependentUpon>SistemaCines.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sp_tbSucursales_Mostrar_Result.cs">
+      <DependentUpon>SistemaCines.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sp_tbTipo_Pagos_Select_Result.cs">
+      <DependentUpon>SistemaCines.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SP_tbUsuarios_InicioSesion_Result.cs">
+      <DependentUpon>SistemaCines.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sp_tbUsuarios_Mostrar_Result.cs">
       <DependentUpon>SistemaCines.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sucursales.cs" />
@@ -1227,7 +1279,6 @@
     <Content Include="Content\img\gallery\8s.jpg" />
     <Content Include="Content\img\gallery\9.jpg" />
     <Content Include="Content\img\gallery\9s.jpg" />
-    <Content Include="Content\img\gallery\CIne.jpg" />
     <Content Include="Content\img\gallery\exhibicion-sala-cine-sostenible.jpg" />
     <Content Include="Content\img\headphones.jpg" />
     <Content Include="Content\img\html_logo.png" />
@@ -1757,7 +1808,6 @@
     <Content Include="Models\SistemaCines.edmx.diagram">
       <DependentUpon>SistemaCines.edmx</DependentUpon>
     </Content>
-    <Content Include="Content\img\la imagen de fondo.webp" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
@@ -1783,59 +1833,71 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\tbGeneros\Create.cshtml" />
     <Content Include="Views\tbGeneros\Delete.cshtml" />
+    <Content Include="Views\tbGeneros\Details.cshtml" />
     <Content Include="Views\tbGeneros\Edit.cshtml" />
     <Content Include="Views\tbGeneros\Index.cshtml" />
     <Content Include="Views\tbButacas_Salas\Create.cshtml" />
     <Content Include="Views\tbButacas_Salas\Delete.cshtml" />
+    <Content Include="Views\tbButacas_Salas\Details.cshtml" />
     <Content Include="Views\tbButacas_Salas\Edit.cshtml" />
     <Content Include="Views\tbButacas_Salas\Index.cshtml" />
     <Content Include="Views\tbRoles\Create.cshtml" />
     <Content Include="Views\tbRoles\Delete.cshtml" />
+    <Content Include="Views\tbRoles\Details.cshtml" />
     <Content Include="Views\tbRoles\Edit.cshtml" />
     <Content Include="Views\tbRoles\Index.cshtml" />
     <Content Include="Views\tbPantallas\Create.cshtml" />
     <Content Include="Views\tbPantallas\Delete.cshtml" />
+    <Content Include="Views\tbPantallas\Details.cshtml" />
     <Content Include="Views\tbPantallas\Edit.cshtml" />
     <Content Include="Views\tbPantallas\Index.cshtml" />
     <Content Include="Views\tbPantalla_Roles\Create.cshtml" />
     <Content Include="Views\tbPantalla_Roles\Delete.cshtml" />
+    <Content Include="Views\tbPantalla_Roles\Details.cshtml" />
     <Content Include="Views\tbPantalla_Roles\Edit.cshtml" />
     <Content Include="Views\tbPantalla_Roles\Index.cshtml" />
     <Content Include="Views\tbCargos\Create.cshtml" />
     <Content Include="Views\tbCargos\Delete.cshtml" />
+    <Content Include="Views\tbCargos\Details.cshtml" />
     <Content Include="Views\tbCargos\Edit.cshtml" />
     <Content Include="Views\tbCargos\Index.cshtml" />
     <Content Include="Views\tbMunicipios\Create.cshtml" />
     <Content Include="Views\tbMunicipios\Delete.cshtml" />
+    <Content Include="Views\tbMunicipios\Details.cshtml" />
     <Content Include="Views\tbMunicipios\Edit.cshtml" />
     <Content Include="Views\tbMunicipios\Index.cshtml" />
     <Content Include="Views\tbPrecios\Create.cshtml" />
     <Content Include="Views\tbPrecios\Delete.cshtml" />
+    <Content Include="Views\tbPrecios\Details.cshtml" />
     <Content Include="Views\tbPrecios\Edit.cshtml" />
     <Content Include="Views\tbPromociones\Create.cshtml" />
     <Content Include="Views\tbPromociones\Delete.cshtml" />
+    <Content Include="Views\tbPromociones\Details.cshtml" />
     <Content Include="Views\tbPromociones\Edit.cshtml" />
     <Content Include="Views\tbSalas\Create.cshtml" />
     <Content Include="Views\tbSalas\Delete.cshtml" />
+    <Content Include="Views\tbSalas\Details.cshtml" />
     <Content Include="Views\tbSalas\Edit.cshtml" />
     <Content Include="Views\tbTipo_Pagos\Create.cshtml" />
     <Content Include="Views\tbTipo_Pagos\Delete.cshtml" />
+    <Content Include="Views\tbTipo_Pagos\Details.cshtml" />
     <Content Include="Views\tbTipo_Pagos\Edit.cshtml" />
     <Content Include="Views\tbClientes\Create.cshtml" />
     <Content Include="Views\tbClientes\Delete.cshtml" />
+    <Content Include="Views\tbClientes\Details.cshtml" />
     <Content Include="Views\tbClientes\Edit.cshtml" />
     <Content Include="Views\tbEmpleados\Create.cshtml" />
     <Content Include="Views\tbEmpleados\Delete.cshtml" />
+    <Content Include="Views\tbEmpleados\Details.cshtml" />
     <Content Include="Views\tbEmpleados\Edit.cshtml" />
-    <Content Include="Views\tbSucursales\Create.cshtml" />
-    <Content Include="Views\tbSucursales\Delete.cshtml" />
-    <Content Include="Views\tbSucursales\Edit.cshtml" />
     <Content Include="Views\tbEntradas\Create.cshtml" />
     <Content Include="Views\tbEntradas\Delete.cshtml" />
+    <Content Include="Views\tbEntradas\Details.cshtml" />
     <Content Include="Views\tbEntradas\Edit.cshtml" />
     <Content Include="Views\tbEntradas\Index.cshtml" />
     <Content Include="Views\tbCarteleras\Create.cshtml" />
     <Content Include="Views\tbCarteleras\Delete.cshtml" />
+    <Content Include="Views\tbCarteleras\Details.cshtml" />
     <Content Include="Views\tbCarteleras\Edit.cshtml" />
     <Content Include="Views\tbCarteleras\Index.cshtml" />
     <Content Include="Views\tbFacturas_Encabezados\Create.cshtml" />
@@ -1850,6 +1912,7 @@
     <Content Include="Views\tbFacturas_Detalles\Index.cshtml" />
     <Content Include="Views\tbDepartamentos\Create.cshtml" />
     <Content Include="Views\tbDepartamentos\Delete.cshtml" />
+    <Content Include="Views\tbDepartamentos\Details.cshtml" />
     <Content Include="Views\tbDepartamentos\Edit.cshtml" />
     <Content Include="Views\tbDepartamentos\Index.cshtml" />
     <Content Include="Views\tbCargos\_Create.cshtml" />
@@ -1870,30 +1933,19 @@
     <Content Include="Views\tbSalas\Index.cshtml" />
     <Content Include="Views\tbSalas\_Create.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\tbSucursales\Index.cshtml" />
     <Content Include="Views\tbTipo_Pagos\Index.cshtml" />
     <Content Include="Views\tbTipo_Pagos\_Create.cshtml" />
     <Content Include="Views\tbClientes\Index.cshtml" />
     <Content Include="Views\tbEmpleados\Index.cshtml" />
     <Content Include="Views\tbMunicipios\_Create.cshtml" />
+    <Content Include="Views\tbEntradas\_Create.cshtml" />
+    <Content Include="Views\tbTipo_Pagos\_Edit.cshtml" />
     <Content Include="Views\tbUsuarios\Details.cshtml" />
-    <Content Include="Views\tbTipo_Pagos\Details.cshtml" />
+    <Content Include="Views\tbSucursales\Create.cshtml" />
+    <Content Include="Views\tbSucursales\Delete.cshtml" />
     <Content Include="Views\tbSucursales\Details.cshtml" />
-    <Content Include="Views\tbSalas\Details.cshtml" />
-    <Content Include="Views\tbRoles\Details.cshtml" />
-    <Content Include="Views\tbPromociones\Details.cshtml" />
-    <Content Include="Views\tbPrecios\Details.cshtml" />
-    <Content Include="Views\tbPantallas\Details.cshtml" />
-    <Content Include="Views\tbPantalla_Roles\Details.cshtml" />
-    <Content Include="Views\tbMunicipios\Details.cshtml" />
-    <Content Include="Views\tbGeneros\Details.cshtml" />
-    <Content Include="Views\tbEntradas\Details.cshtml" />
-    <Content Include="Views\tbEmpleados\Details.cshtml" />
-    <Content Include="Views\tbDepartamentos\Details.cshtml" />
-    <Content Include="Views\tbClientes\Details.cshtml" />
-    <Content Include="Views\tbCarteleras\Details.cshtml" />
-    <Content Include="Views\tbCargos\Details.cshtml" />
-    <Content Include="Views\tbButacas_Salas\Details.cshtml" />
+    <Content Include="Views\tbSucursales\Edit.cshtml" />
+    <Content Include="Views\tbSucursales\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

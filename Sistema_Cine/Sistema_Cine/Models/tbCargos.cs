@@ -26,6 +26,7 @@ namespace Sistema_Cine.Models
         public Nullable<System.DateTime> Carg_Fecha_Creacion { get; set; }
         public Nullable<int> Carg_Usuario_Modificacion { get; set; }
         public Nullable<System.DateTime> Carg_Fecha_Modificacion { get; set; }
+        public Nullable<bool> Carg_Estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbEmpleados> tbEmpleados { get; set; }

@@ -22,7 +22,7 @@ namespace Sistema_Cine.Models
         [Display(Name = "Municipio")]
         [Required(ErrorMessage = "El campos {0} es requerido")]
         public string Muni_Descripcion { get; set; }
-        [Display(Name = "Departamento")]
+        [Display(Name = "Departemento")]
         [Required(ErrorMessage = "El campos {0} es requerido")]
         public string Depa_Codigo { get; set; }
         public Nullable<int> Muni_Usuario_Creacion { get; set; }

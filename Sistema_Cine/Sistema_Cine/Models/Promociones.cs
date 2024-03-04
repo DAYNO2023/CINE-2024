@@ -17,12 +17,12 @@ namespace Sistema_Cine.Models
 
     public class PromocionesMEta
     {
-        [Display(Name = "Promociones Id")]
+        [Display(Name = "Promociones Id:")]
         public int Prom_Id { get; set; }
-        [Display(Name = "Descuentos")]
+        [Display(Name = "Descuentos:")]
         [Required(ErrorMessage = "El campos {0} es requerido")]
         public Nullable<decimal> Prom_Descuento { get; set; }
-        [Display(Name = "Descripcion")]
+        [Display(Name = "Descripcion:")]
         [Required(ErrorMessage = "El campos {0} es requerido")]
         public string Prom_Descripcion { get; set; }
         [Display(Name = "Precio Id:")]

@@ -5,74 +5,69 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="card-body"></div>
 
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    <div class="card-body"></div>
-     <div class="card">
 
-    <div class="card-body">
-        <div class="container">
-
-
-            <h2 style="text-align:center">tbSucursales</h2>
-            <div style="text-align:right">
-                @Html.ActionLink("Regresar", "Index")
+    <div class="card">
+        <div class="card-header">
+            <h2 style="text-align:center">Nueva Sucursal</h2>
+            <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-primary" onclick="window.location.href='@Url.Action("Index")'">
+                    Regresar
+                </button>
             </div>
-            <br />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="row gx-5">
-                @Html.LabelFor(model => model.Sucu_Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-3 p-3 ">
-                    @Html.EditorFor(model => model.Sucu_Descripcion, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Sucu_Descripcion, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="card-body">
+            <div class="container">
+
+                <br />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Sucu_Descripcion, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Sucu_Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Sucu_Descripcion, "", new { @class = "text-danger" })
+
+                        @Html.LabelFor(model => model.Sucu_Direccion, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Sucu_Direccion, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Sucu_Direccion, "", new { @class = "text-danger" })
+
+                        @Html.LabelFor(model => model.Muni_Codigo, "Muni_Codigo", htmlAttributes: new { @class = "control-label" })
+                        @Html.DropDownList("Muni_Codigo", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Muni_Codigo, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Muni_Codigo, "Muni_Codigo", htmlAttributes: new { @class = "control-label" })
+                        @Html.DropDownList("Muni_Codigo", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Muni_Codigo, "", new { @class = "text-danger" })
+
+                        @Html.LabelFor(model => model.Cart_Id, "Cart_Id", htmlAttributes: new { @class = "control-label" })
+                        @Html.DropDownList("Cart_Id", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Cart_Id, "", new { @class = "text-danger" })
+
+                        @Html.LabelFor(model => model.Entra_Id, "Entra_Id", htmlAttributes: new { @class = "control-label" })
+                        @Html.DropDownList("Entra_Id", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Entra_Id, "", new { @class = "text-danger" })
+
+                    </div>
                 </div>
                 <hr />
-                @Html.LabelFor(model => model.Sucu_Direccion, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-3 p-3">
-                    @Html.EditorFor(model => model.Sucu_Direccion, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Sucu_Direccion, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <br />
-            <div class="row gx-5 ">
-                @Html.LabelFor(model => model.Muni_Codigo, "Muni_Codigo", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-3 p-3 ">
-                    @Html.DropDownList("Muni_Codigo", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Muni_Codigo, "", new { @class = "text-danger" })
-                </div>
-                <hr />
-                @Html.LabelFor(model => model.Cart_Id, "Cart_Id", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-auto ">
-                    @Html.DropDownList("Cart_Id", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Cart_Id, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <br />
-            <div class="row gx-5 ">
-                @Html.LabelFor(model => model.Entra_Id, "Entra_Id", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-3 p-3 ">
-                    @Html.DropDownList("Entra_Id", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Entra_Id, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <br />
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-20">
-                    <input type="submit" style="text-align:center" value="Crear" class="btn btn-primary" />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-20">
+                        <input type="submit" value="Crear" class="btn btn-primary" />
+                    </div>
                 </div>
             </div>
         </div>
-     </div>
     </div>
-    
 }
-
-
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+

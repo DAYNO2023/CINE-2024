@@ -24,6 +24,7 @@ namespace Sistema_Cine.Models
         public Nullable<System.DateTime> Sucu_Fecha_Creacion { get; set; }
         public Nullable<int> Sucu_Usuario_Modificacion { get; set; }
         public Nullable<System.DateTime> Sucu_Fecha_Modificacion { get; set; }
+        public Nullable<bool> Cart_Estado { get; set; }
     
         public virtual tbCarteleras tbCarteleras { get; set; }
         public virtual tbEntradas tbEntradas { get; set; }

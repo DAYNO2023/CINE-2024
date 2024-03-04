@@ -8,59 +8,85 @@
 <h2>Details</h2>
 
 <div>
-    <div class="card-body" style="background-color: #f2f2f2;">
-        <h4>tbEntradas</h4>
-        <hr />
-        <div class="row g-2">
-            <div class="p-3">
-                @Html.DisplayNameFor(model => model.Entra_Cantidad)
-            </div>
+    <h4>tbEntradas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Entra_Cantidad)
+        </dt>
 
-            <div class="p-3">
-                @Html.DisplayFor(model => model.Entra_Cantidad)
-            </div>
+        <dd>
+            @Html.DisplayFor(model => model.Entra_Cantidad)
+        </dd>
 
-            <div class="p-3">
-                @Html.DisplayNameFor(model => model.tbSalas.Sala_Descripcion)
-            </div>
+        <dt>
+            @Html.DisplayNameFor(model => model.Entra_Usuario_Creacion)
+        </dt>
 
-            <div class="p-3">
-                @Html.DisplayFor(model => model.tbSalas.Sala_Descripcion)
-            </div>
+        <dd>
+            @Html.DisplayFor(model => model.Entra_Usuario_Creacion)
+        </dd>
 
-        </div>
-    </div>
+        <dt>
+            @Html.DisplayNameFor(model => model.Entra_Fecha_Creacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Entra_Fecha_Creacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Entra_Usuario_Modificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Entra_Usuario_Modificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Entra_Fecha_Modificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Entra_Fecha_Modificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbSalas.Sala_Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbSalas.Sala_Descripcion)
+        </dd>
+
+    </dl>
 </div>
-<hr />
-<p style="background-color: #f2f2f2;">
+<p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Entra_Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
-<hr />
-<h3>Tabla Detalle</h3>
-<br />
-<table class="table table-striped table-bordered table-hover dataTables-example" id="tablaOne">
-    <thead>
-        <tr>
-            <th>Acciones</th>
-            <th>Usuario</th>
-            <th>Fecha</th>
-
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">Creador</th>
-            <td> @Html.DisplayFor(model => model.Entra_Usuario_Creacion)</td>
-            <td> @Html.DisplayFor(model => model.Entra_Fecha_Creacion)</td>
-
-        </tr>
-        <tr>
-            <th scope="row">Modificar</th>
-            <td>  @Html.DisplayFor(model => model.Entra_Usuario_Modificacion)</td>
-            <td> @Html.DisplayFor(model => model.Entra_Fecha_Modificacion)</td>
-        </tr>
-    </tbody>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th >Acciones</th>
+      <th >Usuario</th>
+      <th >Fecha</th>
+    
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Creador</th>
+      <td></td>
+      <td></td>
+  
+    </tr>
+    <tr>
+      <th scope="row">Modificar</th>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
 
 

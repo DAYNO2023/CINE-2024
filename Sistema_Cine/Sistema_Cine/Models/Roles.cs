@@ -18,7 +18,7 @@ namespace Sistema_Cine.Models
 
         [Display(Name = "Role_ID")]
         public int Role_Id { get; set; }
-        [Display(Name = "Descripcion")]
+        [Display(Name = "Tipo de Rol")]
         public string Role_Descripcion { get; set; }
         [Display(Name = "User Creacion")]
         public Nullable<int> Role_Creacion { get; set; }

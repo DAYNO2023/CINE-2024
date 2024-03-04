@@ -8,71 +8,93 @@
 <h2>Details</h2>
 
 <div>
-    <div class="card-body" style="background-color: #f2f2f2;">
-        <h4>tbPromociones</h4>
-        <hr />
-        <div class="row g-2">
-            <div class="p-3">
-                @Html.DisplayNameFor(model => model.Prom_Descuento)
-            </div>
+    <h4>tbPromociones</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Prom_Descuento)
+        </dt>
 
-            <div class="p-3">
-                @Html.DisplayFor(model => model.Prom_Descuento)
-            </div>
+        <dd>
+            @Html.DisplayFor(model => model.Prom_Descuento)
+        </dd>
 
-            <div class="p-3">
-                @Html.DisplayNameFor(model => model.Prom_Descripcion)
-            </div>
+        <dt>
+            @Html.DisplayNameFor(model => model.Prom_Descripcion)
+        </dt>
 
-            <div class="p-3">
-                @Html.DisplayFor(model => model.Prom_Descripcion)
-            </div>
+        <dd>
+            @Html.DisplayFor(model => model.Prom_Descripcion)
+        </dd>
 
-            <div class="p-3">
-                @Html.DisplayNameFor(model => model.Prom_Usuario_Creacion)
-            </div>
+        <dt>
+            @Html.DisplayNameFor(model => model.Prom_Usuario_Creacion)
+        </dt>
 
-            <div class="p-3"> 
-                @Html.DisplayNameFor(model => model.tbPrecios.Prec_Id)
-            </div>
+        <dd>
+            @Html.DisplayFor(model => model.Prom_Usuario_Creacion)
+        </dd>
 
-            <div class="p-3">
-                @Html.DisplayFor(model => model.tbPrecios.Prec_Id)
-            </div>
+        <dt>
+            @Html.DisplayNameFor(model => model.Prom_Fecha_Creacion)
+        </dt>
 
-        </div>
-    </div>
+        <dd>
+            @Html.DisplayFor(model => model.Prom_Fecha_Creacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prom_Usuario_Modificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prom_Usuario_Modificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prom_Fecha_Modificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prom_Fecha_Modificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbPrecios.Prec_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbPrecios.Prec_Id)
+        </dd>
+
+    </dl>
 </div>
-<hr />
-<p style="background-color: #f2f2f2;">
+<p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Prom_Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
-<hr />
-<h3>Tabla Detalle</h3>
-<br />
-<table class="table table-striped table-bordered table-hover dataTables-example" id="tablaOne">
-    <thead>
-        <tr>
-            <th>Acciones</th>
-            <th>Usuario</th>
-            <th>Fecha</th>
-
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">Creador</th>
-            <td>@Html.DisplayFor(model => model.Prom_Usuario_Creacion)</td>
-            <td>@Html.DisplayFor(model => model.Prom_Fecha_Creacion)</td>
-
-        </tr>
-        <tr>
-            <th scope="row">Modificar</th>
-            <td>@Html.DisplayFor(model => model.Prom_Usuario_Modificacion)</td>
-            <td>@Html.DisplayFor(model => model.Prom_Fecha_Modificacion)</td>
-        </tr>
-    </tbody>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th >Acciones</th>
+      <th >Usuario</th>
+      <th >Fecha</th>
+    
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Creador</th>
+      <td></td>
+      <td></td>
+  
+    </tr>
+    <tr>
+      <th scope="row">Modificar</th>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
 
 

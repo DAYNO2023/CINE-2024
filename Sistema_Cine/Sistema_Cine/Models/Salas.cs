@@ -15,12 +15,12 @@ namespace Sistema_Cine.Models
 
     public class SalasMEta
     {
-        [Display(Name = "Salas Id")]
+        [Display(Name = "Salas Id:")]
         public int Sala_Id { get; set; }
-        [Display(Name = "Descripcion")]
+        [Display(Name = "Descripcion:")]
         [Required(ErrorMessage = "El campos {0} es requerido")]
         public string Sala_Descripcion { get; set; }
-        [Display(Name = "Butacas")]
+        [Display(Name = "Butacas:")]
         public Nullable<int> Buta_Id { get; set; }
         [Display(Name = "User creacion:")]
         public Nullable<int> Cate_Usuario_Creacion { get; set; }

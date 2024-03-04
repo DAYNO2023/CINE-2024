@@ -18,9 +18,9 @@ namespace Sistema_Cine.Models
 
 
 
-        [Display(Name = "TiposdePagoId")]
+        [Display(Name = "Tipos de Pago Id:")]
         public int Tipo_Id { get; set; }
-        [Display(Name = "Descripcion")]
+        [Display(Name = "Descripcion :")]
         [Required(ErrorMessage = "El campos {0} es requerido")]
         public string Tipo_Descripcion { get; set; }
         [Display(Name = "User Creacion :")]

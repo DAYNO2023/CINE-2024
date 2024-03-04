@@ -8,59 +8,85 @@
 <h2>Details</h2>
 
 <div>
-    <div class="card-body" style="background-color: #f2f2f2;">
-        <h4>tbSalas</h4>
-        <hr />
-        <div class="row gy-5">
-            <div class="col-2 ">
-                @Html.DisplayNameFor(model => model.Sala_Descripcion)
-            </div>
+    <h4>tbSalas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Sala_Descripcion)
+        </dt>
 
-            <div class="col-2 ">
-                @Html.DisplayFor(model => model.Sala_Descripcion)
-            </div>
+        <dd>
+            @Html.DisplayFor(model => model.Sala_Descripcion)
+        </dd>
 
-            <div class="col-2">
-                @Html.DisplayNameFor(model => model.tbButacas_Salas.Buta_Descripcion)
-            </div>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cate_Usuario_Creacion)
+        </dt>
 
-            <div class="col-2 ">
-                @Html.DisplayFor(model => model.tbButacas_Salas.Buta_Descripcion)
-            </div>
+        <dd>
+            @Html.DisplayFor(model => model.Cate_Usuario_Creacion)
+        </dd>
 
-        </div>
-    </div>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cate_Fecha_Creacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cate_Fecha_Creacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cate_Usuario_Modificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cate_Usuario_Modificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cate_Fecha_Modificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cate_Fecha_Modificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbButacas_Salas.Buta_Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbButacas_Salas.Buta_Descripcion)
+        </dd>
+
+    </dl>
 </div>
-<hr />
-<p style="background-color: #f2f2f2;">
+<p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Sala_Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
-<hr />
-<h3>Tabla Detalle</h3>
-<br />
-<table class="table table-striped table-bordered table-hover dataTables-example" id="tablaOne">
-    <thead>
-        <tr>
-            <th>Acciones</th>
-            <th>Usuario</th>
-            <th>Fecha</th>
-
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">Creador</th>
-            <td> @Html.DisplayFor(model => model.Cate_Usuario_Creacion)</td>
-            <td>@Html.DisplayFor(model => model.Cate_Fecha_Creacion)</td>
-
-        </tr>
-        <tr>
-            <th scope="row">Modificar</th>
-            <td>@Html.DisplayFor(model => model.Cate_Usuario_Modificacion)</td>
-            <td> @Html.DisplayFor(model => model.Cate_Fecha_Modificacion)</td>
-        </tr>
-    </tbody>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th >Acciones</th>
+      <th >Usuario</th>
+      <th >Fecha</th>
+    
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Creador</th>
+      <td></td>
+      <td></td>
+  
+    </tr>
+    <tr>
+      <th scope="row">Modificar</th>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
 
 

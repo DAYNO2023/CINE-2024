@@ -62,6 +62,7 @@
     <EntitySetMapping Name="tbCarteleras">
       <EntityTypeMapping TypeName="dbSsitemascinesModel.tbCarteleras">
         <MappingFragment StoreEntitySet="tbCarteleras">
+          <ScalarProperty Name="Cart_Estado" ColumnName="Cart_Estado" />
           <ScalarProperty Name="Cart_Id" ColumnName="Cart_Id" />
           <ScalarProperty Name="Cart_Descripcion" ColumnName="Cart_Descripcion" />
           <ScalarProperty Name="Gene_Id" ColumnName="Gene_Id" />
@@ -78,6 +79,7 @@
     <EntitySetMapping Name="tbEntradas">
       <EntityTypeMapping TypeName="dbSsitemascinesModel.tbEntradas">
         <MappingFragment StoreEntitySet="tbEntradas">
+          <ScalarProperty Name="Entra_Estado" ColumnName="Entra_Estado" />
           <ScalarProperty Name="Entra_Id" ColumnName="Entra_Id" />
           <ScalarProperty Name="Entra_Cantidad" ColumnName="Entra_Cantidad" />
           <ScalarProperty Name="Sala_Id" ColumnName="Sala_Id" />
@@ -91,6 +93,7 @@
     <EntitySetMapping Name="tbSucursales">
       <EntityTypeMapping TypeName="dbSsitemascinesModel.tbSucursales">
         <MappingFragment StoreEntitySet="tbSucursales">
+          <ScalarProperty Name="Cart_Estado" ColumnName="Cart_Estado" />
           <ScalarProperty Name="Sucu_Id" ColumnName="Sucu_Id" />
           <ScalarProperty Name="Sucu_Descripcion" ColumnName="Sucu_Descripcion" />
           <ScalarProperty Name="Sucu_Direccion" ColumnName="Sucu_Direccion" />
@@ -149,6 +152,7 @@
     <EntitySetMapping Name="tbButacas_Salas">
       <EntityTypeMapping TypeName="dbSsitemascinesModel.tbButacas_Salas">
         <MappingFragment StoreEntitySet="tbButacas_Salas">
+          <ScalarProperty Name="Buta_Estado" ColumnName="Buta_Estado" />
           <ScalarProperty Name="Buta_Id" ColumnName="Buta_Id" />
           <ScalarProperty Name="Buta_Descripcion" ColumnName="Buta_Descripcion" />
           <ScalarProperty Name="Buta_Usuario_Creacion" ColumnName="Buta_Usuario_Creacion" />
@@ -161,6 +165,7 @@
     <EntitySetMapping Name="tbCargos">
       <EntityTypeMapping TypeName="dbSsitemascinesModel.tbCargos">
         <MappingFragment StoreEntitySet="tbCargos">
+          <ScalarProperty Name="Carg_Estado" ColumnName="Carg_Estado" />
           <ScalarProperty Name="Carg_Id" ColumnName="Carg_Id" />
           <ScalarProperty Name="Carg_Descripcion" ColumnName="Carg_Descripcion" />
           <ScalarProperty Name="Carg_Usuario_Creacion" ColumnName="Carg_Usuario_Creacion" />
@@ -185,6 +190,7 @@
     <EntitySetMapping Name="tbEstado_Civil">
       <EntityTypeMapping TypeName="dbSsitemascinesModel.tbEstado_Civil">
         <MappingFragment StoreEntitySet="tbEstado_Civil">
+          <ScalarProperty Name="Esta_Estado" ColumnName="Esta_Estado" />
           <ScalarProperty Name="Esta_Id" ColumnName="Esta_Id" />
           <ScalarProperty Name="Esta_Descripcion" ColumnName="Esta_Descripcion" />
           <ScalarProperty Name="Esta_Usuario_Creacion" ColumnName="Esta_Usuario_Creacion" />
@@ -197,6 +203,7 @@
     <EntitySetMapping Name="tbGeneros">
       <EntityTypeMapping TypeName="dbSsitemascinesModel.tbGeneros">
         <MappingFragment StoreEntitySet="tbGeneros">
+          <ScalarProperty Name="Gene_Estado" ColumnName="Gene_Estado" />
           <ScalarProperty Name="Gene_Id" ColumnName="Gene_Id" />
           <ScalarProperty Name="Gene_Descripcion" ColumnName="Gene_Descripcion" />
           <ScalarProperty Name="Prom_Id" ColumnName="Prom_Id" />
@@ -223,6 +230,7 @@
     <EntitySetMapping Name="tbPrecios">
       <EntityTypeMapping TypeName="dbSsitemascinesModel.tbPrecios">
         <MappingFragment StoreEntitySet="tbPrecios">
+          <ScalarProperty Name="Prec_Estado" ColumnName="Prec_Estado" />
           <ScalarProperty Name="Prec_Id" ColumnName="Prec_Id" />
           <ScalarProperty Name="Prec_Descripcion" ColumnName="Prec_Descripcion" />
           <ScalarProperty Name="Prec_Usuario_Creacion" ColumnName="Prec_Usuario_Creacion" />
@@ -235,6 +243,7 @@
     <EntitySetMapping Name="tbPromociones">
       <EntityTypeMapping TypeName="dbSsitemascinesModel.tbPromociones">
         <MappingFragment StoreEntitySet="tbPromociones">
+          <ScalarProperty Name="Prom_Estado" ColumnName="Prom_Estado" />
           <ScalarProperty Name="Prom_Id" ColumnName="Prom_Id" />
           <ScalarProperty Name="Prom_Descuento" ColumnName="Prom_Descuento" />
           <ScalarProperty Name="Prom_Descripcion" ColumnName="Prom_Descripcion" />
@@ -249,6 +258,7 @@
     <EntitySetMapping Name="tbSalas">
       <EntityTypeMapping TypeName="dbSsitemascinesModel.tbSalas">
         <MappingFragment StoreEntitySet="tbSalas">
+          <ScalarProperty Name="Cate_Estado" ColumnName="Cate_Estado" />
           <ScalarProperty Name="Sala_Id" ColumnName="Sala_Id" />
           <ScalarProperty Name="Sala_Descripcion" ColumnName="Sala_Descripcion" />
           <ScalarProperty Name="Buta_Id" ColumnName="Buta_Id" />
@@ -262,6 +272,7 @@
     <EntitySetMapping Name="tbTipo_Pagos">
       <EntityTypeMapping TypeName="dbSsitemascinesModel.tbTipo_Pagos">
         <MappingFragment StoreEntitySet="tbTipo_Pagos">
+          <ScalarProperty Name="Tipo_Estado" ColumnName="Tipo_Estado" />
           <ScalarProperty Name="Tipo_Id" ColumnName="Tipo_Id" />
           <ScalarProperty Name="Tipo_Descripcion" ColumnName="Tipo_Descripcion" />
           <ScalarProperty Name="Cate_Usuario_Creacion" ColumnName="Cate_Usuario_Creacion" />
@@ -320,6 +331,298 @@
           <ScalarProperty Name="Usua_Contraseña" ColumnName="Usua_Contraseña" />
           <ScalarProperty Name="Empl_Empleado" ColumnName="Empl_Empleado" />
           <ScalarProperty Name="Usua_Administrador" ColumnName="Usua_Administrador" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_tbPantalla_Roles_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPantalla_Roles_Editar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbPantalla_Roles_Eliminar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPantalla_Roles_Eliminar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbPantalla_Roles_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPantalla_Roles_Insertar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbPantalla_Roles_Mostrar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPantalla_Roles_Mostrar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbSsitemascinesModel.Sp_tbPantalla_Roles_Mostrar_Result">
+          <ScalarProperty Name="Paro_Id" ColumnName="Paro_Id" />
+          <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+          <ScalarProperty Name="Pant_Id" ColumnName="Pant_Id" />
+          <ScalarProperty Name="Pant_Creacion" ColumnName="Pant_Creacion" />
+          <ScalarProperty Name="Pant_Fecha_Creacion" ColumnName="Pant_Fecha_Creacion" />
+          <ScalarProperty Name="Pant_Modifica" ColumnName="Pant_Modifica" />
+          <ScalarProperty Name="Pant_Fecha_Modifica" ColumnName="Pant_Fecha_Modifica" />
+          <ScalarProperty Name="Pant_Estado" ColumnName="Pant_Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_tbPantallas_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPantallas_Editar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbPantallas_Eliminar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPantallas_Eliminar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbPantallas_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPantallas_Insertar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbPantallas_Mostrar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPantallas_Mostrar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbSsitemascinesModel.Sp_tbPantallas_Mostrar_Result">
+          <ScalarProperty Name="Pant_Id" ColumnName="Pant_Id" />
+          <ScalarProperty Name="Pant_Descripcion" ColumnName="Pant_Descripcion" />
+          <ScalarProperty Name="Pant_Identificador" ColumnName="Pant_Identificador" />
+          <ScalarProperty Name="Pant_Creacion" ColumnName="Pant_Creacion" />
+          <ScalarProperty Name="Pant_Fecha_Creacion" ColumnName="Pant_Fecha_Creacion" />
+          <ScalarProperty Name="Pant_Modifica" ColumnName="Pant_Modifica" />
+          <ScalarProperty Name="Pant_Fecha_Modifica" ColumnName="Pant_Fecha_Modifica" />
+          <ScalarProperty Name="Pant_Estado" ColumnName="Pant_Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_tbRoles_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbRoles_Editar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbRoles_Eliminar" FunctionName="dbSsitemascinesModel.Store.Sp_tbRoles_Eliminar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbRoles_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbRoles_Insertar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbRoles_Mostrar" FunctionName="dbSsitemascinesModel.Store.Sp_tbRoles_Mostrar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbSsitemascinesModel.Sp_tbRoles_Mostrar_Result">
+          <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+          <ScalarProperty Name="Role_Descripcion" ColumnName="Role_Descripcion" />
+          <ScalarProperty Name="Role_Creacion" ColumnName="Role_Creacion" />
+          <ScalarProperty Name="Role_Fecha_Creacion" ColumnName="Role_Fecha_Creacion" />
+          <ScalarProperty Name="Role_Modifica" ColumnName="Role_Modifica" />
+          <ScalarProperty Name="Role_Fecha_Modifica" ColumnName="Role_Fecha_Modifica" />
+          <ScalarProperty Name="Role_Estado" ColumnName="Role_Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_tbUsuarios_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbUsuarios_Editar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbUsuarios_Eliminar" FunctionName="dbSsitemascinesModel.Store.Sp_tbUsuarios_Eliminar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbUsuarios_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbUsuarios_Insertar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbUsuarios_Mostrar" FunctionName="dbSsitemascinesModel.Store.Sp_tbUsuarios_Mostrar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbSsitemascinesModel.Sp_tbUsuarios_Mostrar_Result">
+          <ScalarProperty Name="Usua_Id" ColumnName="Usua_Id" />
+          <ScalarProperty Name="Usua_Nombre" ColumnName="Usua_Nombre" />
+          <ScalarProperty Name="Usua_Contraseña" ColumnName="Usua_Contraseña" />
+          <ScalarProperty Name="Empl_Id" ColumnName="Empl_Id" />
+          <ScalarProperty Name="Paro_Id" ColumnName="Paro_Id" />
+          <ScalarProperty Name="Usua_Creacion" ColumnName="Usua_Creacion" />
+          <ScalarProperty Name="Usua_Fecha_Creacion" ColumnName="Usua_Fecha_Creacion" />
+          <ScalarProperty Name="Usua_Modifica" ColumnName="Usua_Modifica" />
+          <ScalarProperty Name="Usua_Fecha_Modifica" ColumnName="Usua_Fecha_Modifica" />
+          <ScalarProperty Name="Usua_Estado" ColumnName="Usua_Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_tbCarteleras_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbCarteleras_Editar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbCarteleras_Eliminar" FunctionName="dbSsitemascinesModel.Store.Sp_tbCarteleras_Eliminar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbCarteleras_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbCarteleras_Insertar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbCarteleras_Mostrar" FunctionName="dbSsitemascinesModel.Store.Sp_tbCarteleras_Mostrar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbSsitemascinesModel.Sp_tbCarteleras_Mostrar_Result">
+          <ScalarProperty Name="Cart_Id" ColumnName="Cart_Id" />
+          <ScalarProperty Name="Cart_Descripcion" ColumnName="Cart_Descripcion" />
+          <ScalarProperty Name="Gene_Id" ColumnName="Gene_Id" />
+          <ScalarProperty Name="Prom_Id" ColumnName="Prom_Id" />
+          <ScalarProperty Name="Entra_Id" ColumnName="Entra_Id" />
+          <ScalarProperty Name="Cart_Fecha_Estreno" ColumnName="Cart_Fecha_Estreno" />
+          <ScalarProperty Name="Cart_Usuario_Creacion" ColumnName="Cart_Usuario_Creacion" />
+          <ScalarProperty Name="Cart_Fecha_Creacion" ColumnName="Cart_Fecha_Creacion" />
+          <ScalarProperty Name="Cart_Usuario_Modificacion" ColumnName="Cart_Usuario_Modificacion" />
+          <ScalarProperty Name="Cart_Fecha_Modificacion" ColumnName="Cart_Fecha_Modificacion" />
+          <ScalarProperty Name="Cart_Estado" ColumnName="Cart_Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_tbEntradas_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbEntradas_Editar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbEntradas_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbEntradas_Insertar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbEntradas_Mostrar" FunctionName="dbSsitemascinesModel.Store.Sp_tbEntradas_Mostrar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbSsitemascinesModel.Sp_tbEntradas_Mostrar_Result">
+          <ScalarProperty Name="Entra_Id" ColumnName="Entra_Id" />
+          <ScalarProperty Name="Entra_Cantidad" ColumnName="Entra_Cantidad" />
+          <ScalarProperty Name="Sala_Id" ColumnName="Sala_Id" />
+          <ScalarProperty Name="Entra_Usuario_Creacion" ColumnName="Entra_Usuario_Creacion" />
+          <ScalarProperty Name="Entra_Fecha_Creacion" ColumnName="Entra_Fecha_Creacion" />
+          <ScalarProperty Name="Entra_Usuario_Modificacion" ColumnName="Entra_Usuario_Modificacion" />
+          <ScalarProperty Name="Entra_Fecha_Modificacion" ColumnName="Entra_Fecha_Modificacion" />
+          <ScalarProperty Name="Entra_Estado" ColumnName="Entra_Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_tbSucursales_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbSucursales_Editar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbSucursales_Eliminar" FunctionName="dbSsitemascinesModel.Store.Sp_tbSucursales_Eliminar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbSucursales_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbSucursales_Insertar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbSucursales_Mostrar" FunctionName="dbSsitemascinesModel.Store.Sp_tbSucursales_Mostrar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbSsitemascinesModel.Sp_tbSucursales_Mostrar_Result">
+          <ScalarProperty Name="Sucu_Id" ColumnName="Sucu_Id" />
+          <ScalarProperty Name="Sucu_Descripcion" ColumnName="Sucu_Descripcion" />
+          <ScalarProperty Name="Sucu_Direccion" ColumnName="Sucu_Direccion" />
+          <ScalarProperty Name="Muni_Codigo" ColumnName="Muni_Codigo" />
+          <ScalarProperty Name="Sucu_Usuario_Creacion" ColumnName="Sucu_Usuario_Creacion" />
+          <ScalarProperty Name="Sucu_Fecha_Creacion" ColumnName="Sucu_Fecha_Creacion" />
+          <ScalarProperty Name="Sucu_Usuario_Modificacion" ColumnName="Sucu_Usuario_Modificacion" />
+          <ScalarProperty Name="Sucu_Fecha_Modificacion" ColumnName="Sucu_Fecha_Modificacion" />
+          <ScalarProperty Name="Cart_Estado" ColumnName="Cart_Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="dbSsitemascinesModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="dbSsitemascinesModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="dbSsitemascinesModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="dbSsitemascinesModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbSsitemascinesModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="dbSsitemascinesModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbSsitemascinesModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="dbSsitemascinesModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="dbSsitemascinesModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="Sp_tbButacas_Salas_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbButacas_Salas_Editar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbButacas_Salas_Eliminar" FunctionName="dbSsitemascinesModel.Store.Sp_tbButacas_Salas_Eliminar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbButacas_Salas_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbButacas_Salas_Insertar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbButacas_Salas_Mostrar" FunctionName="dbSsitemascinesModel.Store.Sp_tbButacas_Salas_Mostrar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbSsitemascinesModel.Sp_tbButacas_Salas_Mostrar_Result">
+          <ScalarProperty Name="Buta_Id" ColumnName="Buta_Id" />
+          <ScalarProperty Name="Buta_Descripcion" ColumnName="Buta_Descripcion" />
+          <ScalarProperty Name="Buta_Usuario_Creacion" ColumnName="Buta_Usuario_Creacion" />
+          <ScalarProperty Name="Buta_Fecha_Creacion" ColumnName="Buta_Fecha_Creacion" />
+          <ScalarProperty Name="Buta_Usuario_Modificacion" ColumnName="Buta_Usuario_Modificacion" />
+          <ScalarProperty Name="Buta_Fecha_Modificacion" ColumnName="Buta_Fecha_Modificacion" />
+          <ScalarProperty Name="Buta_Estado" ColumnName="Buta_Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_tbCargos_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbCargos_Editar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbCargos_Eliminar" FunctionName="dbSsitemascinesModel.Store.Sp_tbCargos_Eliminar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbCargos_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbCargos_Insertar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbCargos_Mostrar" FunctionName="dbSsitemascinesModel.Store.Sp_tbCargos_Mostrar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbSsitemascinesModel.Sp_tbCargos_Mostrar_Result">
+          <ScalarProperty Name="Carg_Id" ColumnName="Carg_Id" />
+          <ScalarProperty Name="Carg_Descripcion" ColumnName="Carg_Descripcion" />
+          <ScalarProperty Name="Carg_Usuario_Creacion" ColumnName="Carg_Usuario_Creacion" />
+          <ScalarProperty Name="Carg_Fecha_Creacion" ColumnName="Carg_Fecha_Creacion" />
+          <ScalarProperty Name="Carg_Usuario_Modificacion" ColumnName="Carg_Usuario_Modificacion" />
+          <ScalarProperty Name="Carg_Fecha_Modificacion" ColumnName="Carg_Fecha_Modificacion" />
+          <ScalarProperty Name="Carg_Estado" ColumnName="Carg_Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_tbPrecios_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPrecios_Editar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbPrecios_Eliminar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPrecios_Eliminar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbPrecios_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPrecios_Insertar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbPrecios_Mostrar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPrecios_Mostrar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbSsitemascinesModel.Sp_tbPrecios_Mostrar_Result">
+          <ScalarProperty Name="Prec_Id" ColumnName="Prec_Id" />
+          <ScalarProperty Name="Prec_Descripcion" ColumnName="Prec_Descripcion" />
+          <ScalarProperty Name="Prec_Usuario_Creacion" ColumnName="Prec_Usuario_Creacion" />
+          <ScalarProperty Name="Prec_Fecha_Creacion" ColumnName="Prec_Fecha_Creacion" />
+          <ScalarProperty Name="Prec_Usuario_Modificacion" ColumnName="Prec_Usuario_Modificacion" />
+          <ScalarProperty Name="Prec_Fecha_Modificacion" ColumnName="Prec_Fecha_Modificacion" />
+          <ScalarProperty Name="Prec_Estado" ColumnName="Prec_Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_tbPromociones_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPromociones_Editar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbPromociones_Eliminar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPromociones_Eliminar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbPromociones_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPromociones_Insertar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbPromociones_Mostrar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPromociones_Mostrar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbSsitemascinesModel.Sp_tbPromociones_Mostrar_Result">
+          <ScalarProperty Name="Prom_Id" ColumnName="Prom_Id" />
+          <ScalarProperty Name="Prom_Descuento" ColumnName="Prom_Descuento" />
+          <ScalarProperty Name="Prom_Descripcion" ColumnName="Prom_Descripcion" />
+          <ScalarProperty Name="Prec_Id" ColumnName="Prec_Id" />
+          <ScalarProperty Name="Prom_Usuario_Creacion" ColumnName="Prom_Usuario_Creacion" />
+          <ScalarProperty Name="Prom_Fecha_Creacion" ColumnName="Prom_Fecha_Creacion" />
+          <ScalarProperty Name="Prom_Usuario_Modificacion" ColumnName="Prom_Usuario_Modificacion" />
+          <ScalarProperty Name="Prom_Fecha_Modificacion" ColumnName="Prom_Fecha_Modificacion" />
+          <ScalarProperty Name="Prom_Estado" ColumnName="Prom_Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_tbSalas_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbSalas_Editar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbSalas_Eliminar" FunctionName="dbSsitemascinesModel.Store.Sp_tbSalas_Eliminar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbSalas_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbSalas_Insertar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbSalas_Mostrar" FunctionName="dbSsitemascinesModel.Store.Sp_tbSalas_Mostrar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbSsitemascinesModel.Sp_tbSalas_Mostrar_Result">
+          <ScalarProperty Name="Sala_Id" ColumnName="Sala_Id" />
+          <ScalarProperty Name="Sala_Descripcion" ColumnName="Sala_Descripcion" />
+          <ScalarProperty Name="Buta_Id" ColumnName="Buta_Id" />
+          <ScalarProperty Name="Cate_Usuario_Creacion" ColumnName="Cate_Usuario_Creacion" />
+          <ScalarProperty Name="Cate_Fecha_Creacion" ColumnName="Cate_Fecha_Creacion" />
+          <ScalarProperty Name="Cate_Usuario_Modificacion" ColumnName="Cate_Usuario_Modificacion" />
+          <ScalarProperty Name="Cate_Fecha_Modificacion" ColumnName="Cate_Fecha_Modificacion" />
+          <ScalarProperty Name="Cate_Estado" ColumnName="Cate_Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_tbTipo_Pagos_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbTipo_Pagos_Editar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbTipo_Pagos_Eliminar" FunctionName="dbSsitemascinesModel.Store.Sp_tbTipo_Pagos_Eliminar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbTipo_Pagos_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbTipo_Pagos_Insertar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbTipo_Pagos_Select" FunctionName="dbSsitemascinesModel.Store.Sp_tbTipo_Pagos_Select">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbSsitemascinesModel.Sp_tbTipo_Pagos_Select_Result">
+          <ScalarProperty Name="Tipo_Id" ColumnName="Tipo_Id" />
+          <ScalarProperty Name="Tipo_Descripcion" ColumnName="Tipo_Descripcion" />
+          <ScalarProperty Name="Cate_Usuario_Creacion" ColumnName="Cate_Usuario_Creacion" />
+          <ScalarProperty Name="Cate_Fecha_Creacion" ColumnName="Cate_Fecha_Creacion" />
+          <ScalarProperty Name="Cate_Usuario_Modificacion" ColumnName="Cate_Usuario_Modificacion" />
+          <ScalarProperty Name="Cate_Fecha_Modificacion" ColumnName="Cate_Fecha_Modificacion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_tbClientes_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbClientes_Editar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbClientes_Eliminar" FunctionName="dbSsitemascinesModel.Store.Sp_tbClientes_Eliminar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbClientes_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbClientes_Insertar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbClientes_Mostrar" FunctionName="dbSsitemascinesModel.Store.Sp_tbClientes_Mostrar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbSsitemascinesModel.Sp_tbClientes_Mostrar_Result">
+          <ScalarProperty Name="Clie_Id" ColumnName="Clie_Id" />
+          <ScalarProperty Name="Clie_Nombre" ColumnName="Clie_Nombre" />
+          <ScalarProperty Name="Clie_Apellido" ColumnName="Clie_Apellido" />
+          <ScalarProperty Name="Clie_Identidad" ColumnName="Clie_Identidad" />
+          <ScalarProperty Name="Clie_Sexo" ColumnName="Clie_Sexo" />
+          <ScalarProperty Name="Clie_Telefono" ColumnName="Clie_Telefono" />
+          <ScalarProperty Name="Esta_Id" ColumnName="Esta_Id" />
+          <ScalarProperty Name="Clie_FecNacimiento" ColumnName="Clie_FecNacimiento" />
+          <ScalarProperty Name="Muni_Id" ColumnName="Muni_Id" />
+          <ScalarProperty Name="Clie_Usua_Creacion" ColumnName="Clie_Usua_Creacion" />
+          <ScalarProperty Name="Clie_Fecha_Creacion" ColumnName="Clie_Fecha_Creacion" />
+          <ScalarProperty Name="Clie_Usua_Modifica" ColumnName="Clie_Usua_Modifica" />
+          <ScalarProperty Name="Clie_Fecha_Modifica" ColumnName="Clie_Fecha_Modifica" />
+          <ScalarProperty Name="Clie_Estado" ColumnName="Clie_Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_tbEmpleados_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbEmpleados_Editar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbEmpleados_Eliminar" FunctionName="dbSsitemascinesModel.Store.Sp_tbEmpleados_Eliminar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbEmpleados_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbEmpleados_Insertar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbEmpleados_Mostrar" FunctionName="dbSsitemascinesModel.Store.Sp_tbEmpleados_Mostrar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbSsitemascinesModel.Sp_tbEmpleados_Mostrar_Result">
+          <ScalarProperty Name="Empl_Id" ColumnName="Empl_Id" />
+          <ScalarProperty Name="Empl_Nombre" ColumnName="Empl_Nombre" />
+          <ScalarProperty Name="Empl_Apellido" ColumnName="Empl_Apellido" />
+          <ScalarProperty Name="Empl_Identidad" ColumnName="Empl_Identidad" />
+          <ScalarProperty Name="Empl_Sexo" ColumnName="Empl_Sexo" />
+          <ScalarProperty Name="Empl_Telefono" ColumnName="Empl_Telefono" />
+          <ScalarProperty Name="Esta_Id" ColumnName="Esta_Id" />
+          <ScalarProperty Name="Empl_FecNacimiento" ColumnName="Empl_FecNacimiento" />
+          <ScalarProperty Name="Muni_Id" ColumnName="Muni_Id" />
+          <ScalarProperty Name="Carg_Id" ColumnName="Carg_Id" />
+          <ScalarProperty Name="Empl_Usua_Creacion" ColumnName="Empl_Usua_Creacion" />
+          <ScalarProperty Name="Empl_Fecha_Creacion" ColumnName="Empl_Fecha_Creacion" />
+          <ScalarProperty Name="Empl_Usua_Modifica" ColumnName="Empl_Usua_Modifica" />
+          <ScalarProperty Name="Empl_Fecha_Modifica" ColumnName="Empl_Fecha_Modifica" />
+          <ScalarProperty Name="Empl_Estado" ColumnName="Empl_Estado" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

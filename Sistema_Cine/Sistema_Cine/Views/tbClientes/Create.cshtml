@@ -5,91 +5,72 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
-
+<div class="card-body"></div>
 
 @using (Html.BeginForm()) 
 {
-    @Html.AntiForgeryToken()
-     <div class="card">
-    <div class="card-body">
-    <div class="container">
-   
+     @Html.AntiForgeryToken()
+    <div class="card">
+        <div class="card-header">
+            <h2 style="text-align:center">Crear Cliente</h2>
+            <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-primary" onclick="window.location.href='@Url.Action("Index")'">
+                    Regresar
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="container">
+                <br />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Clie_Nombre, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Clie_Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Clie_Nombre, "", new { @class = "text-danger" })
 
-        <h2 style="text-align:center">Ingresar Clientes</h2><br />
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="row gx-5">
-            @Html.LabelFor(model => model.Clie_Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-3 p-3">
-                @Html.EditorFor(model => model.Clie_Nombre, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Clie_Nombre, "", new { @class = "text-danger" })
+                        @Html.LabelFor(model => model.Clie_Apellido, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Clie_Apellido, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Clie_Apellido, "", new { @class = "text-danger" })
+
+                        @Html.LabelFor(model => model.Clie_Identidad, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Clie_Identidad, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Clie_Identidad, "", new { @class = "text-danger" })
+
+                        @Html.LabelFor(model => model.Clie_Sexo, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Clie_Sexo, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Clie_Sexo, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Clie_Telefono, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Clie_Telefono, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Clie_Telefono, "", new { @class = "text-danger" })
+
+                        @Html.LabelFor(model => model.Esta_Id, "Esta_Id", htmlAttributes: new { @class = "control-label" })
+                        @Html.DropDownList("Esta_Id", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Esta_Id, "", new { @class = "text-danger" })
+
+                        @Html.LabelFor(model => model.Clie_FecNacimiento, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Clie_FecNacimiento, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Clie_FecNacimiento, "", new { @class = "text-danger" })
+
+                        @Html.LabelFor(model => model.Muni_Id, "Muni_Id", htmlAttributes: new { @class = "control-label" })
+                        @Html.DropDownList("Muni_Id", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Muni_Id, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-20">
+                        <input type="submit" value="Crear" class="btn btn-primary" />
+                    </div>
+                </div>
+
             </div>
-        
-            @Html.LabelFor(model => model.Clie_Apellido, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-3 p-3">
-                @Html.EditorFor(model => model.Clie_Apellido, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Clie_Apellido, "", new { @class = "text-danger" })
-            </div>
-        </div><br />
-        
-        <div class="row gx-5">
-            @Html.LabelFor(model => model.Clie_Identidad, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-3 p-3">
-                @Html.EditorFor(model => model.Clie_Identidad, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Clie_Identidad, "", new { @class = "text-danger" })
-            </div>
-        
-            @Html.LabelFor(model => model.Clie_Sexo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-3 p-3">
-                @Html.EditorFor(model => model.Clie_Sexo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Clie_Sexo, "", new { @class = "text-danger" })
-            </div>
-        </div><br />
-        
-        <div class="row gx-5">
-            @Html.LabelFor(model => model.Clie_Telefono, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-3 p-3">
-                @Html.EditorFor(model => model.Clie_Telefono, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Clie_Telefono, "", new { @class = "text-danger" })
-            </div>
-       
-            @Html.LabelFor(model => model.Esta_Id, "Esta_Id", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-3 p-3">
-                @Html.DropDownList("Esta_Id", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Esta_Id, "", new { @class = "text-danger" })
-            </div>
-        </div><br />
-        
-        <div class="row gx-5">
-            @Html.LabelFor(model => model.Clie_FecNacimiento, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-3 p-3">
-                @Html.EditorFor(model => model.Clie_FecNacimiento, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Clie_FecNacimiento, "", new { @class = "text-danger" })
-            </div>
-        
-            @Html.LabelFor(model => model.Muni_Id, "Muni_Id", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-3 p-3">
-                @Html.DropDownList("Muni_Id", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Muni_Id, "", new { @class = "text-danger" })
-            </div>
-        </div><br />
-        
-        
-              <div class="form-group" style="text-align:left">
-                  <div class="col-md-offset-2 col-md-20">
-                      <input type="submit" style="text-align:center" value="Crear" class="btn btn-primary" />
-                  </div>
-                  <div style="text-align:right">
-                      @Html.ActionLink("Regresar", "Index")
-                  </div>
-              </div>
-    </div>
-     </div>
+        </div>
     </div>
     
 }
-
 
 
 @section Scripts {

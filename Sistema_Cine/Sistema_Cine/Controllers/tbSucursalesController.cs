@@ -17,6 +17,8 @@ namespace Sistema_Cine.Controllers
         // GET: tbSucursales
         public ActionResult Index()
         {
+            ViewBag.Cart_Id = new SelectList(db.tbCarteleras, "Cart_Id", "Cart_Descripcion");
+            ViewBag.Entra_Id = new SelectList(db.tbEntradas, "Entra_Id", "Entra_Id");
             var tbSucursales = db.tbSucursales.Include(t => t.tbCarteleras).Include(t => t.tbEntradas).Include(t => t.tbMunicipio);
             return View(tbSucursales.ToList());
         }

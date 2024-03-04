@@ -5,87 +5,97 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="card-body"></div>
 
-<div>
-    <div class="card-body" style="background-color: #f2f2f2;">
-        <h4>tbSucursales</h4>
-        <hr />
-        <div class="row gy-5">
-            <div class="col-2 p-2">
-                @Html.DisplayNameFor(model => model.Sucu_Descripcion)
-            </div>
-
-            <div class="col-2 p-2">
-                @Html.DisplayFor(model => model.Sucu_Descripcion)
-            </div>
-
-            <div class="col-2 p-2">
-                @Html.DisplayNameFor(model => model.Sucu_Direccion)
-            </div>
-
-            <div class="col-2 p-2">
-                @Html.DisplayFor(model => model.Sucu_Direccion)
-            </div>
-
-            <div class="col-2 p-2">
-                @Html.DisplayNameFor(model => model.tbCarteleras.Cart_Descripcion)
-            </div>
-
-            <div class="col-2 p-2">
-                @Html.DisplayFor(model => model.tbCarteleras.Cart_Descripcion)
-            </div>
-
-            <div class="col-2 p-2">
-                @Html.DisplayNameFor(model => model.tbEntradas.Entra_Id)
-            </div>
-
-            <div class="col-2 p-2">
-                @Html.DisplayFor(model => model.tbEntradas.Entra_Id)
-            </div>
-
-            <div class="col-2 p-2">
-                @Html.DisplayNameFor(model => model.tbMunicipio.Muni_Descripcion)
-            </div>
-
-            <div class="col-2 p-2">
-                @Html.DisplayFor(model => model.tbMunicipio.Muni_Descripcion)
-            </div>
-
+<div class="card">
+    <div class="card-header">
+        <h2 style="text-align:center">Detalle del Sucursal</h2>
+        <div class="d-flex justify-content-end">
+            @*<button type="button" class="btn btn-primary" onclick="window.location.href='@Url.Action("Edit", "Edit", new { id = Model.Sucu_Id })'">
+                    Editar
+                </button>*@
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Sucu_Id }, new { @class = "btn btn-warning" })
+            ||
+            <button type="button" class="btn btn-primary" onclick="window.location.href='@Url.Action("Index")'">
+                Regresar
+            </button>
         </div>
+
+    </div>
+
+    <div class="card-body">
+        <div class="container">
+            <!-- Apertura del contenedor -->
+            <div class="row">
+                <div class="col-md-6">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Sucu_Descripcion)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Sucu_Descripcion)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Sucu_Direccion)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Sucu_Direccion)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.tbCarteleras.Cart_Descripcion)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.tbCarteleras.Cart_Descripcion)
+                        </dd>
+                    </dl>
+                </div>
+
+                <div class="col-md-6">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.tbEntradas.Entra_Id)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.tbEntradas.Entra_Id)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.tbMunicipio.Muni_Descripcion)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.tbMunicipio.Muni_Descripcion)
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div> <!-- Cierre del contenedor -->
+
+        <table class="table table-striped table-bordered table-hover dataTables-example">
+            <thead>
+                <tr>
+                    <th>Acciones</th>
+                    <th>Usuario</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Creador</th>
+                    <td>@Html.DisplayFor(model => model.Sucu_Usuario_Creacion)</td>
+                    <td>@Html.DisplayFor(model => model.Sucu_Fecha_Creacion)</td>
+                </tr>
+                <tr>
+                    <th scope="row">Modificar</th>
+                    <td>@Html.DisplayFor(model => model.Sucu_Usuario_Modificacion)</td>
+                    <td>@Html.DisplayFor(model => model.Sucu_Fecha_Modificacion)</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
-<hr />
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Sucu_Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
-<hr />
-<h3>Tabla Detalle</h3>
-<br />
-<table class="table table-striped table-bordered table-hover dataTables-example">
-    <thead>
-        <tr>
-            <th>Acciones</th>
-            <th>Usuario</th>
-            <th>Fecha</th>
 
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">Creador</th>
-            <td> @Html.DisplayFor(model => model.Sucu_Usuario_Creacion)</td>
-            <td> @Html.DisplayFor(model => model.Sucu_Fecha_Creacion)</td>
-
-        </tr>
-        <tr>
-            <th scope="row">Modificar</th>
-            <td> @Html.DisplayFor(model => model.Sucu_Usuario_Creacion)</td>
-            <td> @Html.DisplayFor(model => model.Sucu_Fecha_Modificacion)</td>
-        </tr>
-    </tbody>
-</table>
 
 
 

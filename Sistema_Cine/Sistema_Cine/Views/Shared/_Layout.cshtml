@@ -16,9 +16,13 @@
     <!-- Gritter -->
     <link href="~/Content/js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
 
+    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-xrX8fN4pGw6Kzi6Z3zZoX02tF8W7+5tOpnxEVmPl8R/Z2sUXgh/kG4C1d1QbQzD1c04o5A7pGgJI5MI8AMnWMA==" crossorigin="anonymous" />*@
+
+
     <link href="~/Content/css/animate.css" rel="stylesheet">
     <link href="~/Content/css/style.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+
 
 </head>
 
@@ -31,7 +35,7 @@
                         <div class="dropdown profile-element">
                             <a href="https://localhost:44307/Home/Index"><img alt="image" class="rounded-circle" src="~/Content/img/jugador.png" /></a>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                <span class="block m-t-xs font-bold"></span>
+                                <span class="block m-t-xs font-bold">@HttpContext.Current.Session["NombreUsuario"].ToString()</span>
                                 <span class="text-muted text-xs block">Administrados <b class="caret"></b></span>
                             </a>
 

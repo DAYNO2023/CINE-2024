@@ -73,6 +73,7 @@
           <Property Name="Cart_Fecha_Creacion" Type="date" />
           <Property Name="Cart_Usuario_Modificacion" Type="int" />
           <Property Name="Cart_Fecha_Modificacion" Type="date" />
+          <Property Name="Cart_Estado" Type="bit" />
         </EntityType>
         <EntityType Name="tbEntradas">
           <Key>
@@ -85,6 +86,7 @@
           <Property Name="Entra_Fecha_Creacion" Type="date" />
           <Property Name="Entra_Usuario_Modificacion" Type="int" />
           <Property Name="Entra_Fecha_Modificacion" Type="date" />
+          <Property Name="Entra_Estado" Type="bit" />
         </EntityType>
         <EntityType Name="tbSucursales">
           <Key>
@@ -100,6 +102,7 @@
           <Property Name="Sucu_Fecha_Creacion" Type="date" />
           <Property Name="Sucu_Usuario_Modificacion" Type="int" />
           <Property Name="Sucu_Fecha_Modificacion" Type="date" />
+          <Property Name="Cart_Estado" Type="bit" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -150,6 +153,7 @@
           <Property Name="Buta_Fecha_Creacion" Type="date" />
           <Property Name="Buta_Usuario_Modificacion" Type="int" />
           <Property Name="Buta_Fecha_Modificacion" Type="date" />
+          <Property Name="Buta_Estado" Type="bit" />
         </EntityType>
         <EntityType Name="tbCargos">
           <Key>
@@ -161,6 +165,7 @@
           <Property Name="Carg_Fecha_Creacion" Type="date" />
           <Property Name="Carg_Usuario_Modificacion" Type="int" />
           <Property Name="Carg_Fecha_Modificacion" Type="date" />
+          <Property Name="Carg_Estado" Type="bit" />
         </EntityType>
         <EntityType Name="tbDepartamentos">
           <Key>
@@ -183,6 +188,7 @@
           <Property Name="Esta_Fecha_Creacion" Type="date" />
           <Property Name="Esta_Usuario_Modificacion" Type="int" />
           <Property Name="Esta_Fecha_Modificacion" Type="date" />
+          <Property Name="Esta_Estado" Type="bit" />
         </EntityType>
         <EntityType Name="tbGeneros">
           <Key>
@@ -195,6 +201,7 @@
           <Property Name="Gene_Fecha_Creacion" Type="date" />
           <Property Name="Gene_Usuario_Modificacion" Type="int" />
           <Property Name="Gene_Fecha_Modificacion" Type="date" />
+          <Property Name="Gene_Estado" Type="bit" />
         </EntityType>
         <EntityType Name="tbMunicipio">
           <Key>
@@ -218,6 +225,7 @@
           <Property Name="Prec_Fecha_Creacion" Type="date" />
           <Property Name="Prec_Usuario_Modificacion" Type="int" />
           <Property Name="Prec_Fecha_Modificacion" Type="date" />
+          <Property Name="Prec_Estado" Type="bit" />
         </EntityType>
         <EntityType Name="tbPromociones">
           <Key>
@@ -231,6 +239,7 @@
           <Property Name="Prom_Fecha_Creacion" Type="date" />
           <Property Name="Prom_Usuario_Modificacion" Type="int" />
           <Property Name="Prom_Fecha_Modificacion" Type="date" />
+          <Property Name="Prom_Estado" Type="bit" />
         </EntityType>
         <EntityType Name="tbSalas">
           <Key>
@@ -243,6 +252,7 @@
           <Property Name="Cate_Fecha_Creacion" Type="date" />
           <Property Name="Cate_Usuario_Modificacion" Type="int" />
           <Property Name="Cate_Fecha_Modificacion" Type="date" />
+          <Property Name="Cate_Estado" Type="bit" />
         </EntityType>
         <EntityType Name="tbTipo_Pagos">
           <Key>
@@ -254,6 +264,7 @@
           <Property Name="Cate_Fecha_Creacion" Type="date" />
           <Property Name="Cate_Usuario_Modificacion" Type="int" />
           <Property Name="Cate_Fecha_Modificacion" Type="date" />
+          <Property Name="Tipo_Estado" Type="bit" />
         </EntityType>
         <EntityType Name="tbClientes">
           <Key>
@@ -294,42 +305,6 @@
           <Property Name="Empl_Fecha_Modifica" Type="date" />
           <Property Name="Empl_Estado" Type="bit" />
         </EntityType>
-        <Association Name="FK_tbCarteleras_tbEntradas_Entra_Id">
-          <End Role="tbEntradas" Type="Self.tbEntradas" Multiplicity="0..1" />
-          <End Role="tbCarteleras" Type="Self.tbCarteleras" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbEntradas">
-              <PropertyRef Name="Entra_Id" />
-            </Principal>
-            <Dependent Role="tbCarteleras">
-              <PropertyRef Name="Entra_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbCarteleras_tbGeneros_Gene_Id">
-          <End Role="tbGeneros" Type="Self.tbGeneros" Multiplicity="0..1" />
-          <End Role="tbCarteleras" Type="Self.tbCarteleras" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbGeneros">
-              <PropertyRef Name="Gene_Id" />
-            </Principal>
-            <Dependent Role="tbCarteleras">
-              <PropertyRef Name="Gene_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbCarteleras_tbPromociones_Prom_Id">
-          <End Role="tbPromociones" Type="Self.tbPromociones" Multiplicity="0..1" />
-          <End Role="tbCarteleras" Type="Self.tbCarteleras" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbPromociones">
-              <PropertyRef Name="Prom_Id" />
-            </Principal>
-            <Dependent Role="tbCarteleras">
-              <PropertyRef Name="Prom_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_tbClientes_tbEstado_Civil_Esta_Id">
           <End Role="tbEstado_Civil" Type="Self.tbEstado_Civil" Multiplicity="0..1" />
           <End Role="tbClientes" Type="Self.tbClientes" Multiplicity="*" />
@@ -594,10 +569,355 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="Sp_tbPantalla_Roles_Editar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="RoleId" Type="int" Mode="In" />
+          <Parameter Name="PantId" Type="int" Mode="In" />
+          <Parameter Name="Modifica" Type="int" Mode="In" />
+          <Parameter Name="FechaModifica" Type="date" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbPantalla_Roles_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbPantalla_Roles_Insertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce">
+          <Parameter Name="RoleId" Type="int" Mode="In" />
+          <Parameter Name="PantId" Type="int" Mode="In" />
+          <Parameter Name="Creacion" Type="int" Mode="In" />
+          <Parameter Name="FechaCreacion" Type="date" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbPantalla_Roles_Mostrar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce" />
+        <Function Name="Sp_tbPantallas_Editar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="Identificador" Type="bit" Mode="In" />
+          <Parameter Name="Modifica" Type="int" Mode="In" />
+          <Parameter Name="FechaModifica" Type="date" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbPantallas_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbPantallas_Insertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce">
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="Identificador" Type="bit" Mode="In" />
+          <Parameter Name="Creacion" Type="int" Mode="In" />
+          <Parameter Name="FechaCreacion" Type="date" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbPantallas_Mostrar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce" />
+        <Function Name="Sp_tbRoles_Editar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="Modifica" Type="int" Mode="In" />
+          <Parameter Name="FechaModifica" Type="date" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbRoles_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbRoles_Insertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce">
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="Creacion" Type="int" Mode="In" />
+          <Parameter Name="FechaCreacion" Type="date" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbRoles_Mostrar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce" />
+        <Function Name="Sp_tbUsuarios_Editar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Contraseña" Type="varchar(max)" Mode="In" />
+          <Parameter Name="EmpleadoId" Type="int" Mode="In" />
+          <Parameter Name="RolId" Type="int" Mode="In" />
+          <Parameter Name="Modifica" Type="int" Mode="In" />
+          <Parameter Name="FechaModifica" Type="date" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbUsuarios_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_tbUsuarios_InicioSesion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce">
           <Parameter Name="Usuario" Type="varchar" Mode="In" />
           <Parameter Name="Contra" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="Sp_tbUsuarios_Insertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Contraseña" Type="varchar(max)" Mode="In" />
+          <Parameter Name="EmpleadoId" Type="int" Mode="In" />
+          <Parameter Name="RolId" Type="int" Mode="In" />
+          <Parameter Name="Creacion" Type="int" Mode="In" />
+          <Parameter Name="FechaCreacion" Type="date" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbUsuarios_Mostrar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce" />
+        <Function Name="Sp_tbCarteleras_Editar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Cine">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="Gene_Id" Type="int" Mode="In" />
+          <Parameter Name="Prom_Id" Type="int" Mode="In" />
+          <Parameter Name="Entra_Id" Type="int" Mode="In" />
+          <Parameter Name="FechaEstreno" Type="int" Mode="In" />
+          <Parameter Name="Modifica" Type="int" Mode="In" />
+          <Parameter Name="FechaModifica" Type="date" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbCarteleras_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Cine">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbCarteleras_Insertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Cine">
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="Gene_Id" Type="int" Mode="In" />
+          <Parameter Name="Prom_Id" Type="int" Mode="In" />
+          <Parameter Name="Entra_Id" Type="int" Mode="In" />
+          <Parameter Name="FechaEstreno" Type="int" Mode="In" />
+          <Parameter Name="Creacion" Type="int" Mode="In" />
+          <Parameter Name="FechaCreacion" Type="date" Mode="In" />
+          <Parameter Name="Modifica" Type="int" Mode="In" />
+          <Parameter Name="FechaModifica" Type="date" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbCarteleras_Mostrar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Cine" />
+        <Function Name="Sp_tbEntradas_Editar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Cine">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Cantidad" Type="int" Mode="In" />
+          <Parameter Name="SalaId" Type="int" Mode="In" />
+          <Parameter Name="Modifica" Type="int" Mode="In" />
+          <Parameter Name="FechaModifica" Type="date" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbEntradas_Insertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Cine">
+          <Parameter Name="Cantidad" Type="int" Mode="In" />
+          <Parameter Name="SalaId" Type="int" Mode="In" />
+          <Parameter Name="Creacion" Type="int" Mode="In" />
+          <Parameter Name="FechaCreacion" Type="date" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbEntradas_Mostrar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Cine" />
+        <Function Name="Sp_tbSucursales_Editar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Cine">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="Direccion" Type="varchar" Mode="In" />
+          <Parameter Name="MunicipioCodigo" Type="varchar" Mode="In" />
+          <Parameter Name="Modifica" Type="int" Mode="In" />
+          <Parameter Name="FechaModifica" Type="date" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbSucursales_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Cine">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbSucursales_Insertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Cine">
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="Direccion" Type="varchar" Mode="In" />
+          <Parameter Name="MunicipioCodigo" Type="varchar" Mode="In" />
+          <Parameter Name="Creacion" Type="int" Mode="In" />
+          <Parameter Name="FechaCreacion" Type="date" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbSucursales_Mostrar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Cine" />
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Sp_tbButacas_Salas_Editar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="Modifica" Type="int" Mode="In" />
+          <Parameter Name="FechaModifica" Type="date" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbButacas_Salas_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbButacas_Salas_Insertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="Creacion" Type="int" Mode="In" />
+          <Parameter Name="FechaCreacion" Type="date" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbButacas_Salas_Mostrar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral" />
+        <Function Name="Sp_tbCargos_Editar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="Modifica" Type="int" Mode="In" />
+          <Parameter Name="FechaModifica" Type="date" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbCargos_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbCargos_Insertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="Creacion" Type="int" Mode="In" />
+          <Parameter Name="FechaCreacion" Type="date" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbCargos_Mostrar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral" />
+        <Function Name="Sp_tbPrecios_Editar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Descripcion" Type="decimal" Mode="In" />
+          <Parameter Name="Modifica" Type="int" Mode="In" />
+          <Parameter Name="FechaModifica" Type="date" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbPrecios_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbPrecios_Insertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
+          <Parameter Name="Descripcion" Type="decimal" Mode="In" />
+          <Parameter Name="Creacion" Type="int" Mode="In" />
+          <Parameter Name="FechaCreacion" Type="date" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbPrecios_Mostrar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral" />
+        <Function Name="Sp_tbPromociones_Editar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Descuento" Type="decimal" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="PrecioId" Type="int" Mode="In" />
+          <Parameter Name="Modifica" Type="int" Mode="In" />
+          <Parameter Name="FechaModifica" Type="date" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbPromociones_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbPromociones_Insertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
+          <Parameter Name="Descuento" Type="decimal" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="PrecioId" Type="int" Mode="In" />
+          <Parameter Name="Creacion" Type="int" Mode="In" />
+          <Parameter Name="FechaCreacion" Type="date" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbPromociones_Mostrar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral" />
+        <Function Name="Sp_tbSalas_Editar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="ButacaId" Type="int" Mode="In" />
+          <Parameter Name="Modifica" Type="int" Mode="In" />
+          <Parameter Name="FechaModifica" Type="date" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbSalas_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbSalas_Insertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="ButacaId" Type="int" Mode="In" />
+          <Parameter Name="Creacion" Type="int" Mode="In" />
+          <Parameter Name="FechaCreacion" Type="date" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbSalas_Mostrar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral" />
+        <Function Name="Sp_tbTipo_Pagos_Editar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
+          <Parameter Name="Tipo_Id" Type="int" Mode="In" />
+          <Parameter Name="Tipo_Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="Cate_Usuario_Modificacion" Type="varchar" Mode="In" />
+          <Parameter Name="Cate_Fecha_Modificacion" Type="date" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbTipo_Pagos_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbTipo_Pagos_Insertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="Creacion" Type="int" Mode="In" />
+          <Parameter Name="FechaCreacion" Type="date" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbTipo_Pagos_Select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral" />
+        <Function Name="Sp_tbClientes_Editar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Regi">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Apellido" Type="varchar" Mode="In" />
+          <Parameter Name="Identidad" Type="varchar" Mode="In" />
+          <Parameter Name="Sexo" Type="char" Mode="In" />
+          <Parameter Name="Telefono" Type="int" Mode="In" />
+          <Parameter Name="Esta_Id" Type="int" Mode="In" />
+          <Parameter Name="FecNacimiento" Type="date" Mode="In" />
+          <Parameter Name="Muni_Id" Type="varchar" Mode="In" />
+          <Parameter Name="UsuaModifica" Type="int" Mode="In" />
+          <Parameter Name="FechaModifica" Type="date" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbClientes_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Regi">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbClientes_Insertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Regi">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Apellido" Type="varchar" Mode="In" />
+          <Parameter Name="Identidad" Type="varchar" Mode="In" />
+          <Parameter Name="Sexo" Type="char" Mode="In" />
+          <Parameter Name="Telefono" Type="int" Mode="In" />
+          <Parameter Name="Esta_Id" Type="int" Mode="In" />
+          <Parameter Name="FecNacimiento" Type="date" Mode="In" />
+          <Parameter Name="Muni_Id" Type="varchar" Mode="In" />
+          <Parameter Name="UsuaCreacion" Type="int" Mode="In" />
+          <Parameter Name="FechaCreacion" Type="date" Mode="In" />
+          <Parameter Name="UsuaModifica" Type="int" Mode="In" />
+          <Parameter Name="FechaModifica" Type="date" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbClientes_Mostrar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Regi" />
+        <Function Name="Sp_tbEmpleados_Editar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Regi">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Apellido" Type="varchar" Mode="In" />
+          <Parameter Name="Identidad" Type="varchar" Mode="In" />
+          <Parameter Name="Sexo" Type="char" Mode="In" />
+          <Parameter Name="Telefono" Type="int" Mode="In" />
+          <Parameter Name="EstadoCivilId" Type="int" Mode="In" />
+          <Parameter Name="FechaNacimiento" Type="date" Mode="In" />
+          <Parameter Name="MunicipioId" Type="varchar" Mode="In" />
+          <Parameter Name="CargoId" Type="int" Mode="In" />
+          <Parameter Name="UsuarioModificacion" Type="int" Mode="In" />
+          <Parameter Name="FechaModificacion" Type="date" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbEmpleados_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Regi">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbEmpleados_Insertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Regi">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Apellido" Type="varchar" Mode="In" />
+          <Parameter Name="Identidad" Type="varchar" Mode="In" />
+          <Parameter Name="Sexo" Type="char" Mode="In" />
+          <Parameter Name="Telefono" Type="int" Mode="In" />
+          <Parameter Name="EstadoCivilId" Type="int" Mode="In" />
+          <Parameter Name="FechaNacimiento" Type="date" Mode="In" />
+          <Parameter Name="MunicipioId" Type="varchar" Mode="In" />
+          <Parameter Name="CargoId" Type="int" Mode="In" />
+          <Parameter Name="UsuarioCreacion" Type="int" Mode="In" />
+          <Parameter Name="FechaCreacion" Type="date" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Sp_tbEmpleados_Mostrar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Regi" />
         <EntityContainer Name="dbSsitemascinesModelStoreContainer">
           <EntitySet Name="tbPantalla_Roles" EntityType="Self.tbPantalla_Roles" Schema="Acce" store:Type="Tables" />
           <EntitySet Name="tbPantallas" EntityType="Self.tbPantallas" Schema="Acce" store:Type="Tables" />
@@ -621,18 +941,6 @@
           <EntitySet Name="tbTipo_Pagos" EntityType="Self.tbTipo_Pagos" Schema="Gral" store:Type="Tables" />
           <EntitySet Name="tbClientes" EntityType="Self.tbClientes" Schema="Regi" store:Type="Tables" />
           <EntitySet Name="tbEmpleados" EntityType="Self.tbEmpleados" Schema="Regi" store:Type="Tables" />
-          <AssociationSet Name="FK_tbCarteleras_tbEntradas_Entra_Id" Association="Self.FK_tbCarteleras_tbEntradas_Entra_Id">
-            <End Role="tbEntradas" EntitySet="tbEntradas" />
-            <End Role="tbCarteleras" EntitySet="tbCarteleras" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbCarteleras_tbGeneros_Gene_Id" Association="Self.FK_tbCarteleras_tbGeneros_Gene_Id">
-            <End Role="tbGeneros" EntitySet="tbGeneros" />
-            <End Role="tbCarteleras" EntitySet="tbCarteleras" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbCarteleras_tbPromociones_Prom_Id" Association="Self.FK_tbCarteleras_tbPromociones_Prom_Id">
-            <End Role="tbPromociones" EntitySet="tbPromociones" />
-            <End Role="tbCarteleras" EntitySet="tbCarteleras" />
-          </AssociationSet>
           <AssociationSet Name="FK_tbClientes_tbEstado_Civil_Esta_Id" Association="Self.FK_tbClientes_tbEstado_Civil_Esta_Id">
             <End Role="tbEstado_Civil" EntitySet="tbEstado_Civil" />
             <End Role="tbClientes" EntitySet="tbClientes" />
@@ -806,6 +1114,7 @@
           <NavigationProperty Name="tbPromociones" Relationship="Self.FK_tbCarteleras_tbPromociones_Prom_Id" FromRole="tbCarteleras" ToRole="tbPromociones" />
           <NavigationProperty Name="tbFacturas_Detalles" Relationship="Self.FK_tbFacturas_Detalles_tbCarteleras_Cart_Id" FromRole="tbCarteleras" ToRole="tbFacturas_Detalles" />
           <NavigationProperty Name="tbSucursales" Relationship="Self.FK_tbSucursales_tbCarteleras_Cart_Id" FromRole="tbCarteleras" ToRole="tbSucursales" />
+          <Property Name="Cart_Estado" Type="Boolean" />
         </EntityType>
         <EntityType Name="tbEntradas">
           <Key>
@@ -821,6 +1130,7 @@
           <NavigationProperty Name="tbCarteleras" Relationship="Self.FK_tbCarteleras_tbEntradas_Entra_Id" FromRole="tbEntradas" ToRole="tbCarteleras" />
           <NavigationProperty Name="tbSalas" Relationship="Self.FK_tbEntradas_tbSalas_Sala_Id" FromRole="tbEntradas" ToRole="tbSalas" />
           <NavigationProperty Name="tbSucursales" Relationship="Self.FK_tbSucursales_tbEntradas_Entra_Id" FromRole="tbEntradas" ToRole="tbSucursales" />
+          <Property Name="Entra_Estado" Type="Boolean" />
         </EntityType>
         <EntityType Name="tbSucursales">
           <Key>
@@ -839,6 +1149,7 @@
           <NavigationProperty Name="tbCarteleras" Relationship="Self.FK_tbSucursales_tbCarteleras_Cart_Id" FromRole="tbSucursales" ToRole="tbCarteleras" />
           <NavigationProperty Name="tbEntradas" Relationship="Self.FK_tbSucursales_tbEntradas_Entra_Id" FromRole="tbSucursales" ToRole="tbEntradas" />
           <NavigationProperty Name="tbMunicipio" Relationship="Self.FK_tbSucursales_tbMunicipio_Muni_Codigo" FromRole="tbSucursales" ToRole="tbMunicipio" />
+          <Property Name="Cart_Estado" Type="Boolean" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -896,6 +1207,7 @@
           <Property Name="Buta_Usuario_Modificacion" Type="Int32" />
           <Property Name="Buta_Fecha_Modificacion" Type="DateTime" Precision="0" />
           <NavigationProperty Name="tbSalas" Relationship="Self.FK_tbSalas_tbButacas_Salas_Buta_Id" FromRole="tbButacas_Salas" ToRole="tbSalas" />
+          <Property Name="Buta_Estado" Type="Boolean" />
         </EntityType>
         <EntityType Name="tbCargos">
           <Key>
@@ -908,6 +1220,7 @@
           <Property Name="Carg_Usuario_Modificacion" Type="Int32" />
           <Property Name="Carg_Fecha_Modificacion" Type="DateTime" Precision="0" />
           <NavigationProperty Name="tbEmpleados" Relationship="Self.FK_tbEmpleado_tbCargos_Carg_Id" FromRole="tbCargos" ToRole="tbEmpleados" />
+          <Property Name="Carg_Estado" Type="Boolean" />
         </EntityType>
         <EntityType Name="tbDepartamentos">
           <Key>
@@ -933,6 +1246,7 @@
           <Property Name="Esta_Fecha_Modificacion" Type="DateTime" Precision="0" />
           <NavigationProperty Name="tbClientes" Relationship="Self.FK_tbClientes_tbEstado_Civil_Esta_Id" FromRole="tbEstado_Civil" ToRole="tbClientes" />
           <NavigationProperty Name="tbEmpleados" Relationship="Self.FK_tbEmpleado_tbEstado_Civil_Esta_Id" FromRole="tbEstado_Civil" ToRole="tbEmpleados" />
+          <Property Name="Esta_Estado" Type="Boolean" />
         </EntityType>
         <EntityType Name="tbGeneros">
           <Key>
@@ -947,6 +1261,7 @@
           <Property Name="Gene_Fecha_Modificacion" Type="DateTime" Precision="0" />
           <NavigationProperty Name="tbCarteleras" Relationship="Self.FK_tbCarteleras_tbGeneros_Gene_Id" FromRole="tbGeneros" ToRole="tbCarteleras" />
           <NavigationProperty Name="tbPromociones" Relationship="Self.FK_tbGeneros_tbPromociones_Prom_Id" FromRole="tbGeneros" ToRole="tbPromociones" />
+          <Property Name="Gene_Estado" Type="Boolean" />
         </EntityType>
         <EntityType Name="tbMunicipio">
           <Key>
@@ -975,6 +1290,7 @@
           <Property Name="Prec_Usuario_Modificacion" Type="Int32" />
           <Property Name="Prec_Fecha_Modificacion" Type="DateTime" Precision="0" />
           <NavigationProperty Name="tbPromociones" Relationship="Self.FK_tbPromociones_tbPrecios_Prec_Id" FromRole="tbPrecios" ToRole="tbPromociones" />
+          <Property Name="Prec_Estado" Type="Boolean" />
         </EntityType>
         <EntityType Name="tbPromociones">
           <Key>
@@ -991,6 +1307,7 @@
           <NavigationProperty Name="tbCarteleras" Relationship="Self.FK_tbCarteleras_tbPromociones_Prom_Id" FromRole="tbPromociones" ToRole="tbCarteleras" />
           <NavigationProperty Name="tbGeneros" Relationship="Self.FK_tbGeneros_tbPromociones_Prom_Id" FromRole="tbPromociones" ToRole="tbGeneros" />
           <NavigationProperty Name="tbPrecios" Relationship="Self.FK_tbPromociones_tbPrecios_Prec_Id" FromRole="tbPromociones" ToRole="tbPrecios" />
+          <Property Name="Prom_Estado" Type="Boolean" />
         </EntityType>
         <EntityType Name="tbSalas">
           <Key>
@@ -1005,6 +1322,7 @@
           <Property Name="Cate_Fecha_Modificacion" Type="DateTime" Precision="0" />
           <NavigationProperty Name="tbEntradas" Relationship="Self.FK_tbEntradas_tbSalas_Sala_Id" FromRole="tbSalas" ToRole="tbEntradas" />
           <NavigationProperty Name="tbButacas_Salas" Relationship="Self.FK_tbSalas_tbButacas_Salas_Buta_Id" FromRole="tbSalas" ToRole="tbButacas_Salas" />
+          <Property Name="Cate_Estado" Type="Boolean" />
         </EntityType>
         <EntityType Name="tbTipo_Pagos">
           <Key>
@@ -1017,6 +1335,7 @@
           <Property Name="Cate_Usuario_Modificacion" Type="Int32" />
           <Property Name="Cate_Fecha_Modificacion" Type="DateTime" Precision="0" />
           <NavigationProperty Name="tbFacturas_Encabezados" Relationship="Self.FK_tbFacturas_Encabezados_tbTipo_Pagos_Tipo_Id" FromRole="tbTipo_Pagos" ToRole="tbFacturas_Encabezados" />
+          <Property Name="Tipo_Estado" Type="Boolean" />
         </EntityType>
         <EntityType Name="tbClientes">
           <Key>
@@ -1492,6 +1811,350 @@
             <Parameter Name="Usuario" Mode="In" Type="String" />
             <Parameter Name="Contra" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="Sp_tbPantalla_Roles_Editar" ReturnType="Collection(Int32)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="RoleId" Mode="In" Type="Int32" />
+            <Parameter Name="PantId" Mode="In" Type="Int32" />
+            <Parameter Name="Modifica" Mode="In" Type="Int32" />
+            <Parameter Name="FechaModifica" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbPantalla_Roles_Eliminar" ReturnType="Collection(Int32)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbPantalla_Roles_Insertar" ReturnType="Collection(Int32)">
+            <Parameter Name="RoleId" Mode="In" Type="Int32" />
+            <Parameter Name="PantId" Mode="In" Type="Int32" />
+            <Parameter Name="Creacion" Mode="In" Type="Int32" />
+            <Parameter Name="FechaCreacion" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbPantalla_Roles_Mostrar" ReturnType="Collection(dbSsitemascinesModel.Sp_tbPantalla_Roles_Mostrar_Result)" />
+          <FunctionImport Name="Sp_tbPantallas_Editar" ReturnType="Collection(Int32)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Identificador" Mode="In" Type="Boolean" />
+            <Parameter Name="Modifica" Mode="In" Type="Int32" />
+            <Parameter Name="FechaModifica" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbPantallas_Eliminar" ReturnType="Collection(Int32)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbPantallas_Insertar" ReturnType="Collection(Int32)">
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Identificador" Mode="In" Type="Boolean" />
+            <Parameter Name="Creacion" Mode="In" Type="Int32" />
+            <Parameter Name="FechaCreacion" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbPantallas_Mostrar" ReturnType="Collection(dbSsitemascinesModel.Sp_tbPantallas_Mostrar_Result)" />
+          <FunctionImport Name="Sp_tbRoles_Editar" ReturnType="Collection(Int32)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Modifica" Mode="In" Type="Int32" />
+            <Parameter Name="FechaModifica" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbRoles_Eliminar" ReturnType="Collection(Int32)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbRoles_Insertar" ReturnType="Collection(Int32)">
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Creacion" Mode="In" Type="Int32" />
+            <Parameter Name="FechaCreacion" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbRoles_Mostrar" ReturnType="Collection(dbSsitemascinesModel.Sp_tbRoles_Mostrar_Result)" />
+          <FunctionImport Name="Sp_tbUsuarios_Editar" ReturnType="Collection(Int32)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Contraseña" Mode="In" Type="String" />
+            <Parameter Name="EmpleadoId" Mode="In" Type="Int32" />
+            <Parameter Name="RolId" Mode="In" Type="Int32" />
+            <Parameter Name="Modifica" Mode="In" Type="Int32" />
+            <Parameter Name="FechaModifica" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbUsuarios_Eliminar" ReturnType="Collection(Int32)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbUsuarios_Insertar" ReturnType="Collection(Int32)">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Contraseña" Mode="In" Type="String" />
+            <Parameter Name="EmpleadoId" Mode="In" Type="Int32" />
+            <Parameter Name="RolId" Mode="In" Type="Int32" />
+            <Parameter Name="Creacion" Mode="In" Type="Int32" />
+            <Parameter Name="FechaCreacion" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbUsuarios_Mostrar" ReturnType="Collection(dbSsitemascinesModel.Sp_tbUsuarios_Mostrar_Result)" />
+          <FunctionImport Name="Sp_tbCarteleras_Editar" ReturnType="Collection(Int32)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Gene_Id" Mode="In" Type="Int32" />
+            <Parameter Name="Prom_Id" Mode="In" Type="Int32" />
+            <Parameter Name="Entra_Id" Mode="In" Type="Int32" />
+            <Parameter Name="FechaEstreno" Mode="In" Type="Int32" />
+            <Parameter Name="Modifica" Mode="In" Type="Int32" />
+            <Parameter Name="FechaModifica" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbCarteleras_Eliminar" ReturnType="Collection(Int32)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbCarteleras_Insertar" ReturnType="Collection(Int32)">
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Gene_Id" Mode="In" Type="Int32" />
+            <Parameter Name="Prom_Id" Mode="In" Type="Int32" />
+            <Parameter Name="Entra_Id" Mode="In" Type="Int32" />
+            <Parameter Name="FechaEstreno" Mode="In" Type="Int32" />
+            <Parameter Name="Creacion" Mode="In" Type="Int32" />
+            <Parameter Name="FechaCreacion" Mode="In" Type="DateTime" />
+            <Parameter Name="Modifica" Mode="In" Type="Int32" />
+            <Parameter Name="FechaModifica" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbCarteleras_Mostrar" ReturnType="Collection(dbSsitemascinesModel.Sp_tbCarteleras_Mostrar_Result)" />
+          <FunctionImport Name="Sp_tbEntradas_Editar" ReturnType="Collection(Int32)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Cantidad" Mode="In" Type="Int32" />
+            <Parameter Name="SalaId" Mode="In" Type="Int32" />
+            <Parameter Name="Modifica" Mode="In" Type="Int32" />
+            <Parameter Name="FechaModifica" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbEntradas_Insertar" ReturnType="Collection(Int32)">
+            <Parameter Name="Cantidad" Mode="In" Type="Int32" />
+            <Parameter Name="SalaId" Mode="In" Type="Int32" />
+            <Parameter Name="Creacion" Mode="In" Type="Int32" />
+            <Parameter Name="FechaCreacion" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbEntradas_Mostrar" ReturnType="Collection(dbSsitemascinesModel.Sp_tbEntradas_Mostrar_Result)" />
+          <FunctionImport Name="Sp_tbSucursales_Editar" ReturnType="Collection(Int32)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Direccion" Mode="In" Type="String" />
+            <Parameter Name="MunicipioCodigo" Mode="In" Type="String" />
+            <Parameter Name="Modifica" Mode="In" Type="Int32" />
+            <Parameter Name="FechaModifica" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbSucursales_Eliminar" ReturnType="Collection(Int32)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbSucursales_Insertar" ReturnType="Collection(Int32)">
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Direccion" Mode="In" Type="String" />
+            <Parameter Name="MunicipioCodigo" Mode="In" Type="String" />
+            <Parameter Name="Creacion" Mode="In" Type="Int32" />
+            <Parameter Name="FechaCreacion" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbSucursales_Mostrar" ReturnType="Collection(dbSsitemascinesModel.Sp_tbSucursales_Mostrar_Result)" />
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(dbSsitemascinesModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(dbSsitemascinesModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="Sp_tbButacas_Salas_Editar" ReturnType="Collection(Int32)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Modifica" Mode="In" Type="Int32" />
+            <Parameter Name="FechaModifica" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbButacas_Salas_Eliminar" ReturnType="Collection(Int32)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbButacas_Salas_Insertar" ReturnType="Collection(Int32)">
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Creacion" Mode="In" Type="Int32" />
+            <Parameter Name="FechaCreacion" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbButacas_Salas_Mostrar" ReturnType="Collection(dbSsitemascinesModel.Sp_tbButacas_Salas_Mostrar_Result)" />
+          <FunctionImport Name="Sp_tbCargos_Editar" ReturnType="Collection(Int32)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Modifica" Mode="In" Type="Int32" />
+            <Parameter Name="FechaModifica" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbCargos_Eliminar" ReturnType="Collection(Int32)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbCargos_Insertar" ReturnType="Collection(Int32)">
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Creacion" Mode="In" Type="Int32" />
+            <Parameter Name="FechaCreacion" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbCargos_Mostrar" ReturnType="Collection(dbSsitemascinesModel.Sp_tbCargos_Mostrar_Result)" />
+          <FunctionImport Name="Sp_tbPrecios_Editar" ReturnType="Collection(Int32)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Descripcion" Mode="In" Type="Decimal" />
+            <Parameter Name="Modifica" Mode="In" Type="Int32" />
+            <Parameter Name="FechaModifica" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbPrecios_Eliminar" ReturnType="Collection(Int32)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbPrecios_Insertar" ReturnType="Collection(Int32)">
+            <Parameter Name="Descripcion" Mode="In" Type="Decimal" />
+            <Parameter Name="Creacion" Mode="In" Type="Int32" />
+            <Parameter Name="FechaCreacion" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbPrecios_Mostrar" ReturnType="Collection(dbSsitemascinesModel.Sp_tbPrecios_Mostrar_Result)" />
+          <FunctionImport Name="Sp_tbPromociones_Editar" ReturnType="Collection(Int32)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Descuento" Mode="In" Type="Decimal" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="PrecioId" Mode="In" Type="Int32" />
+            <Parameter Name="Modifica" Mode="In" Type="Int32" />
+            <Parameter Name="FechaModifica" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbPromociones_Eliminar" ReturnType="Collection(Int32)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbPromociones_Insertar" ReturnType="Collection(Int32)">
+            <Parameter Name="Descuento" Mode="In" Type="Decimal" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="PrecioId" Mode="In" Type="Int32" />
+            <Parameter Name="Creacion" Mode="In" Type="Int32" />
+            <Parameter Name="FechaCreacion" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbPromociones_Mostrar" ReturnType="Collection(dbSsitemascinesModel.Sp_tbPromociones_Mostrar_Result)" />
+          <FunctionImport Name="Sp_tbSalas_Editar" ReturnType="Collection(Int32)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="ButacaId" Mode="In" Type="Int32" />
+            <Parameter Name="Modifica" Mode="In" Type="Int32" />
+            <Parameter Name="FechaModifica" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbSalas_Eliminar" ReturnType="Collection(Int32)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbSalas_Insertar" ReturnType="Collection(Int32)">
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="ButacaId" Mode="In" Type="Int32" />
+            <Parameter Name="Creacion" Mode="In" Type="Int32" />
+            <Parameter Name="FechaCreacion" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbSalas_Mostrar" ReturnType="Collection(dbSsitemascinesModel.Sp_tbSalas_Mostrar_Result)" />
+          <FunctionImport Name="Sp_tbTipo_Pagos_Editar" ReturnType="Collection(Int32)">
+            <Parameter Name="Tipo_Id" Mode="In" Type="Int32" />
+            <Parameter Name="Tipo_Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Cate_Usuario_Modificacion" Mode="In" Type="String" />
+            <Parameter Name="Cate_Fecha_Modificacion" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbTipo_Pagos_Eliminar" ReturnType="Collection(Int32)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbTipo_Pagos_Insertar" ReturnType="Collection(Int32)">
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Creacion" Mode="In" Type="Int32" />
+            <Parameter Name="FechaCreacion" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbTipo_Pagos_Select" ReturnType="Collection(dbSsitemascinesModel.Sp_tbTipo_Pagos_Select_Result)" />
+          <FunctionImport Name="Sp_tbClientes_Editar" ReturnType="Collection(Int32)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Apellido" Mode="In" Type="String" />
+            <Parameter Name="Identidad" Mode="In" Type="String" />
+            <Parameter Name="Sexo" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="Int32" />
+            <Parameter Name="Esta_Id" Mode="In" Type="Int32" />
+            <Parameter Name="FecNacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="Muni_Id" Mode="In" Type="String" />
+            <Parameter Name="UsuaModifica" Mode="In" Type="Int32" />
+            <Parameter Name="FechaModifica" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbClientes_Eliminar" ReturnType="Collection(Int32)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbClientes_Insertar" ReturnType="Collection(Int32)">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Apellido" Mode="In" Type="String" />
+            <Parameter Name="Identidad" Mode="In" Type="String" />
+            <Parameter Name="Sexo" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="Int32" />
+            <Parameter Name="Esta_Id" Mode="In" Type="Int32" />
+            <Parameter Name="FecNacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="Muni_Id" Mode="In" Type="String" />
+            <Parameter Name="UsuaCreacion" Mode="In" Type="Int32" />
+            <Parameter Name="FechaCreacion" Mode="In" Type="DateTime" />
+            <Parameter Name="UsuaModifica" Mode="In" Type="Int32" />
+            <Parameter Name="FechaModifica" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbClientes_Mostrar" ReturnType="Collection(dbSsitemascinesModel.Sp_tbClientes_Mostrar_Result)" />
+          <FunctionImport Name="Sp_tbEmpleados_Editar" ReturnType="Collection(Int32)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Apellido" Mode="In" Type="String" />
+            <Parameter Name="Identidad" Mode="In" Type="String" />
+            <Parameter Name="Sexo" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="Int32" />
+            <Parameter Name="EstadoCivilId" Mode="In" Type="Int32" />
+            <Parameter Name="FechaNacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="MunicipioId" Mode="In" Type="String" />
+            <Parameter Name="CargoId" Mode="In" Type="Int32" />
+            <Parameter Name="UsuarioModificacion" Mode="In" Type="Int32" />
+            <Parameter Name="FechaModificacion" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbEmpleados_Eliminar" ReturnType="Collection(Int32)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbEmpleados_Insertar" ReturnType="Collection(Int32)">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Apellido" Mode="In" Type="String" />
+            <Parameter Name="Identidad" Mode="In" Type="String" />
+            <Parameter Name="Sexo" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="Int32" />
+            <Parameter Name="EstadoCivilId" Mode="In" Type="Int32" />
+            <Parameter Name="FechaNacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="MunicipioId" Mode="In" Type="String" />
+            <Parameter Name="CargoId" Mode="In" Type="Int32" />
+            <Parameter Name="UsuarioCreacion" Mode="In" Type="Int32" />
+            <Parameter Name="FechaCreacion" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbEmpleados_Mostrar" ReturnType="Collection(dbSsitemascinesModel.Sp_tbEmpleados_Mostrar_Result)" />
         </EntityContainer>
         <ComplexType Name="SP_tbUsuarios_InicioSesion_Result">
           <Property Type="Int32" Name="Usua_Id" Nullable="false" />
@@ -1499,6 +2162,181 @@
           <Property Type="String" Name="Usua_Contraseña" Nullable="true" />
           <Property Type="String" Name="Empl_Empleado" Nullable="true" MaxLength="101" />
           <Property Type="String" Name="Usua_Administrador" Nullable="false" MaxLength="2" />
+        </ComplexType>
+        <ComplexType Name="Sp_tbPantalla_Roles_Mostrar_Result">
+          <Property Type="Int32" Name="Paro_Id" Nullable="false" />
+          <Property Type="Int32" Name="Role_Id" Nullable="true" />
+          <Property Type="Int32" Name="Pant_Id" Nullable="true" />
+          <Property Type="Int32" Name="Pant_Creacion" Nullable="true" />
+          <Property Type="DateTime" Name="Pant_Fecha_Creacion" Nullable="true" />
+          <Property Type="Int32" Name="Pant_Modifica" Nullable="true" />
+          <Property Type="DateTime" Name="Pant_Fecha_Modifica" Nullable="true" />
+          <Property Type="Boolean" Name="Pant_Estado" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Sp_tbPantallas_Mostrar_Result">
+          <Property Type="Int32" Name="Pant_Id" Nullable="false" />
+          <Property Type="String" Name="Pant_Descripcion" Nullable="true" MaxLength="60" />
+          <Property Type="Boolean" Name="Pant_Identificador" Nullable="true" />
+          <Property Type="Int32" Name="Pant_Creacion" Nullable="true" />
+          <Property Type="DateTime" Name="Pant_Fecha_Creacion" Nullable="true" />
+          <Property Type="Int32" Name="Pant_Modifica" Nullable="true" />
+          <Property Type="DateTime" Name="Pant_Fecha_Modifica" Nullable="true" />
+          <Property Type="Boolean" Name="Pant_Estado" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Sp_tbRoles_Mostrar_Result">
+          <Property Type="Int32" Name="Role_Id" Nullable="false" />
+          <Property Type="String" Name="Role_Descripcion" Nullable="true" MaxLength="60" />
+          <Property Type="Int32" Name="Role_Creacion" Nullable="true" />
+          <Property Type="DateTime" Name="Role_Fecha_Creacion" Nullable="true" />
+          <Property Type="Int32" Name="Role_Modifica" Nullable="true" />
+          <Property Type="DateTime" Name="Role_Fecha_Modifica" Nullable="true" />
+          <Property Type="Boolean" Name="Role_Estado" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Sp_tbUsuarios_Mostrar_Result">
+          <Property Type="Int32" Name="Usua_Id" Nullable="false" />
+          <Property Type="String" Name="Usua_Nombre" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="Usua_Contraseña" Nullable="true" />
+          <Property Type="Int32" Name="Empl_Id" Nullable="true" />
+          <Property Type="Int32" Name="Paro_Id" Nullable="true" />
+          <Property Type="Int32" Name="Usua_Creacion" Nullable="true" />
+          <Property Type="DateTime" Name="Usua_Fecha_Creacion" Nullable="true" />
+          <Property Type="Int32" Name="Usua_Modifica" Nullable="true" />
+          <Property Type="DateTime" Name="Usua_Fecha_Modifica" Nullable="true" />
+          <Property Type="Boolean" Name="Usua_Estado" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Sp_tbCarteleras_Mostrar_Result">
+          <Property Type="Int32" Name="Cart_Id" Nullable="false" />
+          <Property Type="String" Name="Cart_Descripcion" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Gene_Id" Nullable="true" />
+          <Property Type="Int32" Name="Prom_Id" Nullable="true" />
+          <Property Type="Int32" Name="Entra_Id" Nullable="true" />
+          <Property Type="Int32" Name="Cart_Fecha_Estreno" Nullable="true" />
+          <Property Type="Int32" Name="Cart_Usuario_Creacion" Nullable="true" />
+          <Property Type="DateTime" Name="Cart_Fecha_Creacion" Nullable="true" />
+          <Property Type="Int32" Name="Cart_Usuario_Modificacion" Nullable="true" />
+          <Property Type="DateTime" Name="Cart_Fecha_Modificacion" Nullable="true" />
+          <Property Type="Boolean" Name="Cart_Estado" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Sp_tbEntradas_Mostrar_Result">
+          <Property Type="Int32" Name="Entra_Id" Nullable="false" />
+          <Property Type="Int32" Name="Entra_Cantidad" Nullable="true" />
+          <Property Type="Int32" Name="Sala_Id" Nullable="true" />
+          <Property Type="Int32" Name="Entra_Usuario_Creacion" Nullable="true" />
+          <Property Type="DateTime" Name="Entra_Fecha_Creacion" Nullable="true" />
+          <Property Type="Int32" Name="Entra_Usuario_Modificacion" Nullable="true" />
+          <Property Type="DateTime" Name="Entra_Fecha_Modificacion" Nullable="true" />
+          <Property Type="Boolean" Name="Entra_Estado" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Sp_tbSucursales_Mostrar_Result">
+          <Property Type="Int32" Name="Sucu_Id" Nullable="false" />
+          <Property Type="String" Name="Sucu_Descripcion" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Sucu_Direccion" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Muni_Codigo" Nullable="true" MaxLength="4" />
+          <Property Type="Int32" Name="Sucu_Usuario_Creacion" Nullable="true" />
+          <Property Type="DateTime" Name="Sucu_Fecha_Creacion" Nullable="true" />
+          <Property Type="Int32" Name="Sucu_Usuario_Modificacion" Nullable="true" />
+          <Property Type="DateTime" Name="Sucu_Fecha_Modificacion" Nullable="true" />
+          <Property Type="Boolean" Name="Cart_Estado" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Sp_tbButacas_Salas_Mostrar_Result">
+          <Property Type="Int32" Name="Buta_Id" Nullable="false" />
+          <Property Type="String" Name="Buta_Descripcion" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="Buta_Usuario_Creacion" Nullable="true" />
+          <Property Type="DateTime" Name="Buta_Fecha_Creacion" Nullable="true" />
+          <Property Type="Int32" Name="Buta_Usuario_Modificacion" Nullable="true" />
+          <Property Type="DateTime" Name="Buta_Fecha_Modificacion" Nullable="true" />
+          <Property Type="Boolean" Name="Buta_Estado" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Sp_tbCargos_Mostrar_Result">
+          <Property Type="Int32" Name="Carg_Id" Nullable="false" />
+          <Property Type="String" Name="Carg_Descripcion" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Carg_Usuario_Creacion" Nullable="true" />
+          <Property Type="DateTime" Name="Carg_Fecha_Creacion" Nullable="true" />
+          <Property Type="Int32" Name="Carg_Usuario_Modificacion" Nullable="true" />
+          <Property Type="DateTime" Name="Carg_Fecha_Modificacion" Nullable="true" />
+          <Property Type="Boolean" Name="Carg_Estado" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Sp_tbPrecios_Mostrar_Result">
+          <Property Type="Int32" Name="Prec_Id" Nullable="false" />
+          <Property Type="Decimal" Name="Prec_Descripcion" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="Prec_Usuario_Creacion" Nullable="true" />
+          <Property Type="DateTime" Name="Prec_Fecha_Creacion" Nullable="true" />
+          <Property Type="Int32" Name="Prec_Usuario_Modificacion" Nullable="true" />
+          <Property Type="DateTime" Name="Prec_Fecha_Modificacion" Nullable="true" />
+          <Property Type="Boolean" Name="Prec_Estado" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Sp_tbPromociones_Mostrar_Result">
+          <Property Type="Int32" Name="Prom_Id" Nullable="false" />
+          <Property Type="Decimal" Name="Prom_Descuento" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="Prom_Descripcion" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Prec_Id" Nullable="true" />
+          <Property Type="Int32" Name="Prom_Usuario_Creacion" Nullable="true" />
+          <Property Type="DateTime" Name="Prom_Fecha_Creacion" Nullable="true" />
+          <Property Type="Int32" Name="Prom_Usuario_Modificacion" Nullable="true" />
+          <Property Type="DateTime" Name="Prom_Fecha_Modificacion" Nullable="true" />
+          <Property Type="Boolean" Name="Prom_Estado" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Sp_tbSalas_Mostrar_Result">
+          <Property Type="Int32" Name="Sala_Id" Nullable="false" />
+          <Property Type="String" Name="Sala_Descripcion" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="Buta_Id" Nullable="true" />
+          <Property Type="Int32" Name="Cate_Usuario_Creacion" Nullable="true" />
+          <Property Type="DateTime" Name="Cate_Fecha_Creacion" Nullable="true" />
+          <Property Type="Int32" Name="Cate_Usuario_Modificacion" Nullable="true" />
+          <Property Type="DateTime" Name="Cate_Fecha_Modificacion" Nullable="true" />
+          <Property Type="Boolean" Name="Cate_Estado" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Sp_tbTipo_Pagos_Select_Result">
+          <Property Type="Int32" Name="Tipo_Id" Nullable="false" />
+          <Property Type="String" Name="Tipo_Descripcion" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Cate_Usuario_Creacion" Nullable="true" />
+          <Property Type="DateTime" Name="Cate_Fecha_Creacion" Nullable="true" />
+          <Property Type="Int32" Name="Cate_Usuario_Modificacion" Nullable="true" />
+          <Property Type="DateTime" Name="Cate_Fecha_Modificacion" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Sp_tbClientes_Mostrar_Result">
+          <Property Type="Int32" Name="Clie_Id" Nullable="false" />
+          <Property Type="String" Name="Clie_Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Clie_Apellido" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Clie_Identidad" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Clie_Sexo" Nullable="true" MaxLength="1" />
+          <Property Type="Int32" Name="Clie_Telefono" Nullable="true" />
+          <Property Type="Int32" Name="Esta_Id" Nullable="true" />
+          <Property Type="DateTime" Name="Clie_FecNacimiento" Nullable="true" />
+          <Property Type="String" Name="Muni_Id" Nullable="true" MaxLength="4" />
+          <Property Type="Int32" Name="Clie_Usua_Creacion" Nullable="true" />
+          <Property Type="DateTime" Name="Clie_Fecha_Creacion" Nullable="true" />
+          <Property Type="Int32" Name="Clie_Usua_Modifica" Nullable="true" />
+          <Property Type="DateTime" Name="Clie_Fecha_Modifica" Nullable="true" />
+          <Property Type="Boolean" Name="Clie_Estado" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Sp_tbEmpleados_Mostrar_Result">
+          <Property Type="Int32" Name="Empl_Id" Nullable="false" />
+          <Property Type="String" Name="Empl_Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Empl_Apellido" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Empl_Identidad" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Empl_Sexo" Nullable="true" MaxLength="1" />
+          <Property Type="Int32" Name="Empl_Telefono" Nullable="true" />
+          <Property Type="Int32" Name="Esta_Id" Nullable="true" />
+          <Property Type="DateTime" Name="Empl_FecNacimiento" Nullable="true" />
+          <Property Type="String" Name="Muni_Id" Nullable="true" MaxLength="4" />
+          <Property Type="Int32" Name="Carg_Id" Nullable="true" />
+          <Property Type="Int32" Name="Empl_Usua_Creacion" Nullable="true" />
+          <Property Type="DateTime" Name="Empl_Fecha_Creacion" Nullable="true" />
+          <Property Type="Int32" Name="Empl_Usua_Modifica" Nullable="true" />
+          <Property Type="DateTime" Name="Empl_Fecha_Modifica" Nullable="true" />
+          <Property Type="Boolean" Name="Empl_Estado" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1567,6 +2405,7 @@
           <EntitySetMapping Name="tbCarteleras">
             <EntityTypeMapping TypeName="dbSsitemascinesModel.tbCarteleras">
               <MappingFragment StoreEntitySet="tbCarteleras">
+                <ScalarProperty Name="Cart_Estado" ColumnName="Cart_Estado" />
                 <ScalarProperty Name="Cart_Id" ColumnName="Cart_Id" />
                 <ScalarProperty Name="Cart_Descripcion" ColumnName="Cart_Descripcion" />
                 <ScalarProperty Name="Gene_Id" ColumnName="Gene_Id" />
@@ -1583,6 +2422,7 @@
           <EntitySetMapping Name="tbEntradas">
             <EntityTypeMapping TypeName="dbSsitemascinesModel.tbEntradas">
               <MappingFragment StoreEntitySet="tbEntradas">
+                <ScalarProperty Name="Entra_Estado" ColumnName="Entra_Estado" />
                 <ScalarProperty Name="Entra_Id" ColumnName="Entra_Id" />
                 <ScalarProperty Name="Entra_Cantidad" ColumnName="Entra_Cantidad" />
                 <ScalarProperty Name="Sala_Id" ColumnName="Sala_Id" />
@@ -1596,6 +2436,7 @@
           <EntitySetMapping Name="tbSucursales">
             <EntityTypeMapping TypeName="dbSsitemascinesModel.tbSucursales">
               <MappingFragment StoreEntitySet="tbSucursales">
+                <ScalarProperty Name="Cart_Estado" ColumnName="Cart_Estado" />
                 <ScalarProperty Name="Sucu_Id" ColumnName="Sucu_Id" />
                 <ScalarProperty Name="Sucu_Descripcion" ColumnName="Sucu_Descripcion" />
                 <ScalarProperty Name="Sucu_Direccion" ColumnName="Sucu_Direccion" />
@@ -1654,6 +2495,7 @@
           <EntitySetMapping Name="tbButacas_Salas">
             <EntityTypeMapping TypeName="dbSsitemascinesModel.tbButacas_Salas">
               <MappingFragment StoreEntitySet="tbButacas_Salas">
+                <ScalarProperty Name="Buta_Estado" ColumnName="Buta_Estado" />
                 <ScalarProperty Name="Buta_Id" ColumnName="Buta_Id" />
                 <ScalarProperty Name="Buta_Descripcion" ColumnName="Buta_Descripcion" />
                 <ScalarProperty Name="Buta_Usuario_Creacion" ColumnName="Buta_Usuario_Creacion" />
@@ -1666,6 +2508,7 @@
           <EntitySetMapping Name="tbCargos">
             <EntityTypeMapping TypeName="dbSsitemascinesModel.tbCargos">
               <MappingFragment StoreEntitySet="tbCargos">
+                <ScalarProperty Name="Carg_Estado" ColumnName="Carg_Estado" />
                 <ScalarProperty Name="Carg_Id" ColumnName="Carg_Id" />
                 <ScalarProperty Name="Carg_Descripcion" ColumnName="Carg_Descripcion" />
                 <ScalarProperty Name="Carg_Usuario_Creacion" ColumnName="Carg_Usuario_Creacion" />
@@ -1690,6 +2533,7 @@
           <EntitySetMapping Name="tbEstado_Civil">
             <EntityTypeMapping TypeName="dbSsitemascinesModel.tbEstado_Civil">
               <MappingFragment StoreEntitySet="tbEstado_Civil">
+                <ScalarProperty Name="Esta_Estado" ColumnName="Esta_Estado" />
                 <ScalarProperty Name="Esta_Id" ColumnName="Esta_Id" />
                 <ScalarProperty Name="Esta_Descripcion" ColumnName="Esta_Descripcion" />
                 <ScalarProperty Name="Esta_Usuario_Creacion" ColumnName="Esta_Usuario_Creacion" />
@@ -1702,6 +2546,7 @@
           <EntitySetMapping Name="tbGeneros">
             <EntityTypeMapping TypeName="dbSsitemascinesModel.tbGeneros">
               <MappingFragment StoreEntitySet="tbGeneros">
+                <ScalarProperty Name="Gene_Estado" ColumnName="Gene_Estado" />
                 <ScalarProperty Name="Gene_Id" ColumnName="Gene_Id" />
                 <ScalarProperty Name="Gene_Descripcion" ColumnName="Gene_Descripcion" />
                 <ScalarProperty Name="Prom_Id" ColumnName="Prom_Id" />
@@ -1728,6 +2573,7 @@
           <EntitySetMapping Name="tbPrecios">
             <EntityTypeMapping TypeName="dbSsitemascinesModel.tbPrecios">
               <MappingFragment StoreEntitySet="tbPrecios">
+                <ScalarProperty Name="Prec_Estado" ColumnName="Prec_Estado" />
                 <ScalarProperty Name="Prec_Id" ColumnName="Prec_Id" />
                 <ScalarProperty Name="Prec_Descripcion" ColumnName="Prec_Descripcion" />
                 <ScalarProperty Name="Prec_Usuario_Creacion" ColumnName="Prec_Usuario_Creacion" />
@@ -1740,6 +2586,7 @@
           <EntitySetMapping Name="tbPromociones">
             <EntityTypeMapping TypeName="dbSsitemascinesModel.tbPromociones">
               <MappingFragment StoreEntitySet="tbPromociones">
+                <ScalarProperty Name="Prom_Estado" ColumnName="Prom_Estado" />
                 <ScalarProperty Name="Prom_Id" ColumnName="Prom_Id" />
                 <ScalarProperty Name="Prom_Descuento" ColumnName="Prom_Descuento" />
                 <ScalarProperty Name="Prom_Descripcion" ColumnName="Prom_Descripcion" />
@@ -1754,6 +2601,7 @@
           <EntitySetMapping Name="tbSalas">
             <EntityTypeMapping TypeName="dbSsitemascinesModel.tbSalas">
               <MappingFragment StoreEntitySet="tbSalas">
+                <ScalarProperty Name="Cate_Estado" ColumnName="Cate_Estado" />
                 <ScalarProperty Name="Sala_Id" ColumnName="Sala_Id" />
                 <ScalarProperty Name="Sala_Descripcion" ColumnName="Sala_Descripcion" />
                 <ScalarProperty Name="Buta_Id" ColumnName="Buta_Id" />
@@ -1767,6 +2615,7 @@
           <EntitySetMapping Name="tbTipo_Pagos">
             <EntityTypeMapping TypeName="dbSsitemascinesModel.tbTipo_Pagos">
               <MappingFragment StoreEntitySet="tbTipo_Pagos">
+                <ScalarProperty Name="Tipo_Estado" ColumnName="Tipo_Estado" />
                 <ScalarProperty Name="Tipo_Id" ColumnName="Tipo_Id" />
                 <ScalarProperty Name="Tipo_Descripcion" ColumnName="Tipo_Descripcion" />
                 <ScalarProperty Name="Cate_Usuario_Creacion" ColumnName="Cate_Usuario_Creacion" />
@@ -1825,6 +2674,298 @@
                 <ScalarProperty Name="Usua_Contraseña" ColumnName="Usua_Contraseña" />
                 <ScalarProperty Name="Empl_Empleado" ColumnName="Empl_Empleado" />
                 <ScalarProperty Name="Usua_Administrador" ColumnName="Usua_Administrador" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_tbPantalla_Roles_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPantalla_Roles_Editar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbPantalla_Roles_Eliminar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPantalla_Roles_Eliminar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbPantalla_Roles_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPantalla_Roles_Insertar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbPantalla_Roles_Mostrar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPantalla_Roles_Mostrar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbSsitemascinesModel.Sp_tbPantalla_Roles_Mostrar_Result">
+                <ScalarProperty Name="Paro_Id" ColumnName="Paro_Id" />
+                <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+                <ScalarProperty Name="Pant_Id" ColumnName="Pant_Id" />
+                <ScalarProperty Name="Pant_Creacion" ColumnName="Pant_Creacion" />
+                <ScalarProperty Name="Pant_Fecha_Creacion" ColumnName="Pant_Fecha_Creacion" />
+                <ScalarProperty Name="Pant_Modifica" ColumnName="Pant_Modifica" />
+                <ScalarProperty Name="Pant_Fecha_Modifica" ColumnName="Pant_Fecha_Modifica" />
+                <ScalarProperty Name="Pant_Estado" ColumnName="Pant_Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_tbPantallas_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPantallas_Editar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbPantallas_Eliminar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPantallas_Eliminar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbPantallas_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPantallas_Insertar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbPantallas_Mostrar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPantallas_Mostrar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbSsitemascinesModel.Sp_tbPantallas_Mostrar_Result">
+                <ScalarProperty Name="Pant_Id" ColumnName="Pant_Id" />
+                <ScalarProperty Name="Pant_Descripcion" ColumnName="Pant_Descripcion" />
+                <ScalarProperty Name="Pant_Identificador" ColumnName="Pant_Identificador" />
+                <ScalarProperty Name="Pant_Creacion" ColumnName="Pant_Creacion" />
+                <ScalarProperty Name="Pant_Fecha_Creacion" ColumnName="Pant_Fecha_Creacion" />
+                <ScalarProperty Name="Pant_Modifica" ColumnName="Pant_Modifica" />
+                <ScalarProperty Name="Pant_Fecha_Modifica" ColumnName="Pant_Fecha_Modifica" />
+                <ScalarProperty Name="Pant_Estado" ColumnName="Pant_Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_tbRoles_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbRoles_Editar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbRoles_Eliminar" FunctionName="dbSsitemascinesModel.Store.Sp_tbRoles_Eliminar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbRoles_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbRoles_Insertar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbRoles_Mostrar" FunctionName="dbSsitemascinesModel.Store.Sp_tbRoles_Mostrar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbSsitemascinesModel.Sp_tbRoles_Mostrar_Result">
+                <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+                <ScalarProperty Name="Role_Descripcion" ColumnName="Role_Descripcion" />
+                <ScalarProperty Name="Role_Creacion" ColumnName="Role_Creacion" />
+                <ScalarProperty Name="Role_Fecha_Creacion" ColumnName="Role_Fecha_Creacion" />
+                <ScalarProperty Name="Role_Modifica" ColumnName="Role_Modifica" />
+                <ScalarProperty Name="Role_Fecha_Modifica" ColumnName="Role_Fecha_Modifica" />
+                <ScalarProperty Name="Role_Estado" ColumnName="Role_Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_tbUsuarios_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbUsuarios_Editar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbUsuarios_Eliminar" FunctionName="dbSsitemascinesModel.Store.Sp_tbUsuarios_Eliminar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbUsuarios_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbUsuarios_Insertar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbUsuarios_Mostrar" FunctionName="dbSsitemascinesModel.Store.Sp_tbUsuarios_Mostrar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbSsitemascinesModel.Sp_tbUsuarios_Mostrar_Result">
+                <ScalarProperty Name="Usua_Id" ColumnName="Usua_Id" />
+                <ScalarProperty Name="Usua_Nombre" ColumnName="Usua_Nombre" />
+                <ScalarProperty Name="Usua_Contraseña" ColumnName="Usua_Contraseña" />
+                <ScalarProperty Name="Empl_Id" ColumnName="Empl_Id" />
+                <ScalarProperty Name="Paro_Id" ColumnName="Paro_Id" />
+                <ScalarProperty Name="Usua_Creacion" ColumnName="Usua_Creacion" />
+                <ScalarProperty Name="Usua_Fecha_Creacion" ColumnName="Usua_Fecha_Creacion" />
+                <ScalarProperty Name="Usua_Modifica" ColumnName="Usua_Modifica" />
+                <ScalarProperty Name="Usua_Fecha_Modifica" ColumnName="Usua_Fecha_Modifica" />
+                <ScalarProperty Name="Usua_Estado" ColumnName="Usua_Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_tbCarteleras_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbCarteleras_Editar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbCarteleras_Eliminar" FunctionName="dbSsitemascinesModel.Store.Sp_tbCarteleras_Eliminar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbCarteleras_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbCarteleras_Insertar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbCarteleras_Mostrar" FunctionName="dbSsitemascinesModel.Store.Sp_tbCarteleras_Mostrar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbSsitemascinesModel.Sp_tbCarteleras_Mostrar_Result">
+                <ScalarProperty Name="Cart_Id" ColumnName="Cart_Id" />
+                <ScalarProperty Name="Cart_Descripcion" ColumnName="Cart_Descripcion" />
+                <ScalarProperty Name="Gene_Id" ColumnName="Gene_Id" />
+                <ScalarProperty Name="Prom_Id" ColumnName="Prom_Id" />
+                <ScalarProperty Name="Entra_Id" ColumnName="Entra_Id" />
+                <ScalarProperty Name="Cart_Fecha_Estreno" ColumnName="Cart_Fecha_Estreno" />
+                <ScalarProperty Name="Cart_Usuario_Creacion" ColumnName="Cart_Usuario_Creacion" />
+                <ScalarProperty Name="Cart_Fecha_Creacion" ColumnName="Cart_Fecha_Creacion" />
+                <ScalarProperty Name="Cart_Usuario_Modificacion" ColumnName="Cart_Usuario_Modificacion" />
+                <ScalarProperty Name="Cart_Fecha_Modificacion" ColumnName="Cart_Fecha_Modificacion" />
+                <ScalarProperty Name="Cart_Estado" ColumnName="Cart_Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_tbEntradas_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbEntradas_Editar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbEntradas_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbEntradas_Insertar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbEntradas_Mostrar" FunctionName="dbSsitemascinesModel.Store.Sp_tbEntradas_Mostrar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbSsitemascinesModel.Sp_tbEntradas_Mostrar_Result">
+                <ScalarProperty Name="Entra_Id" ColumnName="Entra_Id" />
+                <ScalarProperty Name="Entra_Cantidad" ColumnName="Entra_Cantidad" />
+                <ScalarProperty Name="Sala_Id" ColumnName="Sala_Id" />
+                <ScalarProperty Name="Entra_Usuario_Creacion" ColumnName="Entra_Usuario_Creacion" />
+                <ScalarProperty Name="Entra_Fecha_Creacion" ColumnName="Entra_Fecha_Creacion" />
+                <ScalarProperty Name="Entra_Usuario_Modificacion" ColumnName="Entra_Usuario_Modificacion" />
+                <ScalarProperty Name="Entra_Fecha_Modificacion" ColumnName="Entra_Fecha_Modificacion" />
+                <ScalarProperty Name="Entra_Estado" ColumnName="Entra_Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_tbSucursales_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbSucursales_Editar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbSucursales_Eliminar" FunctionName="dbSsitemascinesModel.Store.Sp_tbSucursales_Eliminar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbSucursales_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbSucursales_Insertar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbSucursales_Mostrar" FunctionName="dbSsitemascinesModel.Store.Sp_tbSucursales_Mostrar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbSsitemascinesModel.Sp_tbSucursales_Mostrar_Result">
+                <ScalarProperty Name="Sucu_Id" ColumnName="Sucu_Id" />
+                <ScalarProperty Name="Sucu_Descripcion" ColumnName="Sucu_Descripcion" />
+                <ScalarProperty Name="Sucu_Direccion" ColumnName="Sucu_Direccion" />
+                <ScalarProperty Name="Muni_Codigo" ColumnName="Muni_Codigo" />
+                <ScalarProperty Name="Sucu_Usuario_Creacion" ColumnName="Sucu_Usuario_Creacion" />
+                <ScalarProperty Name="Sucu_Fecha_Creacion" ColumnName="Sucu_Fecha_Creacion" />
+                <ScalarProperty Name="Sucu_Usuario_Modificacion" ColumnName="Sucu_Usuario_Modificacion" />
+                <ScalarProperty Name="Sucu_Fecha_Modificacion" ColumnName="Sucu_Fecha_Modificacion" />
+                <ScalarProperty Name="Cart_Estado" ColumnName="Cart_Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="dbSsitemascinesModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="dbSsitemascinesModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="dbSsitemascinesModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="dbSsitemascinesModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbSsitemascinesModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="dbSsitemascinesModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbSsitemascinesModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="dbSsitemascinesModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="dbSsitemascinesModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="Sp_tbButacas_Salas_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbButacas_Salas_Editar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbButacas_Salas_Eliminar" FunctionName="dbSsitemascinesModel.Store.Sp_tbButacas_Salas_Eliminar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbButacas_Salas_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbButacas_Salas_Insertar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbButacas_Salas_Mostrar" FunctionName="dbSsitemascinesModel.Store.Sp_tbButacas_Salas_Mostrar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbSsitemascinesModel.Sp_tbButacas_Salas_Mostrar_Result">
+                <ScalarProperty Name="Buta_Id" ColumnName="Buta_Id" />
+                <ScalarProperty Name="Buta_Descripcion" ColumnName="Buta_Descripcion" />
+                <ScalarProperty Name="Buta_Usuario_Creacion" ColumnName="Buta_Usuario_Creacion" />
+                <ScalarProperty Name="Buta_Fecha_Creacion" ColumnName="Buta_Fecha_Creacion" />
+                <ScalarProperty Name="Buta_Usuario_Modificacion" ColumnName="Buta_Usuario_Modificacion" />
+                <ScalarProperty Name="Buta_Fecha_Modificacion" ColumnName="Buta_Fecha_Modificacion" />
+                <ScalarProperty Name="Buta_Estado" ColumnName="Buta_Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_tbCargos_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbCargos_Editar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbCargos_Eliminar" FunctionName="dbSsitemascinesModel.Store.Sp_tbCargos_Eliminar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbCargos_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbCargos_Insertar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbCargos_Mostrar" FunctionName="dbSsitemascinesModel.Store.Sp_tbCargos_Mostrar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbSsitemascinesModel.Sp_tbCargos_Mostrar_Result">
+                <ScalarProperty Name="Carg_Id" ColumnName="Carg_Id" />
+                <ScalarProperty Name="Carg_Descripcion" ColumnName="Carg_Descripcion" />
+                <ScalarProperty Name="Carg_Usuario_Creacion" ColumnName="Carg_Usuario_Creacion" />
+                <ScalarProperty Name="Carg_Fecha_Creacion" ColumnName="Carg_Fecha_Creacion" />
+                <ScalarProperty Name="Carg_Usuario_Modificacion" ColumnName="Carg_Usuario_Modificacion" />
+                <ScalarProperty Name="Carg_Fecha_Modificacion" ColumnName="Carg_Fecha_Modificacion" />
+                <ScalarProperty Name="Carg_Estado" ColumnName="Carg_Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_tbPrecios_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPrecios_Editar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbPrecios_Eliminar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPrecios_Eliminar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbPrecios_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPrecios_Insertar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbPrecios_Mostrar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPrecios_Mostrar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbSsitemascinesModel.Sp_tbPrecios_Mostrar_Result">
+                <ScalarProperty Name="Prec_Id" ColumnName="Prec_Id" />
+                <ScalarProperty Name="Prec_Descripcion" ColumnName="Prec_Descripcion" />
+                <ScalarProperty Name="Prec_Usuario_Creacion" ColumnName="Prec_Usuario_Creacion" />
+                <ScalarProperty Name="Prec_Fecha_Creacion" ColumnName="Prec_Fecha_Creacion" />
+                <ScalarProperty Name="Prec_Usuario_Modificacion" ColumnName="Prec_Usuario_Modificacion" />
+                <ScalarProperty Name="Prec_Fecha_Modificacion" ColumnName="Prec_Fecha_Modificacion" />
+                <ScalarProperty Name="Prec_Estado" ColumnName="Prec_Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_tbPromociones_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPromociones_Editar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbPromociones_Eliminar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPromociones_Eliminar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbPromociones_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPromociones_Insertar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbPromociones_Mostrar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPromociones_Mostrar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbSsitemascinesModel.Sp_tbPromociones_Mostrar_Result">
+                <ScalarProperty Name="Prom_Id" ColumnName="Prom_Id" />
+                <ScalarProperty Name="Prom_Descuento" ColumnName="Prom_Descuento" />
+                <ScalarProperty Name="Prom_Descripcion" ColumnName="Prom_Descripcion" />
+                <ScalarProperty Name="Prec_Id" ColumnName="Prec_Id" />
+                <ScalarProperty Name="Prom_Usuario_Creacion" ColumnName="Prom_Usuario_Creacion" />
+                <ScalarProperty Name="Prom_Fecha_Creacion" ColumnName="Prom_Fecha_Creacion" />
+                <ScalarProperty Name="Prom_Usuario_Modificacion" ColumnName="Prom_Usuario_Modificacion" />
+                <ScalarProperty Name="Prom_Fecha_Modificacion" ColumnName="Prom_Fecha_Modificacion" />
+                <ScalarProperty Name="Prom_Estado" ColumnName="Prom_Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_tbSalas_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbSalas_Editar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbSalas_Eliminar" FunctionName="dbSsitemascinesModel.Store.Sp_tbSalas_Eliminar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbSalas_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbSalas_Insertar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbSalas_Mostrar" FunctionName="dbSsitemascinesModel.Store.Sp_tbSalas_Mostrar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbSsitemascinesModel.Sp_tbSalas_Mostrar_Result">
+                <ScalarProperty Name="Sala_Id" ColumnName="Sala_Id" />
+                <ScalarProperty Name="Sala_Descripcion" ColumnName="Sala_Descripcion" />
+                <ScalarProperty Name="Buta_Id" ColumnName="Buta_Id" />
+                <ScalarProperty Name="Cate_Usuario_Creacion" ColumnName="Cate_Usuario_Creacion" />
+                <ScalarProperty Name="Cate_Fecha_Creacion" ColumnName="Cate_Fecha_Creacion" />
+                <ScalarProperty Name="Cate_Usuario_Modificacion" ColumnName="Cate_Usuario_Modificacion" />
+                <ScalarProperty Name="Cate_Fecha_Modificacion" ColumnName="Cate_Fecha_Modificacion" />
+                <ScalarProperty Name="Cate_Estado" ColumnName="Cate_Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_tbTipo_Pagos_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbTipo_Pagos_Editar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbTipo_Pagos_Eliminar" FunctionName="dbSsitemascinesModel.Store.Sp_tbTipo_Pagos_Eliminar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbTipo_Pagos_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbTipo_Pagos_Insertar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbTipo_Pagos_Select" FunctionName="dbSsitemascinesModel.Store.Sp_tbTipo_Pagos_Select">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbSsitemascinesModel.Sp_tbTipo_Pagos_Select_Result">
+                <ScalarProperty Name="Tipo_Id" ColumnName="Tipo_Id" />
+                <ScalarProperty Name="Tipo_Descripcion" ColumnName="Tipo_Descripcion" />
+                <ScalarProperty Name="Cate_Usuario_Creacion" ColumnName="Cate_Usuario_Creacion" />
+                <ScalarProperty Name="Cate_Fecha_Creacion" ColumnName="Cate_Fecha_Creacion" />
+                <ScalarProperty Name="Cate_Usuario_Modificacion" ColumnName="Cate_Usuario_Modificacion" />
+                <ScalarProperty Name="Cate_Fecha_Modificacion" ColumnName="Cate_Fecha_Modificacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_tbClientes_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbClientes_Editar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbClientes_Eliminar" FunctionName="dbSsitemascinesModel.Store.Sp_tbClientes_Eliminar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbClientes_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbClientes_Insertar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbClientes_Mostrar" FunctionName="dbSsitemascinesModel.Store.Sp_tbClientes_Mostrar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbSsitemascinesModel.Sp_tbClientes_Mostrar_Result">
+                <ScalarProperty Name="Clie_Id" ColumnName="Clie_Id" />
+                <ScalarProperty Name="Clie_Nombre" ColumnName="Clie_Nombre" />
+                <ScalarProperty Name="Clie_Apellido" ColumnName="Clie_Apellido" />
+                <ScalarProperty Name="Clie_Identidad" ColumnName="Clie_Identidad" />
+                <ScalarProperty Name="Clie_Sexo" ColumnName="Clie_Sexo" />
+                <ScalarProperty Name="Clie_Telefono" ColumnName="Clie_Telefono" />
+                <ScalarProperty Name="Esta_Id" ColumnName="Esta_Id" />
+                <ScalarProperty Name="Clie_FecNacimiento" ColumnName="Clie_FecNacimiento" />
+                <ScalarProperty Name="Muni_Id" ColumnName="Muni_Id" />
+                <ScalarProperty Name="Clie_Usua_Creacion" ColumnName="Clie_Usua_Creacion" />
+                <ScalarProperty Name="Clie_Fecha_Creacion" ColumnName="Clie_Fecha_Creacion" />
+                <ScalarProperty Name="Clie_Usua_Modifica" ColumnName="Clie_Usua_Modifica" />
+                <ScalarProperty Name="Clie_Fecha_Modifica" ColumnName="Clie_Fecha_Modifica" />
+                <ScalarProperty Name="Clie_Estado" ColumnName="Clie_Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_tbEmpleados_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbEmpleados_Editar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbEmpleados_Eliminar" FunctionName="dbSsitemascinesModel.Store.Sp_tbEmpleados_Eliminar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbEmpleados_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbEmpleados_Insertar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbEmpleados_Mostrar" FunctionName="dbSsitemascinesModel.Store.Sp_tbEmpleados_Mostrar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbSsitemascinesModel.Sp_tbEmpleados_Mostrar_Result">
+                <ScalarProperty Name="Empl_Id" ColumnName="Empl_Id" />
+                <ScalarProperty Name="Empl_Nombre" ColumnName="Empl_Nombre" />
+                <ScalarProperty Name="Empl_Apellido" ColumnName="Empl_Apellido" />
+                <ScalarProperty Name="Empl_Identidad" ColumnName="Empl_Identidad" />
+                <ScalarProperty Name="Empl_Sexo" ColumnName="Empl_Sexo" />
+                <ScalarProperty Name="Empl_Telefono" ColumnName="Empl_Telefono" />
+                <ScalarProperty Name="Esta_Id" ColumnName="Esta_Id" />
+                <ScalarProperty Name="Empl_FecNacimiento" ColumnName="Empl_FecNacimiento" />
+                <ScalarProperty Name="Muni_Id" ColumnName="Muni_Id" />
+                <ScalarProperty Name="Carg_Id" ColumnName="Carg_Id" />
+                <ScalarProperty Name="Empl_Usua_Creacion" ColumnName="Empl_Usua_Creacion" />
+                <ScalarProperty Name="Empl_Fecha_Creacion" ColumnName="Empl_Fecha_Creacion" />
+                <ScalarProperty Name="Empl_Usua_Modifica" ColumnName="Empl_Usua_Modifica" />
+                <ScalarProperty Name="Empl_Fecha_Modifica" ColumnName="Empl_Fecha_Modifica" />
+                <ScalarProperty Name="Empl_Estado" ColumnName="Empl_Estado" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

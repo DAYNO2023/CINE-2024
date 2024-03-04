@@ -5,128 +5,142 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="card-body"></div>
 
-<div>
-    <div class="card-body" style="background-color: #f2f2f2;">
-        <h4>tbEmpleados</h4>
-        <hr />
-        <div class="row g-2">
-
-            <div class="p-3" >
-                @Html.DisplayNameFor(model => model.Empl_Nombre)
-            </div>
-
-            <div class="p-3">
-                @Html.DisplayFor(model => model.Empl_Nombre)
-            </div>
-           
-            <div class="p-3" >
-                @Html.DisplayNameFor(model => model.Empl_Apellido)
-            </div>
-
-            <div class="p-3" >
-                @Html.DisplayFor(model => model.Empl_Apellido)
-            </div>
-   
-            <div class="p-3" >
-                @Html.DisplayNameFor(model => model.Empl_Identidad)
-            </div>
-
-            <div class="p-3" >
-                @Html.DisplayFor(model => model.Empl_Identidad)
-            </div>
-      
-            <div class="p-3" >
-                @Html.DisplayNameFor(model => model.Empl_Sexo)
-            </div>
-
-            <div class="p-3" >
-                @Html.DisplayFor(model => model.Empl_Sexo)
-            </div>
-     
-            <div class="p-3" >
-                @Html.DisplayNameFor(model => model.Empl_Telefono)
-            </div>
-
-            <div class="p-3" >
-                @Html.DisplayFor(model => model.Empl_Telefono)
-            </div>
-    
-            <div class="p-3" >
-                @Html.DisplayNameFor(model => model.Empl_FecNacimiento)
-            </div>
-
-            <div class="p-3" >
-                @Html.DisplayFor(model => model.Empl_FecNacimiento)
-            </div>
-           
-            <div class="p-3" >
-                @Html.DisplayNameFor(model => model.Empl_Estado)
-            </div>
-
-            <div class="p-3" >
-                @Html.DisplayFor(model => model.Empl_Estado)
-            </div>
-     
-            <div class="p-3" >
-                @Html.DisplayNameFor(model => model.tbCargos.Carg_Descripcion)
-            </div>
-
-            <div class="p-3" >
-                @Html.DisplayFor(model => model.tbCargos.Carg_Descripcion)
-            </div>
-   
-            <div class="p-3" >
-                @Html.DisplayNameFor(model => model.tbEstado_Civil.Esta_Descripcion)
-            </div>
-
-            <div class="p-3" >
-                @Html.DisplayFor(model => model.tbEstado_Civil.Esta_Descripcion)
-            </div>
-           
-            <div class="p-3" >
-                @Html.DisplayNameFor(model => model.tbMunicipio.Muni_Descripcion)
-            </div>
-
-            <div class="p-3" >
-                @Html.DisplayFor(model => model.tbMunicipio.Muni_Descripcion)
-            </div>
-          
+<div class="card">
+    <div class="card-header">
+        <h2 style="text-align:center">Detalle del Empleado</h2>
+        <div class="d-flex justify-content-end">
+            @*<button type="button" class="btn btn-primary" onclick="window.location.href='@Url.Action("Edit", "Edit", new { id = Model.Empl_Id })'">
+            Editar
+        </button>*@
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Empl_Id }, new { @class = "btn btn-warning" })
+            ||
+            <button type="button" class="btn btn-primary" onclick="window.location.href='@Url.Action("Index")'">
+                Regresar
+            </button>
         </div>
+        
+    </div>
+
+    <div class="card-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Empl_Nombre)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Empl_Nombre)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Empl_Apellido)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Empl_Apellido)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Empl_Identidad)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Empl_Identidad)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Empl_Sexo)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Empl_Sexo)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Empl_Telefono)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Empl_Telefono)
+                        </dd>
+                    </dl>
+                </div>
+                <div class="col-md-6">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Empl_FecNacimiento)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Empl_FecNacimiento)
+                        </dd>
+
+                        @*<dt>
+                            @Html.DisplayNameFor(model => model.Empl_Estado)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Empl_Estado)
+                        </dd>*@
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.tbCargos.Carg_Descripcion)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.tbCargos.Carg_Descripcion)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.tbEstado_Civil.Esta_Descripcion)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.tbEstado_Civil.Esta_Descripcion)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.tbMunicipio.Muni_Descripcion)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.tbMunicipio.Muni_Descripcion)
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>Acciones</th>
+                    <th>Usuario</th>
+                    <th>Fecha</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Creador</th>
+                    <td>@Html.DisplayFor(model => model.Empl_Usua_Creacion)</td>
+                    <td>@Html.DisplayFor(model => model.Empl_Fecha_Creacion)</td>
+
+                </tr>
+                <tr>
+                    <th scope="row">Modificar</th>
+                    <td>@Html.DisplayFor(model => model.Empl_Usua_Modifica)</td>
+                    <td>@Html.DisplayFor(model => model.Empl_Fecha_Modifica)</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
-<hr />
-<p style="background-color: #f2f2f2;">
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Empl_Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
-<hr />
-<h3>Tabla Detalle</h3>
-<br />
-<table class="table table-striped table-bordered table-hover dataTables-example" id="tablaOne">
-    <thead>
-        <tr>
-            <th>Acciones</th>
-            <th>Usuario</th>
-            <th>Fecha</th>
 
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">Creador</th>
-            <td>@Html.DisplayFor(model => model.Empl_Usua_Creacion)</td>
-            <td> @Html.DisplayFor(model => model.Empl_Fecha_Creacion)</td>
 
-        </tr>
-        <tr>
-            <th scope="row">Modificar</th>
-            <td>@Html.DisplayFor(model => model.Empl_Usua_Modifica)</td>
-            <td> @Html.DisplayFor(model => model.Empl_Fecha_Modifica)</td>
-        </tr>
-    </tbody>
-</table>
-
+        
 
 

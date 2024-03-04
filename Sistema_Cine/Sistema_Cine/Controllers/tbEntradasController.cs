@@ -17,6 +17,7 @@ namespace Sistema_Cine.Controllers
         // GET: tbEntradas
         public ActionResult Index()
         {
+            ViewBag.Sala_Id = new SelectList(db.tbSalas, "Sala_Id", "Sala_Descripcion");
             var tbEntradas = db.tbEntradas.Include(t => t.tbSalas);
             return View(tbEntradas.ToList());
         }

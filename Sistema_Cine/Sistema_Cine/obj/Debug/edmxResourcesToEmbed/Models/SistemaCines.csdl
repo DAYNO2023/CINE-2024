@@ -61,27 +61,6 @@
     <NavigationProperty Name="tbEmpleados" Relationship="Self.FK_tbUsuario_tbEmpleados_Empl_Id" FromRole="tbUsuarios" ToRole="tbEmpleados" />
     <Property Name="Usua_Administrador" Type="Boolean" />
   </EntityType>
-  <EntityType Name="tbCarteleras">
-    <Key>
-      <PropertyRef Name="Cart_Id" />
-    </Key>
-    <Property Name="Cart_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Cart_Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Gene_Id" Type="Int32" />
-    <Property Name="Prom_Id" Type="Int32" />
-    <Property Name="Entra_Id" Type="Int32" />
-    <Property Name="Cart_Fecha_Estreno" Type="Int32" />
-    <Property Name="Cart_Usuario_Creacion" Type="Int32" />
-    <Property Name="Cart_Fecha_Creacion" Type="DateTime" Precision="0" />
-    <Property Name="Cart_Usuario_Modificacion" Type="Int32" />
-    <Property Name="Cart_Fecha_Modificacion" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="tbEntradas" Relationship="Self.FK_tbCarteleras_tbEntradas_Entra_Id" FromRole="tbCarteleras" ToRole="tbEntradas" />
-    <NavigationProperty Name="tbGeneros" Relationship="Self.FK_tbCarteleras_tbGeneros_Gene_Id" FromRole="tbCarteleras" ToRole="tbGeneros" />
-    <NavigationProperty Name="tbPromociones" Relationship="Self.FK_tbCarteleras_tbPromociones_Prom_Id" FromRole="tbCarteleras" ToRole="tbPromociones" />
-    <NavigationProperty Name="tbFacturas_Detalles" Relationship="Self.FK_tbFacturas_Detalles_tbCarteleras_Cart_Id" FromRole="tbCarteleras" ToRole="tbFacturas_Detalles" />
-    <NavigationProperty Name="tbSucursales" Relationship="Self.FK_tbSucursales_tbCarteleras_Cart_Id" FromRole="tbCarteleras" ToRole="tbSucursales" />
-    <Property Name="Cart_Estado" Type="Boolean" />
-  </EntityType>
   <EntityType Name="tbEntradas">
     <Key>
       <PropertyRef Name="Entra_Id" />
@@ -93,10 +72,10 @@
     <Property Name="Entra_Fecha_Creacion" Type="DateTime" Precision="0" />
     <Property Name="Entra_Usuario_Modificacion" Type="Int32" />
     <Property Name="Entra_Fecha_Modificacion" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="tbCarteleras" Relationship="Self.FK_tbCarteleras_tbEntradas_Entra_Id" FromRole="tbEntradas" ToRole="tbCarteleras" />
     <NavigationProperty Name="tbSalas" Relationship="Self.FK_tbEntradas_tbSalas_Sala_Id" FromRole="tbEntradas" ToRole="tbSalas" />
     <NavigationProperty Name="tbSucursales" Relationship="Self.FK_tbSucursales_tbEntradas_Entra_Id" FromRole="tbEntradas" ToRole="tbSucursales" />
     <Property Name="Entra_Estado" Type="Boolean" />
+    <NavigationProperty Name="tbCarteleras" Relationship="dbSsitemascinesModel.fk_tbCarteleras_tbEntradas" FromRole="tbEntradas" ToRole="tbCarteleras" />
   </EntityType>
   <EntityType Name="tbSucursales">
     <Key>
@@ -112,10 +91,10 @@
     <Property Name="Sucu_Fecha_Creacion" Type="DateTime" Precision="0" />
     <Property Name="Sucu_Usuario_Modificacion" Type="Int32" />
     <Property Name="Sucu_Fecha_Modificacion" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="tbCarteleras" Relationship="Self.FK_tbSucursales_tbCarteleras_Cart_Id" FromRole="tbSucursales" ToRole="tbCarteleras" />
     <NavigationProperty Name="tbEntradas" Relationship="Self.FK_tbSucursales_tbEntradas_Entra_Id" FromRole="tbSucursales" ToRole="tbEntradas" />
     <NavigationProperty Name="tbMunicipio" Relationship="Self.FK_tbSucursales_tbMunicipio_Muni_Codigo" FromRole="tbSucursales" ToRole="tbMunicipio" />
     <Property Name="Cart_Estado" Type="Boolean" />
+    <NavigationProperty Name="tbCarteleras" Relationship="dbSsitemascinesModel.FK_tbSucursales_tbCarteleras_Cart_Id" FromRole="tbSucursales" ToRole="tbCarteleras" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -140,8 +119,8 @@
     <Property Name="Fade_Usua_Modifica" Type="Int32" />
     <Property Name="Fade_Fecha_Modificacion" Type="DateTime" Precision="0" />
     <Property Name="Fade_Estado" Type="Boolean" />
-    <NavigationProperty Name="tbCarteleras" Relationship="Self.FK_tbFacturas_Detalles_tbCarteleras_Cart_Id" FromRole="tbFacturas_Detalles" ToRole="tbCarteleras" />
     <NavigationProperty Name="tbFacturas_Encabezados" Relationship="Self.FK_tbFacturas_Detalles_tbFacturas_Encabezados_Fact_Id" FromRole="tbFacturas_Detalles" ToRole="tbFacturas_Encabezados" />
+    <NavigationProperty Name="tbCarteleras" Relationship="dbSsitemascinesModel.FK_tbFacturas_Detalles_tbCarteleras_Cart_Id" FromRole="tbFacturas_Detalles" ToRole="tbCarteleras" />
   </EntityType>
   <EntityType Name="tbFacturas_Encabezados">
     <Key>
@@ -225,9 +204,9 @@
     <Property Name="Gene_Fecha_Creacion" Type="DateTime" Precision="0" />
     <Property Name="Gene_Usuario_Modificacion" Type="Int32" />
     <Property Name="Gene_Fecha_Modificacion" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="tbCarteleras" Relationship="Self.FK_tbCarteleras_tbGeneros_Gene_Id" FromRole="tbGeneros" ToRole="tbCarteleras" />
     <NavigationProperty Name="tbPromociones" Relationship="Self.FK_tbGeneros_tbPromociones_Prom_Id" FromRole="tbGeneros" ToRole="tbPromociones" />
     <Property Name="Gene_Estado" Type="Boolean" />
+    <NavigationProperty Name="tbCarteleras" Relationship="dbSsitemascinesModel.fk_tbGeneros_tbCarteleras" FromRole="tbGeneros" ToRole="tbCarteleras" />
   </EntityType>
   <EntityType Name="tbMunicipio">
     <Key>
@@ -270,10 +249,10 @@
     <Property Name="Prom_Fecha_Creacion" Type="DateTime" Precision="0" />
     <Property Name="Prom_Usuario_Modificacion" Type="Int32" />
     <Property Name="Prom_Fecha_Modificacion" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="tbCarteleras" Relationship="Self.FK_tbCarteleras_tbPromociones_Prom_Id" FromRole="tbPromociones" ToRole="tbCarteleras" />
     <NavigationProperty Name="tbGeneros" Relationship="Self.FK_tbGeneros_tbPromociones_Prom_Id" FromRole="tbPromociones" ToRole="tbGeneros" />
     <NavigationProperty Name="tbPrecios" Relationship="Self.FK_tbPromociones_tbPrecios_Prec_Id" FromRole="tbPromociones" ToRole="tbPrecios" />
     <Property Name="Prom_Estado" Type="Boolean" />
+    <NavigationProperty Name="tbCarteleras" Relationship="dbSsitemascinesModel.fk_tbCarteleras_tbPromociones" FromRole="tbPromociones" ToRole="tbCarteleras" />
   </EntityType>
   <EntityType Name="tbSalas">
     <Key>
@@ -395,66 +374,6 @@
       </Principal>
       <Dependent Role="tbUsuarios">
         <PropertyRef Name="Empl_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tbCarteleras_tbEntradas_Entra_Id">
-    <End Role="tbEntradas" Type="Self.tbEntradas" Multiplicity="0..1" />
-    <End Role="tbCarteleras" Type="Self.tbCarteleras" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbEntradas">
-        <PropertyRef Name="Entra_Id" />
-      </Principal>
-      <Dependent Role="tbCarteleras">
-        <PropertyRef Name="Entra_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tbCarteleras_tbGeneros_Gene_Id">
-    <End Role="tbGeneros" Type="Self.tbGeneros" Multiplicity="0..1" />
-    <End Role="tbCarteleras" Type="Self.tbCarteleras" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbGeneros">
-        <PropertyRef Name="Gene_Id" />
-      </Principal>
-      <Dependent Role="tbCarteleras">
-        <PropertyRef Name="Gene_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tbCarteleras_tbPromociones_Prom_Id">
-    <End Role="tbPromociones" Type="Self.tbPromociones" Multiplicity="0..1" />
-    <End Role="tbCarteleras" Type="Self.tbCarteleras" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbPromociones">
-        <PropertyRef Name="Prom_Id" />
-      </Principal>
-      <Dependent Role="tbCarteleras">
-        <PropertyRef Name="Prom_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tbFacturas_Detalles_tbCarteleras_Cart_Id">
-    <End Role="tbCarteleras" Type="Self.tbCarteleras" Multiplicity="0..1" />
-    <End Role="tbFacturas_Detalles" Type="Self.tbFacturas_Detalles" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbCarteleras">
-        <PropertyRef Name="Cart_Id" />
-      </Principal>
-      <Dependent Role="tbFacturas_Detalles">
-        <PropertyRef Name="Cart_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tbSucursales_tbCarteleras_Cart_Id">
-    <End Role="tbCarteleras" Type="Self.tbCarteleras" Multiplicity="0..1" />
-    <End Role="tbSucursales" Type="Self.tbSucursales" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbCarteleras">
-        <PropertyRef Name="Cart_Id" />
-      </Principal>
-      <Dependent Role="tbSucursales">
-        <PropertyRef Name="Cart_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -655,7 +574,6 @@
     <EntitySet Name="tbPantallas" EntityType="Self.tbPantallas" />
     <EntitySet Name="tbRoles" EntityType="Self.tbRoles" />
     <EntitySet Name="tbUsuarios" EntityType="Self.tbUsuarios" />
-    <EntitySet Name="tbCarteleras" EntityType="Self.tbCarteleras" />
     <EntitySet Name="tbEntradas" EntityType="Self.tbEntradas" />
     <EntitySet Name="tbSucursales" EntityType="Self.tbSucursales" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
@@ -688,26 +606,6 @@
     <AssociationSet Name="FK_tbUsuario_tbEmpleados_Empl_Id" Association="Self.FK_tbUsuario_tbEmpleados_Empl_Id">
       <End Role="tbEmpleados" EntitySet="tbEmpleados" />
       <End Role="tbUsuarios" EntitySet="tbUsuarios" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tbCarteleras_tbEntradas_Entra_Id" Association="Self.FK_tbCarteleras_tbEntradas_Entra_Id">
-      <End Role="tbEntradas" EntitySet="tbEntradas" />
-      <End Role="tbCarteleras" EntitySet="tbCarteleras" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tbCarteleras_tbGeneros_Gene_Id" Association="Self.FK_tbCarteleras_tbGeneros_Gene_Id">
-      <End Role="tbGeneros" EntitySet="tbGeneros" />
-      <End Role="tbCarteleras" EntitySet="tbCarteleras" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tbCarteleras_tbPromociones_Prom_Id" Association="Self.FK_tbCarteleras_tbPromociones_Prom_Id">
-      <End Role="tbPromociones" EntitySet="tbPromociones" />
-      <End Role="tbCarteleras" EntitySet="tbCarteleras" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tbFacturas_Detalles_tbCarteleras_Cart_Id" Association="Self.FK_tbFacturas_Detalles_tbCarteleras_Cart_Id">
-      <End Role="tbCarteleras" EntitySet="tbCarteleras" />
-      <End Role="tbFacturas_Detalles" EntitySet="tbFacturas_Detalles" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tbSucursales_tbCarteleras_Cart_Id" Association="Self.FK_tbSucursales_tbCarteleras_Cart_Id">
-      <End Role="tbCarteleras" EntitySet="tbCarteleras" />
-      <End Role="tbSucursales" EntitySet="tbSucursales" />
     </AssociationSet>
     <AssociationSet Name="FK_tbEntradas_tbSalas_Sala_Id" Association="Self.FK_tbEntradas_tbSalas_Sala_Id">
       <End Role="tbSalas" EntitySet="tbSalas" />
@@ -860,7 +758,7 @@
       <Parameter Name="Gene_Id" Mode="In" Type="Int32" />
       <Parameter Name="Prom_Id" Mode="In" Type="Int32" />
       <Parameter Name="Entra_Id" Mode="In" Type="Int32" />
-      <Parameter Name="FechaEstreno" Mode="In" Type="Int32" />
+      <Parameter Name="FechaEstreno" Mode="In" Type="DateTime" />
       <Parameter Name="Modifica" Mode="In" Type="Int32" />
       <Parameter Name="FechaModifica" Mode="In" Type="DateTime" />
       <Parameter Name="Estado" Mode="In" Type="Boolean" />
@@ -873,7 +771,7 @@
       <Parameter Name="Gene_Id" Mode="In" Type="Int32" />
       <Parameter Name="Prom_Id" Mode="In" Type="Int32" />
       <Parameter Name="Entra_Id" Mode="In" Type="Int32" />
-      <Parameter Name="FechaEstreno" Mode="In" Type="Int32" />
+      <Parameter Name="FechaEstreno" Mode="In" Type="DateTime" />
       <Parameter Name="Creacion" Mode="In" Type="Int32" />
       <Parameter Name="FechaCreacion" Mode="In" Type="DateTime" />
       <Parameter Name="Modifica" Mode="In" Type="Int32" />
@@ -1121,6 +1019,27 @@
       <Parameter Name="Estado" Mode="In" Type="Boolean" />
     </FunctionImport>
     <FunctionImport Name="Sp_tbEmpleados_Mostrar" ReturnType="Collection(dbSsitemascinesModel.Sp_tbEmpleados_Mostrar_Result)" />
+    <EntitySet Name="tbCarteleras" EntityType="dbSsitemascinesModel.tbCarteleras" />
+    <AssociationSet Name="fk_tbCarteleras_tbEntradas" Association="dbSsitemascinesModel.fk_tbCarteleras_tbEntradas">
+      <End Role="tbEntradas" EntitySet="tbEntradas" />
+      <End Role="tbCarteleras" EntitySet="tbCarteleras" />
+    </AssociationSet>
+    <AssociationSet Name="fk_tbCarteleras_tbPromociones" Association="dbSsitemascinesModel.fk_tbCarteleras_tbPromociones">
+      <End Role="tbPromociones" EntitySet="tbPromociones" />
+      <End Role="tbCarteleras" EntitySet="tbCarteleras" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbFacturas_Detalles_tbCarteleras_Cart_Id" Association="dbSsitemascinesModel.FK_tbFacturas_Detalles_tbCarteleras_Cart_Id">
+      <End Role="tbCarteleras" EntitySet="tbCarteleras" />
+      <End Role="tbFacturas_Detalles" EntitySet="tbFacturas_Detalles" />
+    </AssociationSet>
+    <AssociationSet Name="fk_tbGeneros_tbCarteleras" Association="dbSsitemascinesModel.fk_tbGeneros_tbCarteleras">
+      <End Role="tbGeneros" EntitySet="tbGeneros" />
+      <End Role="tbCarteleras" EntitySet="tbCarteleras" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbSucursales_tbCarteleras_Cart_Id" Association="dbSsitemascinesModel.FK_tbSucursales_tbCarteleras_Cart_Id">
+      <End Role="tbCarteleras" EntitySet="tbCarteleras" />
+      <End Role="tbSucursales" EntitySet="tbSucursales" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="SP_tbUsuarios_InicioSesion_Result">
     <Property Type="Int32" Name="Usua_Id" Nullable="false" />
@@ -1304,4 +1223,85 @@
     <Property Type="DateTime" Name="Empl_Fecha_Modifica" Nullable="true" />
     <Property Type="Boolean" Name="Empl_Estado" Nullable="true" />
   </ComplexType>
+  <EntityType Name="tbCarteleras">
+    <Key>
+      <PropertyRef Name="Cart_Id" />
+    </Key>
+    <Property Name="Cart_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cart_Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Gene_Id" Type="Int32" />
+    <Property Name="Prom_Id" Type="Int32" />
+    <Property Name="Entra_Id" Type="Int32" />
+    <Property Name="Cart_Fecha_Estreno" Type="DateTime" Precision="3" />
+    <Property Name="Cart_Usuario_Creacion" Type="Int32" />
+    <Property Name="Cart_Fecha_Creacion" Type="DateTime" Precision="0" />
+    <Property Name="Cart_Usuario_Modificacion" Type="Int32" />
+    <Property Name="Cart_Fecha_Modificacion" Type="DateTime" Precision="0" />
+    <Property Name="Cart_Estado" Type="Boolean" />
+    <NavigationProperty Name="tbEntradas" Relationship="dbSsitemascinesModel.fk_tbCarteleras_tbEntradas" FromRole="tbCarteleras" ToRole="tbEntradas" />
+    <NavigationProperty Name="tbPromociones" Relationship="dbSsitemascinesModel.fk_tbCarteleras_tbPromociones" FromRole="tbCarteleras" ToRole="tbPromociones" />
+    <NavigationProperty Name="tbFacturas_Detalles" Relationship="dbSsitemascinesModel.FK_tbFacturas_Detalles_tbCarteleras_Cart_Id" FromRole="tbCarteleras" ToRole="tbFacturas_Detalles" />
+    <NavigationProperty Name="tbGeneros" Relationship="dbSsitemascinesModel.fk_tbGeneros_tbCarteleras" FromRole="tbCarteleras" ToRole="tbGeneros" />
+    <NavigationProperty Name="tbSucursales" Relationship="dbSsitemascinesModel.FK_tbSucursales_tbCarteleras_Cart_Id" FromRole="tbCarteleras" ToRole="tbSucursales" />
+  </EntityType>
+  <Association Name="fk_tbCarteleras_tbEntradas">
+    <End Type="dbSsitemascinesModel.tbEntradas" Role="tbEntradas" Multiplicity="0..1" />
+    <End Type="dbSsitemascinesModel.tbCarteleras" Role="tbCarteleras" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbEntradas">
+        <PropertyRef Name="Entra_Id" />
+      </Principal>
+      <Dependent Role="tbCarteleras">
+        <PropertyRef Name="Entra_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_tbCarteleras_tbPromociones">
+    <End Type="dbSsitemascinesModel.tbPromociones" Role="tbPromociones" Multiplicity="0..1" />
+    <End Type="dbSsitemascinesModel.tbCarteleras" Role="tbCarteleras" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbPromociones">
+        <PropertyRef Name="Prom_Id" />
+      </Principal>
+      <Dependent Role="tbCarteleras">
+        <PropertyRef Name="Prom_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbFacturas_Detalles_tbCarteleras_Cart_Id">
+    <End Type="dbSsitemascinesModel.tbCarteleras" Role="tbCarteleras" Multiplicity="0..1" />
+    <End Type="dbSsitemascinesModel.tbFacturas_Detalles" Role="tbFacturas_Detalles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCarteleras">
+        <PropertyRef Name="Cart_Id" />
+      </Principal>
+      <Dependent Role="tbFacturas_Detalles">
+        <PropertyRef Name="Cart_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_tbGeneros_tbCarteleras">
+    <End Type="dbSsitemascinesModel.tbGeneros" Role="tbGeneros" Multiplicity="0..1" />
+    <End Type="dbSsitemascinesModel.tbCarteleras" Role="tbCarteleras" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbGeneros">
+        <PropertyRef Name="Gene_Id" />
+      </Principal>
+      <Dependent Role="tbCarteleras">
+        <PropertyRef Name="Gene_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbSucursales_tbCarteleras_Cart_Id">
+    <End Type="dbSsitemascinesModel.tbCarteleras" Role="tbCarteleras" Multiplicity="0..1" />
+    <End Type="dbSsitemascinesModel.tbSucursales" Role="tbSucursales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCarteleras">
+        <PropertyRef Name="Cart_Id" />
+      </Principal>
+      <Dependent Role="tbSucursales">
+        <PropertyRef Name="Cart_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

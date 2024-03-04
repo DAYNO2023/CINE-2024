@@ -63,7 +63,7 @@
     <Property Name="Gene_Id" Type="int" />
     <Property Name="Prom_Id" Type="int" />
     <Property Name="Entra_Id" Type="int" />
-    <Property Name="Cart_Fecha_Estreno" Type="int" />
+    <Property Name="Cart_Fecha_Estreno" Type="datetime" />
     <Property Name="Cart_Usuario_Creacion" Type="int" />
     <Property Name="Cart_Fecha_Creacion" Type="date" />
     <Property Name="Cart_Usuario_Modificacion" Type="int" />
@@ -222,6 +222,17 @@
     <Property Name="Prec_Fecha_Modificacion" Type="date" />
     <Property Name="Prec_Estado" Type="bit" />
   </EntityType>
+  <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPrecios_Bitacora' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="tbPrecios_Bitacora">
+          <Property Name="Bitp_Id" Type="int" />
+          <Property Name="Bitp_Descuento" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Bitp_Descripcion" Type="varchar" MaxLength="100" />
+          <Property Name="Bitp_Usuario_Creacion" Type="int" />
+          <Property Name="Bitp_Fecha_Creacion" Type="date" />
+          <Property Name="Bitp_Usuario_Modificacion" Type="int" />
+          <Property Name="Bitp_Fecha_Modificacion" Type="date" />
+        </EntityType>-->
   <EntityType Name="tbPromociones">
     <Key>
       <PropertyRef Name="Prom_Id" />
@@ -236,6 +247,17 @@
     <Property Name="Prom_Fecha_Modificacion" Type="date" />
     <Property Name="Prom_Estado" Type="bit" />
   </EntityType>
+  <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="tbPromociones_Bitacora">
+          <Property Name="Bita_Id" Type="int" />
+          <Property Name="Bita_Descuento" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Bita_Descripcion" Type="varchar" MaxLength="100" />
+          <Property Name="Bita_Usuario_Creacion" Type="int" />
+          <Property Name="Bita_Fecha_Creacion" Type="date" />
+          <Property Name="Bita_Usuario_Modificacion" Type="int" />
+          <Property Name="Bita_Fecha_Modificacion" Type="date" />
+        </EntityType>-->
   <EntityType Name="tbSalas">
     <Key>
       <PropertyRef Name="Sala_Id" />
@@ -300,6 +322,30 @@
     <Property Name="Empl_Fecha_Modifica" Type="date" />
     <Property Name="Empl_Estado" Type="bit" />
   </EntityType>
+  <Association Name="fk_tbCarteleras_tbEntradas">
+    <End Role="tbEntradas" Type="Self.tbEntradas" Multiplicity="0..1" />
+    <End Role="tbCarteleras" Type="Self.tbCarteleras" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbEntradas">
+        <PropertyRef Name="Entra_Id" />
+      </Principal>
+      <Dependent Role="tbCarteleras">
+        <PropertyRef Name="Entra_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_tbCarteleras_tbPromociones">
+    <End Role="tbPromociones" Type="Self.tbPromociones" Multiplicity="0..1" />
+    <End Role="tbCarteleras" Type="Self.tbCarteleras" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbPromociones">
+        <PropertyRef Name="Prom_Id" />
+      </Principal>
+      <Dependent Role="tbCarteleras">
+        <PropertyRef Name="Prom_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_tbClientes_tbEstado_Civil_Esta_Id">
     <End Role="tbEstado_Civil" Type="Self.tbEstado_Civil" Multiplicity="0..1" />
     <End Role="tbClientes" Type="Self.tbClientes" Multiplicity="*" />
@@ -429,6 +475,18 @@
       </Principal>
       <Dependent Role="tbFacturas_Encabezados">
         <PropertyRef Name="Tipo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_tbGeneros_tbCarteleras">
+    <End Role="tbGeneros" Type="Self.tbGeneros" Multiplicity="0..1" />
+    <End Role="tbCarteleras" Type="Self.tbCarteleras" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbGeneros">
+        <PropertyRef Name="Gene_Id" />
+      </Principal>
+      <Dependent Role="tbCarteleras">
+        <PropertyRef Name="Gene_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -651,7 +709,7 @@
     <Parameter Name="Gene_Id" Type="int" Mode="In" />
     <Parameter Name="Prom_Id" Type="int" Mode="In" />
     <Parameter Name="Entra_Id" Type="int" Mode="In" />
-    <Parameter Name="FechaEstreno" Type="int" Mode="In" />
+    <Parameter Name="FechaEstreno" Type="datetime" Mode="In" />
     <Parameter Name="Modifica" Type="int" Mode="In" />
     <Parameter Name="FechaModifica" Type="date" Mode="In" />
     <Parameter Name="Estado" Type="bit" Mode="In" />
@@ -664,7 +722,7 @@
     <Parameter Name="Gene_Id" Type="int" Mode="In" />
     <Parameter Name="Prom_Id" Type="int" Mode="In" />
     <Parameter Name="Entra_Id" Type="int" Mode="In" />
-    <Parameter Name="FechaEstreno" Type="int" Mode="In" />
+    <Parameter Name="FechaEstreno" Type="datetime" Mode="In" />
     <Parameter Name="Creacion" Type="int" Mode="In" />
     <Parameter Name="FechaCreacion" Type="date" Mode="In" />
     <Parameter Name="Modifica" Type="int" Mode="In" />
@@ -936,6 +994,14 @@
     <EntitySet Name="tbTipo_Pagos" EntityType="Self.tbTipo_Pagos" Schema="Gral" store:Type="Tables" />
     <EntitySet Name="tbClientes" EntityType="Self.tbClientes" Schema="Regi" store:Type="Tables" />
     <EntitySet Name="tbEmpleados" EntityType="Self.tbEmpleados" Schema="Regi" store:Type="Tables" />
+    <AssociationSet Name="fk_tbCarteleras_tbEntradas" Association="Self.fk_tbCarteleras_tbEntradas">
+      <End Role="tbEntradas" EntitySet="tbEntradas" />
+      <End Role="tbCarteleras" EntitySet="tbCarteleras" />
+    </AssociationSet>
+    <AssociationSet Name="fk_tbCarteleras_tbPromociones" Association="Self.fk_tbCarteleras_tbPromociones">
+      <End Role="tbPromociones" EntitySet="tbPromociones" />
+      <End Role="tbCarteleras" EntitySet="tbCarteleras" />
+    </AssociationSet>
     <AssociationSet Name="FK_tbClientes_tbEstado_Civil_Esta_Id" Association="Self.FK_tbClientes_tbEstado_Civil_Esta_Id">
       <End Role="tbEstado_Civil" EntitySet="tbEstado_Civil" />
       <End Role="tbClientes" EntitySet="tbClientes" />
@@ -979,6 +1045,10 @@
     <AssociationSet Name="FK_tbFacturas_Encabezados_tbTipo_Pagos_Tipo_Id" Association="Self.FK_tbFacturas_Encabezados_tbTipo_Pagos_Tipo_Id">
       <End Role="tbTipo_Pagos" EntitySet="tbTipo_Pagos" />
       <End Role="tbFacturas_Encabezados" EntitySet="tbFacturas_Encabezados" />
+    </AssociationSet>
+    <AssociationSet Name="fk_tbGeneros_tbCarteleras" Association="Self.fk_tbGeneros_tbCarteleras">
+      <End Role="tbGeneros" EntitySet="tbGeneros" />
+      <End Role="tbCarteleras" EntitySet="tbCarteleras" />
     </AssociationSet>
     <AssociationSet Name="FK_tbGeneros_tbPromociones_Prom_Id" Association="Self.FK_tbGeneros_tbPromociones_Prom_Id">
       <End Role="tbPromociones" EntitySet="tbPromociones" />

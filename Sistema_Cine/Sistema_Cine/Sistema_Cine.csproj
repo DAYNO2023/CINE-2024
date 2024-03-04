@@ -1946,6 +1946,7 @@
     <Content Include="Views\tbSucursales\Details.cshtml" />
     <Content Include="Views\tbSucursales\Edit.cshtml" />
     <Content Include="Views\tbSucursales\Index.cshtml" />
+    <Content Include="Views\tbGeneros\_Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

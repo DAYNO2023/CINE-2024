@@ -29,8 +29,8 @@ namespace Sistema_Cine.Models
         public Nullable<System.DateTime> Gene_Fecha_Modificacion { get; set; }
         public Nullable<bool> Gene_Estado { get; set; }
     
+        public virtual tbPromociones tbPromociones { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbCarteleras> tbCarteleras { get; set; }
-        public virtual tbPromociones tbPromociones { get; set; }
     }
 }

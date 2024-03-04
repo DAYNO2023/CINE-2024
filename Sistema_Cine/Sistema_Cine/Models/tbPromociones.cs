@@ -17,8 +17,8 @@ namespace Sistema_Cine.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tbPromociones()
         {
-            this.tbCarteleras = new HashSet<tbCarteleras>();
             this.tbGeneros = new HashSet<tbGeneros>();
+            this.tbCarteleras = new HashSet<tbCarteleras>();
         }
     
         public int Prom_Id { get; set; }
@@ -32,9 +32,9 @@ namespace Sistema_Cine.Models
         public Nullable<bool> Prom_Estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbCarteleras> tbCarteleras { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbGeneros> tbGeneros { get; set; }
         public virtual tbPrecios tbPrecios { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbCarteleras> tbCarteleras { get; set; }
     }
 }

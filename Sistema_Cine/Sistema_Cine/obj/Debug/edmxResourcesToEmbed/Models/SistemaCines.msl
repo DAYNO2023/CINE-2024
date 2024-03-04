@@ -59,23 +59,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbCarteleras">
-      <EntityTypeMapping TypeName="dbSsitemascinesModel.tbCarteleras">
-        <MappingFragment StoreEntitySet="tbCarteleras">
-          <ScalarProperty Name="Cart_Estado" ColumnName="Cart_Estado" />
-          <ScalarProperty Name="Cart_Id" ColumnName="Cart_Id" />
-          <ScalarProperty Name="Cart_Descripcion" ColumnName="Cart_Descripcion" />
-          <ScalarProperty Name="Gene_Id" ColumnName="Gene_Id" />
-          <ScalarProperty Name="Prom_Id" ColumnName="Prom_Id" />
-          <ScalarProperty Name="Entra_Id" ColumnName="Entra_Id" />
-          <ScalarProperty Name="Cart_Fecha_Estreno" ColumnName="Cart_Fecha_Estreno" />
-          <ScalarProperty Name="Cart_Usuario_Creacion" ColumnName="Cart_Usuario_Creacion" />
-          <ScalarProperty Name="Cart_Fecha_Creacion" ColumnName="Cart_Fecha_Creacion" />
-          <ScalarProperty Name="Cart_Usuario_Modificacion" ColumnName="Cart_Usuario_Modificacion" />
-          <ScalarProperty Name="Cart_Fecha_Modificacion" ColumnName="Cart_Fecha_Modificacion" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tbEntradas">
       <EntityTypeMapping TypeName="dbSsitemascinesModel.tbEntradas">
         <MappingFragment StoreEntitySet="tbEntradas">
@@ -626,5 +609,22 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="tbCarteleras">
+      <EntityTypeMapping TypeName="dbSsitemascinesModel.tbCarteleras">
+        <MappingFragment StoreEntitySet="tbCarteleras">
+          <ScalarProperty Name="Cart_Estado" ColumnName="Cart_Estado" />
+          <ScalarProperty Name="Cart_Fecha_Modificacion" ColumnName="Cart_Fecha_Modificacion" />
+          <ScalarProperty Name="Cart_Usuario_Modificacion" ColumnName="Cart_Usuario_Modificacion" />
+          <ScalarProperty Name="Cart_Fecha_Creacion" ColumnName="Cart_Fecha_Creacion" />
+          <ScalarProperty Name="Cart_Usuario_Creacion" ColumnName="Cart_Usuario_Creacion" />
+          <ScalarProperty Name="Cart_Fecha_Estreno" ColumnName="Cart_Fecha_Estreno" />
+          <ScalarProperty Name="Entra_Id" ColumnName="Entra_Id" />
+          <ScalarProperty Name="Prom_Id" ColumnName="Prom_Id" />
+          <ScalarProperty Name="Gene_Id" ColumnName="Gene_Id" />
+          <ScalarProperty Name="Cart_Descripcion" ColumnName="Cart_Descripcion" />
+          <ScalarProperty Name="Cart_Id" ColumnName="Cart_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

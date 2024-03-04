@@ -9,7 +9,6 @@
         <EntityTypeShape EntityType="dbSsitemascinesModel.tbPantallas" Width="1.5" PointX="3.75" PointY="13.875" IsExpanded="true" />
         <EntityTypeShape EntityType="dbSsitemascinesModel.tbRoles" Width="1.5" PointX="3.75" PointY="17.375" IsExpanded="true" />
         <EntityTypeShape EntityType="dbSsitemascinesModel.tbUsuarios" Width="1.5" PointX="8.25" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbSsitemascinesModel.tbCarteleras" Width="1.5" PointX="11.25" PointY="22.875" IsExpanded="true" />
         <EntityTypeShape EntityType="dbSsitemascinesModel.tbEntradas" Width="1.5" PointX="9" PointY="21.5" IsExpanded="true" />
         <EntityTypeShape EntityType="dbSsitemascinesModel.tbSucursales" Width="1.5" PointX="13.5" PointY="16.625" IsExpanded="true" />
         <EntityTypeShape EntityType="dbSsitemascinesModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
@@ -31,11 +30,6 @@
         <AssociationConnector Association="dbSsitemascinesModel.FK_tbPantalla_Roles_tbRoles_Role_Id" ManuallyRouted="false" />
         <AssociationConnector Association="dbSsitemascinesModel.FK_tbUsuario_tbPantalla_Roles_Paro_Id" ManuallyRouted="false" />
         <AssociationConnector Association="dbSsitemascinesModel.FK_tbUsuario_tbEmpleados_Empl_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="dbSsitemascinesModel.FK_tbCarteleras_tbEntradas_Entra_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="dbSsitemascinesModel.FK_tbCarteleras_tbGeneros_Gene_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="dbSsitemascinesModel.FK_tbCarteleras_tbPromociones_Prom_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="dbSsitemascinesModel.FK_tbFacturas_Detalles_tbCarteleras_Cart_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="dbSsitemascinesModel.FK_tbSucursales_tbCarteleras_Cart_Id" ManuallyRouted="false" />
         <AssociationConnector Association="dbSsitemascinesModel.FK_tbEntradas_tbSalas_Sala_Id" ManuallyRouted="false" />
         <AssociationConnector Association="dbSsitemascinesModel.FK_tbSucursales_tbEntradas_Entra_Id" ManuallyRouted="false" />
         <AssociationConnector Association="dbSsitemascinesModel.FK_tbSucursales_tbMunicipio_Muni_Codigo" ManuallyRouted="false" />
@@ -52,7 +46,13 @@
         <AssociationConnector Association="dbSsitemascinesModel.FK_tbClientes_tbMunicipio_Muni_Id" ManuallyRouted="false" />
         <AssociationConnector Association="dbSsitemascinesModel.FK_tbEmpleado_tbMunicipio_Muni_Id" ManuallyRouted="false" />
         <AssociationConnector Association="dbSsitemascinesModel.FK_tbPromociones_tbPrecios_Prec_Id" ManuallyRouted="false" />
-      </Diagram>
+        <EntityTypeShape EntityType="dbSsitemascinesModel.tbCarteleras" Width="1.5" PointX="11.25" PointY="22.875" />
+        <AssociationConnector Association="dbSsitemascinesModel.fk_tbCarteleras_tbEntradas" />
+        <AssociationConnector Association="dbSsitemascinesModel.fk_tbCarteleras_tbPromociones" />
+        <AssociationConnector Association="dbSsitemascinesModel.FK_tbFacturas_Detalles_tbCarteleras_Cart_Id" />
+        <AssociationConnector Association="dbSsitemascinesModel.fk_tbGeneros_tbCarteleras" />
+        <AssociationConnector Association="dbSsitemascinesModel.FK_tbSucursales_tbCarteleras_Cart_Id" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -85,12 +86,47 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Gene_Id,Gene_Descripcion,Prom_Id,Gene_Usuario_Creacion,Gene_Fecha_Creacion,Gene_Usuario_Modificacion,Gene_Fecha_Modificacion")] tbGeneros tbGeneros)
         {
+            int id = Convert.ToInt32(Session["idtipo"]);
+            var generoexistenete = db.tbGeneros.Find(id);
+
             if (ModelState.IsValid)
             {
-                db.Entry(tbGeneros).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (generoexistenete != null)
+                {
+                    try
+                    {
+                       
+                        db.Entry(generoexistenete).Reload();
+                        generoexistenete.Gene_Descripcion = tbGeneros.Gene_Descripcion;
+                        generoexistenete.Prom_Id = tbGeneros.Prom_Id;
+
+                        db.SaveChanges();
+
+                        return RedirectToAction("Index");
+                    }
+                    catch (DbUpdateConcurrencyException ex)
+                    {
+                     
+                        var entry = ex.Entries.Single();
+                        var clientValues = (tbGeneros)entry.Entity;
+                        var databaseEntry = entry.GetDatabaseValues();
+
+                        if (databaseEntry == null)
+                        {
+                            ModelState.AddModelError(string.Empty, "La entidad ha sido eliminada por otro usuario.");
+                        }
+                        else
+                        {
+                            
+                            var databaseValues = (tbGeneros)databaseEntry.ToObject();
+                            clientValues.Gene_Fecha_Modificacion = databaseValues.Gene_Fecha_Modificacion;
+
+                            ModelState.AddModelError(string.Empty, "La entidad ha sido modificada por otro usuario. Se han cargado los cambios más recientes.");
+                        }
+                    }
+                }
             }
+
             ViewBag.Prom_Id = new SelectList(db.tbPromociones, "Prom_Id", "Prom_Descripcion", tbGeneros.Prom_Id);
             return View(tbGeneros);
         }

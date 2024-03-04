@@ -24,7 +24,7 @@ namespace Sistema_Cine.Models
         public Nullable<System.DateTime> Fade_Fecha_Modificacion { get; set; }
         public Nullable<bool> Fade_Estado { get; set; }
     
-        public virtual tbCarteleras tbCarteleras { get; set; }
         public virtual tbFacturas_Encabezados tbFacturas_Encabezados { get; set; }
+        public virtual tbCarteleras tbCarteleras { get; set; }
     }
 }

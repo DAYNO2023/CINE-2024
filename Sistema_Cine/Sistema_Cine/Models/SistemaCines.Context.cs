@@ -31,7 +31,6 @@ namespace Sistema_Cine.Models
         public virtual DbSet<tbPantallas> tbPantallas { get; set; }
         public virtual DbSet<tbRoles> tbRoles { get; set; }
         public virtual DbSet<tbUsuarios> tbUsuarios { get; set; }
-        public virtual DbSet<tbCarteleras> tbCarteleras { get; set; }
         public virtual DbSet<tbEntradas> tbEntradas { get; set; }
         public virtual DbSet<tbSucursales> tbSucursales { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
@@ -49,6 +48,7 @@ namespace Sistema_Cine.Models
         public virtual DbSet<tbTipo_Pagos> tbTipo_Pagos { get; set; }
         public virtual DbSet<tbClientes> tbClientes { get; set; }
         public virtual DbSet<tbEmpleados> tbEmpleados { get; set; }
+        public virtual DbSet<tbCarteleras> tbCarteleras { get; set; }
     
         public virtual ObjectResult<SP_tbUsuarios_InicioSesion_Result> SP_tbUsuarios_InicioSesion(string usuario, string contra)
         {
@@ -339,7 +339,7 @@ namespace Sistema_Cine.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_tbUsuarios_Mostrar_Result>("Sp_tbUsuarios_Mostrar");
         }
     
-        public virtual ObjectResult<Nullable<int>> Sp_tbCarteleras_Editar(Nullable<int> id, string descripcion, Nullable<int> gene_Id, Nullable<int> prom_Id, Nullable<int> entra_Id, Nullable<int> fechaEstreno, Nullable<int> modifica, Nullable<System.DateTime> fechaModifica, Nullable<bool> estado)
+        public virtual ObjectResult<Nullable<int>> Sp_tbCarteleras_Editar(Nullable<int> id, string descripcion, Nullable<int> gene_Id, Nullable<int> prom_Id, Nullable<int> entra_Id, Nullable<System.DateTime> fechaEstreno, Nullable<int> modifica, Nullable<System.DateTime> fechaModifica, Nullable<bool> estado)
         {
             var idParameter = id.HasValue ?
                 new ObjectParameter("Id", id) :
@@ -363,7 +363,7 @@ namespace Sistema_Cine.Models
     
             var fechaEstrenoParameter = fechaEstreno.HasValue ?
                 new ObjectParameter("FechaEstreno", fechaEstreno) :
-                new ObjectParameter("FechaEstreno", typeof(int));
+                new ObjectParameter("FechaEstreno", typeof(System.DateTime));
     
             var modificaParameter = modifica.HasValue ?
                 new ObjectParameter("Modifica", modifica) :
@@ -389,7 +389,7 @@ namespace Sistema_Cine.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbCarteleras_Eliminar", idParameter);
         }
     
-        public virtual ObjectResult<Nullable<int>> Sp_tbCarteleras_Insertar(string descripcion, Nullable<int> gene_Id, Nullable<int> prom_Id, Nullable<int> entra_Id, Nullable<int> fechaEstreno, Nullable<int> creacion, Nullable<System.DateTime> fechaCreacion, Nullable<int> modifica, Nullable<System.DateTime> fechaModifica, Nullable<bool> estado)
+        public virtual ObjectResult<Nullable<int>> Sp_tbCarteleras_Insertar(string descripcion, Nullable<int> gene_Id, Nullable<int> prom_Id, Nullable<int> entra_Id, Nullable<System.DateTime> fechaEstreno, Nullable<int> creacion, Nullable<System.DateTime> fechaCreacion, Nullable<int> modifica, Nullable<System.DateTime> fechaModifica, Nullable<bool> estado)
         {
             var descripcionParameter = descripcion != null ?
                 new ObjectParameter("Descripcion", descripcion) :
@@ -409,7 +409,7 @@ namespace Sistema_Cine.Models
     
             var fechaEstrenoParameter = fechaEstreno.HasValue ?
                 new ObjectParameter("FechaEstreno", fechaEstreno) :
-                new ObjectParameter("FechaEstreno", typeof(int));
+                new ObjectParameter("FechaEstreno", typeof(System.DateTime));
     
             var creacionParameter = creacion.HasValue ?
                 new ObjectParameter("Creacion", creacion) :

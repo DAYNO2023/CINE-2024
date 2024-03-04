@@ -26,7 +26,7 @@ namespace Sistema_Cine.Models
         public Nullable<int> Gene_Id { get; set; }
         public Nullable<int> Prom_Id { get; set; }
         public Nullable<int> Entra_Id { get; set; }
-        public Nullable<int> Cart_Fecha_Estreno { get; set; }
+        public Nullable<System.DateTime> Cart_Fecha_Estreno { get; set; }
         public Nullable<int> Cart_Usuario_Creacion { get; set; }
         public Nullable<System.DateTime> Cart_Fecha_Creacion { get; set; }
         public Nullable<int> Cart_Usuario_Modificacion { get; set; }
@@ -34,10 +34,10 @@ namespace Sistema_Cine.Models
         public Nullable<bool> Cart_Estado { get; set; }
     
         public virtual tbEntradas tbEntradas { get; set; }
-        public virtual tbGeneros tbGeneros { get; set; }
         public virtual tbPromociones tbPromociones { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbFacturas_Detalles> tbFacturas_Detalles { get; set; }
+        public virtual tbGeneros tbGeneros { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbSucursales> tbSucursales { get; set; }
     }

@@ -17,8 +17,8 @@ namespace Sistema_Cine.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tbEntradas()
         {
-            this.tbCarteleras = new HashSet<tbCarteleras>();
             this.tbSucursales = new HashSet<tbSucursales>();
+            this.tbCarteleras = new HashSet<tbCarteleras>();
         }
     
         public int Entra_Id { get; set; }
@@ -30,10 +30,10 @@ namespace Sistema_Cine.Models
         public Nullable<System.DateTime> Entra_Fecha_Modificacion { get; set; }
         public Nullable<bool> Entra_Estado { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbCarteleras> tbCarteleras { get; set; }
         public virtual tbSalas tbSalas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbSucursales> tbSucursales { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbCarteleras> tbCarteleras { get; set; }
     }
 }

@@ -26,7 +26,7 @@ namespace Sistema_Cine.Models
         [Display(Name = "Entradas Id")]
         public Nullable<int> Entra_Id { get; set; }
         [Display(Name = "Fecha estreno")]
-        public Nullable<int> Cart_Fecha_Estreno { get; set; }
+        public Nullable<System.DateTime> Cart_Fecha_Estreno { get; set; }
         [Display(Name = "User creacion")]
         public Nullable<int> Cart_Usuario_Creacion { get; set; }
         [Display(Name = "fecha Creacion")]

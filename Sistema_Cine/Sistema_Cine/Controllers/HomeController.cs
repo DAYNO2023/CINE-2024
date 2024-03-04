@@ -53,6 +53,15 @@ namespace Sistema_Cine.Controllers
 
         }
 
+        public JsonResult obtenerIDgen(int tipoID)
+        {
+            var tipo = db.tbGeneros.Find(tipoID);
+            Session["idtipo"] = tipoID;
+
+
+            return Json(new { success = true, description = tipo.Gene_Descripcion, promo = tipo.Prom_Id }, JsonRequestBehavior.AllowGet);
+
+        }
 
 
 

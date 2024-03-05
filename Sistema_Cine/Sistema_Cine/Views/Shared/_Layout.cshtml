@@ -35,7 +35,13 @@
                         <div class="dropdown profile-element">
                             <a href="https://localhost:44307/Home/Index"><img alt="image" class="rounded-circle" src="~/Content/img/jugador.png" /></a>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                <span class="block m-t-xs font-bold">@HttpContext.Current.Session["NombreUsuario"].ToString()</span>
+                                @*<span class="block m-t-xs font-bold">@HttpContext.Current.Session["NombreUsuario"].ToString()</span>*@
+                                @{
+                                    var nombreUsuario = HttpContext.Current.Session != null && HttpContext.Current.Session["NombreUsuario"] != null
+                                        ? HttpContext.Current.Session["NombreUsuario"].ToString()
+                                        : "Usuario desconocido";
+                                }
+                                <span class="block m-t-xs font-bold">@nombreUsuario</span>
                                 <span class="text-muted text-xs block">Administrados <b class="caret"></b></span>
                             </a>
 
@@ -49,7 +55,7 @@
                         <ul class="nav nav-second-level">
                             <li><a href="https://localhost:44307/tbRoles/Index" class="active">Roles</a></li>
                             @*<li><a href="https://localhost:44307/tbPantallas/Index" class="active">Pantallas</a></li>
-                            <li><a href="https://localhost:44307/tbPantalla_Roles/Index" class="active">Rol por Pantalla</a></li>*@
+                                <li><a href="https://localhost:44307/tbPantalla_Roles/Index" class="active">Rol por Pantalla</a></li>*@
                             <li><a href="https://localhost:44307/tbUsuarios/Index" class="active">Usuarios</a></li>
                         </ul>
                     </li>
@@ -172,10 +178,13 @@
 
 
                         <li>
-                            <a href="https://localhost:44307/">
-                                <i class="fa fa-sign-out"></i> Cerrar Seccion
+                            <a href="#" id="cerrarSesionBtn">
+                                <i class="fa fa-sign-out"></i> Cerrar Sesión
                             </a>
                         </li>
+
+
+
                         <!--<li>
                             <a class="right-sidebar-toggle">
                                 <i class="fa fa-tasks"></i>
@@ -719,6 +728,10 @@
 
     <script>
         $(document).ready(function () {
+
+
+      
+
             //setTimeout(function () {
             //    toastr.options = {
             //        closeButton: true,
@@ -843,6 +856,9 @@
                 }
             })
         })
+
+
     </script>
+
 </body>
 </html >

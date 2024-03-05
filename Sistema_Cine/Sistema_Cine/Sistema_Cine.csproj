@@ -1957,6 +1957,19 @@
     <Content Include="Views\tbPromociones\_Edit.cshtml" />
     <Content Include="Views\tbRoles\_Edit.cshtml" />
     <Content Include="Views\tbSalas\_Edit.cshtml" />
+    <Content Include="Views\tbTipo_Pagos\_Delete.cshtml" />
+    <Content Include="Views\tbSalas\_Delete.cshtml" />
+    <Content Include="Views\tbRoles\_Delete.cshtml" />
+    <Content Include="Views\tbPromociones\_Delete.cshtml" />
+    <Content Include="Views\tbPrecios\_Delete.cshtml" />
+    <Content Include="Views\tbPantallas\_Delete.cshtml" />
+    <Content Include="Views\tbPantalla_Roles\_Delete.cshtml" />
+    <Content Include="Views\tbMunicipios\_Delete.cshtml" />
+    <Content Include="Views\tbGeneros\_Delete.cshtml" />
+    <Content Include="Views\tbEntradas\_Delete.cshtml" />
+    <Content Include="Views\tbDepartamentos\_Delete.cshtml" />
+    <Content Include="Views\tbCargos\_Delete.cshtml" />
+    <Content Include="Views\tbButacas_Salas\_Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

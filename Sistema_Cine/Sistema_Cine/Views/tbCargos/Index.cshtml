@@ -31,17 +31,17 @@
                             @Html.DisplayNameFor(model => model.Carg_Descripcion)
                         </th>
                         @*<th>
-                            @Html.DisplayNameFor(model => model.Carg_Usuario_Creacion)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Carg_Fecha_Creacion)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Carg_Usuario_Modificacion)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Carg_Fecha_Modificacion)
-                        </th>*@
+                                @Html.DisplayNameFor(model => model.Carg_Usuario_Creacion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Carg_Fecha_Creacion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Carg_Usuario_Modificacion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Carg_Fecha_Modificacion)
+                            </th>*@
                         <th></th>
                     </tr>
                 </thead>
@@ -56,25 +56,28 @@
                                 @Html.DisplayFor(modelItem => item.Carg_Descripcion)
                             </td>
                             @*<td>
-                                @Html.DisplayFor(modelItem => item.Carg_Usuario_Creacion)
-                            </td>
+                                    @Html.DisplayFor(modelItem => item.Carg_Usuario_Creacion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Carg_Fecha_Creacion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Carg_Usuario_Modificacion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Carg_Fecha_Modificacion)
+                                </td>*@
                             <td>
-                                @Html.DisplayFor(modelItem => item.Carg_Fecha_Creacion)
+                                <p class="btn btn-warning  editar-carg" data-carg-id="@item.Carg_Id">
+                                    Editar
+                                </p>
+                                @*@Html.ActionLink("Edit", "Edit", new { id = item.Carg_Id }, new { @class = "btn btn-warning" })*@ |
+                                @Html.ActionLink("Details", "Details", new { id = item.Carg_Id }, new { @class = "btn btn-default" }) |
+                                <p class="btn btn-danger" id="elimnartipo" onclick="elimnartipo('@item.Carg_Id')">
+                                    Eliminar
+                                </p>
+                                @*@Html.ActionLink("Delete", "Delete", new { id = item.Carg_Id }, new { @class = "btn btn-danger" })*@
                             </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Carg_Usuario_Modificacion)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Carg_Fecha_Modificacion)
-                            </td>*@
-                        <td>
-                            <p class="btn btn-warning  editar-carg" data-carg-id="@item.Carg_Id">
-                                Editar
-                            </p>
-                            @*@Html.ActionLink("Edit", "Edit", new { id = item.Carg_Id }, new { @class = "btn btn-warning" })*@ |
-                            @Html.ActionLink("Details", "Details", new { id = item.Carg_Id }, new { @class = "btn btn-default" }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Carg_Id }, new { @class = "btn btn-danger" })
-                        </td>
                         </tr>
                     }
                 </tbody>
@@ -88,16 +91,21 @@
     $("#btnmodal").click(function () {
         $("#exampleModal").modal('show');
     })
+
+    function elimnartipo(id) {
+        $("#elimnarmodal").modal('show')
+        $("#id").val(id);
+    }
 </script>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"  aria-hidden="false">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="false">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true"></span></button>
                 <h5 class="modal-title">Cargo</h5>
-                
+
             </div>
             @Html.Partial("_Create", new Sistema_Cine.Models.tbCargos());
         </div>
@@ -116,6 +124,21 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="elimnarmodal" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+            </div>
+            @Html.Partial("_Delete", new Sistema_Cine.Models.tbCargos())
+        </div>
+    </div>
+</div>
+
+
+
 <script>
     $(".editar-carg").click(function () {
         var TipoId = $(this).data("carg-id");

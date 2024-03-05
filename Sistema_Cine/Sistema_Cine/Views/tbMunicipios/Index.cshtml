@@ -65,7 +65,10 @@
                             </p>
                             @*@Html.ActionLink("Edit", "Edit", new { id = item.Muni_Codigo }, new { @class = "btn btn-warning" })*@ |
                             @Html.ActionLink("Details", "Details", new { id = item.Muni_Codigo }, new { @class = "btn btn-default" }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Muni_Codigo }, new { @class = "btn btn-danger" })
+                            <p class="btn btn-danger" id="elimnartipo" onclick="elimnartipo('@item.Muni_Codigo')">
+                                Eliminar
+                            </p>
+                            @*@Html.ActionLink("Delete", "Delete", new { id = item.Muni_Codigo }, new { @class = "btn btn-danger" })*@
                         </td>
                     </tr>
                 }
@@ -80,6 +83,11 @@
     $("#btnmodal").click(function () {
         $("#exampleModal").modal('show');
     })
+
+    function elimnartipo(id) {
+        $("#elimnarmodal").modal('show')
+        $("#id").val(id);
+    }
 </script>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="false">
     <div class="modal-dialog">
@@ -103,6 +111,18 @@
                 <h5 class="modal-title">Modificar Municipio</h5>
             </div>
             @Html.Partial("_Edit", new Sistema_Cine.Models.tbMunicipio())
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="elimnarmodal" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+            </div>
+            @Html.Partial("_Delete", new Sistema_Cine.Models.tbMunicipio())
         </div>
     </div>
 </div>

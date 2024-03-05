@@ -57,15 +57,18 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Cate_Fecha_Modificacion)
                                 </td>*@
-                            <td>
-                                <p class="btn btn-warning  editar-tipo" data-tipo-id="@item.Tipo_Id">
-                                    Editar
-                                </p>
-                                @*<button class="btn btn-warning" id="bteditar">Create</button>*@ 
-                                @*@Html.ActionLink("Edit", "Edit", new { id = item.Tipo_Id }, new { @class = "btn btn-warning" })*@ |
-                                @Html.ActionLink("Details", "Details", new { id = item.Tipo_Id }, new { @class = "btn btn-default" }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Tipo_Id }, new { @class = "btn btn-danger" })
-                            </td>
+                        <td>
+                            <p class="btn btn-warning  editar-tipo" data-tipo-id="@item.Tipo_Id">
+                                Editar
+                            </p>
+                            @*<button class="btn btn-warning" id="bteditar">Create</button>*@
+                            @*@Html.ActionLink("Edit", "Edit", new { id = item.Tipo_Id }, new { @class = "btn btn-warning" })*@ |
+                            @Html.ActionLink("Details", "Details", new { id = item.Tipo_Id }, new { @class = "btn btn-default" }) |
+                            <p class="btn btn-danger" id="elimnartipo" onclick="elimnartipo('@item.Tipo_Id')">
+                                Eliminar
+                            </p>
+                            @*@Html.ActionLink("Delete", "Delete", new { id = item.Tipo_Id }, new { @class = "btn btn-danger" })*@
+                        </td>
                         </tr>
                     }
                 </tbody>
@@ -106,6 +109,18 @@
     </div>
 </div>
 
+<div class="modal fade" id="elimnarmodal" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+            </div>
+            @Html.Partial("_Delete", new Sistema_Cine.Models.tbTipo_Pagos())
+        </div>
+    </div>
+</div>
+
 <script>
     $("#btnmodal").click(function () {
         $("#exampleModal").modal('show');
@@ -113,6 +128,10 @@
     //$("#bteditar").click(function () {
     //    $("#exampleModal").modal('show');
     //})
+    function elimnartipo(id) {
+        $("#elimnarmodal").modal('show')
+        $("#id").val(id);
+    }
 
     $(".editar-tipo").click(function () {
         var TipoId = $(this).data("tipo-id");

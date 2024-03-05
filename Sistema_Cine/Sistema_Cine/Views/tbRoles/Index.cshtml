@@ -62,14 +62,17 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Role_Estado)
                                 </td>*@
-                            <td>
-                                <p class="btn btn-warning  editar-roles" data-roles-id="@item.Role_Id">
-                                    Editar
-                                </p>
-                                @*@Html.ActionLink("Edit", "Edit", new { id = item.Role_Id }, new { @class = "btn btn-warning" })*@ |
-                                @Html.ActionLink("Details", "Details", new { id = item.Role_Id }, new { @class = "btn btn-default" }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Role_Id }, new { @class = "btn btn-danger" })
-                            </td>
+                        <td>
+                            <p class="btn btn-warning  editar-roles" data-roles-id="@item.Role_Id">
+                                Editar
+                            </p>
+                            @*@Html.ActionLink("Edit", "Edit", new { id = item.Role_Id }, new { @class = "btn btn-warning" })*@ |
+                            @Html.ActionLink("Details", "Details", new { id = item.Role_Id }, new { @class = "btn btn-default" }) |
+                            <p class="btn btn-danger" id="elimnartipo" onclick="elimnartipo('@item.Role_Id')">
+                                Eliminar
+                            </p>
+                            @*@Html.ActionLink("Delete", "Delete", new { id = item.Role_Id }, new { @class = "btn btn-danger" })*@
+                        </td>
                         </tr>
                     }
                 </tbody>
@@ -86,6 +89,11 @@
     $("#btnmodal").click(function () {
         $("#exampleModal").modal('show');
     })
+
+    function elimnartipo(id) {
+        $("#elimnarmodal").modal('show')
+        $("#id").val(id);
+    }
 </script>
 
 <!-- Modal -->
@@ -114,6 +122,20 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="elimnarmodal" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+            </div>
+            @Html.Partial("_Delete", new Sistema_Cine.Models.tbRoles())
+        </div>
+    </div>
+</div>
+
+
 
 <script>
     $(".editar-roles").click(function () {

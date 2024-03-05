@@ -34,6 +34,10 @@ namespace Sistema_Cine.Controllers
                     Session["idusaio"] = iteam.Usua_Id;
                     Session["NombreUsuario"] = iteam.Usua_Nombre;
                 }
+                if (Session["NombreUsuario"] != null)
+                {
+                    ViewBag.NombreUsuario = Session["NombreUsuario"].ToString();
+                }
                 return RedirectToAction("Index");
             }
             else
@@ -41,8 +45,21 @@ namespace Sistema_Cine.Controllers
                 ModelState.AddModelError("ErrorLogin", "El Usuario o contraseña son incorrectos");
                 return View();
             }
-        //return View();
-    }
+            
+            //return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CerrarSesion()
+        {
+            // Eliminar todos los datos de la sesión
+            Session.Clear();
+            Session.Abandon();
+
+            // Redirigir al usuario a la página de inicio de sesión
+            return RedirectToAction("Index", "Home");
+        }
+
         public JsonResult obtenerID(int tipoID)
         {
             var tipo = db.tbTipo_Pagos.Find(tipoID);

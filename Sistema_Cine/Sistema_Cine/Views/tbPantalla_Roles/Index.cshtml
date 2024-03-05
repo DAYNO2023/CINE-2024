@@ -23,20 +23,20 @@
 
                     <tr>
                         @*<th>
-                            @Html.DisplayNameFor(model => model.Pant_Creacion)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Pant_Fecha_Creacion)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Pant_Modifica)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Pant_Fecha_Modifica)*@
+                                @Html.DisplayNameFor(model => model.Pant_Creacion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Pant_Fecha_Creacion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Pant_Modifica)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Pant_Fecha_Modifica)*@
                         @*</th>*@
                         @*<th>
-                            @Html.DisplayNameFor(model => model.Pant_Estado)
-                        </th>*@
+                                @Html.DisplayNameFor(model => model.Pant_Estado)
+                            </th>*@
                         <th>
                             @Html.DisplayNameFor(model => model.tbPantallas.Pant_Descripcion)
                         </th>
@@ -51,20 +51,20 @@
                     {
                         <tr>
                             @*<td>
-                                @Html.DisplayFor(modelItem => item.Pant_Creacion)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Pant_Fecha_Creacion)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Pant_Modifica)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Pant_Fecha_Modifica)
-                            </td>*@
+                                    @Html.DisplayFor(modelItem => item.Pant_Creacion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Pant_Fecha_Creacion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Pant_Modifica)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Pant_Fecha_Modifica)
+                                </td>*@
                             @*<td>
-                                @Html.DisplayFor(modelItem => item.Pant_Estado)
-                            </td>*@
+                                    @Html.DisplayFor(modelItem => item.Pant_Estado)
+                                </td>*@
                             <td>
                                 @Html.DisplayFor(modelItem => item.tbPantallas.Pant_Descripcion)
                             </td>
@@ -72,7 +72,10 @@
                                 @Html.DisplayFor(modelItem => item.tbRoles.Role_Descripcion)
                             </td>
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.Paro_Id }, new { @class = "btn btn-warning" }) |
+                                <p class="btn btn-warning  editar-paro" data-paro-id="@item.Paro_Id">
+                                    Editar
+                                </p>
+                                @*@Html.ActionLink("Edit", "Edit", new { id = item.Paro_Id }, new { @class = "btn btn-warning" })*@ |
                                 @Html.ActionLink("Details", "Details", new { id = item.Paro_Id }, new { @class = "btn btn-default" }) |
                                 @Html.ActionLink("Delete", "Delete", new { id = item.Paro_Id }, new { @class = "btn btn-danger" })
                             </td>
@@ -105,3 +108,38 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+                <h5 class="modal-title">Modificar pantalla por Roles</h5>
+            </div>
+            @Html.Partial("_Edit", new Sistema_Cine.Models.tbPantalla_Roles())
+        </div>
+    </div>
+</div>
+
+<script>
+    $(".editar-paro").click(function () {
+        var TipoId = $(this).data("paro-id");
+        $.ajax({
+            url: "/Home/obtenerIDParo",
+            type: 'POST',
+            dataType: 'json',
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ TipoId: TipoId }),
+            success: function (data) {
+
+                console.log(data);
+
+                $("#Pantalla").val(data.description);
+                $("#Roles").val(data.roles);
+                $("#editModal").modal('show');
+
+            },
+        });
+    });
+</script>

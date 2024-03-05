@@ -1,0 +1,44 @@
+﻿@model Sistema_Cine.Models.tbMunicipio
+
+
+@using (Html.BeginForm("Edit", "tbMunicipios"))
+{
+    @Html.AntiForgeryToken()
+<div class="card my-4">
+    <div class="card-body ">
+        <div class="card-header text-center">
+            <h4 class="card-title">Editar Municipio</h4>
+        </div>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Muni_Codigo)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Muni_Descripcion, htmlAttributes: new { @class = "control-label " })
+                @Html.EditorFor(model => model.Muni_Descripcion, new { htmlAttributes = new { @class = "form-control",id="descripcion" } })
+                @Html.ValidationMessageFor(model => model.Muni_Descripcion, "", new { @class = "text-danger" })
+            
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Depa_Codigo, "Depa_Codigo", htmlAttributes: new { @class = "control-label " })
+                @Html.DropDownList("Depa_Codigo", null, htmlAttributes: new { @class = "form-control",id="depa" })
+                @Html.ValidationMessageFor(model => model.Depa_Codigo, "", new { @class = "text-danger" })
+           
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-warning" />
+            </div>
+        </div>
+    </div>
+</div>
+ 
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -87,9 +87,18 @@ namespace Sistema_Cine.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tbPrecios).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                int id = Convert.ToInt32(Session["idtipo"]);
+                var preciosexistenete = db.tbPrecios.Find(id);
+
+                if (preciosexistenete != null)
+                {
+                    db.Entry(preciosexistenete).Reload();
+                    preciosexistenete.Prec_Descripcion = tbPrecios.Prec_Descripcion;
+                    
+
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
             return View(tbPrecios);
         }

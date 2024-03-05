@@ -82,9 +82,25 @@ namespace Sistema_Cine.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tbDepartamentos).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                int id = Convert.ToInt32(Session["idtipo"]);
+
+                // Buscar el registro existente en la base de datos
+                var departementoExistente = db.tbDepartamentos.Find(id);
+
+                if (departementoExistente != null)
+                {
+                    // Actualizar las propiedades del registro existente con los valores del modelo recibido
+                    departementoExistente.Depa_Descripcion = tbDepartamentos.Depa_Descripcion;
+
+                    // Cambiar el estado de la entidad a modificada
+                    db.Entry(departementoExistente).State = EntityState.Modified;
+
+                    // Guardar los cambios en la base de datos
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index");
+                }
+
             }
             return View(tbDepartamentos);
         }

@@ -23,17 +23,17 @@
                             @Html.DisplayNameFor(model => model.Prec_Descripcion)
                         </th>
                         @*<th>
-                            @Html.DisplayNameFor(model => model.Prec_Usuario_Creacion)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Prec_Fecha_Creacion)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Prec_Usuario_Modificacion)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Prec_Fecha_Modificacion)
-                        </th>*@
+                                @Html.DisplayNameFor(model => model.Prec_Usuario_Creacion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Prec_Fecha_Creacion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Prec_Usuario_Modificacion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Prec_Fecha_Modificacion)
+                            </th>*@
                         <th></th>
                     </tr>
                 </thead>
@@ -45,22 +45,25 @@
                                 @Html.DisplayFor(modelItem => item.Prec_Descripcion)
                             </td>
                             @*<td>
-                                @Html.DisplayFor(modelItem => item.Prec_Usuario_Creacion)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Prec_Fecha_Creacion)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Prec_Usuario_Modificacion)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Prec_Fecha_Modificacion)
-                            </td>*@
-                            <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.Prec_Id }, new { @class = "btn btn-warning" }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.Prec_Id }, new { @class = "btn btn-default" }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Prec_Id }, new { @class = "btn btn-danger" })
-                            </td>
+                                    @Html.DisplayFor(modelItem => item.Prec_Usuario_Creacion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Prec_Fecha_Creacion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Prec_Usuario_Modificacion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Prec_Fecha_Modificacion)
+                                </td>*@
+                        <td>
+                            <p class="btn btn-warning  editar-prec" data-prec-id="@item.Prec_Id">
+                                Editar
+                            </p>
+                            @*@Html.ActionLink("Edit", "Edit", new { id = item.Prec_Id }, new { @class = "btn btn-warning" })*@ |
+                            @Html.ActionLink("Details", "Details", new { id = item.Prec_Id }, new { @class = "btn btn-default" }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Prec_Id }, new { @class = "btn btn-danger" })
+                        </td>
                         </tr>
                     }
                 </tbody>
@@ -84,8 +87,43 @@
                 <h5 class="modal-title">Cargo</h5>
 
             </div>
-            @Html.Partial("_Create", new Sistema_Cine.Models.tbPrecios() );
+            @Html.Partial("_Create", new Sistema_Cine.Models.tbPrecios());
         </div>
     </div>
 </div>
+
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+                <h5 class="modal-title">Modificar Precios</h5>
+            </div>
+            @Html.Partial("_Edit", new Sistema_Cine.Models.tbPrecios())
+        </div>
+    </div>
+</div>
+
+<script>
+    $(".editar-prec").click(function () {
+        var TipoId = $(this).data("prec-id");
+        $.ajax({
+            url: "/Home/obtenerIDPrec",
+            type: 'POST',
+            dataType: 'json',
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ TipoId: TipoId }),
+            success: function (data) {
+
+                console.log(data);
+
+                $("#descripcion").val(data.description);
+                $("#editModal").modal('show');
+
+            },
+        });
+    });
+</script>
 

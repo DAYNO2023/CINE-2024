@@ -67,11 +67,14 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Carg_Fecha_Modificacion)
                             </td>*@
-                            <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.Carg_Id }, new { @class = "btn btn-warning" }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.Carg_Id }, new { @class = "btn btn-default" }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Carg_Id }, new { @class = "btn btn-danger" })
-                            </td>
+                        <td>
+                            <p class="btn btn-warning  editar-carg" data-carg-id="@item.Carg_Id">
+                                Editar
+                            </p>
+                            @*@Html.ActionLink("Edit", "Edit", new { id = item.Carg_Id }, new { @class = "btn btn-warning" })*@ |
+                            @Html.ActionLink("Details", "Details", new { id = item.Carg_Id }, new { @class = "btn btn-default" }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Carg_Id }, new { @class = "btn btn-danger" })
+                        </td>
                         </tr>
                     }
                 </tbody>
@@ -100,4 +103,38 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+                <h5 class="modal-title">Modificar Tipo Pagos</h5>
+            </div>
+            @Html.Partial("_Edit", new Sistema_Cine.Models.tbCargos())
+        </div>
+    </div>
+</div>
+<script>
+    $(".editar-carg").click(function () {
+        var TipoId = $(this).data("carg-id");
+        $.ajax({
+            url: "/Home/obtenerIDCarg",
+            type: 'POST',
+            dataType: 'json',
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ TipoId: TipoId }),
+            success: function (data) {
+
+                console.log(data);
+
+                $("#descripcion").val(data.description);
+                $("#editModal").modal('show');
+
+            },
+        });
+    });
+</script>
+
 

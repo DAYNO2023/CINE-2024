@@ -1947,6 +1947,16 @@
     <Content Include="Views\tbSucursales\Edit.cshtml" />
     <Content Include="Views\tbSucursales\Index.cshtml" />
     <Content Include="Views\tbGeneros\_Edit.cshtml" />
+    <Content Include="Views\tbButacas_Salas\_Edit.cshtml" />
+    <Content Include="Views\tbCargos\_Edit.cshtml" />
+    <Content Include="Views\tbDepartamentos\_Edit.cshtml" />
+    <Content Include="Views\tbEntradas\_Edit.cshtml" />
+    <Content Include="Views\tbMunicipios\_Edit.cshtml" />
+    <Content Include="Views\tbPantalla_Roles\_Edit.cshtml" />
+    <Content Include="Views\tbPrecios\_Edit.cshtml" />
+    <Content Include="Views\tbPromociones\_Edit.cshtml" />
+    <Content Include="Views\tbRoles\_Edit.cshtml" />
+    <Content Include="Views\tbSalas\_Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

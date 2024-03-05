@@ -17,7 +17,7 @@ namespace Sistema_Cine.Controllers
         // GET: tbPromociones
         public ActionResult Index()
         {
-            
+            ViewBag.Prec_Id = new SelectList(db.tbPrecios, "Prec_Id", "Prec_Id");
             var tbPromociones = db.tbPromociones.Include(t => t.tbPrecios);
             return View(tbPromociones.ToList());
         }
@@ -87,9 +87,21 @@ namespace Sistema_Cine.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tbPromociones).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                int id = Convert.ToInt32(Session["idtipo"]);
+                var promosionesexistenete = db.tbPromociones.Find(id);
+
+                if (promosionesexistenete != null)
+                {
+                    db.Entry(promosionesexistenete).Reload();
+                    promosionesexistenete.Prom_Descuento = tbPromociones.Prom_Descuento;
+                    promosionesexistenete.Prom_Descripcion = tbPromociones.Prom_Descripcion;
+                    promosionesexistenete.Prec_Id = tbPromociones.Prec_Id;
+
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+
+
             }
             ViewBag.Prec_Id = new SelectList(db.tbPrecios, "Prec_Id", "Prec_Id", tbPromociones.Prec_Id);
             return View(tbPromociones);

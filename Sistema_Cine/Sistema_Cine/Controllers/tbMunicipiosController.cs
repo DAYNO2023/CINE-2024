@@ -87,9 +87,20 @@ namespace Sistema_Cine.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tbMunicipio).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+
+                int id = Convert.ToInt32(Session["idtipo"]);
+                var municipiosexistenete = db.tbMunicipio.Find(id);
+
+                if (municipiosexistenete != null)
+                {
+                    db.Entry(municipiosexistenete).Reload();
+                    municipiosexistenete.Muni_Descripcion = tbMunicipio.Muni_Descripcion;
+                    municipiosexistenete.Depa_Codigo = tbMunicipio.Depa_Codigo;
+
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+
             }
             ViewBag.Depa_Codigo = new SelectList(db.tbDepartamentos, "Depa_Codigo", "Depa_Descripcion", tbMunicipio.Depa_Codigo);
             return View(tbMunicipio);

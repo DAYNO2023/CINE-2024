@@ -32,9 +32,9 @@
                         <th>
                             @Html.DisplayNameFor(model => model.Muni_Fecha_Modificacion)
                         </th>*@
-                        <th>
-                            @Html.DisplayNameFor(model => model.tbDepartamentos.Depa_Descripcion)
-                        </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.tbDepartamentos.Depa_Descripcion)
+                    </th>
                     <th></th>
                 </tr>
 
@@ -56,11 +56,14 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Muni_Fecha_Modificacion)
                             </td>*@
-                            <td>
-                                @Html.DisplayFor(modelItem => item.tbDepartamentos.Depa_Descripcion)
-                            </td>
                         <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Muni_Codigo }, new { @class = "btn btn-warning" }) |
+                            @Html.DisplayFor(modelItem => item.tbDepartamentos.Depa_Descripcion)
+                        </td>
+                        <td>
+                            <p class="btn btn-warning  editar-muni" data-muni-id="@item.Muni_Codigo">
+                                Editar
+                            </p>
+                            @*@Html.ActionLink("Edit", "Edit", new { id = item.Muni_Codigo }, new { @class = "btn btn-warning" })*@ |
                             @Html.ActionLink("Details", "Details", new { id = item.Muni_Codigo }, new { @class = "btn btn-default" }) |
                             @Html.ActionLink("Delete", "Delete", new { id = item.Muni_Codigo }, new { @class = "btn btn-danger" })
                         </td>
@@ -90,3 +93,39 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+                <h5 class="modal-title">Modificar Municipio</h5>
+            </div>
+            @Html.Partial("_Edit", new Sistema_Cine.Models.tbMunicipio())
+        </div>
+    </div>
+</div>
+
+<script>
+    $(".editar-muni").click(function () {
+        var TipoId = $(this).data("muni-id");
+        $.ajax({
+            url: "/Home/obtenerIDMuni",
+            type: 'POST',
+            dataType: 'json',
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ TipoId: TipoId }),
+            success: function (data) {
+
+                console.log(data);
+
+                $("#descripcion").val(data.description);
+                $("#depa").val(data.salas);
+                $("#editModal").modal('show');
+
+            },
+        });
+    });
+</script>
+

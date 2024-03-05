@@ -82,9 +82,19 @@ namespace Sistema_Cine.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tbRoles).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+
+                int id = Convert.ToInt32(Session["idtipo"]);
+                var rolesexistenete = db.tbRoles.Find(id);
+
+                if (rolesexistenete != null)
+                {
+                    db.Entry(rolesexistenete).Reload();
+                    rolesexistenete.Role_Descripcion = tbRoles.Role_Descripcion;
+
+
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
             return View(tbRoles);
         }

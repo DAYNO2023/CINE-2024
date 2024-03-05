@@ -85,14 +85,29 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Entra_Id,Entra_Cantidad,Sala_Id,Entra_Usuario_Creacion,Entra_Fecha_Creacion,Entra_Usuario_Modificacion,Entra_Fecha_Modificacion")] tbEntradas tbEntradas)
         {
+ 
+
+
             if (ModelState.IsValid)
             {
-                db.Entry(tbEntradas).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                int id = Convert.ToInt32(Session["idtipo"]);
+                var entradasexistenete = db.tbEntradas.Find(id);
+
+                if (entradasexistenete != null)
+                {
+                    db.Entry(entradasexistenete).Reload();
+                    entradasexistenete.Entra_Cantidad = tbEntradas.Entra_Cantidad;
+                    entradasexistenete.Sala_Id = tbEntradas.Sala_Id;
+
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                
             }
+
             ViewBag.Sala_Id = new SelectList(db.tbSalas, "Sala_Id", "Sala_Descripcion", tbEntradas.Sala_Id);
             return View(tbEntradas);
+
         }
 
         // GET: tbEntradas/Delete/5

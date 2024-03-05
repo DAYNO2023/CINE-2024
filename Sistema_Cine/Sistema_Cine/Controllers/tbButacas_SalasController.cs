@@ -82,9 +82,24 @@ namespace Sistema_Cine.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tbButacas_Salas).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                int id = Convert.ToInt32(Session["idtipo"]);
+
+                var butacasExistente = db.tbButacas_Salas.Find(id);
+
+
+                if (butacasExistente != null)
+                {
+                    // Actualizar las propiedades del registro existente con los valores del modelo recibido
+                    butacasExistente.Buta_Descripcion = tbButacas_Salas.Buta_Descripcion;
+
+                    // Cambiar el estado de la entidad a modificada
+                    db.Entry(butacasExistente).State = EntityState.Modified;
+
+                    // Guardar los cambios en la base de datos
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index");
+                }
             }
             return View(tbButacas_Salas);
         }

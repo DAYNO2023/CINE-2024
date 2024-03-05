@@ -1,0 +1,44 @@
+﻿@model Sistema_Cine.Models.tbPantalla_Roles
+
+
+@using (Html.BeginForm("Edit", "tbPantalla_Roles"))
+{
+    @Html.AntiForgeryToken()
+<div class="card my-4">
+    <div class="card-body ">
+        <div class="card-header text-center">
+            <h4 class="card-title">Editar Pantalla por Roles</h4>
+        </div>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Paro_Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Role_Id, "Role_Id", htmlAttributes: new { @class = "control-label " })       
+                @Html.DropDownList("Role_Id", null, htmlAttributes: new { @class = "form-control", id = "Roles" })
+                @Html.ValidationMessageFor(model => model.Role_Id, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Pant_Id, "Pant_Id", htmlAttributes: new { @class = "control-label " })  
+                @Html.DropDownList("Pant_Id", null, htmlAttributes: new { @class = "form-control",id="Pantalla" })
+                @Html.ValidationMessageFor(model => model.Pant_Id, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-warning" />
+            </div>
+        </div>
+    </div>
+</div>
+    
+}
+
+<div>
+    @Html.ActionLink("Regresar", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

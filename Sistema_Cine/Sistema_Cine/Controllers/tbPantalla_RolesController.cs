@@ -91,9 +91,21 @@ namespace Sistema_Cine.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tbPantalla_Roles).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+
+                int id = Convert.ToInt32(Session["idtipo"]);
+                var paroexistenete = db.tbPantalla_Roles.Find(id);
+
+                if (paroexistenete != null)
+                {
+                    db.Entry(paroexistenete).Reload();
+                    paroexistenete.Role_Id = tbPantalla_Roles.Role_Id;
+                    paroexistenete.Pant_Id = tbPantalla_Roles.Pant_Id;
+
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+
+
             }
             ViewBag.Pant_Id = new SelectList(db.tbPantallas, "Pant_Id", "Pant_Descripcion", tbPantalla_Roles.Pant_Id);
             ViewBag.Role_Id = new SelectList(db.tbRoles, "Role_Id", "Role_Descripcion", tbPantalla_Roles.Role_Id);

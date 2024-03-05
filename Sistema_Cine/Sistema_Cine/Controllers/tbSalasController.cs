@@ -87,9 +87,20 @@ namespace Sistema_Cine.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tbSalas).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+
+
+                int id = Convert.ToInt32(Session["idtipo"]);
+                var salasexistenete = db.tbSalas.Find(id);
+
+                if (salasexistenete != null)
+                {
+                    db.Entry(salasexistenete).Reload();
+                    salasexistenete.Sala_Descripcion = tbSalas.Sala_Descripcion;
+                    salasexistenete.Buta_Id = tbSalas.Buta_Id;
+
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
             ViewBag.Buta_Id = new SelectList(db.tbButacas_Salas, "Buta_Id", "Buta_Descripcion", tbSalas.Buta_Id);
             return View(tbSalas);

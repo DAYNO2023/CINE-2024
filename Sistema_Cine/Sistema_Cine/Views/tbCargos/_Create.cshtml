@@ -4,30 +4,31 @@
 @using (Html.BeginForm("Create", "tbCargos"))
 {
     @Html.AntiForgeryToken()
-    <div class="card">
-        <div class="card-body">
-            <div class="form-group">
-                <h4>Crear Cargo</h4>
-                <hr />
+<div class="card my-4">
+    <div class="card-body ">
+        <div class="card-header text-center">
+            <h4 class="card-title">crear Cargos</h4>
+        </div>
+        <hr />
 
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                <div class="form-group row">
-                    @Html.LabelFor(model => model.Carg_Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-6">
-                        @Html.EditorFor(model => model.Carg_Descripcion, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Carg_Descripcion, "", new { @class = "text-danger" })
-                    </div>
-                </div>
+        <div class="form-group mb-3">
+            @Html.LabelFor(model => model.Carg_Descripcion, htmlAttributes: new { @class = "control-label " })
+            
+                @Html.EditorFor(model => model.Carg_Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Carg_Descripcion, "", new { @class = "text-danger" })
+           
+        </div>
 
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-6">
-                        <button type="submit" class="btn btn-primary">Crear</button>
-                    </div>
-                </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-6">
+                <button type="submit" class="btn btn-primary">Crear</button>
             </div>
         </div>
     </div>
+</div>
+
 
 
 }

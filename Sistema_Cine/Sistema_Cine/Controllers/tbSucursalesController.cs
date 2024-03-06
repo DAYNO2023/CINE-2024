@@ -54,11 +54,29 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Sucu_Id,Sucu_Descripcion,Sucu_Direccion,Muni_Codigo,Cart_Id,Entra_Id,Sucu_Usuario_Creacion,Sucu_Fecha_Creacion,Sucu_Usuario_Modificacion,Sucu_Fecha_Modificacion")] tbSucursales tbSucursales)
         {
+            ModelState.Remove("Sucu_Usuario_Creacion");
+            ModelState.Remove("Sucu_Fecha_Creacion");
+            ModelState.Remove("Sucu_Usuario_Modificacion");
+            ModelState.Remove("Sucu_Fecha_Modificacion");
+
+
             if (ModelState.IsValid)
             {
-                db.tbSucursales.Add(tbSucursales);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+
+
+                    db.Sp_tbSucursales_Insertar(tbSucursales.Sucu_Descripcion, tbSucursales.Sucu_Direccion, tbSucursales.Muni_Codigo, tbSucursales.Sucu_Usuario_Creacion, DateTime.Now, tbSucursales.Cart_Estado);
+                    //db.tbSucursales.Add(tbSucursales);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (FormatException ex)
+                {
+                    // Handle the exception (e.g., log it, show an error message)
+                    TempData["Error"] = "Error converting id to int: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
             }
 
             ViewBag.Cart_Id = new SelectList(db.tbCarteleras, "Cart_Id", "Cart_Descripcion", tbSucursales.Cart_Id);
@@ -92,11 +110,27 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Sucu_Id,Sucu_Descripcion,Sucu_Direccion,Muni_Codigo,Cart_Id,Entra_Id,Sucu_Usuario_Creacion,Sucu_Fecha_Creacion,Sucu_Usuario_Modificacion,Sucu_Fecha_Modificacion")] tbSucursales tbSucursales)
         {
+            ModelState.Remove("Sucu_Usuario_Creacion");
+            ModelState.Remove("Sucu_Fecha_Creacion");
+            ModelState.Remove("Sucu_Usuario_Modificacion");
+            ModelState.Remove("Sucu_Fecha_Modificacion");
+
             if (ModelState.IsValid)
             {
-                db.Entry(tbSucursales).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    int id = Convert.ToInt32(Session["idtipo"]);
+                    int usuario = Convert.ToInt32(Session["idusaio"]);
+                    db.Sp_tbSucursales_Editar(id, tbSucursales.Sucu_Descripcion, tbSucursales.Sucu_Direccion, tbSucursales.Muni_Codigo, usuario, DateTime.Now, true);
+
+                    return RedirectToAction("Index");
+                }
+                catch (FormatException ex)
+                {
+                    // Handle the exception (e.g., log it, show an error message)
+                    TempData["Error"] = "Error converting id to int: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
             }
             ViewBag.Cart_Id = new SelectList(db.tbCarteleras, "Cart_Id", "Cart_Descripcion", tbSucursales.Cart_Id);
             ViewBag.Entra_Id = new SelectList(db.tbEntradas, "Entra_Id", "Entra_Id", tbSucursales.Entra_Id);
@@ -126,6 +160,7 @@ namespace Sistema_Cine.Controllers
         {
             tbSucursales tbSucursales = db.tbSucursales.Find(id);
             db.tbSucursales.Remove(tbSucursales);
+            //db.Sp_tbSucursales_Eliminar(id);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

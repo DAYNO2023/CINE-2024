@@ -50,9 +50,18 @@ namespace Sistema_Cine.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.tbDepartamentos.Add(tbDepartamentos);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.tbDepartamentos.Add(tbDepartamentos);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (FormatException ex)
+                {
+                    // Handle the exception (e.g., log it, show an error message)
+                    TempData["Error"] = "Error converting id to int: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
             }
 
             return View(tbDepartamentos);
@@ -82,25 +91,33 @@ namespace Sistema_Cine.Controllers
         {
             if (ModelState.IsValid)
             {
-                int id = Convert.ToInt32(Session["idtipo"]);
-
-                // Buscar el registro existente en la base de datos
-                var departementoExistente = db.tbDepartamentos.Find(id);
-
-                if (departementoExistente != null)
+                try
                 {
-                    // Actualizar las propiedades del registro existente con los valores del modelo recibido
-                    departementoExistente.Depa_Descripcion = tbDepartamentos.Depa_Descripcion;
+                    int id = Convert.ToInt32(Session["idtipo"]);
 
-                    // Cambiar el estado de la entidad a modificada
-                    db.Entry(departementoExistente).State = EntityState.Modified;
+                    // Buscar el registro existente en la base de datos
+                    var departementoExistente = db.tbDepartamentos.Find(id);
 
-                    // Guardar los cambios en la base de datos
-                    db.SaveChanges();
+                    if (departementoExistente != null)
+                    {
+                        // Actualizar las propiedades del registro existente con los valores del modelo recibido
+                        departementoExistente.Depa_Descripcion = tbDepartamentos.Depa_Descripcion;
 
+                        // Cambiar el estado de la entidad a modificada
+                        db.Entry(departementoExistente).State = EntityState.Modified;
+
+                        // Guardar los cambios en la base de datos
+                        db.SaveChanges();
+
+                        return RedirectToAction("Index");
+                    }
+                }
+                catch (FormatException ex)
+                {
+                    // Handle the exception (e.g., log it, show an error message)
+                    TempData["Error"] = "Error converting id to int: " + ex.Message;
                     return RedirectToAction("Index");
                 }
-
             }
             return View(tbDepartamentos);
         }
@@ -127,6 +144,7 @@ namespace Sistema_Cine.Controllers
         {
             tbDepartamentos tbDepartamentos = db.tbDepartamentos.Find(id);
             db.tbDepartamentos.Remove(tbDepartamentos);
+
             db.SaveChanges();
             return RedirectToAction("Index");
         }

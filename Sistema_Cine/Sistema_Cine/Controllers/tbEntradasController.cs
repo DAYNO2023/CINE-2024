@@ -51,11 +51,27 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Entra_Id,Entra_Cantidad,Sala_Id,Entra_Usuario_Creacion,Entra_Fecha_Creacion,Entra_Usuario_Modificacion,Entra_Fecha_Modificacion")] tbEntradas tbEntradas)
         {
+            ModelState.Remove("Entra_Usuario_Creacion");
+            ModelState.Remove("Entra_Fecha_Creacion");
+            ModelState.Remove("Entra_Usuario_Modificacion");
+            ModelState.Remove("Entra_Fecha_Modificacion");
+
+
             if (ModelState.IsValid)
             {
-                db.tbEntradas.Add(tbEntradas);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.Sp_tbEntradas_Insertar(tbEntradas.Entra_Cantidad, tbEntradas.Sala_Id, tbEntradas.Entra_Usuario_Creacion, DateTime.Now, tbEntradas.Entra_Estado);
+                    //db.tbEntradas.Add(tbEntradas);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (FormatException ex)
+                {
+                    // Handle the exception (e.g., log it, show an error message)
+                    TempData["Error"] = "Error converting id to int: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
             }
 
             ViewBag.Sala_Id = new SelectList(db.tbSalas, "Sala_Id", "Sala_Descripcion", tbEntradas.Sala_Id);
@@ -85,24 +101,30 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Entra_Id,Entra_Cantidad,Sala_Id,Entra_Usuario_Creacion,Entra_Fecha_Creacion,Entra_Usuario_Modificacion,Entra_Fecha_Modificacion")] tbEntradas tbEntradas)
         {
- 
 
+            ModelState.Remove("Entra_Usuario_Creacion");
+            ModelState.Remove("Entra_Fecha_Creacion");
+            ModelState.Remove("Entra_Usuario_Modificacion");
+            ModelState.Remove("Entra_Fecha_Modificacion");
 
             if (ModelState.IsValid)
             {
-                int id = Convert.ToInt32(Session["idtipo"]);
-                var entradasexistenete = db.tbEntradas.Find(id);
+                try {
+                    int id = Convert.ToInt32(Session["idtipo"]);
+                    int usuario = Convert.ToInt32(Session["idusaio"]);
+                    db.Sp_tbEntradas_Editar(id, tbEntradas.Entra_Cantidad, tbEntradas.Sala_Id, usuario, DateTime.Now, true);
 
-                if (entradasexistenete != null)
-                {
-                    db.Entry(entradasexistenete).Reload();
-                    entradasexistenete.Entra_Cantidad = tbEntradas.Entra_Cantidad;
-                    entradasexistenete.Sala_Id = tbEntradas.Sala_Id;
+                  
 
-                    db.SaveChanges();
+                   
                     return RedirectToAction("Index");
                 }
-                
+                catch (FormatException ex)
+                {
+                    // Handle the exception (e.g., log it, show an error message)
+                    TempData["Error"] = "Error converting id to int: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
             }
 
             ViewBag.Sala_Id = new SelectList(db.tbSalas, "Sala_Id", "Sala_Descripcion", tbEntradas.Sala_Id);
@@ -132,6 +154,7 @@ namespace Sistema_Cine.Controllers
         {
             tbEntradas tbEntradas = db.tbEntradas.Find(id);
             db.tbEntradas.Remove(tbEntradas);
+
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -48,12 +48,32 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Tipo_Id,Tipo_Descripcion,Cate_Usuario_Creacion,Cate_Fecha_Creacion,Cate_Usuario_Modificacion,Cate_Fecha_Modificacion")] tbTipo_Pagos tbTipo_Pagos)
         {
+            ModelState.Remove("Cate_Usuario_Creacion");
+            ModelState.Remove("Cate_Fecha_Creacion");
+            ModelState.Remove("Cate_Usuario_Creacion");
+            ModelState.Remove("Cate_Usuario_Modificacion");
+            ModelState.Remove("Cate_Fecha_Modificacion");
+
+
+
             if (ModelState.IsValid)
             {
-                
-                db.tbTipo_Pagos.Add(tbTipo_Pagos);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.Sp_tbTipo_Pagos_Insertar(tbTipo_Pagos.Tipo_Descripcion, tbTipo_Pagos.Cate_Usuario_Creacion, tbTipo_Pagos.Cate_Fecha_Creacion, tbTipo_Pagos.Tipo_Estado);
+
+
+
+                    //db.tbTipo_Pagos.Add(tbTipo_Pagos);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (FormatException ex)
+                {
+                    // Handle the exception (e.g., log it, show an error message)
+                    TempData["Error"] = "Error converting id to int: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
             }
 
             return View(tbTipo_Pagos);
@@ -83,31 +103,42 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Tipo_Id,Tipo_Descripcion,Cate_Usuario_Creacion,Cate_Fecha_Creacion,Cate_Usuario_Modificacion,Cate_Fecha_Modificacion")] tbTipo_Pagos tbTipo_Pagos)
         {
+            ModelState.Remove("Cate_Usuario_Modificacion");
+            ModelState.Remove("Cate_Fecha_Modificacion");
+            ModelState.Remove("Cate_Usuario_Creacion");
+            ModelState.Remove("Cate_Fecha_Creacion");
+
             if (ModelState.IsValid)
             {
-                int id = Convert.ToInt32(Session["idtipo"]);
-
-                // Buscar el registro existente en la base de datos
-                var tipoPagoExistente = db.tbTipo_Pagos.Find(id);
-
-                if (tipoPagoExistente != null)
+                try
                 {
-                    // Actualizar las propiedades del registro existente con los valores del modelo recibido
-                    tipoPagoExistente.Tipo_Descripcion = tbTipo_Pagos.Tipo_Descripcion;
-                    tipoPagoExistente.Cate_Usuario_Modificacion = tbTipo_Pagos.Cate_Usuario_Modificacion;
-                    tipoPagoExistente.Cate_Fecha_Modificacion = tbTipo_Pagos.Cate_Fecha_Modificacion;
+                    int id = Convert.ToInt32(Session["idtipo"]);
+                    db.Sp_tbTipo_Pagos_Editar(id, tbTipo_Pagos.Tipo_Descripcion, Convert.ToString(Session["idusaio"]), DateTime.Now);
 
-                    // Cambiar el estado de la entidad a modificada
-                    db.Entry(tipoPagoExistente).State = EntityState.Modified;
+                    //if (descicon == 1)
+                    //{
+                    //    db.SaveChanges();
+                    //    TempData["Exito"] = "Se modificó con éxito";
+                    //    return RedirectToAction("Index");
+                    //}
+                    //else if (descicon == 0)
+                    //{
+                    //    TempData["Error"] = "Ya existe un registro";
+                    //    return RedirectToAction("Index");
+                    //}
 
-                    // Guardar los cambios en la base de datos
-                    db.SaveChanges();
-
+                    return RedirectToAction("Index");
+                }
+                catch (FormatException ex)
+                {
+                    // Handle the exception (e.g., log it, show an error message)
+                    TempData["Error"] = "Error converting id to int: " + ex.Message;
                     return RedirectToAction("Index");
                 }
             }
 
             return View(tbTipo_Pagos);
+
         }
         //[HttpPost]
         //[ValidateAntiForgeryToken]
@@ -145,6 +176,7 @@ namespace Sistema_Cine.Controllers
         {
             tbTipo_Pagos tbTipo_Pagos = db.tbTipo_Pagos.Find(id);
             db.tbTipo_Pagos.Remove(tbTipo_Pagos);
+            //db.Sp_tbTipo_Pagos_Eliminar(id);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

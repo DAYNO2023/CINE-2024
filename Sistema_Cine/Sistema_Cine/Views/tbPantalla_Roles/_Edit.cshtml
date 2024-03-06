@@ -24,10 +24,10 @@
                 @Html.DropDownList("Pant_Id", null, htmlAttributes: new { @class = "form-control",id="Pantalla" })
                 @Html.ValidationMessageFor(model => model.Pant_Id, "", new { @class = "text-danger" })
         </div>
-
+        <hr />
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-warning" />
+                <input type="submit" value="Guardar" class="btn btn-warning" />
             </div>
         </div>
     </div>
@@ -35,9 +35,7 @@
     
 }
 
-<div>
-    @Html.ActionLink("Regresar", "Index")
-</div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

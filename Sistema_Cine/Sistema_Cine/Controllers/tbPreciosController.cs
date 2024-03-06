@@ -48,16 +48,29 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Prec_Id,Prec_Descripcion,Prec_Usuario_Creacion,Prec_Fecha_Creacion,Prec_Usuario_Modificacion,Prec_Fecha_Modificacion")] tbPrecios tbPrecios)
         {
-            
 
 
+            ModelState.Remove("Prec_Usuario_Creacion");
+            ModelState.Remove("Prec_Fecha_Creacion");
+            ModelState.Remove("Prec_Usuario_Modificacion");
+            ModelState.Remove("Prec_Fecha_Modificacion");
 
 
             if (ModelState.IsValid)
             {
-                db.tbPrecios.Add(tbPrecios);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.Sp_tbPrecios_Insertar(tbPrecios.Prec_Descripcion, tbPrecios.Prec_Usuario_Creacion, DateTime.Now, tbPrecios.Prec_Estado);
+                    //db.tbPrecios.Add(tbPrecios);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (FormatException ex)
+                {
+                    // Handle the exception (e.g., log it, show an error message)
+                    TempData["Error"] = "Error converting id to int: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
             }
 
             return View(tbPrecios);
@@ -85,18 +98,22 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Prec_Id,Prec_Descripcion,Prec_Usuario_Creacion,Prec_Fecha_Creacion,Prec_Usuario_Modificacion,Prec_Fecha_Modificacion")] tbPrecios tbPrecios)
         {
+            ModelState.Remove("Prec_Usuario_Creacion");
+            ModelState.Remove("Prec_Fecha_Creacion");
+            ModelState.Remove("Prec_Usuario_Modificacion");
+            ModelState.Remove("Prec_Fecha_Modificacion");
             if (ModelState.IsValid)
             {
-                int id = Convert.ToInt32(Session["idtipo"]);
-                var preciosexistenete = db.tbPrecios.Find(id);
-
-                if (preciosexistenete != null)
+                try {
+                    int id = Convert.ToInt32(Session["idtipo"]);
+                    int usuario = Convert.ToInt32(Session["idusaio"]);
+                    db.Sp_tbPrecios_Editar(id, tbPrecios.Prec_Descripcion, usuario, DateTime.Now, true);
+                    return RedirectToAction("Index");
+                }
+                catch (FormatException ex)
                 {
-                    db.Entry(preciosexistenete).Reload();
-                    preciosexistenete.Prec_Descripcion = tbPrecios.Prec_Descripcion;
-                    
-
-                    db.SaveChanges();
+                    // Handle the exception (e.g., log it, show an error message)
+                    TempData["Error"] = "Error converting id to int: " + ex.Message;
                     return RedirectToAction("Index");
                 }
             }
@@ -123,8 +140,9 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            tbPrecios tbPrecios = db.tbPrecios.Find(id);
-            db.tbPrecios.Remove(tbPrecios);
+            //db.Sp_tbPrecios_Eliminar(id);
+             tbPrecios tbprecios = db.tbPrecios.Find(id);
+            db.tbPrecios.Remove(tbprecios);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -42,7 +42,7 @@
                             @Html.DisplayNameFor(model => model.tbCarteleras.Cart_Descripcion)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.tbEntradas.Entra_Id)
+                            @Html.DisplayNameFor(model => model.tbEntradas.Entra_Cantidad)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.tbMunicipio.Muni_Descripcion)
@@ -76,7 +76,7 @@
                                 @Html.DisplayFor(modelItem => item.tbCarteleras.Cart_Descripcion)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.tbEntradas.Entra_Id)
+                                @Html.DisplayFor(modelItem => item.tbEntradas.Entra_Cantidad)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.tbMunicipio.Muni_Descripcion)
@@ -84,7 +84,10 @@
                             <td>
                                 @Html.ActionLink("Edit", "Edit", new { id = item.Sucu_Id }, new { @class = "btn btn-warning" }) |
                                 @Html.ActionLink("Details", "Details", new { id = item.Sucu_Id }, new { @class = "btn btn-default" }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Sucu_Id }, new { @class = "btn btn-danger" })
+                                <p class="btn btn-danger" id="elimnartipo" onclick="elimnartipo('@item.Sucu_Id')">
+                                    Eliminar
+                                </p>
+                                @*@Html.ActionLink("Delete", "Delete", new { id = item.Sucu_Id }, new { @class = "btn btn-danger" })*@
                             </td>
                         </tr>
                     }
@@ -94,4 +97,31 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="elimnarmodal" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+            </div>
+            @Html.Partial("_Delete", new Sistema_Cine.Models.tbSucursales())
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $("#btnmodal").click(function () {
+        $("#exampleModal").modal('show');
+    })
+    //$("#bteditar").click(function () {
+    //    $("#exampleModal").modal('show');
+    //})
+    function elimnartipo(id) {
+        $("#elimnarmodal").modal('show')
+        $("#id").val(id);
+    }
+
+</script>
 

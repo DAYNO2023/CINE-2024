@@ -18,7 +18,8 @@ namespace Sistema_Cine.Models
     {
         [Display(Name = "Genero Id:")]
         public int Gene_Id { get; set; }
-        [Display(Name = "Genero :")]
+        [Display(Name = "Genero:")]
+        [RegularExpression("^[a-zA-Z ]+$", ErrorMessage = "El dato es incorrecto")]
         [Required(ErrorMessage = "El campos {0} es requerido")]
         public string Gene_Descripcion { get; set; }
         [Display(Name = "Promocion:")]

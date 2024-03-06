@@ -53,11 +53,27 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Usua_Id,Usua_Nombre,Usua_Contraseña,Empl_Id,Paro_Id,Usua_Creacion,Usua_Fecha_Creacion,Usua_Modifica,Usua_Fecha_Modifica,Usua_Estado")] tbUsuarios tbUsuarios)
         {
+            ModelState.Remove("Usua_Creacion");
+            ModelState.Remove("Usua_Fecha_Creacion");
+            ModelState.Remove("Usua_Modifica");
+            ModelState.Remove("Usua_Fecha_Modifica");
+
+
             if (ModelState.IsValid)
             {
-                db.tbUsuarios.Add(tbUsuarios);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.Sp_tbUsuarios_Insertar(tbUsuarios.Usua_Nombre, tbUsuarios.Usua_Contraseña, tbUsuarios.Empl_Id, tbUsuarios.Paro_Id, tbUsuarios.Usua_Creacion, DateTime.Now, tbUsuarios.Usua_Estado);
+                    //db.tbUsuarios.Add(tbUsuarios);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (FormatException ex)
+                {
+                    // Handle the exception (e.g., log it, show an error message)
+                    TempData["Error"] = "Error converting id to int: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
             }
 
             ViewBag.Paro_Id = new SelectList(db.tbPantalla_Roles, "Paro_Id", "Paro_Id", tbUsuarios.Paro_Id);
@@ -89,11 +105,28 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Usua_Id,Usua_Nombre,Usua_Contraseña,Empl_Id,Paro_Id,Usua_Creacion,Usua_Fecha_Creacion,Usua_Modifica,Usua_Fecha_Modifica,Usua_Estado")] tbUsuarios tbUsuarios)
         {
+            ModelState.Remove("Usua_Creacion");
+            ModelState.Remove("Usua_Fecha_Creacion");
+            ModelState.Remove("Usua_Modifica");
+            ModelState.Remove("Usua_Fecha_Modifica");
+            ModelState.Remove("Usua_Estado");
             if (ModelState.IsValid)
             {
-                db.Entry(tbUsuarios).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    int id = Convert.ToInt32(Session["idtipo"]);
+                    int usuario = Convert.ToInt32(Session["idusaio"]);
+                    db.Sp_tbUsuarios_Editar(id, tbUsuarios.Usua_Nombre, tbUsuarios.Usua_Contraseña, tbUsuarios.Empl_Id, tbUsuarios.Paro_Id, usuario, DateTime.Now, true);
+
+                    return RedirectToAction("Index");
+                }
+                catch (FormatException ex)
+                {
+                    // Handle the exception (e.g., log it, show an error message)
+                    TempData["Error"] = "Error converting id to int: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
+
             }
             ViewBag.Paro_Id = new SelectList(db.tbPantalla_Roles, "Paro_Id", "Paro_Id", tbUsuarios.Paro_Id);
             ViewBag.Empl_Id = new SelectList(db.tbEmpleados, "Empl_Id", "Empl_Nombre", tbUsuarios.Empl_Id);
@@ -122,6 +155,7 @@ namespace Sistema_Cine.Controllers
         {
             tbUsuarios tbUsuarios = db.tbUsuarios.Find(id);
             db.tbUsuarios.Remove(tbUsuarios);
+            //db.Sp_tbUsuarios_Eliminar(id);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -17,13 +17,14 @@ namespace Sistema_Cine.Models
         [Display(Name = "Cartelera ID")]
         public int Cart_Id { get; set; }
         [Display(Name = "Cartelera")]
+        [RegularExpression("^[a-zA-Z ]+$", ErrorMessage = "El dato es incorrecto")]
         [Required(ErrorMessage = "El campos {0} es requerido")]
         public string Cart_Descripcion { get; set; }
-        [Display(Name = "Genero ID")]
+        [Display(Name = "Genero")]
         public Nullable<int> Gene_Id { get; set; }
-        [Display(Name = "Promocion ID")]
+        [Display(Name = "Promocion")]
         public Nullable<int> Prom_Id { get; set; }
-        [Display(Name = "Entradas Id")]
+        [Display(Name = "Entradas")]
         public Nullable<int> Entra_Id { get; set; }
         [Display(Name = "Fecha estreno")]
         public Nullable<System.DateTime> Cart_Fecha_Estreno { get; set; }

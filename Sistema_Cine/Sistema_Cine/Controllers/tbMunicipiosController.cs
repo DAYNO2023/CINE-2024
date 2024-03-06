@@ -51,11 +51,26 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Muni_Codigo,Muni_Descripcion,Depa_Codigo,Muni_Usuario_Creacion,Muni_Fecha_Creacion,Muni_Usuario_Modificacion,Muni_Fecha_Modificacion")] tbMunicipio tbMunicipio)
         {
+
+            ModelState.Remove("Muni_Usuario_Creacion");
+            ModelState.Remove("Muni_Fecha_Creacion");
+            ModelState.Remove("Muni_Usuario_Modificacion");
+            ModelState.Remove("Muni_Fecha_Modificacion");
+
             if (ModelState.IsValid)
             {
-                db.tbMunicipio.Add(tbMunicipio);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.tbMunicipio.Add(tbMunicipio);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (FormatException ex)
+                {
+                    // Handle the exception (e.g., log it, show an error message)
+                    TempData["Error"] = "Error converting id to int: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
             }
 
             ViewBag.Depa_Codigo = new SelectList(db.tbDepartamentos, "Depa_Codigo", "Depa_Descripcion", tbMunicipio.Depa_Codigo);
@@ -87,20 +102,28 @@ namespace Sistema_Cine.Controllers
         {
             if (ModelState.IsValid)
             {
-
-                int id = Convert.ToInt32(Session["idtipo"]);
-                var municipiosexistenete = db.tbMunicipio.Find(id);
-
-                if (municipiosexistenete != null)
+                try
                 {
-                    db.Entry(municipiosexistenete).Reload();
-                    municipiosexistenete.Muni_Descripcion = tbMunicipio.Muni_Descripcion;
-                    municipiosexistenete.Depa_Codigo = tbMunicipio.Depa_Codigo;
 
-                    db.SaveChanges();
+                    int id = Convert.ToInt32(Session["idtipo"]);
+                    var municipiosexistenete = db.tbMunicipio.Find(id);
+
+                    if (municipiosexistenete != null)
+                    {
+                        db.Entry(municipiosexistenete).Reload();
+                        municipiosexistenete.Muni_Descripcion = tbMunicipio.Muni_Descripcion;
+                        municipiosexistenete.Depa_Codigo = tbMunicipio.Depa_Codigo;
+
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                }
+                catch (FormatException ex)
+                {
+                    // Handle the exception (e.g., log it, show an error message)
+                    TempData["Error"] = "Error converting id to int: " + ex.Message;
                     return RedirectToAction("Index");
                 }
-
             }
             ViewBag.Depa_Codigo = new SelectList(db.tbDepartamentos, "Depa_Codigo", "Depa_Descripcion", tbMunicipio.Depa_Codigo);
             return View(tbMunicipio);

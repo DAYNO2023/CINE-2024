@@ -23,6 +23,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+
+
 .glyphicon-asterisk:before {
   content: "\002a";
 }

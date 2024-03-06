@@ -5,89 +5,76 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="card">
+    <div class="card-header">
+        <h2 style="text-align:center">Detalle de Entradas</h2>
+        <div class="d-flex justify-content-end">
+            @*<button type="button" class="btn btn-primary" onclick="window.location.href='@Url.Action("Edit", "Edit", new { id = Model.Sucu_Id })'">
+                    Editar
+                </button>*@
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Entra_Id }, new { @class = "btn btn-warning" })
+            ||
+            <button type="button" class="btn btn-primary" onclick="window.location.href='@Url.Action("Index")'">
+                Regresar
+            </button>
+        </div>
 
-<div>
-    <h4>tbEntradas</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Entra_Cantidad)
-        </dt>
+    </div>
+    <div class="card-body">
+        <div class="container">
+            <!-- Apertura del contenedor -->
+            <div class="row">
+                <div class="col-md-6">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Entra_Cantidad)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Entra_Cantidad)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.Entra_Cantidad)
+                        </dd>
+                    </dl>
+                </div>
+                <div class="col-md-6">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.tbSalas.Sala_Descripcion)
+                        </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Entra_Usuario_Creacion)
-        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.tbSalas.Sala_Descripcion)
+                        </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Entra_Usuario_Creacion)
-        </dd>
+                    </dl>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+               <hr />
+                <table class="table table-striped table-bordered table-hover dataTables-example" id="tablaOne">
+                    <thead>
+                        <tr>
+                            <th>Acciones</th>
+                            <th>Usuario</th>
+                            <th>Fecha</th>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Entra_Fecha_Creacion)
-        </dt>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Creador</th>
+                            <td>@Html.DisplayFor(model => model.Entra_Usuario_Creacion)</td>
+                            <td> @Html.DisplayFor(model => model.Entra_Fecha_Creacion)</td>
 
-        <dd>
-            @Html.DisplayFor(model => model.Entra_Fecha_Creacion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Entra_Usuario_Modificacion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Entra_Usuario_Modificacion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Entra_Fecha_Modificacion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Entra_Fecha_Modificacion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.tbSalas.Sala_Descripcion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.tbSalas.Sala_Descripcion)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Entra_Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
-<table class="table table-dark">
-  <thead>
-    <tr>
-      <th >Acciones</th>
-      <th >Usuario</th>
-      <th >Fecha</th>
-    
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Creador</th>
-      <td></td>
-      <td></td>
-  
-    </tr>
-    <tr>
-      <th scope="row">Modificar</th>
-      <td></td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
+                        </tr>
+                        <tr>
+                            <th scope="row">Modificar</th>
+                            <td>  @Html.DisplayFor(model => model.Entra_Usuario_Modificacion)</td>
+                            <td>  @Html.DisplayFor(model => model.Entra_Fecha_Modificacion)</td>
+                        </tr>
+                    </tbody>
+                </table>
 
 
 

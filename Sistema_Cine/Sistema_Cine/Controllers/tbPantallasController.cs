@@ -50,9 +50,18 @@ namespace Sistema_Cine.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.tbPantallas.Add(tbPantallas);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.tbPantallas.Add(tbPantallas);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (FormatException ex)
+                {
+                    // Handle the exception (e.g., log it, show an error message)
+                    TempData["Error"] = "Error converting id to int: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
             }
 
             return View(tbPantallas);
@@ -80,11 +89,32 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Pant_Id,Pant_Descripcion,Pant_Identificador,Pant_Creacion,Pant_Fecha_Creacion,Pant_Modifica,Pant_Fecha_Modifica,Pant_Estado")] tbPantallas tbPantallas)
         {
+            ModelState.Remove("Pant_Creacion");
+            ModelState.Remove("Pant_Fecha_Creacion");
+            ModelState.Remove("Pant_Modifica");
+            ModelState.Remove("Pant_Fecha_Modifica");
+            ModelState.Remove("Pant_Estado");
             if (ModelState.IsValid)
             {
-                db.Entry(tbPantallas).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try 
+                { 
+                int id = Convert.ToInt32(Session["idtipo"]);
+                int usuario = Convert.ToInt32(Session["idusaio"]);
+                db.Sp_tbPantallas_Editar(id, tbPantallas.Pant_Descripcion, tbPantallas.Pant_Identificador, usuario, DateTime.Now, true);
+
+               
+                   
+
+
+                    
+                    return RedirectToAction("Index");
+                }
+                catch (FormatException ex)
+                {
+                    // Handle the exception (e.g., log it, show an error message)
+                    TempData["Error"] = "Error converting id to int: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
             }
             return View(tbPantallas);
         }
@@ -109,8 +139,10 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            tbPantallas tbPantallas = db.tbPantallas.Find(id);
-            db.tbPantallas.Remove(tbPantallas);
+            //tbPantallas tbPantallas = db.tbPantallas.Find(id);
+            //db.tbPantallas.Remove(tbPantallas);
+            db.Sp_tbPantallas_Eliminar(id);
+            
             db.SaveChanges();
             return RedirectToAction("Index");
         }

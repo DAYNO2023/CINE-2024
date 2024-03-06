@@ -48,11 +48,28 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Role_Id,Role_Descripcion,Role_Creacion,Role_Fecha_Creacion,Role_Modifica,Role_Fecha_Modifica,Role_Estado")] tbRoles tbRoles)
         {
+
+            ModelState.Remove("Role_Creacion");
+            ModelState.Remove("Role_Fecha_Creacion");
+            ModelState.Remove("Role_Modifica");
+            ModelState.Remove("Role_Fecha_Modifica");
+            ModelState.Remove("Role_Estado");
             if (ModelState.IsValid)
             {
-                db.tbRoles.Add(tbRoles);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.Sp_tbRoles_Insertar(tbRoles.Role_Descripcion, tbRoles.Role_Creacion, DateTime.Now);
+
+                    //db.tbRoles.Add(tbRoles);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (FormatException ex)
+                {
+                    // Handle the exception (e.g., log it, show an error message)
+                    TempData["Error"] = "Error converting id to int: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
             }
 
             return View(tbRoles);
@@ -80,19 +97,23 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Role_Id,Role_Descripcion,Role_Creacion,Role_Fecha_Creacion,Role_Modifica,Role_Fecha_Modifica,Role_Estado")] tbRoles tbRoles)
         {
+            ModelState.Remove("Role_Creacion");
+            ModelState.Remove("Role_Fecha_Creacion");
+            ModelState.Remove("Role_Modifica");
+            ModelState.Remove("Role_Fecha_Modifica");
+            ModelState.Remove("Role_Estado");
             if (ModelState.IsValid)
             {
-
-                int id = Convert.ToInt32(Session["idtipo"]);
-                var rolesexistenete = db.tbRoles.Find(id);
-
-                if (rolesexistenete != null)
+                try{
+                    int id = Convert.ToInt32(Session["idtipo"]);
+                    int usuario = Convert.ToInt32(Session["idusaio"]);
+                    db.Sp_tbRoles_Editar(id, tbRoles.Role_Descripcion, usuario, DateTime.Now, true);
+                    return RedirectToAction("Index");
+                }
+                catch (FormatException ex)
                 {
-                    db.Entry(rolesexistenete).Reload();
-                    rolesexistenete.Role_Descripcion = tbRoles.Role_Descripcion;
-
-
-                    db.SaveChanges();
+                    // Handle the exception (e.g., log it, show an error message)
+                    TempData["Error"] = "Error converting id to int: " + ex.Message;
                     return RedirectToAction("Index");
                 }
             }
@@ -121,6 +142,7 @@ namespace Sistema_Cine.Controllers
         {
             tbRoles tbRoles = db.tbRoles.Find(id);
             db.tbRoles.Remove(tbRoles);
+            //db.Sp_tbRoles_Eliminar(id);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

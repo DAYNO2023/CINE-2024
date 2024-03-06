@@ -27,6 +27,7 @@ namespace Sistema_Cine.Models
         public int Buta_Id { get; set; }
 
         [Display(Name = "Butacas Cantidad:")]
+     
         [Required(ErrorMessage = "El campos {0} es requerido")]
         public string Buta_Descripcion { get; set; }
 

@@ -1256,11 +1256,10 @@ namespace Sistema_Cine.Models
             var apellidoParameter = apellido != null ?
                 new ObjectParameter("Apellido", apellido) :
                 new ObjectParameter("Apellido", typeof(string));
-    
+
             var identidadParameter = identidad != null ?
                 new ObjectParameter("Identidad", identidad) :
                 new ObjectParameter("Identidad", typeof(string));
-    
             var sexoParameter = sexo != null ?
                 new ObjectParameter("Sexo", sexo) :
                 new ObjectParameter("Sexo", typeof(string));

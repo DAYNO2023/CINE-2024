@@ -255,43 +255,6 @@ namespace Sistema_Cine.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_tbRoles_Mostrar_Result>("Sp_tbRoles_Mostrar");
         }
     
-        public virtual ObjectResult<Nullable<int>> Sp_tbUsuarios_Editar(Nullable<int> id, string nombre, string contraseña, Nullable<int> empleadoId, Nullable<int> rolId, Nullable<int> modifica, Nullable<System.DateTime> fechaModifica, Nullable<bool> estado)
-        {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("Id", id) :
-                new ObjectParameter("Id", typeof(int));
-    
-            var nombreParameter = nombre != null ?
-                new ObjectParameter("Nombre", nombre) :
-                new ObjectParameter("Nombre", typeof(string));
-    
-            var contraseñaParameter = contraseña != null ?
-                new ObjectParameter("Contraseña", contraseña) :
-                new ObjectParameter("Contraseña", typeof(string));
-    
-            var empleadoIdParameter = empleadoId.HasValue ?
-                new ObjectParameter("EmpleadoId", empleadoId) :
-                new ObjectParameter("EmpleadoId", typeof(int));
-    
-            var rolIdParameter = rolId.HasValue ?
-                new ObjectParameter("RolId", rolId) :
-                new ObjectParameter("RolId", typeof(int));
-    
-            var modificaParameter = modifica.HasValue ?
-                new ObjectParameter("Modifica", modifica) :
-                new ObjectParameter("Modifica", typeof(int));
-    
-            var fechaModificaParameter = fechaModifica.HasValue ?
-                new ObjectParameter("FechaModifica", fechaModifica) :
-                new ObjectParameter("FechaModifica", typeof(System.DateTime));
-    
-            var estadoParameter = estado.HasValue ?
-                new ObjectParameter("Estado", estado) :
-                new ObjectParameter("Estado", typeof(bool));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbUsuarios_Editar", idParameter, nombreParameter, contraseñaParameter, empleadoIdParameter, rolIdParameter, modificaParameter, fechaModificaParameter, estadoParameter);
-        }
-    
         public virtual ObjectResult<Nullable<int>> Sp_tbUsuarios_Eliminar(Nullable<int> id)
         {
             var idParameter = id.HasValue ?
@@ -1321,6 +1284,43 @@ namespace Sistema_Cine.Models
                 new ObjectParameter("Id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbPantalla_Roles_Eliminar2", idParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbUsuarios_Editar(Nullable<int> id, string nombre, string contraseña, Nullable<int> empleadoId, Nullable<int> rolId, Nullable<int> modifica, Nullable<System.DateTime> fechaModifica, Nullable<bool> estado)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var contraseñaParameter = contraseña != null ?
+                new ObjectParameter("Contraseña", contraseña) :
+                new ObjectParameter("Contraseña", typeof(string));
+    
+            var empleadoIdParameter = empleadoId.HasValue ?
+                new ObjectParameter("EmpleadoId", empleadoId) :
+                new ObjectParameter("EmpleadoId", typeof(int));
+    
+            var rolIdParameter = rolId.HasValue ?
+                new ObjectParameter("RolId", rolId) :
+                new ObjectParameter("RolId", typeof(int));
+    
+            var modificaParameter = modifica.HasValue ?
+                new ObjectParameter("Modifica", modifica) :
+                new ObjectParameter("Modifica", typeof(int));
+    
+            var fechaModificaParameter = fechaModifica.HasValue ?
+                new ObjectParameter("FechaModifica", fechaModifica) :
+                new ObjectParameter("FechaModifica", typeof(System.DateTime));
+    
+            var estadoParameter = estado.HasValue ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbUsuarios_Editar", idParameter, nombreParameter, contraseñaParameter, empleadoIdParameter, rolIdParameter, modificaParameter, fechaModificaParameter, estadoParameter);
         }
     }
 }

@@ -51,11 +51,28 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Sala_Id,Sala_Descripcion,Buta_Id,Cate_Usuario_Creacion,Cate_Fecha_Creacion,Cate_Usuario_Modificacion,Cate_Fecha_Modificacion")] tbSalas tbSalas)
         {
+            ModelState.Remove("Cate_Usuario_Creacion");
+            ModelState.Remove("Cate_Fecha_Creacion");
+            ModelState.Remove("Cate_Usuario_Modificacion");
+            ModelState.Remove("Cate_Fecha_Modificacion");
+
             if (ModelState.IsValid)
             {
-                db.tbSalas.Add(tbSalas);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    int usuario = Convert.ToInt32(Session["idusaio"]);
+                    db.Sp_tbSalas_Insertar(tbSalas.Sala_Descripcion, tbSalas.Buta_Id, usuario, DateTime.Now, true);
+                    //db.tbSalas.Add(tbSalas);
+                    db.SaveChanges();
+                    TempData["Exito"] = "se agrego Correctamente";
+                    return RedirectToAction("Index");
+                }
+                catch (FormatException ex)
+                {
+                    // Handle the exception (e.g., log it, show an error message)
+                    TempData["Error"] = "Error el registro no se agrego: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
             }
 
             ViewBag.Buta_Id = new SelectList(db.tbButacas_Salas, "Buta_Id", "Buta_Descripcion", tbSalas.Buta_Id);
@@ -85,20 +102,25 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Sala_Id,Sala_Descripcion,Buta_Id,Cate_Usuario_Creacion,Cate_Fecha_Creacion,Cate_Usuario_Modificacion,Cate_Fecha_Modificacion")] tbSalas tbSalas)
         {
+            ModelState.Remove("Cate_Usuario_Creacion");
+            ModelState.Remove("Cate_Fecha_Creacion");
+            ModelState.Remove("Cate_Usuario_Modificacion");
+            ModelState.Remove("Cate_Fecha_Modificacion");
             if (ModelState.IsValid)
             {
 
-
-                int id = Convert.ToInt32(Session["idtipo"]);
-                var salasexistenete = db.tbSalas.Find(id);
-
-                if (salasexistenete != null)
+                try
                 {
-                    db.Entry(salasexistenete).Reload();
-                    salasexistenete.Sala_Descripcion = tbSalas.Sala_Descripcion;
-                    salasexistenete.Buta_Id = tbSalas.Buta_Id;
-
-                    db.SaveChanges();
+                    int id = Convert.ToInt32(Session["idtipo"]);
+                    int usuario = Convert.ToInt32(Session["idusaio"]);
+                    db.Sp_tbSalas_Editar(id, tbSalas.Sala_Descripcion, tbSalas.Buta_Id, usuario, DateTime.Now, true);
+                    TempData["Exito"] = "se Edito Correctamente";
+                    return RedirectToAction("Index");
+                }
+                catch (FormatException ex)
+                {
+                    // Handle the exception (e.g., log it, show an error message)
+                    TempData["Error"] = "Error el campo no se edito correctamente: " + ex.Message;
                     return RedirectToAction("Index");
                 }
             }
@@ -126,10 +148,21 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            tbSalas tbSalas = db.tbSalas.Find(id);
-            db.tbSalas.Remove(tbSalas);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                tbSalas tbSalas = db.tbSalas.Find(id);
+                db.tbSalas.Remove(tbSalas);
+                //db.Sp_tbSalas_Eliminar(id);
+                db.SaveChanges();
+                TempData["Exito"] = "se ELIMINO Correctamente";
+                return RedirectToAction("Index");
+            }
+            catch (FormatException ex)
+            {
+                // Handle the exception (e.g., log it, show an error message)
+                TempData["Error"] = "Error el campo no fue eliminado: " + ex.Message;
+                return RedirectToAction("Index");
+            }
         }
 
         protected override void Dispose(bool disposing)

@@ -26,44 +26,44 @@
             @Html.HiddenFor(model => model.Clie_Id)
 
 
-            <div class="row">
-                <div class="col-md-6">
-                    @Html.LabelFor(model => model.Clie_Nombre, htmlAttributes: new { @class = "control-label" })
-                    @Html.EditorFor(model => model.Clie_Nombre, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Clie_Nombre, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.Clie_Nombre, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Clie_Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Clie_Nombre, "", new { @class = "text-danger" })
+                <br />
+                @Html.LabelFor(model => model.Clie_Apellido, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Clie_Apellido, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Clie_Apellido, "", new { @class = "text-danger" })
+                <br />
+                @Html.LabelFor(model => model.Clie_Identidad, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Clie_Identidad, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Clie_Identidad, "", new { @class = "text-danger" })
+                <br />
+                @Html.LabelFor(model => model.Clie_Sexo, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Clie_Sexo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Clie_Sexo, "", new { @class = "text-danger" })
 
-                    @Html.LabelFor(model => model.Clie_Apellido, htmlAttributes: new { @class = "control-label" })
-                    @Html.EditorFor(model => model.Clie_Apellido, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Clie_Apellido, "", new { @class = "text-danger" })
+            </div>  <br />
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.Clie_Telefono, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Clie_Telefono, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Clie_Telefono, "", new { @class = "text-danger" })
+                <br />
+                @Html.LabelFor(model => model.Esta_Id, "Estado Civil", htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownList("Esta_Id", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Esta_Id, "", new { @class = "text-danger" })
+                <br />
+                @Html.LabelFor(model => model.Clie_FecNacimiento, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Clie_FecNacimiento, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Clie_FecNacimiento, "", new { @class = "text-danger" })
+                <br />
+                @Html.LabelFor(model => model.Muni_Id, "Municipio", htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownList("Muni_Id", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Muni_Id, "", new { @class = "text-danger" })
 
-                    @Html.LabelFor(model => model.Clie_Identidad, htmlAttributes: new { @class = "control-label" })
-                    @Html.EditorFor(model => model.Clie_Identidad, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Clie_Identidad, "", new { @class = "text-danger" })
-
-                    @Html.LabelFor(model => model.Clie_Sexo, htmlAttributes: new { @class = "control-label" })
-                    @Html.EditorFor(model => model.Clie_Sexo, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Clie_Sexo, "", new { @class = "text-danger" })
-                    
-                </div>
-                <div class="col-md-6">
-                    @Html.LabelFor(model => model.Clie_Telefono, htmlAttributes: new { @class = "control-label" })
-                    @Html.EditorFor(model => model.Clie_Telefono, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Clie_Telefono, "", new { @class = "text-danger" })
-
-                    @Html.LabelFor(model => model.Esta_Id, "Estado Civil", htmlAttributes: new { @class = "control-label" })
-                    @Html.DropDownList("Esta_Id", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Esta_Id, "", new { @class = "text-danger" })
-
-                    @Html.LabelFor(model => model.Clie_FecNacimiento, htmlAttributes: new { @class = "control-label" })
-                    @Html.EditorFor(model => model.Clie_FecNacimiento, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Clie_FecNacimiento, "", new { @class = "text-danger" })
-
-                    @Html.LabelFor(model => model.Muni_Id, "Municipio", htmlAttributes: new { @class = "control-label" })
-                    @Html.DropDownList("Muni_Id", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Muni_Id, "", new { @class = "text-danger" })
-
-                </div>
-            </div>
+            </div>  <br />
+        </div>
             <hr />
 
             <div class="form-group">

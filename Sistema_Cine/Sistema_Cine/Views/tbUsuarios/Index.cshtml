@@ -28,20 +28,20 @@
                             @Html.DisplayNameFor(model => model.Usua_Contraseña)
                         </th>
                         @*<th>
-                            @Html.DisplayNameFor(model => model.Usua_Creacion)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Usua_Fecha_Creacion)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Usua_Modifica)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Usua_Fecha_Modifica)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Usua_Estado)
-                        </th>*@
+                                @Html.DisplayNameFor(model => model.Usua_Creacion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Usua_Fecha_Creacion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Usua_Modifica)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Usua_Fecha_Modifica)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Usua_Estado)
+                            </th>*@
                         <th>
                             @Html.DisplayNameFor(model => model.tbRoles.Role_Descripcion)
                         </th>
@@ -64,20 +64,20 @@
                                 @Html.DisplayFor(modelItem => item.Usua_Contraseña)
                             </td>
                             @*<td>
-                                @Html.DisplayFor(modelItem => item.Usua_Creacion)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Usua_Fecha_Creacion)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Usua_Modifica)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Usua_Fecha_Modifica)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Usua_Estado)
-                            </td>*@
+                                    @Html.DisplayFor(modelItem => item.Usua_Creacion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Usua_Fecha_Creacion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Usua_Modifica)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Usua_Fecha_Modifica)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Usua_Estado)
+                                </td>*@
                             <td>
                                 @Html.DisplayFor(modelItem => item.tbRoles.Role_Descripcion)
                             </td>
@@ -87,7 +87,10 @@
                             <td>
                                 @Html.ActionLink("Edit", "Edit", new { id = item.Usua_Id }, new { @class = "btn btn-warning" }) |
                                 @Html.ActionLink("Details", "Details", new { id = item.Usua_Id }, new { @class = "btn btn-default" }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Usua_Id }, new { @class = "btn btn-danger" })
+                                @*@Html.ActionLink("Delete", "Delete", new { id = item.Usua_Id }, new { @class = "btn btn-danger" })*@
+                                <p class="btn btn-danger" id="elimnartipo" onclick="elimnartipo('@item.Usua_Id')">
+                                    Eliminar
+                                </p>
                             </td>
                         </tr>
                     }
@@ -96,3 +99,33 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="elimnarmodal" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+            </div>
+            @Html.Partial("_Delete", new Sistema_Cine.Models.tbUsuarios())
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $("#btnmodal").click(function () {
+        $("#exampleModal").modal('show');
+    })
+    //$("#bteditar").click(function () {
+    //    $("#exampleModal").modal('show');
+    //})
+    function elimnartipo(id) {
+        $("#elimnarmodal").modal('show')
+        $("#id").val(id);
+    }
+
+
+
+
+</script>

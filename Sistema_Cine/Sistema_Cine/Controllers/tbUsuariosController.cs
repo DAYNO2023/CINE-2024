@@ -17,7 +17,7 @@ namespace Sistema_Cine.Controllers
         // GET: tbUsuarios
         public ActionResult Index()
         {
-            ViewBag.Paro_Id = new SelectList(db.tbPantalla_Roles, "Role_Id", "Role_Id");
+            ViewBag.Role_Id = new SelectList(db.tbRoles, "Role_Id", "Role_Id");
             ViewBag.Empl_Id = new SelectList(db.tbEmpleados, "Empl_Id", "Empl_Nombre");
             var tbUsuarios = db.tbUsuarios.Include(t => t.tbRoles).Include(t => t.tbEmpleados);
             return View(tbUsuarios.ToList());
@@ -53,15 +53,34 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Usua_Id,Usua_Nombre,Usua_Contraseña,Empl_Id,Role_Id,Usua_Creacion,Usua_Fecha_Creacion,Usua_Modifica,Usua_Fecha_Modifica,Usua_Estado")] tbUsuarios tbUsuarios)
         {
+            ModelState.Remove("Usua_Creacion");
+            ModelState.Remove("Usua_Fecha_Creacion");
+            ModelState.Remove("Usua_Modifica");
+            ModelState.Remove("Usua_Fecha_Modifica");
+
+
             if (ModelState.IsValid)
             {
-                db.tbUsuarios.Add(tbUsuarios);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    int usuario = Convert.ToInt32(Session["idusaio"]);
+                    db.Sp_tbUsuarios_Insertar(tbUsuarios.Usua_Nombre, tbUsuarios.Usua_Contraseña, tbUsuarios.Empl_Id, tbUsuarios.Role_Id, usuario, DateTime.Now, true);
+                    //db.tbUsuarios.Add(tbUsuarios);
+                    db.SaveChanges();
+                    TempData["Exito"] = "se agrego Correctamente";
+                    return RedirectToAction("Index");
+                }
+                catch (FormatException ex)
+                {
+                    // Handle the exception (e.g., log it, show an error message)
+                    TempData["Error"] = "Error el registro no se guardo correctamente: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
             }
 
-            ViewBag.Paro_Id = new SelectList(db.tbPantalla_Roles, "Role_Id", "Role_Id", tbUsuarios.Role_Id);
-            ViewBag.Empl_Id = new SelectList(db.tbEmpleados, "Empl_Id", "Empl_Nombre", tbUsuarios.Empl_Id);
+
+            ViewBag.Role_Id = new SelectList(db.tbRoles, "Role_Id", "Role_Id");
+            ViewBag.Empl_Id = new SelectList(db.tbEmpleados, "Empl_Id", "Empl_Nombre");
             return View(tbUsuarios);
         }
 
@@ -77,8 +96,8 @@ namespace Sistema_Cine.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Paro_Id = new SelectList(db.tbPantalla_Roles, "Role_Id", "Role_Id", tbUsuarios.Role_Id);
-            ViewBag.Empl_Id = new SelectList(db.tbEmpleados, "Empl_Id", "Empl_Nombre", tbUsuarios.Empl_Id);
+            ViewBag.Role_Id = new SelectList(db.tbRoles, "Role_Id", "Role_Id");
+            ViewBag.Empl_Id = new SelectList(db.tbEmpleados, "Empl_Id", "Empl_Nombre");
             return View(tbUsuarios);
         }
 
@@ -89,14 +108,31 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Usua_Id,Usua_Nombre,Usua_Contraseña,Empl_Id,Role_Id,Usua_Creacion,Usua_Fecha_Creacion,Usua_Modifica,Usua_Fecha_Modifica,Usua_Estado")] tbUsuarios tbUsuarios)
         {
+            ModelState.Remove("Usua_Creacion");
+            ModelState.Remove("Usua_Fecha_Creacion");
+            ModelState.Remove("Usua_Modifica");
+            ModelState.Remove("Usua_Fecha_Modifica");
+            ModelState.Remove("Usua_Estado");
             if (ModelState.IsValid)
             {
-                db.Entry(tbUsuarios).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    int id = Convert.ToInt32(Session["idtipo"]);
+                    int usuario = Convert.ToInt32(Session["idusaio"]);
+                    db.Sp_tbUsuarios_Editar(id, tbUsuarios.Usua_Nombre, tbUsuarios.Usua_Contraseña, tbUsuarios.Empl_Id, tbUsuarios.Role_Id, usuario, DateTime.Now, true);
+                    TempData["Exito"] = "se Edito Correctamente";
+                    return RedirectToAction("Index");
+                }
+                catch (FormatException ex)
+                {
+                    // Handle the exception (e.g., log it, show an error message)
+                    TempData["Error"] = "Error este campo no se edito correctamente: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
+
             }
-            ViewBag.Paro_Id = new SelectList(db.tbPantalla_Roles, "Role_Id", "Role_Id", tbUsuarios.Role_Id);
-            ViewBag.Empl_Id = new SelectList(db.tbEmpleados, "Empl_Id", "Empl_Nombre", tbUsuarios.Empl_Id);
+            ViewBag.Role_Id = new SelectList(db.tbRoles, "Role_Id", "Role_Id");
+            ViewBag.Empl_Id = new SelectList(db.tbEmpleados, "Empl_Id", "Empl_Nombre");
             return View(tbUsuarios);
         }
 
@@ -120,10 +156,21 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            tbUsuarios tbUsuarios = db.tbUsuarios.Find(id);
-            db.tbUsuarios.Remove(tbUsuarios);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                tbUsuarios tbUsuarios = db.tbUsuarios.Find(id);
+                db.tbUsuarios.Remove(tbUsuarios);
+                //db.Sp_tbUsuarios_Eliminar(id);
+                db.SaveChanges();
+                TempData["Exito"] = "se Elimino Correctamente";
+                return RedirectToAction("Index");
+            }
+            catch (FormatException ex)
+            {
+                // Handle the exception (e.g., log it, show an error message)
+                TempData["Error"] = "Error el campo no fue eliminado: " + ex.Message;
+                return RedirectToAction("Index");
+            }
         }
 
         protected override void Dispose(bool disposing)

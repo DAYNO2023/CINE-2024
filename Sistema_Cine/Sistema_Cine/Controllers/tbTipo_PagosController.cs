@@ -48,12 +48,34 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Tipo_Id,Tipo_Descripcion,Cate_Usuario_Creacion,Cate_Fecha_Creacion,Cate_Usuario_Modificacion,Cate_Fecha_Modificacion")] tbTipo_Pagos tbTipo_Pagos)
         {
+            ModelState.Remove("Cate_Usuario_Creacion");
+            ModelState.Remove("Cate_Fecha_Creacion");
+            ModelState.Remove("Cate_Usuario_Creacion");
+            ModelState.Remove("Cate_Usuario_Modificacion");
+            ModelState.Remove("Cate_Fecha_Modificacion");
+
+
+
             if (ModelState.IsValid)
             {
-                
-                db.tbTipo_Pagos.Add(tbTipo_Pagos);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    int usuario = Convert.ToInt32(Session["idusaio"]);
+                    db.Sp_tbTipo_Pagos_Insertar(tbTipo_Pagos.Tipo_Descripcion, usuario, DateTime.Now, true);
+
+
+
+                    //db.tbTipo_Pagos.Add(tbTipo_Pagos);
+                    db.SaveChanges();
+                    TempData["Exito"] = "se agrego Correctamente";
+                    return RedirectToAction("Index");
+                }
+                catch (FormatException ex)
+                {
+                    // Handle the exception (e.g., log it, show an error message)
+                    TempData["Error"] = "Error el registro no se ingreso: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
             }
 
             return View(tbTipo_Pagos);
@@ -106,13 +128,13 @@ namespace Sistema_Cine.Controllers
                     //    TempData["Error"] = "Ya existe un registro";
                     //    return RedirectToAction("Index");
                     //}
-
+                    TempData["Exito"] = "se Edito Correctamente";
                     return RedirectToAction("Index");
                 }
                 catch (FormatException ex)
                 {
                     // Handle the exception (e.g., log it, show an error message)
-                    TempData["Error"] = "Error converting id to int: " + ex.Message;
+                    TempData["Error"] = "Error el campo no se edito correctamente: " + ex.Message;
                     return RedirectToAction("Index");
                 }
             }
@@ -155,10 +177,21 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            tbTipo_Pagos tbTipo_Pagos = db.tbTipo_Pagos.Find(id);
-            db.tbTipo_Pagos.Remove(tbTipo_Pagos);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                tbTipo_Pagos tbTipo_Pagos = db.tbTipo_Pagos.Find(id);
+                db.tbTipo_Pagos.Remove(tbTipo_Pagos);
+                //db.Sp_tbTipo_Pagos_Eliminar(id);
+                db.SaveChanges();
+                TempData["Exito"] = "se Elimino Correctamente";
+                return RedirectToAction("Index");
+            }
+            catch (FormatException ex)
+            {
+                // Handle the exception (e.g., log it, show an error message)
+                TempData["Error"] = "Error el campo no fue eliminado: " + ex.Message;
+                return RedirectToAction("Index");
+            }
         }
 
         protected override void Dispose(bool disposing)

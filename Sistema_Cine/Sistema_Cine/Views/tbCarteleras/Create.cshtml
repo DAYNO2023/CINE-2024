@@ -32,28 +32,28 @@
                     @Html.EditorFor(model => model.Cart_Descripcion, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Cart_Descripcion, "", new { @class = "text-danger" })
 
-                    @Html.LabelFor(model => model.Gene_Id, "Gene_Id", htmlAttributes: new { @class = "control-label" })
+                    @Html.LabelFor(model => model.Gene_Id, "Genero", htmlAttributes: new { @class = "control-label" })
                     @Html.DropDownList("Gene_Id", null, htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Gene_Id, "", new { @class = "text-danger" })
 
-                    @Html.LabelFor(model => model.Prom_Id, "Prom_Id", htmlAttributes: new { @class = "control-label" })
+                    @Html.LabelFor(model => model.Prom_Id, "Promociones", htmlAttributes: new { @class = "control-label" })
                     @Html.DropDownList("Prom_Id", null, htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Prom_Id, "", new { @class = "text-danger" })
                 </div>
                 <div class="col-md-6">
-                    @Html.LabelFor(model => model.Entra_Id, "Entra_Id", htmlAttributes: new { @class = "control-label" })
+                    @Html.LabelFor(model => model.Entra_Id, "Entradas", htmlAttributes: new { @class = "control-label" })
                     @Html.DropDownList("Entra_Id", null, htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Entra_Id, "", new { @class = "text-danger" })
 
                     @Html.LabelFor(model => model.Cart_Fecha_Estreno, htmlAttributes: new { @class = "control-label" })
-                    @Html.TextBoxFor(model => model.Cart_Fecha_Estreno, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+                    @Html.TextBoxFor(model => model.Cart_Fecha_Estreno, "{0:dd/MM/yyyy}", new { @class = "form-control", type = "date" })
                     @Html.ValidationMessageFor(model => model.Cart_Fecha_Estreno, "", new { @class = "text-danger" })
                 </div>
             </div>
             <hr />
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-20">
-                    <input type="submit" value="Crear" class="btn btn-primary" />
+                    <input type="submit" value="Guardar" class="btn btn-primary" />
                 </div>
             </div>
         </div>

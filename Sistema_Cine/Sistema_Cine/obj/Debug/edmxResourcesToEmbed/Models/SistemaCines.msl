@@ -306,7 +306,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="Sp_tbUsuarios_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbUsuarios_Editar" />
     <FunctionImportMapping FunctionImportName="Sp_tbUsuarios_Eliminar" FunctionName="dbSsitemascinesModel.Store.Sp_tbUsuarios_Eliminar" />
     <FunctionImportMapping FunctionImportName="Sp_tbUsuarios_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbUsuarios_Insertar" />
     <FunctionImportMapping FunctionImportName="Sp_tbUsuarios_Mostrar" FunctionName="dbSsitemascinesModel.Store.Sp_tbUsuarios_Mostrar">
@@ -627,5 +626,6 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="Sp_tbPantalla_Roles_Eliminar2" FunctionName="dbSsitemascinesModel.Store.Sp_tbPantalla_Roles_Eliminar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbUsuarios_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbUsuarios_Editar" />
   </EntityContainerMapping>
 </Mapping>

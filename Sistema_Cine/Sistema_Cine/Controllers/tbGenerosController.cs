@@ -52,15 +52,31 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Gene_Id,Gene_Descripcion,Prom_Id,Gene_Usuario_Creacion,Gene_Fecha_Creacion,Gene_Usuario_Modificacion,Gene_Fecha_Modificacion")] tbGeneros tbGeneros)
         {
+            ModelState.Remove("Gene_Usuario_Creacion");
+            ModelState.Remove("Gene_Fecha_Creacion");
+            ModelState.Remove("Gene_Usuario_Modificacion");
+            ModelState.Remove("Gene_Fecha_Modificacion");
+
+
             if (ModelState.IsValid)
             {
-                db.tbGeneros.Add(tbGeneros);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.tbGeneros.Add(tbGeneros);
+                    db.SaveChanges();
+                    TempData["Exito"] = "se agrego Correctamente";
+                    return RedirectToAction("Index");
+                }
+                catch (FormatException ex)
+                {
+                    // Handle the exception (e.g., log it, show an error message)
+                    TempData["Error"] = "Error el registro no se guardo correctamente: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
             }
 
             ViewBag.Prom_Id = new SelectList(db.tbPromociones, "Prom_Id", "Prom_Descripcion", tbGeneros.Prom_Id);
-            return View(tbGeneros);
+            return View(tbGeneros); ;
         }
 
         // GET: tbGeneros/Edit/5
@@ -95,29 +111,29 @@ namespace Sistema_Cine.Controllers
                 {
                     try
                     {
-                       
+
                         db.Entry(generoexistenete).Reload();
                         generoexistenete.Gene_Descripcion = tbGeneros.Gene_Descripcion;
                         generoexistenete.Prom_Id = tbGeneros.Prom_Id;
-
+                        TempData["Exito"] = "se Edito Correctamente";
                         db.SaveChanges();
 
                         return RedirectToAction("Index");
                     }
                     catch (DbUpdateConcurrencyException ex)
                     {
-                     
+
                         var entry = ex.Entries.Single();
                         var clientValues = (tbGeneros)entry.Entity;
                         var databaseEntry = entry.GetDatabaseValues();
-
+                        TempData["Error"] = "Error este campo no se edito correctamente: " + ex.Message;
                         if (databaseEntry == null)
                         {
                             ModelState.AddModelError(string.Empty, "La entidad ha sido eliminada por otro usuario.");
                         }
                         else
                         {
-                            
+
                             var databaseValues = (tbGeneros)databaseEntry.ToObject();
                             clientValues.Gene_Fecha_Modificacion = databaseValues.Gene_Fecha_Modificacion;
 
@@ -151,10 +167,20 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            tbGeneros tbGeneros = db.tbGeneros.Find(id);
-            db.tbGeneros.Remove(tbGeneros);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                tbGeneros tbGeneros = db.tbGeneros.Find(id);
+                db.tbGeneros.Remove(tbGeneros);
+                
+                db.SaveChanges();
+                TempData["Exito"] = "se Elimino Correctamente";
+                return RedirectToAction("Index");
+            }
+            catch(Exception ex)
+            {
+                TempData["Error"] = "Error el campo no fue eliminado: " + ex.Message;
+                return RedirectToAction("Index");
+            }
         }
 
         protected override void Dispose(bool disposing)

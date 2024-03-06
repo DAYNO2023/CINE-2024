@@ -26,6 +26,7 @@ namespace Sistema_Cine.Models
         [Required(ErrorMessage = "El campos {0} es requerido")]
         public string Clie_Apellido { get; set; }
         [Display(Name = "Cliente Identidad:")]
+
         [Required(ErrorMessage = "El campos {0} es requerido")]
         public string Clie_Identidad { get; set; }
         [Display(Name = "Sexo:")]

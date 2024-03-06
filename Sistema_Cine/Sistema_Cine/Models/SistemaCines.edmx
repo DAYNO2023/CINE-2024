@@ -1649,16 +1649,6 @@
             <Parameter Name="FechaCreacion" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="Sp_tbRoles_Mostrar" ReturnType="Collection(dbSsitemascinesModel.Sp_tbRoles_Mostrar_Result)" />
-          <FunctionImport Name="Sp_tbUsuarios_Editar" ReturnType="Collection(Int32)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
-            <Parameter Name="Nombre" Mode="In" Type="String" />
-            <Parameter Name="Contraseña" Mode="In" Type="String" />
-            <Parameter Name="EmpleadoId" Mode="In" Type="Int32" />
-            <Parameter Name="RolId" Mode="In" Type="Int32" />
-            <Parameter Name="Modifica" Mode="In" Type="Int32" />
-            <Parameter Name="FechaModifica" Mode="In" Type="DateTime" />
-            <Parameter Name="Estado" Mode="In" Type="Boolean" />
-          </FunctionImport>
           <FunctionImport Name="Sp_tbUsuarios_Eliminar" ReturnType="Collection(Int32)">
           <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -2000,7 +1990,17 @@
             <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Sp_tbPantalla_Roles_Eliminar2" ReturnType="Collection(Int32)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbUsuarios_Editar" ReturnType="Collection(Int32)">
             <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Contraseña" Mode="In" Type="String" />
+            <Parameter Name="EmpleadoId" Mode="In" Type="Int32" />
+            <Parameter Name="RolId" Mode="In" Type="Int32" />
+            <Parameter Name="Modifica" Mode="In" Type="Int32" />
+            <Parameter Name="FechaModifica" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_tbUsuarios_InicioSesion_Result">
@@ -2739,7 +2739,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Sp_tbUsuarios_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbUsuarios_Editar" />
           <FunctionImportMapping FunctionImportName="Sp_tbUsuarios_Eliminar" FunctionName="dbSsitemascinesModel.Store.Sp_tbUsuarios_Eliminar" />
           <FunctionImportMapping FunctionImportName="Sp_tbUsuarios_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbUsuarios_Insertar" />
           <FunctionImportMapping FunctionImportName="Sp_tbUsuarios_Mostrar" FunctionName="dbSsitemascinesModel.Store.Sp_tbUsuarios_Mostrar">
@@ -3060,6 +3059,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="Sp_tbPantalla_Roles_Eliminar2" FunctionName="dbSsitemascinesModel.Store.Sp_tbPantalla_Roles_Eliminar" />
+          <FunctionImportMapping FunctionImportName="Sp_tbUsuarios_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbUsuarios_Editar" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

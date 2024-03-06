@@ -5,121 +5,94 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="card">
+    <div class="card-header">
+        <h2 style="text-align:center">Detalle del Usuario</h2>
+        <div class="d-flex justify-content-end">
+            @*<button type="button" class="btn btn-primary" onclick="window.location.href='@Url.Action("Edit", "Edit", new { id = Model.Sucu_Id })'">
+                    Editar
+                </button>*@
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Usua_Id }, new { @class = "btn btn-warning" })
+            ||
+            <button type="button" class="btn btn-primary" onclick="window.location.href='@Url.Action("Index")'">
+                Regresar
+            </button>
+        </div>
 
-<div>
-    <h4>tbUsuarios</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Usua_Nombre)
-        </dt>
+    </div>
+    <div class="card-body">
+        <div class="container">
+            <!-- Apertura del contenedor -->
+            <div class="row">
+                <div class="col-md-6">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Usua_Nombre)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Usua_Nombre)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.Usua_Nombre)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Usua_Contraseña)
-        </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Usua_Contraseña)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Usua_Contraseña)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.Usua_Contraseña)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Usua_Creacion)
-        </dt>
+                    </dl>
+                </div>
+                <div class="col-md-6">
+                    <dl class="dl-horizontal">
 
-        <dd>
-            @Html.DisplayFor(model => model.Usua_Creacion)
-        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.tbRoles.Role_Descripcion)
+                        </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Usua_Fecha_Creacion)
-        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.tbRoles.Role_Descripcion)
 
-        <dd>
-            @Html.DisplayFor(model => model.Usua_Fecha_Creacion)
-        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.tbEmpleados.Empl_Nombre)
+                        </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Usua_Modifica)
-        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.tbEmpleados.Empl_Nombre)
+                        </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Usua_Modifica)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Usua_Fecha_Modifica)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Usua_Fecha_Modifica)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Usua_Estado)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Usua_Estado)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Usua_Administrador)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Usua_Administrador)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.tbPantalla_Roles.Paro_Id)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.tbPantalla_Roles.Paro_Id)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.tbEmpleados.Empl_Nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.tbEmpleados.Empl_Nombre)
-        </dd>
-
-    </dl>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Usua_Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<hr />
 <table class="table table-striped table-bordered table-hover dataTables-example" id="tablaOne">
-  <thead>
-    <tr>
-      <th >Acciones</th>
-      <th >Usuario</th>
-      <th >Fecha</th>
-    
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Creador</th>
-      <td></td>
-      <td></td>
-  
-    </tr>
-    <tr>
-      <th scope="row">Modificar</th>
-      <td></td>
-      <td></td>
-    </tr>
-  </tbody>
+    <thead>
+        <tr>
+            <th>Acciones</th>
+            <th>Usuario</th>
+            <th>Fecha</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">Creador</th>
+            <td>@Html.DisplayFor(model => model.Usua_Creacion)</td>
+            <td>@Html.DisplayFor(model => model.Usua_Fecha_Creacion)</td>
+
+        </tr>
+        <tr>
+            <th scope="row">Modificar</th>
+            <td>@Html.DisplayFor(model => model.Usua_Modifica)</td>
+            <td>@Html.DisplayFor(model => model.Usua_Fecha_Modifica)</td>
+        </tr>
+    </tbody>
 </table>
+
 
 
 

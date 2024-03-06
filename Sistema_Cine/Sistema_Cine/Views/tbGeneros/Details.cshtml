@@ -5,57 +5,74 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="card-body"></div>
+<div class="card">
+    <div class="card-header">
+        <h2 style="text-align:center">Detalle del Genero</h2>
+        <div class="d-flex justify-content-end">
+            @*<button type="button" class="btn btn-primary" onclick="window.location.href='@Url.Action("Edit", "Edit", new { id = Model.Sucu_Id })'">
+                    Editar
+                </button>*@
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Gene_Id }, new { @class = "btn btn-warning" })
+            ||
+            <button type="button" class="btn btn-primary" onclick="window.location.href='@Url.Action("Index")'">
+                Regresar
+            </button>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="container">
+            <!-- Apertura del contenedor -->
+            <div class="row">
+                <div class="col-md-6">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Gene_Descripcion)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Gene_Descripcion)
+                        </dd>
+                    </dl>
+                </div>
+                <div class="col-md-6">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.tbPromociones.Prom_Descripcion)
+                        </dt>
 
-<div>
-    <h4>tbGeneros</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Gene_Descripcion)
-        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.tbPromociones.Prom_Descripcion)
+                        </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Gene_Descripcion)
-        </dd>
-       
-        <dt>
-            @Html.DisplayNameFor(model => model.tbPromociones.Prom_Descripcion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.tbPromociones.Prom_Descripcion)
-        </dd>
-
-    </dl>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Gene_Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
-<table class="table table-dark">
-  <thead>
-    <tr>
-      <th >Acciones</th>
-      <th >Usuario</th>
-      <th >Fecha</th>
-    
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Creador</th>
-      <td>@Html.DisplayFor(model => model.Gene_Usuario_Creacion)</td>
-      <td> @Html.DisplayFor(model => model.Gene_Fecha_Creacion)</td>
-  
-    </tr>
-    <tr>
-      <th scope="row">Modificar</th>
-      <td> @Html.DisplayFor(model => model.Gene_Usuario_Modificacion)</td>
-      <td> @Html.DisplayFor(model => model.Gene_Fecha_Modificacion)</td>
-    </tr>
-  </tbody>
+<br />
+
+<table class="table table-striped table-bordered table-hover dataTables-example" id="tablaOne">
+    <thead>
+        <tr>
+            <th>Acciones</th>
+            <th>Usuario</th>
+            <th>Fecha</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">Creador</th>
+            <td>@Html.DisplayFor(model => model.Gene_Usuario_Creacion)</td>
+            <td> @Html.DisplayFor(model => model.Gene_Fecha_Creacion)</td>
+
+        </tr>
+        <tr>
+            <th scope="row">Modificar</th>
+            <td> @Html.DisplayFor(model => model.Gene_Usuario_Modificacion)</td>
+            <td> @Html.DisplayFor(model => model.Gene_Fecha_Modificacion)</td>
+        </tr>
+    </tbody>
 </table>
-
-
 

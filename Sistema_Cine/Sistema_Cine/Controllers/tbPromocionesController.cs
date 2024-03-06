@@ -51,11 +51,29 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Prom_Id,Prom_Descuento,Prom_Descripcion,Prec_Id,Prom_Usuario_Creacion,Prom_Fecha_Creacion,Prom_Usuario_Modificacion,Prom_Fecha_Modificacion")] tbPromociones tbPromociones)
         {
+            ModelState.Remove("Prom_Usuario_Creacion");
+            ModelState.Remove("Prom_Fecha_Creacion");
+            ModelState.Remove("Prom_Usuario_Modificacion");
+            ModelState.Remove("Prom_Fecha_Modificacion");
+
+
             if (ModelState.IsValid)
             {
-                db.tbPromociones.Add(tbPromociones);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    int usuario = Convert.ToInt32(Session["idusaio"]);
+                    db.Sp_tbPromociones_Insertar(tbPromociones.Prom_Descuento, tbPromociones.Prom_Descripcion, tbPromociones.Prec_Id, usuario, DateTime.Now, true);
+                    //db.tbPromociones.Add(tbPromociones);
+                    db.SaveChanges();
+                    TempData["Exito"] = "se agrego Correctamente";
+                    return RedirectToAction("Index");
+                }
+                catch (FormatException ex)
+                {
+                    // Handle the exception (e.g., log it, show an error message)
+                    TempData["Error"] = "Error el registro no se guardo correctamente: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
             }
 
             ViewBag.Prec_Id = new SelectList(db.tbPrecios, "Prec_Id", "Prec_Id", tbPromociones.Prec_Id);
@@ -85,22 +103,27 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Prom_Id,Prom_Descuento,Prom_Descripcion,Prec_Id,Prom_Usuario_Creacion,Prom_Fecha_Creacion,Prom_Usuario_Modificacion,Prom_Fecha_Modificacion")] tbPromociones tbPromociones)
         {
+            ModelState.Remove("Prom_Usuario_Creacion");
+            ModelState.Remove("Prom_Fecha_Creacion");
+            ModelState.Remove("Prom_Usuario_Modificacion");
+            ModelState.Remove("Prom_Fecha_Modificacion");
+
             if (ModelState.IsValid)
             {
-                int id = Convert.ToInt32(Session["idtipo"]);
-                var promosionesexistenete = db.tbPromociones.Find(id);
-
-                if (promosionesexistenete != null)
+                try
                 {
-                    db.Entry(promosionesexistenete).Reload();
-                    promosionesexistenete.Prom_Descuento = tbPromociones.Prom_Descuento;
-                    promosionesexistenete.Prom_Descripcion = tbPromociones.Prom_Descripcion;
-                    promosionesexistenete.Prec_Id = tbPromociones.Prec_Id;
-
-                    db.SaveChanges();
+                    int id = Convert.ToInt32(Session["idtipo"]);
+                    int usuario = Convert.ToInt32(Session["idusaio"]);
+                    db.Sp_tbPromociones_Editar(id, tbPromociones.Prom_Descuento, tbPromociones.Prom_Descripcion, tbPromociones.Prec_Id, usuario, DateTime.Now, true);
+                    TempData["Exito"] = "se Edito Correctamente";
                     return RedirectToAction("Index");
                 }
-
+                catch (FormatException ex)
+                {
+                    // Handle the exception (e.g., log it, show an error message)
+                    TempData["Error"] = "Error este campo no se edito correctamente: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
 
             }
             ViewBag.Prec_Id = new SelectList(db.tbPrecios, "Prec_Id", "Prec_Id", tbPromociones.Prec_Id);
@@ -127,10 +150,20 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            tbPromociones tbPromociones = db.tbPromociones.Find(id);
-            db.tbPromociones.Remove(tbPromociones);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                tbPromociones tbPromociones = db.tbPromociones.Find(id);
+                db.tbPromociones.Remove(tbPromociones);
+                //db.Sp_tbPromociones_Eliminar(id);
+                db.SaveChanges();
+                TempData["Exito"] = "se Elimino Correctamente";
+                return RedirectToAction("Index");
+            }
+            catch(Exception ex)
+            {
+                TempData["Error"] = "Error el campo no fue eliminado: " + ex.Message;
+                return RedirectToAction("Index");
+            }
         }
 
         protected override void Dispose(bool disposing)

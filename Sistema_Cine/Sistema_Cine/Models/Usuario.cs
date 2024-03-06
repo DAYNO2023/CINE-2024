@@ -20,15 +20,15 @@ namespace Sistema_Cine.Models
         public int Usua_Id { get; set; }
         [Display(Name = "Nombre")]
         [Required(ErrorMessage = "El campos {0} es requerido")]
-        [RegularExpression("^[a-zA-Z ]+$ El Datos es incorrecto")]
+        [RegularExpression("^[a-zA-Z ]+$", ErrorMessage = " El Datos es incorrecto")]
         public string Usua_Nombre { get; set; }
         [Display(Name = "Contraseña")]
         [Required(ErrorMessage = "El campos {0} es requerido")]
-        [RegularExpression("^[a-zA-Z ]+$ El Datos es incorrecto")]
+
         public string Usua_Contraseña { get; set; }
         [Display(Name = "Empleado")]
         public Nullable<int> Empl_Id { get; set; }
-        [Display(Name = "Rol")]
+        [Display(Name = "Roles")]
         [Required(ErrorMessage = "El campos {0} es requerido")]
 
         public Nullable<int> Role_Id { get; set; }

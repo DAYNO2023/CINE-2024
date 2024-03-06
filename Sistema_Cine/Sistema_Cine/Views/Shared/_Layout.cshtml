@@ -730,7 +730,7 @@
         $(document).ready(function () {
 
 
-      
+
 
             //setTimeout(function () {
             //    toastr.options = {
@@ -742,6 +742,20 @@
             //    toastr.success('Responsive Admin Theme', 'Welcome to INSPINIA');
 
             //}, 1300);
+
+             @if(TempData["Exito"] != null)
+            {
+                @:toastr.success('@TempData["Exito"]', 'Exito');
+            }
+              @if(TempData["Error"] != null)
+            {
+                @:toastr.error('@TempData["Error"]', 'Error');
+            }
+
+
+
+
+
 
 
             var data1 = [

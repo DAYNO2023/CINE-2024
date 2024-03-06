@@ -86,10 +86,10 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true"></span></button>
-                <h5 class="modal-title">Cargo</h5>
+                
 
             </div>
-            @Html.Partial("_Create", new Sistema_Cine.Models.tbTipo_Pagos());
+            @Html.Partial("_Create", new Sistema_Cine.Models.tbTipo_Pagos())
         </div>
     </div>
 </div>
@@ -102,7 +102,7 @@
             <div class="modal-header">
 
                 <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
-                <h5 class="modal-title">Modificar Tipo Pagos</h5>
+        
             </div>
                 @Html.Partial("_Edit", new Sistema_Cine.Models.tbTipo_Pagos())
         </div>

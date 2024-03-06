@@ -16,14 +16,14 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Carg_Descripcion, htmlAttributes: new { @class = "control-label " })
 
-            @Html.EditorFor(model => model.Carg_Descripcion, new { htmlAttributes = new { @class = "form-control" ,id="descripcion" } })
+            @Html.EditorFor(model => model.Carg_Descripcion, new { htmlAttributes = new { @class = "form-control", id = "descripcion" } })
             @Html.ValidationMessageFor(model => model.Carg_Descripcion, "", new { @class = "text-danger" })
 
         </div>
-
-        <div class="form-group text-center">
+        <hr />
+        <div class="form-group ">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-warning" />
+                <input type="submit" value="Guardar" class="btn btn-warning" />
             </div>
         </div>
     </div>

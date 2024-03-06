@@ -51,11 +51,29 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Entra_Id,Entra_Cantidad,Sala_Id,Entra_Usuario_Creacion,Entra_Fecha_Creacion,Entra_Usuario_Modificacion,Entra_Fecha_Modificacion")] tbEntradas tbEntradas)
         {
+            ModelState.Remove("Entra_Usuario_Creacion");
+            ModelState.Remove("Entra_Fecha_Creacion");
+            ModelState.Remove("Entra_Usuario_Modificacion");
+            ModelState.Remove("Entra_Fecha_Modificacion");
+
+
             if (ModelState.IsValid)
             {
-                db.tbEntradas.Add(tbEntradas);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    int usuario = Convert.ToInt32(Session["idusaio"]);
+                    db.Sp_tbEntradas_Insertar(tbEntradas.Entra_Cantidad, tbEntradas.Sala_Id, usuario, DateTime.Now, true);
+                    //db.tbEntradas.Add(tbEntradas);
+                    db.SaveChanges();
+                    TempData["Exito"] = "se agrego Correctamente";
+                    return RedirectToAction("Index");
+                }
+                catch (FormatException ex)
+                {
+                    // Handle the exception (e.g., log it, show an error message)
+                    TempData["Error"] = "Error el registro no se guardo correctamente: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
             }
 
             ViewBag.Sala_Id = new SelectList(db.tbSalas, "Sala_Id", "Sala_Descripcion", tbEntradas.Sala_Id);
@@ -85,24 +103,33 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Entra_Id,Entra_Cantidad,Sala_Id,Entra_Usuario_Creacion,Entra_Fecha_Creacion,Entra_Usuario_Modificacion,Entra_Fecha_Modificacion")] tbEntradas tbEntradas)
         {
- 
 
+
+
+            ModelState.Remove("Entra_Usuario_Creacion");
+            ModelState.Remove("Entra_Fecha_Creacion");
+            ModelState.Remove("Entra_Usuario_Modificacion");
+            ModelState.Remove("Entra_Fecha_Modificacion");
 
             if (ModelState.IsValid)
             {
-                int id = Convert.ToInt32(Session["idtipo"]);
-                var entradasexistenete = db.tbEntradas.Find(id);
-
-                if (entradasexistenete != null)
+                try
                 {
-                    db.Entry(entradasexistenete).Reload();
-                    entradasexistenete.Entra_Cantidad = tbEntradas.Entra_Cantidad;
-                    entradasexistenete.Sala_Id = tbEntradas.Sala_Id;
+                    int id = Convert.ToInt32(Session["idtipo"]);
+                    int usuario = Convert.ToInt32(Session["idusaio"]);
+                    db.Sp_tbEntradas_Editar(id, tbEntradas.Entra_Cantidad, tbEntradas.Sala_Id, usuario, DateTime.Now, true);
 
-                    db.SaveChanges();
+
+
+                    TempData["Exito"] = "se Edito Correctamente";
                     return RedirectToAction("Index");
                 }
-                
+                catch (FormatException ex)
+                {
+                    // Handle the exception (e.g., log it, show an error message)
+                    TempData["Error"] = "Error este campo no se edito correctamente: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
             }
 
             ViewBag.Sala_Id = new SelectList(db.tbSalas, "Sala_Id", "Sala_Descripcion", tbEntradas.Sala_Id);
@@ -130,10 +157,20 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            tbEntradas tbEntradas = db.tbEntradas.Find(id);
-            db.tbEntradas.Remove(tbEntradas);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                tbEntradas tbEntradas = db.tbEntradas.Find(id);
+                db.tbEntradas.Remove(tbEntradas);
+               
+                db.SaveChanges();
+                TempData["Exito"] = "se Elimino Correctamente";
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = "Error el campo no fue eliminado: " + ex.Message;
+                return RedirectToAction("Index");
+            }
         }
 
         protected override void Dispose(bool disposing)

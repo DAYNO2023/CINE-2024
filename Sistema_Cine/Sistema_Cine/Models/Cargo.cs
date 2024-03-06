@@ -19,7 +19,6 @@ namespace Sistema_Cine.Models
         [Display(Name = "Cargo Id")]
         public int Carg_Id { get; set; }
         [Display(Name = "Cargo:")]
-        [RegularExpression("^[a-zA-Z ]+$", ErrorMessage = "El dato es incorrecto")]
         [Required(ErrorMessage = "El campos {0} es requerido")]
         public string Carg_Descripcion { get; set; }
         [Display(Name = "User Creacion")]

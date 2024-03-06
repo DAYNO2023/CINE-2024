@@ -28,14 +28,11 @@ namespace Sistema_Cine.Models
         }
     
         public virtual DbSet<tbPantalla_Roles> tbPantalla_Roles { get; set; }
-        public virtual DbSet<tbPantallas> tbPantallas { get; set; }
         public virtual DbSet<tbRoles> tbRoles { get; set; }
-        public virtual DbSet<tbUsuarios> tbUsuarios { get; set; }
         public virtual DbSet<tbEntradas> tbEntradas { get; set; }
         public virtual DbSet<tbSucursales> tbSucursales { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<tbFacturas_Detalles> tbFacturas_Detalles { get; set; }
-        public virtual DbSet<tbFacturas_Encabezados> tbFacturas_Encabezados { get; set; }
         public virtual DbSet<tbButacas_Salas> tbButacas_Salas { get; set; }
         public virtual DbSet<tbCargos> tbCargos { get; set; }
         public virtual DbSet<tbDepartamentos> tbDepartamentos { get; set; }
@@ -45,10 +42,13 @@ namespace Sistema_Cine.Models
         public virtual DbSet<tbPrecios> tbPrecios { get; set; }
         public virtual DbSet<tbPromociones> tbPromociones { get; set; }
         public virtual DbSet<tbSalas> tbSalas { get; set; }
-        public virtual DbSet<tbTipo_Pagos> tbTipo_Pagos { get; set; }
         public virtual DbSet<tbClientes> tbClientes { get; set; }
         public virtual DbSet<tbEmpleados> tbEmpleados { get; set; }
         public virtual DbSet<tbCarteleras> tbCarteleras { get; set; }
+        public virtual DbSet<tbPantallas> tbPantallas { get; set; }
+        public virtual DbSet<tbFacturas_Encabezados> tbFacturas_Encabezados { get; set; }
+        public virtual DbSet<tbUsuarios> tbUsuarios { get; set; }
+        public virtual DbSet<tbTipo_Pagos> tbTipo_Pagos { get; set; }
     
         public virtual ObjectResult<SP_tbUsuarios_InicioSesion_Result> SP_tbUsuarios_InicioSesion(string usuario, string contra)
         {
@@ -1256,10 +1256,11 @@ namespace Sistema_Cine.Models
             var apellidoParameter = apellido != null ?
                 new ObjectParameter("Apellido", apellido) :
                 new ObjectParameter("Apellido", typeof(string));
-
+    
             var identidadParameter = identidad != null ?
                 new ObjectParameter("Identidad", identidad) :
                 new ObjectParameter("Identidad", typeof(string));
+    
             var sexoParameter = sexo != null ?
                 new ObjectParameter("Sexo", sexo) :
                 new ObjectParameter("Sexo", typeof(string));
@@ -1302,6 +1303,24 @@ namespace Sistema_Cine.Models
         public virtual ObjectResult<Sp_tbEmpleados_Mostrar_Result> Sp_tbEmpleados_Mostrar()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_tbEmpleados_Mostrar_Result>("Sp_tbEmpleados_Mostrar");
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbPantalla_Roles_Eliminar1(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbPantalla_Roles_Eliminar1", idParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Sp_tbPantalla_Roles_Eliminar2(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Sp_tbPantalla_Roles_Eliminar2", idParameter);
         }
     }
 }

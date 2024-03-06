@@ -17,8 +17,8 @@ namespace Sistema_Cine.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tbEmpleados()
         {
-            this.tbUsuarios = new HashSet<tbUsuarios>();
             this.tbFacturas_Encabezados = new HashSet<tbFacturas_Encabezados>();
+            this.tbUsuarios = new HashSet<tbUsuarios>();
         }
     
         public int Empl_Id { get; set; }
@@ -37,12 +37,12 @@ namespace Sistema_Cine.Models
         public Nullable<System.DateTime> Empl_Fecha_Modifica { get; set; }
         public Nullable<bool> Empl_Estado { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbUsuarios> tbUsuarios { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbFacturas_Encabezados> tbFacturas_Encabezados { get; set; }
         public virtual tbCargos tbCargos { get; set; }
         public virtual tbEstado_Civil tbEstado_Civil { get; set; }
         public virtual tbMunicipio tbMunicipio { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbFacturas_Encabezados> tbFacturas_Encabezados { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbUsuarios> tbUsuarios { get; set; }
     }
 }

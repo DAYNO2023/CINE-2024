@@ -19,6 +19,7 @@ namespace Sistema_Cine.Models
         {
             this.tbGeneros = new HashSet<tbGeneros>();
             this.tbCarteleras = new HashSet<tbCarteleras>();
+            this.tbFacturas_Encabezados = new HashSet<tbFacturas_Encabezados>();
         }
     
         public int Prom_Id { get; set; }
@@ -36,5 +37,7 @@ namespace Sistema_Cine.Models
         public virtual tbPrecios tbPrecios { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbCarteleras> tbCarteleras { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbFacturas_Encabezados> tbFacturas_Encabezados { get; set; }
     }
 }

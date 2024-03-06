@@ -17,9 +17,9 @@ namespace Sistema_Cine.Controllers
         // GET: tbUsuarios
         public ActionResult Index()
         {
-            ViewBag.Paro_Id = new SelectList(db.tbPantalla_Roles, "Paro_Id", "Paro_Id");
+            ViewBag.Paro_Id = new SelectList(db.tbPantalla_Roles, "Role_Id", "Role_Id");
             ViewBag.Empl_Id = new SelectList(db.tbEmpleados, "Empl_Id", "Empl_Nombre");
-            var tbUsuarios = db.tbUsuarios.Include(t => t.tbPantalla_Roles).Include(t => t.tbEmpleados);
+            var tbUsuarios = db.tbUsuarios.Include(t => t.tbRoles).Include(t => t.tbEmpleados);
             return View(tbUsuarios.ToList());
         }
 
@@ -41,7 +41,7 @@ namespace Sistema_Cine.Controllers
         // GET: tbUsuarios/Create
         public ActionResult Create()
         {
-            ViewBag.Paro_Id = new SelectList(db.tbPantalla_Roles, "Paro_Id", "Paro_Id");
+            ViewBag.Role_Id = new SelectList(db.tbRoles, "Role_Id", "Role_Id");
             ViewBag.Empl_Id = new SelectList(db.tbEmpleados, "Empl_Id", "Empl_Nombre");
             return View();
         }
@@ -51,32 +51,16 @@ namespace Sistema_Cine.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Usua_Id,Usua_Nombre,Usua_Contraseña,Empl_Id,Paro_Id,Usua_Creacion,Usua_Fecha_Creacion,Usua_Modifica,Usua_Fecha_Modifica,Usua_Estado")] tbUsuarios tbUsuarios)
+        public ActionResult Create([Bind(Include = "Usua_Id,Usua_Nombre,Usua_Contraseña,Empl_Id,Role_Id,Usua_Creacion,Usua_Fecha_Creacion,Usua_Modifica,Usua_Fecha_Modifica,Usua_Estado")] tbUsuarios tbUsuarios)
         {
-            ModelState.Remove("Usua_Creacion");
-            ModelState.Remove("Usua_Fecha_Creacion");
-            ModelState.Remove("Usua_Modifica");
-            ModelState.Remove("Usua_Fecha_Modifica");
-
-
             if (ModelState.IsValid)
             {
-                try
-                {
-                    db.Sp_tbUsuarios_Insertar(tbUsuarios.Usua_Nombre, tbUsuarios.Usua_Contraseña, tbUsuarios.Empl_Id, tbUsuarios.Paro_Id, tbUsuarios.Usua_Creacion, DateTime.Now, tbUsuarios.Usua_Estado);
-                    //db.tbUsuarios.Add(tbUsuarios);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                catch (FormatException ex)
-                {
-                    // Handle the exception (e.g., log it, show an error message)
-                    TempData["Error"] = "Error converting id to int: " + ex.Message;
-                    return RedirectToAction("Index");
-                }
+                db.tbUsuarios.Add(tbUsuarios);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
 
-            ViewBag.Paro_Id = new SelectList(db.tbPantalla_Roles, "Paro_Id", "Paro_Id", tbUsuarios.Paro_Id);
+            ViewBag.Paro_Id = new SelectList(db.tbPantalla_Roles, "Role_Id", "Role_Id", tbUsuarios.Role_Id);
             ViewBag.Empl_Id = new SelectList(db.tbEmpleados, "Empl_Id", "Empl_Nombre", tbUsuarios.Empl_Id);
             return View(tbUsuarios);
         }
@@ -93,7 +77,7 @@ namespace Sistema_Cine.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Paro_Id = new SelectList(db.tbPantalla_Roles, "Paro_Id", "Paro_Id", tbUsuarios.Paro_Id);
+            ViewBag.Paro_Id = new SelectList(db.tbPantalla_Roles, "Role_Id", "Role_Id", tbUsuarios.Role_Id);
             ViewBag.Empl_Id = new SelectList(db.tbEmpleados, "Empl_Id", "Empl_Nombre", tbUsuarios.Empl_Id);
             return View(tbUsuarios);
         }
@@ -103,32 +87,15 @@ namespace Sistema_Cine.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Usua_Id,Usua_Nombre,Usua_Contraseña,Empl_Id,Paro_Id,Usua_Creacion,Usua_Fecha_Creacion,Usua_Modifica,Usua_Fecha_Modifica,Usua_Estado")] tbUsuarios tbUsuarios)
+        public ActionResult Edit([Bind(Include = "Usua_Id,Usua_Nombre,Usua_Contraseña,Empl_Id,Role_Id,Usua_Creacion,Usua_Fecha_Creacion,Usua_Modifica,Usua_Fecha_Modifica,Usua_Estado")] tbUsuarios tbUsuarios)
         {
-            ModelState.Remove("Usua_Creacion");
-            ModelState.Remove("Usua_Fecha_Creacion");
-            ModelState.Remove("Usua_Modifica");
-            ModelState.Remove("Usua_Fecha_Modifica");
-            ModelState.Remove("Usua_Estado");
             if (ModelState.IsValid)
             {
-                try
-                {
-                    int id = Convert.ToInt32(Session["idtipo"]);
-                    int usuario = Convert.ToInt32(Session["idusaio"]);
-                    db.Sp_tbUsuarios_Editar(id, tbUsuarios.Usua_Nombre, tbUsuarios.Usua_Contraseña, tbUsuarios.Empl_Id, tbUsuarios.Paro_Id, usuario, DateTime.Now, true);
-
-                    return RedirectToAction("Index");
-                }
-                catch (FormatException ex)
-                {
-                    // Handle the exception (e.g., log it, show an error message)
-                    TempData["Error"] = "Error converting id to int: " + ex.Message;
-                    return RedirectToAction("Index");
-                }
-
+                db.Entry(tbUsuarios).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            ViewBag.Paro_Id = new SelectList(db.tbPantalla_Roles, "Paro_Id", "Paro_Id", tbUsuarios.Paro_Id);
+            ViewBag.Paro_Id = new SelectList(db.tbPantalla_Roles, "Role_Id", "Role_Id", tbUsuarios.Role_Id);
             ViewBag.Empl_Id = new SelectList(db.tbEmpleados, "Empl_Id", "Empl_Nombre", tbUsuarios.Empl_Id);
             return View(tbUsuarios);
         }
@@ -155,7 +122,6 @@ namespace Sistema_Cine.Controllers
         {
             tbUsuarios tbUsuarios = db.tbUsuarios.Find(id);
             db.tbUsuarios.Remove(tbUsuarios);
-            //db.Sp_tbUsuarios_Eliminar(id);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

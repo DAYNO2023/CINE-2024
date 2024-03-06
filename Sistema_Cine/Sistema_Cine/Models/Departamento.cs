@@ -19,8 +19,8 @@ namespace Sistema_Cine.Models
 
         [Display(Name = "Codigo Departamento")]
         public string Depa_Codigo { get; set; }
-        [Display(Name = "Departamento")]
-        [RegularExpression("^[a-zA-Z ]+$", ErrorMessage = "El dato es incorrecto")]
+        [Display(Name = "Descripcion")]
+        [Required(ErrorMessage = "El campos {0} es requerido")]
 
         public string Depa_Descripcion { get; set; }
         [Display(Name = "User Creacion")]
@@ -31,6 +31,13 @@ namespace Sistema_Cine.Models
         public Nullable<int> Depa_Usuario_Modificacion { get; set; }
         [Display(Name = "Fecha Modifica")]
         public Nullable<System.DateTime> Depa_Fecha_Modificacion { get; set; }
+
+
+
+
+
+
+
 
     }
 }

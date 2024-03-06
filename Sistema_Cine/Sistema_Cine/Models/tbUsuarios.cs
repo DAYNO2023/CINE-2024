@@ -18,7 +18,7 @@ namespace Sistema_Cine.Models
         public string Usua_Nombre { get; set; }
         public string Usua_Contraseña { get; set; }
         public Nullable<int> Empl_Id { get; set; }
-        public Nullable<int> Paro_Id { get; set; }
+        public Nullable<int> Role_Id { get; set; }
         public Nullable<int> Usua_Creacion { get; set; }
         public Nullable<System.DateTime> Usua_Fecha_Creacion { get; set; }
         public Nullable<int> Usua_Modifica { get; set; }
@@ -26,7 +26,7 @@ namespace Sistema_Cine.Models
         public Nullable<bool> Usua_Estado { get; set; }
         public Nullable<bool> Usua_Administrador { get; set; }
     
-        public virtual tbPantalla_Roles tbPantalla_Roles { get; set; }
+        public virtual tbRoles tbRoles { get; set; }
         public virtual tbEmpleados tbEmpleados { get; set; }
     }
 }

@@ -48,26 +48,11 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Buta_Id,Buta_Descripcion,Buta_Usuario_Creacion,Buta_Fecha_Creacion,Buta_Usuario_Modificacion,Buta_Fecha_Modificacion")] tbButacas_Salas tbButacas_Salas)
         {
-            ModelState.Remove("Buta_Usuario_Creacion");
-            ModelState.Remove("Buta_Fecha_Creacion");
-            ModelState.Remove("Buta_Usuario_Modificacion");
-            ModelState.Remove("Buta_Fecha_Modificacion");
             if (ModelState.IsValid)
             {
-                try
-                {
-                    int usuario = Convert.ToInt32(Session["idusaio"]);
-                    db.Sp_tbButacas_Salas_Insertar(tbButacas_Salas.Buta_Descripcion, usuario, DateTime.Now, true);
-                    //db.tbButacas_Salas.Add(tbButacas_Salas);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                catch (FormatException ex)
-                {
-                    // Handle the exception (e.g., log it, show an error message)
-                    TempData["Error"] = "Error converting id to int: " + ex.Message;
-                    return RedirectToAction("Index");
-                }
+                db.tbButacas_Salas.Add(tbButacas_Salas);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
 
             return View(tbButacas_Salas);
@@ -95,37 +80,24 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Buta_Id,Buta_Descripcion,Buta_Usuario_Creacion,Buta_Fecha_Creacion,Buta_Usuario_Modificacion,Buta_Fecha_Modificacion")] tbButacas_Salas tbButacas_Salas)
         {
-            ModelState.Remove("Buta_Usuario_Creacion");
-            ModelState.Remove("Buta_Fecha_Creacion");
-            ModelState.Remove("Buta_Usuario_Modificacion");
-            ModelState.Remove("Buta_Fecha_Modificacion");
-
             if (ModelState.IsValid)
             {
-                try
+                int id = Convert.ToInt32(Session["idtipo"]);
+
+                var butacasExistente = db.tbButacas_Salas.Find(id);
+
+
+                if (butacasExistente != null)
                 {
-                    int id = Convert.ToInt32(Session["idtipo"]);
-                    int usuario = Convert.ToInt32(Session["idusaio"]);
-                    db.Sp_tbButacas_Salas_Editar(id, tbButacas_Salas.Buta_Descripcion, usuario, DateTime.Now, true);
+                    // Actualizar las propiedades del registro existente con los valores del modelo recibido
+                    butacasExistente.Buta_Descripcion = tbButacas_Salas.Buta_Descripcion;
 
+                    // Cambiar el estado de la entidad a modificada
+                    db.Entry(butacasExistente).State = EntityState.Modified;
 
-                    //if (butacasExistente != null)
-                    //{
-                    //    // Actualizar las propiedades del registro existente con los valores del modelo recibido
-                    //    butacasExistente.Buta_Descripcion = tbButacas_Salas.Buta_Descripcion;
+                    // Guardar los cambios en la base de datos
+                    db.SaveChanges();
 
-                    //    // Cambiar el estado de la entidad a modificada
-                    //    db.Entry(butacasExistente).State = EntityState.Modified;
-
-                    //    // Guardar los cambios en la base de datos
-                    //    db.SaveChanges();
-
-                    return RedirectToAction("Index");
-                }
-                catch (FormatException ex)
-                {
-                    // Handle the exception (e.g., log it, show an error message)
-                    TempData["Error"] = "Error converting id to int: " + ex.Message;
                     return RedirectToAction("Index");
                 }
             }
@@ -154,7 +126,6 @@ namespace Sistema_Cine.Controllers
         {
             tbButacas_Salas tbButacas_Salas = db.tbButacas_Salas.Find(id);
             db.tbButacas_Salas.Remove(tbButacas_Salas);
-            //db.Sp_tbButacas_Salas_Eliminar(id);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -12,23 +12,8 @@
     <Property Name="Pant_Modifica" Type="Int32" />
     <Property Name="Pant_Fecha_Modifica" Type="DateTime" Precision="0" />
     <Property Name="Pant_Estado" Type="Boolean" />
-    <NavigationProperty Name="tbPantallas" Relationship="Self.FK_tbPantalla_Roles_tbPantallas_Pant_Id" FromRole="tbPantalla_Roles" ToRole="tbPantallas" />
     <NavigationProperty Name="tbRoles" Relationship="Self.FK_tbPantalla_Roles_tbRoles_Role_Id" FromRole="tbPantalla_Roles" ToRole="tbRoles" />
-    <NavigationProperty Name="tbUsuarios" Relationship="Self.FK_tbUsuario_tbPantalla_Roles_Paro_Id" FromRole="tbPantalla_Roles" ToRole="tbUsuarios" />
-  </EntityType>
-  <EntityType Name="tbPantallas">
-    <Key>
-      <PropertyRef Name="Pant_Id" />
-    </Key>
-    <Property Name="Pant_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Pant_Descripcion" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-    <Property Name="Pant_Identificador" Type="Boolean" />
-    <Property Name="Pant_Creacion" Type="Int32" />
-    <Property Name="Pant_Fecha_Creacion" Type="DateTime" Precision="0" />
-    <Property Name="Pant_Modifica" Type="Int32" />
-    <Property Name="Pant_Fecha_Modifica" Type="DateTime" Precision="0" />
-    <Property Name="Pant_Estado" Type="Boolean" />
-    <NavigationProperty Name="tbPantalla_Roles" Relationship="Self.FK_tbPantalla_Roles_tbPantallas_Pant_Id" FromRole="tbPantallas" ToRole="tbPantalla_Roles" />
+    <NavigationProperty Name="tbPantallas" Relationship="dbSsitemascinesModel.FK_tbPantalla_Roles_tbPantallas_Pant_Id" FromRole="tbPantalla_Roles" ToRole="tbPantallas" />
   </EntityType>
   <EntityType Name="tbRoles">
     <Key>
@@ -42,24 +27,7 @@
     <Property Name="Role_Fecha_Modifica" Type="DateTime" Precision="0" />
     <Property Name="Role_Estado" Type="Boolean" />
     <NavigationProperty Name="tbPantalla_Roles" Relationship="Self.FK_tbPantalla_Roles_tbRoles_Role_Id" FromRole="tbRoles" ToRole="tbPantalla_Roles" />
-  </EntityType>
-  <EntityType Name="tbUsuarios">
-    <Key>
-      <PropertyRef Name="Usua_Id" />
-    </Key>
-    <Property Name="Usua_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Usua_Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-    <Property Name="Usua_Contraseña" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="Empl_Id" Type="Int32" />
-    <Property Name="Paro_Id" Type="Int32" />
-    <Property Name="Usua_Creacion" Type="Int32" />
-    <Property Name="Usua_Fecha_Creacion" Type="DateTime" Precision="0" />
-    <Property Name="Usua_Modifica" Type="Int32" />
-    <Property Name="Usua_Fecha_Modifica" Type="DateTime" Precision="0" />
-    <Property Name="Usua_Estado" Type="Boolean" />
-    <NavigationProperty Name="tbPantalla_Roles" Relationship="Self.FK_tbUsuario_tbPantalla_Roles_Paro_Id" FromRole="tbUsuarios" ToRole="tbPantalla_Roles" />
-    <NavigationProperty Name="tbEmpleados" Relationship="Self.FK_tbUsuario_tbEmpleados_Empl_Id" FromRole="tbUsuarios" ToRole="tbEmpleados" />
-    <Property Name="Usua_Administrador" Type="Boolean" />
+    <NavigationProperty Name="tbUsuarios" Relationship="dbSsitemascinesModel.FK_tbUsuario_tbPantalla_Roles_Paro_Id" FromRole="tbRoles" ToRole="tbUsuarios" />
   </EntityType>
   <EntityType Name="tbEntradas">
     <Key>
@@ -119,27 +87,8 @@
     <Property Name="Fade_Usua_Modifica" Type="Int32" />
     <Property Name="Fade_Fecha_Modificacion" Type="DateTime" Precision="0" />
     <Property Name="Fade_Estado" Type="Boolean" />
-    <NavigationProperty Name="tbFacturas_Encabezados" Relationship="Self.FK_tbFacturas_Detalles_tbFacturas_Encabezados_Fact_Id" FromRole="tbFacturas_Detalles" ToRole="tbFacturas_Encabezados" />
     <NavigationProperty Name="tbCarteleras" Relationship="dbSsitemascinesModel.FK_tbFacturas_Detalles_tbCarteleras_Cart_Id" FromRole="tbFacturas_Detalles" ToRole="tbCarteleras" />
-  </EntityType>
-  <EntityType Name="tbFacturas_Encabezados">
-    <Key>
-      <PropertyRef Name="Fact_Id" />
-    </Key>
-    <Property Name="Fact_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Fact_Fecha" Type="DateTime" Precision="0" />
-    <Property Name="Clie_Id" Type="Int32" />
-    <Property Name="Empl_Id" Type="Int32" />
-    <Property Name="Tipo_Id" Type="Int32" />
-    <Property Name="Fact_Usua_Creacion" Type="Int32" />
-    <Property Name="Fact_Fecha_Creacion" Type="DateTime" Precision="0" />
-    <Property Name="Fact_Usua_Modifica" Type="Int32" />
-    <Property Name="Fact_Fecha_Modifica" Type="DateTime" Precision="0" />
-    <Property Name="Fact_Estado" Type="Boolean" />
-    <NavigationProperty Name="tbFacturas_Detalles" Relationship="Self.FK_tbFacturas_Detalles_tbFacturas_Encabezados_Fact_Id" FromRole="tbFacturas_Encabezados" ToRole="tbFacturas_Detalles" />
-    <NavigationProperty Name="tbClientes" Relationship="Self.FK_tbFacturas_Encabezados_tbClientes_Clie_Id" FromRole="tbFacturas_Encabezados" ToRole="tbClientes" />
-    <NavigationProperty Name="tbEmpleados" Relationship="Self.FK_tbFacturas_Encabezados_tbEmpleado_Empl_Id" FromRole="tbFacturas_Encabezados" ToRole="tbEmpleados" />
-    <NavigationProperty Name="tbTipo_Pagos" Relationship="Self.FK_tbFacturas_Encabezados_tbTipo_Pagos_Tipo_Id" FromRole="tbFacturas_Encabezados" ToRole="tbTipo_Pagos" />
+    <NavigationProperty Name="tbFacturas_Encabezados" Relationship="dbSsitemascinesModel.FK_tbFacturas_Detalles_tbFacturas_Encabezados_Fact_Id" FromRole="tbFacturas_Detalles" ToRole="tbFacturas_Encabezados" />
   </EntityType>
   <EntityType Name="tbButacas_Salas">
     <Key>
@@ -253,6 +202,7 @@
     <NavigationProperty Name="tbPrecios" Relationship="Self.FK_tbPromociones_tbPrecios_Prec_Id" FromRole="tbPromociones" ToRole="tbPrecios" />
     <Property Name="Prom_Estado" Type="Boolean" />
     <NavigationProperty Name="tbCarteleras" Relationship="dbSsitemascinesModel.fk_tbCarteleras_tbPromociones" FromRole="tbPromociones" ToRole="tbCarteleras" />
+    <NavigationProperty Name="tbFacturas_Encabezados" Relationship="dbSsitemascinesModel.FK_tbFacturas_Encabezados_tbPromociones_Prom_Id" FromRole="tbPromociones" ToRole="tbFacturas_Encabezados" />
   </EntityType>
   <EntityType Name="tbSalas">
     <Key>
@@ -268,19 +218,6 @@
     <NavigationProperty Name="tbEntradas" Relationship="Self.FK_tbEntradas_tbSalas_Sala_Id" FromRole="tbSalas" ToRole="tbEntradas" />
     <NavigationProperty Name="tbButacas_Salas" Relationship="Self.FK_tbSalas_tbButacas_Salas_Buta_Id" FromRole="tbSalas" ToRole="tbButacas_Salas" />
     <Property Name="Cate_Estado" Type="Boolean" />
-  </EntityType>
-  <EntityType Name="tbTipo_Pagos">
-    <Key>
-      <PropertyRef Name="Tipo_Id" />
-    </Key>
-    <Property Name="Tipo_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Tipo_Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Cate_Usuario_Creacion" Type="Int32" />
-    <Property Name="Cate_Fecha_Creacion" Type="DateTime" Precision="0" />
-    <Property Name="Cate_Usuario_Modificacion" Type="Int32" />
-    <Property Name="Cate_Fecha_Modificacion" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="tbFacturas_Encabezados" Relationship="Self.FK_tbFacturas_Encabezados_tbTipo_Pagos_Tipo_Id" FromRole="tbTipo_Pagos" ToRole="tbFacturas_Encabezados" />
-    <Property Name="Tipo_Estado" Type="Boolean" />
   </EntityType>
   <EntityType Name="tbClientes">
     <Key>
@@ -300,9 +237,9 @@
     <Property Name="Clie_Usua_Modifica" Type="Int32" />
     <Property Name="Clie_Fecha_Modifica" Type="DateTime" Precision="0" />
     <Property Name="Clie_Estado" Type="Boolean" />
-    <NavigationProperty Name="tbFacturas_Encabezados" Relationship="Self.FK_tbFacturas_Encabezados_tbClientes_Clie_Id" FromRole="tbClientes" ToRole="tbFacturas_Encabezados" />
     <NavigationProperty Name="tbEstado_Civil" Relationship="Self.FK_tbClientes_tbEstado_Civil_Esta_Id" FromRole="tbClientes" ToRole="tbEstado_Civil" />
     <NavigationProperty Name="tbMunicipio" Relationship="Self.FK_tbClientes_tbMunicipio_Muni_Id" FromRole="tbClientes" ToRole="tbMunicipio" />
+    <NavigationProperty Name="tbFacturas_Encabezados" Relationship="dbSsitemascinesModel.FK_tbFacturas_Encabezados_tbClientes_Clie_Id" FromRole="tbClientes" ToRole="tbFacturas_Encabezados" />
   </EntityType>
   <EntityType Name="tbEmpleados">
     <Key>
@@ -323,24 +260,12 @@
     <Property Name="Empl_Usua_Modifica" Type="Int32" />
     <Property Name="Empl_Fecha_Modifica" Type="DateTime" Precision="0" />
     <Property Name="Empl_Estado" Type="Boolean" />
-    <NavigationProperty Name="tbUsuarios" Relationship="Self.FK_tbUsuario_tbEmpleados_Empl_Id" FromRole="tbEmpleados" ToRole="tbUsuarios" />
-    <NavigationProperty Name="tbFacturas_Encabezados" Relationship="Self.FK_tbFacturas_Encabezados_tbEmpleado_Empl_Id" FromRole="tbEmpleados" ToRole="tbFacturas_Encabezados" />
     <NavigationProperty Name="tbCargos" Relationship="Self.FK_tbEmpleado_tbCargos_Carg_Id" FromRole="tbEmpleados" ToRole="tbCargos" />
     <NavigationProperty Name="tbEstado_Civil" Relationship="Self.FK_tbEmpleado_tbEstado_Civil_Esta_Id" FromRole="tbEmpleados" ToRole="tbEstado_Civil" />
     <NavigationProperty Name="tbMunicipio" Relationship="Self.FK_tbEmpleado_tbMunicipio_Muni_Id" FromRole="tbEmpleados" ToRole="tbMunicipio" />
+    <NavigationProperty Name="tbFacturas_Encabezados" Relationship="dbSsitemascinesModel.FK_tbFacturas_Encabezados_tbEmpleado_Empl_Id" FromRole="tbEmpleados" ToRole="tbFacturas_Encabezados" />
+    <NavigationProperty Name="tbUsuarios" Relationship="dbSsitemascinesModel.FK_tbUsuario_tbEmpleados_Empl_Id" FromRole="tbEmpleados" ToRole="tbUsuarios" />
   </EntityType>
-  <Association Name="FK_tbPantalla_Roles_tbPantallas_Pant_Id">
-    <End Role="tbPantallas" Type="Self.tbPantallas" Multiplicity="0..1" />
-    <End Role="tbPantalla_Roles" Type="Self.tbPantalla_Roles" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbPantallas">
-        <PropertyRef Name="Pant_Id" />
-      </Principal>
-      <Dependent Role="tbPantalla_Roles">
-        <PropertyRef Name="Pant_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_tbPantalla_Roles_tbRoles_Role_Id">
     <End Role="tbRoles" Type="Self.tbRoles" Multiplicity="0..1" />
     <End Role="tbPantalla_Roles" Type="Self.tbPantalla_Roles" Multiplicity="*" />
@@ -350,30 +275,6 @@
       </Principal>
       <Dependent Role="tbPantalla_Roles">
         <PropertyRef Name="Role_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tbUsuario_tbPantalla_Roles_Paro_Id">
-    <End Role="tbPantalla_Roles" Type="Self.tbPantalla_Roles" Multiplicity="0..1" />
-    <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbPantalla_Roles">
-        <PropertyRef Name="Paro_Id" />
-      </Principal>
-      <Dependent Role="tbUsuarios">
-        <PropertyRef Name="Paro_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tbUsuario_tbEmpleados_Empl_Id">
-    <End Role="tbEmpleados" Type="Self.tbEmpleados" Multiplicity="0..1" />
-    <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbEmpleados">
-        <PropertyRef Name="Empl_Id" />
-      </Principal>
-      <Dependent Role="tbUsuarios">
-        <PropertyRef Name="Empl_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -410,54 +311,6 @@
       </Principal>
       <Dependent Role="tbSucursales">
         <PropertyRef Name="Muni_Codigo" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tbFacturas_Detalles_tbFacturas_Encabezados_Fact_Id">
-    <End Role="tbFacturas_Encabezados" Type="Self.tbFacturas_Encabezados" Multiplicity="0..1" />
-    <End Role="tbFacturas_Detalles" Type="Self.tbFacturas_Detalles" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbFacturas_Encabezados">
-        <PropertyRef Name="Fact_Id" />
-      </Principal>
-      <Dependent Role="tbFacturas_Detalles">
-        <PropertyRef Name="Fact_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tbFacturas_Encabezados_tbClientes_Clie_Id">
-    <End Role="tbClientes" Type="Self.tbClientes" Multiplicity="0..1" />
-    <End Role="tbFacturas_Encabezados" Type="Self.tbFacturas_Encabezados" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbClientes">
-        <PropertyRef Name="Clie_Id" />
-      </Principal>
-      <Dependent Role="tbFacturas_Encabezados">
-        <PropertyRef Name="Clie_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tbFacturas_Encabezados_tbEmpleado_Empl_Id">
-    <End Role="tbEmpleados" Type="Self.tbEmpleados" Multiplicity="0..1" />
-    <End Role="tbFacturas_Encabezados" Type="Self.tbFacturas_Encabezados" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbEmpleados">
-        <PropertyRef Name="Empl_Id" />
-      </Principal>
-      <Dependent Role="tbFacturas_Encabezados">
-        <PropertyRef Name="Empl_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tbFacturas_Encabezados_tbTipo_Pagos_Tipo_Id">
-    <End Role="tbTipo_Pagos" Type="Self.tbTipo_Pagos" Multiplicity="0..1" />
-    <End Role="tbFacturas_Encabezados" Type="Self.tbFacturas_Encabezados" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbTipo_Pagos">
-        <PropertyRef Name="Tipo_Id" />
-      </Principal>
-      <Dependent Role="tbFacturas_Encabezados">
-        <PropertyRef Name="Tipo_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -571,14 +424,11 @@
   </Association>
   <EntityContainer Name="dbSsitemascinesEntities5" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="tbPantalla_Roles" EntityType="Self.tbPantalla_Roles" />
-    <EntitySet Name="tbPantallas" EntityType="Self.tbPantallas" />
     <EntitySet Name="tbRoles" EntityType="Self.tbRoles" />
-    <EntitySet Name="tbUsuarios" EntityType="Self.tbUsuarios" />
     <EntitySet Name="tbEntradas" EntityType="Self.tbEntradas" />
     <EntitySet Name="tbSucursales" EntityType="Self.tbSucursales" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="tbFacturas_Detalles" EntityType="Self.tbFacturas_Detalles" />
-    <EntitySet Name="tbFacturas_Encabezados" EntityType="Self.tbFacturas_Encabezados" />
     <EntitySet Name="tbButacas_Salas" EntityType="Self.tbButacas_Salas" />
     <EntitySet Name="tbCargos" EntityType="Self.tbCargos" />
     <EntitySet Name="tbDepartamentos" EntityType="Self.tbDepartamentos" />
@@ -588,24 +438,11 @@
     <EntitySet Name="tbPrecios" EntityType="Self.tbPrecios" />
     <EntitySet Name="tbPromociones" EntityType="Self.tbPromociones" />
     <EntitySet Name="tbSalas" EntityType="Self.tbSalas" />
-    <EntitySet Name="tbTipo_Pagos" EntityType="Self.tbTipo_Pagos" />
     <EntitySet Name="tbClientes" EntityType="Self.tbClientes" />
     <EntitySet Name="tbEmpleados" EntityType="Self.tbEmpleados" />
-    <AssociationSet Name="FK_tbPantalla_Roles_tbPantallas_Pant_Id" Association="Self.FK_tbPantalla_Roles_tbPantallas_Pant_Id">
-      <End Role="tbPantallas" EntitySet="tbPantallas" />
-      <End Role="tbPantalla_Roles" EntitySet="tbPantalla_Roles" />
-    </AssociationSet>
     <AssociationSet Name="FK_tbPantalla_Roles_tbRoles_Role_Id" Association="Self.FK_tbPantalla_Roles_tbRoles_Role_Id">
       <End Role="tbRoles" EntitySet="tbRoles" />
       <End Role="tbPantalla_Roles" EntitySet="tbPantalla_Roles" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tbUsuario_tbPantalla_Roles_Paro_Id" Association="Self.FK_tbUsuario_tbPantalla_Roles_Paro_Id">
-      <End Role="tbPantalla_Roles" EntitySet="tbPantalla_Roles" />
-      <End Role="tbUsuarios" EntitySet="tbUsuarios" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tbUsuario_tbEmpleados_Empl_Id" Association="Self.FK_tbUsuario_tbEmpleados_Empl_Id">
-      <End Role="tbEmpleados" EntitySet="tbEmpleados" />
-      <End Role="tbUsuarios" EntitySet="tbUsuarios" />
     </AssociationSet>
     <AssociationSet Name="FK_tbEntradas_tbSalas_Sala_Id" Association="Self.FK_tbEntradas_tbSalas_Sala_Id">
       <End Role="tbSalas" EntitySet="tbSalas" />
@@ -618,22 +455,6 @@
     <AssociationSet Name="FK_tbSucursales_tbMunicipio_Muni_Codigo" Association="Self.FK_tbSucursales_tbMunicipio_Muni_Codigo">
       <End Role="tbMunicipio" EntitySet="tbMunicipio" />
       <End Role="tbSucursales" EntitySet="tbSucursales" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tbFacturas_Detalles_tbFacturas_Encabezados_Fact_Id" Association="Self.FK_tbFacturas_Detalles_tbFacturas_Encabezados_Fact_Id">
-      <End Role="tbFacturas_Encabezados" EntitySet="tbFacturas_Encabezados" />
-      <End Role="tbFacturas_Detalles" EntitySet="tbFacturas_Detalles" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tbFacturas_Encabezados_tbClientes_Clie_Id" Association="Self.FK_tbFacturas_Encabezados_tbClientes_Clie_Id">
-      <End Role="tbClientes" EntitySet="tbClientes" />
-      <End Role="tbFacturas_Encabezados" EntitySet="tbFacturas_Encabezados" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tbFacturas_Encabezados_tbEmpleado_Empl_Id" Association="Self.FK_tbFacturas_Encabezados_tbEmpleado_Empl_Id">
-      <End Role="tbEmpleados" EntitySet="tbEmpleados" />
-      <End Role="tbFacturas_Encabezados" EntitySet="tbFacturas_Encabezados" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tbFacturas_Encabezados_tbTipo_Pagos_Tipo_Id" Association="Self.FK_tbFacturas_Encabezados_tbTipo_Pagos_Tipo_Id">
-      <End Role="tbTipo_Pagos" EntitySet="tbTipo_Pagos" />
-      <End Role="tbFacturas_Encabezados" EntitySet="tbFacturas_Encabezados" />
     </AssociationSet>
     <AssociationSet Name="FK_tbSalas_tbButacas_Salas_Buta_Id" Association="Self.FK_tbSalas_tbButacas_Salas_Buta_Id">
       <End Role="tbButacas_Salas" EntitySet="tbButacas_Salas" />
@@ -1040,6 +861,48 @@
       <End Role="tbCarteleras" EntitySet="tbCarteleras" />
       <End Role="tbSucursales" EntitySet="tbSucursales" />
     </AssociationSet>
+    <EntitySet Name="tbPantallas" EntityType="dbSsitemascinesModel.tbPantallas" />
+    <AssociationSet Name="FK_tbPantalla_Roles_tbPantallas_Pant_Id" Association="dbSsitemascinesModel.FK_tbPantalla_Roles_tbPantallas_Pant_Id">
+      <End Role="tbPantallas" EntitySet="tbPantallas" />
+      <End Role="tbPantalla_Roles" EntitySet="tbPantalla_Roles" />
+    </AssociationSet>
+    <EntitySet Name="tbFacturas_Encabezados" EntityType="dbSsitemascinesModel.tbFacturas_Encabezados" />
+    <AssociationSet Name="FK_tbFacturas_Detalles_tbFacturas_Encabezados_Fact_Id" Association="dbSsitemascinesModel.FK_tbFacturas_Detalles_tbFacturas_Encabezados_Fact_Id">
+      <End Role="tbFacturas_Encabezados" EntitySet="tbFacturas_Encabezados" />
+      <End Role="tbFacturas_Detalles" EntitySet="tbFacturas_Detalles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbFacturas_Encabezados_tbClientes_Clie_Id" Association="dbSsitemascinesModel.FK_tbFacturas_Encabezados_tbClientes_Clie_Id">
+      <End Role="tbClientes" EntitySet="tbClientes" />
+      <End Role="tbFacturas_Encabezados" EntitySet="tbFacturas_Encabezados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbFacturas_Encabezados_tbEmpleado_Empl_Id" Association="dbSsitemascinesModel.FK_tbFacturas_Encabezados_tbEmpleado_Empl_Id">
+      <End Role="tbEmpleados" EntitySet="tbEmpleados" />
+      <End Role="tbFacturas_Encabezados" EntitySet="tbFacturas_Encabezados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbFacturas_Encabezados_tbPromociones_Prom_Id" Association="dbSsitemascinesModel.FK_tbFacturas_Encabezados_tbPromociones_Prom_Id">
+      <End Role="tbPromociones" EntitySet="tbPromociones" />
+      <End Role="tbFacturas_Encabezados" EntitySet="tbFacturas_Encabezados" />
+    </AssociationSet>
+    <EntitySet Name="tbUsuarios" EntityType="dbSsitemascinesModel.tbUsuarios" />
+    <AssociationSet Name="FK_tbUsuario_tbPantalla_Roles_Paro_Id" Association="dbSsitemascinesModel.FK_tbUsuario_tbPantalla_Roles_Paro_Id">
+      <End Role="tbRoles" EntitySet="tbRoles" />
+      <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbUsuario_tbEmpleados_Empl_Id" Association="dbSsitemascinesModel.FK_tbUsuario_tbEmpleados_Empl_Id">
+      <End Role="tbEmpleados" EntitySet="tbEmpleados" />
+      <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+    </AssociationSet>
+    <EntitySet Name="tbTipo_Pagos" EntityType="dbSsitemascinesModel.tbTipo_Pagos" />
+    <AssociationSet Name="FK_tbFacturas_Encabezados_tbTipo_Pagos_Tipo_Id" Association="dbSsitemascinesModel.FK_tbFacturas_Encabezados_tbTipo_Pagos_Tipo_Id">
+      <End Role="tbTipo_Pagos" EntitySet="tbTipo_Pagos" />
+      <End Role="tbFacturas_Encabezados" EntitySet="tbFacturas_Encabezados" />
+    </AssociationSet>
+    <FunctionImport Name="Sp_tbPantalla_Roles_Eliminar1" ReturnType="Collection(Int32)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_tbPantalla_Roles_Eliminar2" ReturnType="Collection(Int32)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="SP_tbUsuarios_InicioSesion_Result">
     <Property Type="Int32" Name="Usua_Id" Nullable="false" />
@@ -1301,6 +1164,168 @@
       </Principal>
       <Dependent Role="tbSucursales">
         <PropertyRef Name="Cart_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tbPantallas">
+    <Key>
+      <PropertyRef Name="Pant_Id" />
+    </Key>
+    <Property Name="Pant_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Pant_Descripcion" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="Pant_Identificador" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Pant_Creacion" Type="Int32" />
+    <Property Name="Pant_Fecha_Creacion" Type="DateTime" Precision="0" />
+    <Property Name="Pant_Modifica" Type="Int32" />
+    <Property Name="Pant_Fecha_Modifica" Type="DateTime" Precision="0" />
+    <Property Name="Pant_Estado" Type="Boolean" />
+    <NavigationProperty Name="tbPantalla_Roles" Relationship="dbSsitemascinesModel.FK_tbPantalla_Roles_tbPantallas_Pant_Id" FromRole="tbPantallas" ToRole="tbPantalla_Roles" />
+  </EntityType>
+  <Association Name="FK_tbPantalla_Roles_tbPantallas_Pant_Id">
+    <End Type="dbSsitemascinesModel.tbPantallas" Role="tbPantallas" Multiplicity="0..1" />
+    <End Type="dbSsitemascinesModel.tbPantalla_Roles" Role="tbPantalla_Roles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbPantallas">
+        <PropertyRef Name="Pant_Id" />
+      </Principal>
+      <Dependent Role="tbPantalla_Roles">
+        <PropertyRef Name="Pant_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tbFacturas_Encabezados">
+    <Key>
+      <PropertyRef Name="Fact_Id" />
+    </Key>
+    <Property Name="Fact_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fact_Fecha" Type="DateTime" Precision="0" />
+    <Property Name="Clie_Id" Type="Int32" />
+    <Property Name="Empl_Id" Type="Int32" />
+    <Property Name="Tipo_Id" Type="Int32" />
+    <Property Name="Fact_Usua_Creacion" Type="Int32" />
+    <Property Name="Fact_Fecha_Creacion" Type="DateTime" Precision="0" />
+    <Property Name="Fact_Usua_Modifica" Type="Int32" />
+    <Property Name="Fact_Fecha_Modifica" Type="DateTime" Precision="0" />
+    <Property Name="Fact_Estado" Type="Boolean" />
+    <Property Name="Prom_Id" Type="Int32" />
+    <NavigationProperty Name="tbFacturas_Detalles" Relationship="dbSsitemascinesModel.FK_tbFacturas_Detalles_tbFacturas_Encabezados_Fact_Id" FromRole="tbFacturas_Encabezados" ToRole="tbFacturas_Detalles" />
+    <NavigationProperty Name="tbClientes" Relationship="dbSsitemascinesModel.FK_tbFacturas_Encabezados_tbClientes_Clie_Id" FromRole="tbFacturas_Encabezados" ToRole="tbClientes" />
+    <NavigationProperty Name="tbEmpleados" Relationship="dbSsitemascinesModel.FK_tbFacturas_Encabezados_tbEmpleado_Empl_Id" FromRole="tbFacturas_Encabezados" ToRole="tbEmpleados" />
+    <NavigationProperty Name="tbPromociones" Relationship="dbSsitemascinesModel.FK_tbFacturas_Encabezados_tbPromociones_Prom_Id" FromRole="tbFacturas_Encabezados" ToRole="tbPromociones" />
+    <NavigationProperty Name="tbTipo_Pagos" Relationship="dbSsitemascinesModel.FK_tbFacturas_Encabezados_tbTipo_Pagos_Tipo_Id" FromRole="tbFacturas_Encabezados" ToRole="tbTipo_Pagos" />
+  </EntityType>
+  <Association Name="FK_tbFacturas_Detalles_tbFacturas_Encabezados_Fact_Id">
+    <End Type="dbSsitemascinesModel.tbFacturas_Encabezados" Role="tbFacturas_Encabezados" Multiplicity="0..1" />
+    <End Type="dbSsitemascinesModel.tbFacturas_Detalles" Role="tbFacturas_Detalles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbFacturas_Encabezados">
+        <PropertyRef Name="Fact_Id" />
+      </Principal>
+      <Dependent Role="tbFacturas_Detalles">
+        <PropertyRef Name="Fact_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbFacturas_Encabezados_tbClientes_Clie_Id">
+    <End Type="dbSsitemascinesModel.tbClientes" Role="tbClientes" Multiplicity="0..1" />
+    <End Type="dbSsitemascinesModel.tbFacturas_Encabezados" Role="tbFacturas_Encabezados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbClientes">
+        <PropertyRef Name="Clie_Id" />
+      </Principal>
+      <Dependent Role="tbFacturas_Encabezados">
+        <PropertyRef Name="Clie_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbFacturas_Encabezados_tbEmpleado_Empl_Id">
+    <End Type="dbSsitemascinesModel.tbEmpleados" Role="tbEmpleados" Multiplicity="0..1" />
+    <End Type="dbSsitemascinesModel.tbFacturas_Encabezados" Role="tbFacturas_Encabezados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbEmpleados">
+        <PropertyRef Name="Empl_Id" />
+      </Principal>
+      <Dependent Role="tbFacturas_Encabezados">
+        <PropertyRef Name="Empl_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbFacturas_Encabezados_tbPromociones_Prom_Id">
+    <End Type="dbSsitemascinesModel.tbPromociones" Role="tbPromociones" Multiplicity="0..1" />
+    <End Type="dbSsitemascinesModel.tbFacturas_Encabezados" Role="tbFacturas_Encabezados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbPromociones">
+        <PropertyRef Name="Prom_Id" />
+      </Principal>
+      <Dependent Role="tbFacturas_Encabezados">
+        <PropertyRef Name="Prom_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tbUsuarios">
+    <Key>
+      <PropertyRef Name="Usua_Id" />
+    </Key>
+    <Property Name="Usua_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Usua_Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="Usua_Contraseña" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Empl_Id" Type="Int32" />
+    <Property Name="Role_Id" Type="Int32" />
+    <Property Name="Usua_Creacion" Type="Int32" />
+    <Property Name="Usua_Fecha_Creacion" Type="DateTime" Precision="0" />
+    <Property Name="Usua_Modifica" Type="Int32" />
+    <Property Name="Usua_Fecha_Modifica" Type="DateTime" Precision="0" />
+    <Property Name="Usua_Estado" Type="Boolean" />
+    <Property Name="Usua_Administrador" Type="Boolean" />
+    <NavigationProperty Name="tbRoles" Relationship="dbSsitemascinesModel.FK_tbUsuario_tbPantalla_Roles_Paro_Id" FromRole="tbUsuarios" ToRole="tbRoles" />
+    <NavigationProperty Name="tbEmpleados" Relationship="dbSsitemascinesModel.FK_tbUsuario_tbEmpleados_Empl_Id" FromRole="tbUsuarios" ToRole="tbEmpleados" />
+  </EntityType>
+  <Association Name="FK_tbUsuario_tbPantalla_Roles_Paro_Id">
+    <End Type="dbSsitemascinesModel.tbRoles" Role="tbRoles" Multiplicity="0..1" />
+    <End Type="dbSsitemascinesModel.tbUsuarios" Role="tbUsuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbRoles">
+        <PropertyRef Name="Role_Id" />
+      </Principal>
+      <Dependent Role="tbUsuarios">
+        <PropertyRef Name="Role_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbUsuario_tbEmpleados_Empl_Id">
+    <End Type="dbSsitemascinesModel.tbEmpleados" Role="tbEmpleados" Multiplicity="0..1" />
+    <End Type="dbSsitemascinesModel.tbUsuarios" Role="tbUsuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbEmpleados">
+        <PropertyRef Name="Empl_Id" />
+      </Principal>
+      <Dependent Role="tbUsuarios">
+        <PropertyRef Name="Empl_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tbTipo_Pagos">
+    <Key>
+      <PropertyRef Name="Tipo_Id" />
+    </Key>
+    <Property Name="Tipo_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tipo_Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Cate_Usuario_Creacion" Type="Int32" />
+    <Property Name="Cate_Fecha_Creacion" Type="DateTime" Precision="3" />
+    <Property Name="Cate_Usuario_Modificacion" Type="Int32" />
+    <Property Name="Cate_Fecha_Modificacion" Type="DateTime" Precision="3" />
+    <Property Name="Tipo_Estado" Type="Boolean" />
+    <NavigationProperty Name="tbFacturas_Encabezados" Relationship="dbSsitemascinesModel.FK_tbFacturas_Encabezados_tbTipo_Pagos_Tipo_Id" FromRole="tbTipo_Pagos" ToRole="tbFacturas_Encabezados" />
+  </EntityType>
+  <Association Name="FK_tbFacturas_Encabezados_tbTipo_Pagos_Tipo_Id">
+    <End Type="dbSsitemascinesModel.tbTipo_Pagos" Role="tbTipo_Pagos" Multiplicity="0..1" />
+    <End Type="dbSsitemascinesModel.tbFacturas_Encabezados" Role="tbFacturas_Encabezados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbTipo_Pagos">
+        <PropertyRef Name="Tipo_Id" />
+      </Principal>
+      <Dependent Role="tbFacturas_Encabezados">
+        <PropertyRef Name="Tipo_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

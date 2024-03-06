@@ -18,6 +18,7 @@ namespace Sistema_Cine.Models
         public tbRoles()
         {
             this.tbPantalla_Roles = new HashSet<tbPantalla_Roles>();
+            this.tbUsuarios = new HashSet<tbUsuarios>();
         }
     
         public int Role_Id { get; set; }
@@ -30,5 +31,7 @@ namespace Sistema_Cine.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbPantalla_Roles> tbPantalla_Roles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbUsuarios> tbUsuarios { get; set; }
     }
 }

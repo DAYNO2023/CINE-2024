@@ -52,26 +52,11 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Gene_Id,Gene_Descripcion,Prom_Id,Gene_Usuario_Creacion,Gene_Fecha_Creacion,Gene_Usuario_Modificacion,Gene_Fecha_Modificacion")] tbGeneros tbGeneros)
         {
-            ModelState.Remove("Gene_Usuario_Creacion");
-            ModelState.Remove("Gene_Fecha_Creacion");
-            ModelState.Remove("Gene_Usuario_Modificacion");
-            ModelState.Remove("Gene_Fecha_Modificacion");
-          
-
             if (ModelState.IsValid)
             {
-                try
-                {
-                    db.tbGeneros.Add(tbGeneros);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                catch (FormatException ex)
-                {
-                    // Handle the exception (e.g., log it, show an error message)
-                    TempData["Error"] = "Error converting id to int: " + ex.Message;
-                    return RedirectToAction("Index");
-                }
+                db.tbGeneros.Add(tbGeneros);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
 
             ViewBag.Prom_Id = new SelectList(db.tbPromociones, "Prom_Id", "Prom_Descripcion", tbGeneros.Prom_Id);
@@ -168,7 +153,6 @@ namespace Sistema_Cine.Controllers
         {
             tbGeneros tbGeneros = db.tbGeneros.Find(id);
             db.tbGeneros.Remove(tbGeneros);
-
             db.SaveChanges();
             return RedirectToAction("Index");
         }

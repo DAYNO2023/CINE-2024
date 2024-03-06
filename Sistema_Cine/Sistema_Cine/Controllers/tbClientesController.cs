@@ -51,26 +51,11 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Clie_Id,Clie_Nombre,Clie_Apellido,Clie_Identidad,Clie_Sexo,Clie_Telefono,Esta_Id,Clie_FecNacimiento,Muni_Id,Clie_Usua_Creacion,Clie_Fecha_Creacion,Clie_Usua_Modifica,Clie_Fecha_Modifica,Clie_Estado")] tbClientes tbClientes)
         {
-            ModelState.Remove("Clie_Usua_Creacion");
-            ModelState.Remove("Clie_Fecha_Creacion");
-            ModelState.Remove("Clie_Usua_Modifica");
-            ModelState.Remove("Clie_Fecha_Modifica");
-            ModelState.Remove("Clie_Estado");
-
             if (ModelState.IsValid)
             {
-                try
-                {
-                    db.tbClientes.Add(tbClientes);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                catch (FormatException ex)
-                {
-                    // Handle the exception (e.g., log it, show an error message)
-                    TempData["Error"] = "Error converting id to int: " + ex.Message;
-                    return RedirectToAction("Index");
-                }
+                db.tbClientes.Add(tbClientes);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
 
             ViewBag.Esta_Id = new SelectList(db.tbEstado_Civil, "Esta_Id", "Esta_Descripcion", tbClientes.Esta_Id);
@@ -102,30 +87,11 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Clie_Id,Clie_Nombre,Clie_Apellido,Clie_Identidad,Clie_Sexo,Clie_Telefono,Esta_Id,Clie_FecNacimiento,Muni_Id,Clie_Usua_Creacion,Clie_Fecha_Creacion,Clie_Usua_Modifica,Clie_Fecha_Modifica,Clie_Estado")] tbClientes tbClientes)
         {
-            ModelState.Remove("Clie_Usua_Creacion");
-            ModelState.Remove("Clie_Fecha_Creacion");
-            ModelState.Remove("Clie_Usua_Modifica");
-            ModelState.Remove("Clie_Fecha_Modifica");
-            ModelState.Remove("Clie_Estado");
-
-
             if (ModelState.IsValid)
             {
-                try
-                {
-                    int id = Convert.ToInt32(Session["idtipo"]);
-                    int usuario = Convert.ToInt32(Session["idusaio"]);
-                    db.Sp_tbClientes_Editar(id, tbClientes.Clie_Nombre, tbClientes.Clie_Apellido, tbClientes.Clie_Identidad, tbClientes.Clie_Sexo, tbClientes.Clie_Telefono, tbClientes.Esta_Id, tbClientes.Clie_FecNacimiento, tbClientes.Muni_Id, usuario, DateTime.Now, true);
-
-
-                    return RedirectToAction("Index");
-                }
-                catch (FormatException ex)
-                {
-                    // Handle the exception (e.g., log it, show an error message)
-                    TempData["Error"] = "Error converting id to int: " + ex.Message;
-                    return RedirectToAction("Index");
-                }
+                db.Entry(tbClientes).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
             ViewBag.Esta_Id = new SelectList(db.tbEstado_Civil, "Esta_Id", "Esta_Descripcion", tbClientes.Esta_Id);
             ViewBag.Muni_Id = new SelectList(db.tbMunicipio, "Muni_Codigo", "Muni_Descripcion", tbClientes.Muni_Id);
@@ -152,9 +118,8 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            //tbClientes tbClientes = db.tbClientes.Find(id);
-            //db.tbClientes.Remove(tbClientes);
-            db.Sp_tbClientes_Eliminar(id);
+            tbClientes tbClientes = db.tbClientes.Find(id);
+            db.tbClientes.Remove(tbClientes);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

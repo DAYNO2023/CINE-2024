@@ -15,6 +15,16 @@ namespace Sistema_Cine.Controllers
         private dbSsitemascinesEntities5 db = new dbSsitemascinesEntities5();
 
         // GET: tbPantalla_Roles
+        //public ActionResult GetPantallasByRol(int roleId)
+        //{
+        //    var pantallasAsociadas = db.tbPantalla_Roles
+        //        .Where(pr => pr.Role_Id == roleId)
+        //        .Select(pr => pr.tbPantallas)
+        //        .ToList();
+
+        //    return PartialView("_PantallasAsociadas", pantallasAsociadas);
+        //}
+        
         public ActionResult Index()
         {
             ViewBag.Pant_Id = new SelectList(db.tbPantallas, "Pant_Id", "Pant_Descripcion");
@@ -55,18 +65,9 @@ namespace Sistema_Cine.Controllers
         {
             if (ModelState.IsValid)
             {
-                try
-                {
-                    db.tbPantalla_Roles.Add(tbPantalla_Roles);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                catch (FormatException ex)
-                {
-                    // Handle the exception (e.g., log it, show an error message)
-                    TempData["Error"] = "Error converting id to int: " + ex.Message;
-                    return RedirectToAction("Index");
-                }
+                db.tbPantalla_Roles.Add(tbPantalla_Roles);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
 
             ViewBag.Pant_Id = new SelectList(db.tbPantallas, "Pant_Id", "Pant_Descripcion", tbPantalla_Roles.Pant_Id);
@@ -98,29 +99,22 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Paro_Id,Role_Id,Pant_Id,Pant_Creacion,Pant_Fecha_Creacion,Pant_Modifica,Pant_Fecha_Modifica,Pant_Estado")] tbPantalla_Roles tbPantalla_Roles)
         {
-            ModelState.Remove("Pant_Creacion");
-            ModelState.Remove("Pant_Fecha_Creacion");
-            ModelState.Remove("Pant_Modifica");
-            ModelState.Remove("Pant_Fecha_Modifica");
-            ModelState.Remove("Pant_Estado");
             if (ModelState.IsValid)
             {
-                try { 
+
                 int id = Convert.ToInt32(Session["idtipo"]);
-                int usuario = Convert.ToInt32(Session["idusaio"]);
-                db.Sp_tbPantalla_Roles_Editar(id, tbPantalla_Roles.Role_Id, tbPantalla_Roles.Pant_Id,usuario, DateTime.Now,true);
+                var paroexistenete = db.tbPantalla_Roles.Find(id);
 
-               
-
-
-                    return RedirectToAction("Index");
-                }
-                catch (FormatException ex)
+                if (paroexistenete != null)
                 {
-                    // Handle the exception (e.g., log it, show an error message)
-                    TempData["Error"] = "Error converting id to int: " + ex.Message;
+                    db.Entry(paroexistenete).Reload();
+                    paroexistenete.Role_Id = tbPantalla_Roles.Role_Id;
+                    paroexistenete.Pant_Id = tbPantalla_Roles.Pant_Id;
+
+                    db.SaveChanges();
                     return RedirectToAction("Index");
                 }
+
 
             }
             ViewBag.Pant_Id = new SelectList(db.tbPantallas, "Pant_Id", "Pant_Descripcion", tbPantalla_Roles.Pant_Id);
@@ -153,6 +147,13 @@ namespace Sistema_Cine.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
+
+
+
+
+
 
         protected override void Dispose(bool disposing)
         {

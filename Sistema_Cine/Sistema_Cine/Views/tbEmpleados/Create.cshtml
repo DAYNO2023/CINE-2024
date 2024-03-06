@@ -56,17 +56,17 @@
                         <!-- Second Column -->
                         
 
-                        @Html.LabelFor(model => model.Esta_Id, "Estado Civil", htmlAttributes: new { @class = "control-label" })
+                        @Html.LabelFor(model => model.Esta_Id, "Esta_Id", htmlAttributes: new { @class = "control-label" })
                         @Html.DropDownList("Esta_Id", null, htmlAttributes: new { @class = "form-control" })
 
                         @Html.LabelFor(model => model.Empl_FecNacimiento, htmlAttributes: new { @class = "control-label" })
                         @Html.EditorFor(model => model.Empl_FecNacimiento, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Empl_FecNacimiento, "", new { @class = "text-danger" })
 
-                        @Html.LabelFor(model => model.Muni_Id, "Municipio", htmlAttributes: new { @class = "control-label" })
+                        @Html.LabelFor(model => model.Muni_Id, "Muni_Id", htmlAttributes: new { @class = "control-label" })
                         @Html.DropDownList("Muni_Id", null, htmlAttributes: new { @class = "form-control" })
 
-                        @Html.LabelFor(model => model.Carg_Id, "Cargos", htmlAttributes: new { @class = "control-label" })
+                        @Html.LabelFor(model => model.Carg_Id, "Carg_Id", htmlAttributes: new { @class = "control-label" })
                         @Html.DropDownList("Carg_Id", null, htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.Carg_Id, "", new { @class = "text-danger" })
                     </div>

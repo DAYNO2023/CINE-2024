@@ -22,7 +22,7 @@ namespace Sistema_Cine.Models
     
         public int Pant_Id { get; set; }
         public string Pant_Descripcion { get; set; }
-        public Nullable<bool> Pant_Identificador { get; set; }
+        public string Pant_Identificador { get; set; }
         public Nullable<int> Pant_Creacion { get; set; }
         public Nullable<System.DateTime> Pant_Fecha_Creacion { get; set; }
         public Nullable<int> Pant_Modifica { get; set; }

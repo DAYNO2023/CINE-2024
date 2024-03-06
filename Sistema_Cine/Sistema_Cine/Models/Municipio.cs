@@ -20,7 +20,6 @@ namespace Sistema_Cine.Models
         [Display(Name = "Codigo")]
         public string Muni_Codigo { get; set; }
         [Display(Name = "Municipio")]
-        [RegularExpression("^[a-zA-Z ]+$", ErrorMessage = "El dato es incorrecto")]
         [Required(ErrorMessage = "El campos {0} es requerido")]
         public string Muni_Descripcion { get; set; }
         [Display(Name = "Departemento")]

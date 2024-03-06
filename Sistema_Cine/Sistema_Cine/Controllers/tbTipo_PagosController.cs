@@ -48,32 +48,12 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Tipo_Id,Tipo_Descripcion,Cate_Usuario_Creacion,Cate_Fecha_Creacion,Cate_Usuario_Modificacion,Cate_Fecha_Modificacion")] tbTipo_Pagos tbTipo_Pagos)
         {
-            ModelState.Remove("Cate_Usuario_Creacion");
-            ModelState.Remove("Cate_Fecha_Creacion");
-            ModelState.Remove("Cate_Usuario_Creacion");
-            ModelState.Remove("Cate_Usuario_Modificacion");
-            ModelState.Remove("Cate_Fecha_Modificacion");
-
-
-
             if (ModelState.IsValid)
             {
-                try
-                {
-                    db.Sp_tbTipo_Pagos_Insertar(tbTipo_Pagos.Tipo_Descripcion, tbTipo_Pagos.Cate_Usuario_Creacion, tbTipo_Pagos.Cate_Fecha_Creacion, tbTipo_Pagos.Tipo_Estado);
-
-
-
-                    //db.tbTipo_Pagos.Add(tbTipo_Pagos);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                catch (FormatException ex)
-                {
-                    // Handle the exception (e.g., log it, show an error message)
-                    TempData["Error"] = "Error converting id to int: " + ex.Message;
-                    return RedirectToAction("Index");
-                }
+                
+                db.tbTipo_Pagos.Add(tbTipo_Pagos);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
 
             return View(tbTipo_Pagos);
@@ -94,7 +74,7 @@ namespace Sistema_Cine.Controllers
             return View(tbTipo_Pagos);
         }
 
-        
+
 
         // POST: tbTipo_Pagos/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
@@ -138,8 +118,9 @@ namespace Sistema_Cine.Controllers
             }
 
             return View(tbTipo_Pagos);
-
         }
+
+
         //[HttpPost]
         //[ValidateAntiForgeryToken]
         //public ActionResult Editcampos([Bind(Include = "Tipo_Id,Tipo_Descripcion,Cate_Usuario_Creacion,Cate_Fecha_Creacion,Cate_Usuario_Modificacion,Cate_Fecha_Modificacion")] tbTipo_Pagos tbTipo_Pagos)
@@ -176,7 +157,6 @@ namespace Sistema_Cine.Controllers
         {
             tbTipo_Pagos tbTipo_Pagos = db.tbTipo_Pagos.Find(id);
             db.tbTipo_Pagos.Remove(tbTipo_Pagos);
-            //db.Sp_tbTipo_Pagos_Eliminar(id);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

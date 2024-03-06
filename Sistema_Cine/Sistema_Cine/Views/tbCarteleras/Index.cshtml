@@ -26,17 +26,17 @@
                             @Html.DisplayNameFor(model => model.Cart_Fecha_Estreno)
                         </th>
                         @*<th>
-                                @Html.DisplayNameFor(model => model.Cart_Usuario_Creacion)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Cart_Fecha_Creacion)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Cart_Usuario_Modificacion)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Cart_Fecha_Modificacion)
-                            </th>*@
+                @Html.DisplayNameFor(model => model.Cart_Usuario_Creacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cart_Fecha_Creacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cart_Usuario_Modificacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cart_Fecha_Modificacion)
+            </th>*@
                         <th>
                             @Html.DisplayNameFor(model => model.tbEntradas.Entra_Id)
                         </th>
@@ -60,19 +60,19 @@
                                 @Html.DisplayFor(modelItem => item.Cart_Fecha_Estreno)
                             </td>
                             @*<td>
-                                    @Html.DisplayFor(modelItem => item.Cart_Usuario_Creacion)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Cart_Fecha_Creacion)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Cart_Usuario_Modificacion)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Cart_Fecha_Modificacion)
-                                </td>*@
+                    @Html.DisplayFor(modelItem => item.Cart_Usuario_Creacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cart_Fecha_Creacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cart_Usuario_Modificacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cart_Fecha_Modificacion)
+                </td>*@
                             <td>
-                                @Html.DisplayFor(modelItem => item.tbEntradas.Entra_Cantidad)
+                                @Html.DisplayFor(modelItem => item.tbEntradas.Entra_Id)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.tbGeneros.Gene_Descripcion)
@@ -83,10 +83,7 @@
                             <td>
                                 @Html.ActionLink("Edit", "Edit", new { id = item.Cart_Id }, new { @class = "btn btn-warning" }) |
                                 @Html.ActionLink("Details", "Details", new { id = item.Cart_Id }, new { @class = "btn btn-default" }) |
-                                <p class="btn btn-danger" id="elimnartipo" onclick="elimnartipo('@item.Cart_Id')">
-                                    Eliminar
-                                </p>
-                                @*@Html.ActionLink("Delete", "Delete", new { id = item.Cart_Id }, new { @class = "btn btn-danger" })*@
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Cart_Id }, new { @class = "btn btn-danger" })
                             </td>
                         </tr>
                     }
@@ -96,30 +93,3 @@
         </div>
     </div>
 </div>
-
-<div class="modal fade" id="elimnarmodal" tabindex="-1" role="dialog" aria-hidden="false">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-
-                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
-            </div>
-            @Html.Partial("_Delete", new Sistema_Cine.Models.tbCarteleras())
-        </div>
-    </div>
-</div>
-
-
-<script>
-    $("#btnmodal").click(function () {
-        $("#exampleModal").modal('show');
-    })
-    //$("#bteditar").click(function () {
-    //    $("#exampleModal").modal('show');
-    //})
-    function elimnartipo(id) {
-        $("#elimnarmodal").modal('show')
-        $("#id").val(id);
-    }
-
-</script>

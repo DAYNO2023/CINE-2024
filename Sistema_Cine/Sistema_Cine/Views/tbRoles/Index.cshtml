@@ -10,8 +10,11 @@
         <h3>Roles</h3>
     </div>
     <div class="card-body">
+        @*<p>
+                <button class="btn btn-primary" id="btnmodal">Crear</button>
+            </p>*@
         <p>
-            <button class="btn btn-primary" id="btnmodal">Crear</button>
+            @Html.ActionLink("Crear", "Create", null, new { @class = "btn btn-primary" })
         </p>
         <hr />
         <div class="table-responsive">
@@ -62,17 +65,11 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Role_Estado)
                                 </td>*@
-                        <td>
-                            <p class="btn btn-warning  editar-roles" data-roles-id="@item.Role_Id">
-                                Editar
-                            </p>
-                            @*@Html.ActionLink("Edit", "Edit", new { id = item.Role_Id }, new { @class = "btn btn-warning" })*@ |
-                            @Html.ActionLink("Details", "Details", new { id = item.Role_Id }, new { @class = "btn btn-default" }) |
-                            <p class="btn btn-danger" id="elimnartipo" onclick="elimnartipo('@item.Role_Id')">
-                                Eliminar
-                            </p>
-                            @*@Html.ActionLink("Delete", "Delete", new { id = item.Role_Id }, new { @class = "btn btn-danger" })*@
-                        </td>
+                            <td>
+                                @Html.ActionLink("Editar", "Edit", new { id = item.Role_Id }, new { @class = "btn btn-warning" }) |
+                                @*@Html.ActionLink("Details", "Details", new { id = item.Role_Id }, new { @class = "btn btn-default" }) |*@
+                                @Html.ActionLink("Eliminar", "Delete", new { id = item.Role_Id }, new { @class = "btn btn-danger" })
+                            </td>
                         </tr>
                     }
                 </tbody>
@@ -89,11 +86,6 @@
     $("#btnmodal").click(function () {
         $("#exampleModal").modal('show');
     })
-
-    function elimnartipo(id) {
-        $("#elimnarmodal").modal('show')
-        $("#id").val(id);
-    }
 </script>
 
 <!-- Modal -->
@@ -102,59 +94,11 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true"></span></button>
-                
+                <h5 class="modal-title">Cargo</h5>
 
             </div>
-            @Html.Partial("_Create", new Sistema_Cine.Models.tbRoles())
+            @Html.Partial("_Create", new Sistema_Cine.Models.tbRoles());
         </div>
     </div>
 </div>
-
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="false">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-
-                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
-                
-            </div>
-            @Html.Partial("_Edit", new Sistema_Cine.Models.tbRoles())
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="elimnarmodal" tabindex="-1" role="dialog" aria-hidden="false">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-
-                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
-            </div>
-            @Html.Partial("_Delete", new Sistema_Cine.Models.tbRoles())
-        </div>
-    </div>
-</div>
-
-
-
-<script>
-    $(".editar-roles").click(function () {
-        var TipoId = $(this).data("roles-id");
-        $.ajax({
-            url: "/Home/obtenerIDroles",
-            type: 'POST',
-            dataType: 'json',
-            contentType: "application/json; charset=utf-8",
-            data: JSON.stringify({ TipoId: TipoId }),
-            success: function (data) {
-
-                console.log(data);
-
-                $("#descripcion").val(data.description);
-                $("#editModal").modal('show');
-
-            },
-        });
-    });
-</script>
 

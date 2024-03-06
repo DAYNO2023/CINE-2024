@@ -21,7 +21,6 @@ namespace Sistema_Cine.Models
         [Display(Name = "Precio Id:")]
         public int Prec_Id { get; set; }
         [Display(Name = "Precio:")]
-        [RegularExpression("^[0-9]+$", ErrorMessage = "El dato debe ser numérico")]
         [Required(ErrorMessage = "El campos {0} es requerido")]
         public Nullable<decimal> Prec_Descripcion { get; set; }
         [Display(Name = "User creacion:")]

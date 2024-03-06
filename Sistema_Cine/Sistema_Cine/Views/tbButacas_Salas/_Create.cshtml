@@ -9,10 +9,14 @@
         <div class="card-header text-center">
             <h4 class="card-title">Crear Butacas Por Salas</h4>
         </div>
+
+
+        <h4>tbButacas_Salas</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Buta_Descripcion, htmlAttributes: new { @class = "control-label " })
+            
                 @Html.EditorFor(model => model.Buta_Descripcion, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Buta_Descripcion, "", new { @class = "text-danger" })
             
@@ -22,7 +26,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-20">
-                <input type="submit" value="Guardar" class="btn btn-primary" />
+                <input type="submit" value="Crear" class="btn btn-primary" />
             </div>
         </div>
     </div>

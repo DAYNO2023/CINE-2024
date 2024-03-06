@@ -19,7 +19,6 @@ namespace Sistema_Cine.Models
         [Display(Name = "Role_ID")]
         public int Role_Id { get; set; }
         [Display(Name = "Tipo de Rol")]
-        [RegularExpression("^[a-zA-Z ]+$", ErrorMessage = "El dato es incorrecto")]
         public string Role_Descripcion { get; set; }
         [Display(Name = "User Creacion")]
         public Nullable<int> Role_Creacion { get; set; }

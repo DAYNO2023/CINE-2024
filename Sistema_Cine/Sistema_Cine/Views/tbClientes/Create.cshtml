@@ -46,12 +46,12 @@
                         @Html.EditorFor(model => model.Clie_Telefono, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Clie_Telefono, "", new { @class = "text-danger" })
 
-                        @Html.LabelFor(model => model.Esta_Id, "EstadoCivil", htmlAttributes: new { @class = "control-label" })
+                        @Html.LabelFor(model => model.Esta_Id, "Estado", htmlAttributes: new { @class = "control-label" })
                         @Html.DropDownList("Esta_Id", null, htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.Esta_Id, "", new { @class = "text-danger" })
 
                         @Html.LabelFor(model => model.Clie_FecNacimiento, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Clie_FecNacimiento, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.Clie_FecNacimiento, new { htmlAttributes = new { @class = "form-control", type = "date" } })
                         @Html.ValidationMessageFor(model => model.Clie_FecNacimiento, "", new { @class = "text-danger" })
 
                         @Html.LabelFor(model => model.Muni_Id, "Municipio", htmlAttributes: new { @class = "control-label" })
@@ -60,14 +60,13 @@
                     </div>
 
                 </div>
-            </div>     <hr />
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-20">
-                    <input type="submit" value="Crear" class="btn btn-primary" />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-20">
+                        <input type="submit" value="Crear" class="btn btn-primary" />
+                    </div>
                 </div>
+
             </div>
-
-
         </div>
     </div>
     

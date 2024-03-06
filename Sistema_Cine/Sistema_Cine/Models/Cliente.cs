@@ -19,26 +19,23 @@ namespace Sistema_Cine.Models
         [Display(Name = "Cliente Id:")]
         
         public int Clie_Id { get; set; }
-        [Display(Name = "Nombre Completo:")]
-        [RegularExpression("^[a-zA-Z ]+$", ErrorMessage = "El dato es incorrecto")]
+        [Display(Name = "Cliente Nombre:")]
         [Required(ErrorMessage = "El campos {0} es requerido")]
         public string Clie_Nombre { get; set; }
-        [RegularExpression("^[a-zA-Z ]+$", ErrorMessage = "El dato es incorrecto")]
+        [Display(Name = "Cliente Apellido:")]
         [Required(ErrorMessage = "El campos {0} es requerido")]
         public string Clie_Apellido { get; set; }
         [Display(Name = "Cliente Identidad:")]
-        [RegularExpression("^[0-9]+$", ErrorMessage = "El dato debe ser numérico")]
         [Required(ErrorMessage = "El campos {0} es requerido")]
         public string Clie_Identidad { get; set; }
         [Display(Name = "Sexo:")]
-        [RegularExpression("^[a-zA-Z ]+$", ErrorMessage = " El Datos es incorrecto")]
+     
         public string Clie_Sexo { get; set; }
         [Display(Name = "Telefono:")]
         public Nullable<int> Clie_Telefono { get; set; }
         [Display(Name = "Estado Civil:")]
-        [RegularExpression("^[0-9]+$", ErrorMessage = "El dato debe ser numérico")]
         public Nullable<int> Esta_Id { get; set; }
-        [Display(Name = "fecha Nacimiento:")]
+        [Display(Name = "Fecha Nacimiento:")]
         public Nullable<System.DateTime> Clie_FecNacimiento { get; set; }
         [Display(Name = "Municipio:")]
         public string Muni_Id { get; set; }

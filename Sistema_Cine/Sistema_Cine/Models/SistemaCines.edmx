@@ -24,7 +24,7 @@
           </Key>
           <Property Name="Pant_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Pant_Descripcion" Type="varchar" MaxLength="60" />
-          <Property Name="Pant_Identificador" Type="bit" />
+          <Property Name="Pant_Identificador" Type="varchar" MaxLength="50" />
           <Property Name="Pant_Creacion" Type="int" />
           <Property Name="Pant_Fecha_Creacion" Type="date" />
           <Property Name="Pant_Modifica" Type="int" />
@@ -50,14 +50,14 @@
           <Property Name="Usua_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Usua_Nombre" Type="varchar" MaxLength="60" />
           <Property Name="Usua_Contraseña" Type="varchar(max)" />
-          <Property Name="Usua_Administrador" Type="bit" />
           <Property Name="Empl_Id" Type="int" />
-          <Property Name="Paro_Id" Type="int" />
+          <Property Name="Role_Id" Type="int" />
           <Property Name="Usua_Creacion" Type="int" />
           <Property Name="Usua_Fecha_Creacion" Type="date" />
           <Property Name="Usua_Modifica" Type="int" />
           <Property Name="Usua_Fecha_Modifica" Type="date" />
           <Property Name="Usua_Estado" Type="bit" />
+          <Property Name="Usua_Administrador" Type="bit" />
         </EntityType>
         <EntityType Name="tbCarteleras">
           <Key>
@@ -142,6 +142,7 @@
           <Property Name="Fact_Usua_Modifica" Type="int" />
           <Property Name="Fact_Fecha_Modifica" Type="date" />
           <Property Name="Fact_Estado" Type="bit" />
+          <Property Name="Prom_Id" Type="int" />
         </EntityType>
         <EntityType Name="tbButacas_Salas">
           <Key>
@@ -227,17 +228,6 @@
           <Property Name="Prec_Fecha_Modificacion" Type="date" />
           <Property Name="Prec_Estado" Type="bit" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPrecios_Bitacora' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="tbPrecios_Bitacora">
-          <Property Name="Bitp_Id" Type="int" />
-          <Property Name="Bitp_Descuento" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="Bitp_Descripcion" Type="varchar" MaxLength="100" />
-          <Property Name="Bitp_Usuario_Creacion" Type="int" />
-          <Property Name="Bitp_Fecha_Creacion" Type="date" />
-          <Property Name="Bitp_Usuario_Modificacion" Type="int" />
-          <Property Name="Bitp_Fecha_Modificacion" Type="date" />
-        </EntityType>-->
         <EntityType Name="tbPromociones">
           <Key>
             <PropertyRef Name="Prom_Id" />
@@ -252,17 +242,6 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPrecios_Bitacora' no 
           <Property Name="Prom_Fecha_Modificacion" Type="date" />
           <Property Name="Prom_Estado" Type="bit" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="tbPromociones_Bitacora">
-          <Property Name="Bita_Id" Type="int" />
-          <Property Name="Bita_Descuento" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="Bita_Descripcion" Type="varchar" MaxLength="100" />
-          <Property Name="Bita_Usuario_Creacion" Type="int" />
-          <Property Name="Bita_Fecha_Creacion" Type="date" />
-          <Property Name="Bita_Usuario_Modificacion" Type="int" />
-          <Property Name="Bita_Fecha_Modificacion" Type="date" />
-        </EntityType>-->
         <EntityType Name="tbSalas">
           <Key>
             <PropertyRef Name="Sala_Id" />
@@ -283,9 +262,9 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
           <Property Name="Tipo_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Tipo_Descripcion" Type="varchar" MaxLength="100" />
           <Property Name="Cate_Usuario_Creacion" Type="int" />
-          <Property Name="Cate_Fecha_Creacion" Type="date" />
+          <Property Name="Cate_Fecha_Creacion" Type="datetime" />
           <Property Name="Cate_Usuario_Modificacion" Type="int" />
-          <Property Name="Cate_Fecha_Modificacion" Type="date" />
+          <Property Name="Cate_Fecha_Modificacion" Type="datetime" />
           <Property Name="Tipo_Estado" Type="bit" />
         </EntityType>
         <EntityType Name="tbClientes">
@@ -471,6 +450,18 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tbFacturas_Encabezados_tbPromociones_Prom_Id">
+          <End Role="tbPromociones" Type="Self.tbPromociones" Multiplicity="0..1" />
+          <End Role="tbFacturas_Encabezados" Type="Self.tbFacturas_Encabezados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPromociones">
+              <PropertyRef Name="Prom_Id" />
+            </Principal>
+            <Dependent Role="tbFacturas_Encabezados">
+              <PropertyRef Name="Prom_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tbFacturas_Encabezados_tbTipo_Pagos_Tipo_Id">
           <End Role="tbTipo_Pagos" Type="Self.tbTipo_Pagos" Multiplicity="0..1" />
           <End Role="tbFacturas_Encabezados" Type="Self.tbFacturas_Encabezados" Multiplicity="*" />
@@ -616,14 +607,14 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tbUsuario_tbPantalla_Roles_Paro_Id">
-          <End Role="tbPantalla_Roles" Type="Self.tbPantalla_Roles" Multiplicity="0..1" />
+          <End Role="tbRoles" Type="Self.tbRoles" Multiplicity="0..1" />
           <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tbPantalla_Roles">
-              <PropertyRef Name="Paro_Id" />
+            <Principal Role="tbRoles">
+              <PropertyRef Name="Role_Id" />
             </Principal>
             <Dependent Role="tbUsuarios">
-              <PropertyRef Name="Paro_Id" />
+              <PropertyRef Name="Role_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -898,7 +889,7 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
           <Parameter Name="Tipo_Id" Type="int" Mode="In" />
           <Parameter Name="Tipo_Descripcion" Type="varchar" Mode="In" />
           <Parameter Name="Cate_Usuario_Modificacion" Type="varchar" Mode="In" />
-          <Parameter Name="Cate_Fecha_Modificacion" Type="date" Mode="In" />
+          <Parameter Name="Cate_Fecha_Modificacion" Type="datetime" Mode="In" />
         </Function>
         <Function Name="Sp_tbTipo_Pagos_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
           <Parameter Name="Id" Type="int" Mode="In" />
@@ -1047,6 +1038,10 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
             <End Role="tbEmpleados" EntitySet="tbEmpleados" />
             <End Role="tbFacturas_Encabezados" EntitySet="tbFacturas_Encabezados" />
           </AssociationSet>
+          <AssociationSet Name="FK_tbFacturas_Encabezados_tbPromociones_Prom_Id" Association="Self.FK_tbFacturas_Encabezados_tbPromociones_Prom_Id">
+            <End Role="tbPromociones" EntitySet="tbPromociones" />
+            <End Role="tbFacturas_Encabezados" EntitySet="tbFacturas_Encabezados" />
+          </AssociationSet>
           <AssociationSet Name="FK_tbFacturas_Encabezados_tbTipo_Pagos_Tipo_Id" Association="Self.FK_tbFacturas_Encabezados_tbTipo_Pagos_Tipo_Id">
             <End Role="tbTipo_Pagos" EntitySet="tbTipo_Pagos" />
             <End Role="tbFacturas_Encabezados" EntitySet="tbFacturas_Encabezados" />
@@ -1096,7 +1091,7 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
             <End Role="tbUsuarios" EntitySet="tbUsuarios" />
           </AssociationSet>
           <AssociationSet Name="FK_tbUsuario_tbPantalla_Roles_Paro_Id" Association="Self.FK_tbUsuario_tbPantalla_Roles_Paro_Id">
-            <End Role="tbPantalla_Roles" EntitySet="tbPantalla_Roles" />
+            <End Role="tbRoles" EntitySet="tbRoles" />
             <End Role="tbUsuarios" EntitySet="tbUsuarios" />
           </AssociationSet>
         </EntityContainer>
@@ -1116,23 +1111,8 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
           <Property Name="Pant_Modifica" Type="Int32" />
           <Property Name="Pant_Fecha_Modifica" Type="DateTime" Precision="0" />
           <Property Name="Pant_Estado" Type="Boolean" />
-          <NavigationProperty Name="tbPantallas" Relationship="Self.FK_tbPantalla_Roles_tbPantallas_Pant_Id" FromRole="tbPantalla_Roles" ToRole="tbPantallas" />
           <NavigationProperty Name="tbRoles" Relationship="Self.FK_tbPantalla_Roles_tbRoles_Role_Id" FromRole="tbPantalla_Roles" ToRole="tbRoles" />
-          <NavigationProperty Name="tbUsuarios" Relationship="Self.FK_tbUsuario_tbPantalla_Roles_Paro_Id" FromRole="tbPantalla_Roles" ToRole="tbUsuarios" />
-        </EntityType>
-        <EntityType Name="tbPantallas">
-          <Key>
-            <PropertyRef Name="Pant_Id" />
-          </Key>
-          <Property Name="Pant_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Pant_Descripcion" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="Pant_Identificador" Type="Boolean" />
-          <Property Name="Pant_Creacion" Type="Int32" />
-          <Property Name="Pant_Fecha_Creacion" Type="DateTime" Precision="0" />
-          <Property Name="Pant_Modifica" Type="Int32" />
-          <Property Name="Pant_Fecha_Modifica" Type="DateTime" Precision="0" />
-          <Property Name="Pant_Estado" Type="Boolean" />
-          <NavigationProperty Name="tbPantalla_Roles" Relationship="Self.FK_tbPantalla_Roles_tbPantallas_Pant_Id" FromRole="tbPantallas" ToRole="tbPantalla_Roles" />
+          <NavigationProperty Name="tbPantallas" Relationship="dbSsitemascinesModel.FK_tbPantalla_Roles_tbPantallas_Pant_Id" FromRole="tbPantalla_Roles" ToRole="tbPantallas" />
         </EntityType>
         <EntityType Name="tbRoles">
           <Key>
@@ -1146,24 +1126,7 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
           <Property Name="Role_Fecha_Modifica" Type="DateTime" Precision="0" />
           <Property Name="Role_Estado" Type="Boolean" />
           <NavigationProperty Name="tbPantalla_Roles" Relationship="Self.FK_tbPantalla_Roles_tbRoles_Role_Id" FromRole="tbRoles" ToRole="tbPantalla_Roles" />
-        </EntityType>
-        <EntityType Name="tbUsuarios">
-          <Key>
-            <PropertyRef Name="Usua_Id" />
-          </Key>
-          <Property Name="Usua_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Usua_Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="Usua_Contraseña" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Empl_Id" Type="Int32" />
-          <Property Name="Paro_Id" Type="Int32" />
-          <Property Name="Usua_Creacion" Type="Int32" />
-          <Property Name="Usua_Fecha_Creacion" Type="DateTime" Precision="0" />
-          <Property Name="Usua_Modifica" Type="Int32" />
-          <Property Name="Usua_Fecha_Modifica" Type="DateTime" Precision="0" />
-          <Property Name="Usua_Estado" Type="Boolean" />
-          <NavigationProperty Name="tbPantalla_Roles" Relationship="Self.FK_tbUsuario_tbPantalla_Roles_Paro_Id" FromRole="tbUsuarios" ToRole="tbPantalla_Roles" />
-          <NavigationProperty Name="tbEmpleados" Relationship="Self.FK_tbUsuario_tbEmpleados_Empl_Id" FromRole="tbUsuarios" ToRole="tbEmpleados" />
-          <Property Name="Usua_Administrador" Type="Boolean" />
+          <NavigationProperty Name="tbUsuarios" Relationship="dbSsitemascinesModel.FK_tbUsuario_tbPantalla_Roles_Paro_Id" FromRole="tbRoles" ToRole="tbUsuarios" />
         </EntityType>
         <EntityType Name="tbEntradas">
           <Key>
@@ -1223,27 +1186,8 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
           <Property Name="Fade_Usua_Modifica" Type="Int32" />
           <Property Name="Fade_Fecha_Modificacion" Type="DateTime" Precision="0" />
           <Property Name="Fade_Estado" Type="Boolean" />
-          <NavigationProperty Name="tbFacturas_Encabezados" Relationship="Self.FK_tbFacturas_Detalles_tbFacturas_Encabezados_Fact_Id" FromRole="tbFacturas_Detalles" ToRole="tbFacturas_Encabezados" />
           <NavigationProperty Name="tbCarteleras" Relationship="dbSsitemascinesModel.FK_tbFacturas_Detalles_tbCarteleras_Cart_Id" FromRole="tbFacturas_Detalles" ToRole="tbCarteleras" />
-        </EntityType>
-        <EntityType Name="tbFacturas_Encabezados">
-          <Key>
-            <PropertyRef Name="Fact_Id" />
-          </Key>
-          <Property Name="Fact_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Fact_Fecha" Type="DateTime" Precision="0" />
-          <Property Name="Clie_Id" Type="Int32" />
-          <Property Name="Empl_Id" Type="Int32" />
-          <Property Name="Tipo_Id" Type="Int32" />
-          <Property Name="Fact_Usua_Creacion" Type="Int32" />
-          <Property Name="Fact_Fecha_Creacion" Type="DateTime" Precision="0" />
-          <Property Name="Fact_Usua_Modifica" Type="Int32" />
-          <Property Name="Fact_Fecha_Modifica" Type="DateTime" Precision="0" />
-          <Property Name="Fact_Estado" Type="Boolean" />
-          <NavigationProperty Name="tbFacturas_Detalles" Relationship="Self.FK_tbFacturas_Detalles_tbFacturas_Encabezados_Fact_Id" FromRole="tbFacturas_Encabezados" ToRole="tbFacturas_Detalles" />
-          <NavigationProperty Name="tbClientes" Relationship="Self.FK_tbFacturas_Encabezados_tbClientes_Clie_Id" FromRole="tbFacturas_Encabezados" ToRole="tbClientes" />
-          <NavigationProperty Name="tbEmpleados" Relationship="Self.FK_tbFacturas_Encabezados_tbEmpleado_Empl_Id" FromRole="tbFacturas_Encabezados" ToRole="tbEmpleados" />
-          <NavigationProperty Name="tbTipo_Pagos" Relationship="Self.FK_tbFacturas_Encabezados_tbTipo_Pagos_Tipo_Id" FromRole="tbFacturas_Encabezados" ToRole="tbTipo_Pagos" />
+          <NavigationProperty Name="tbFacturas_Encabezados" Relationship="dbSsitemascinesModel.FK_tbFacturas_Detalles_tbFacturas_Encabezados_Fact_Id" FromRole="tbFacturas_Detalles" ToRole="tbFacturas_Encabezados" />
         </EntityType>
         <EntityType Name="tbButacas_Salas">
           <Key>
@@ -1357,6 +1301,7 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
           <NavigationProperty Name="tbPrecios" Relationship="Self.FK_tbPromociones_tbPrecios_Prec_Id" FromRole="tbPromociones" ToRole="tbPrecios" />
           <Property Name="Prom_Estado" Type="Boolean" />
           <NavigationProperty Name="tbCarteleras" Relationship="dbSsitemascinesModel.fk_tbCarteleras_tbPromociones" FromRole="tbPromociones" ToRole="tbCarteleras" />
+          <NavigationProperty Name="tbFacturas_Encabezados" Relationship="dbSsitemascinesModel.FK_tbFacturas_Encabezados_tbPromociones_Prom_Id" FromRole="tbPromociones" ToRole="tbFacturas_Encabezados" />
         </EntityType>
         <EntityType Name="tbSalas">
           <Key>
@@ -1372,19 +1317,6 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
           <NavigationProperty Name="tbEntradas" Relationship="Self.FK_tbEntradas_tbSalas_Sala_Id" FromRole="tbSalas" ToRole="tbEntradas" />
           <NavigationProperty Name="tbButacas_Salas" Relationship="Self.FK_tbSalas_tbButacas_Salas_Buta_Id" FromRole="tbSalas" ToRole="tbButacas_Salas" />
           <Property Name="Cate_Estado" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="tbTipo_Pagos">
-          <Key>
-            <PropertyRef Name="Tipo_Id" />
-          </Key>
-          <Property Name="Tipo_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Tipo_Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Cate_Usuario_Creacion" Type="Int32" />
-          <Property Name="Cate_Fecha_Creacion" Type="DateTime" Precision="0" />
-          <Property Name="Cate_Usuario_Modificacion" Type="Int32" />
-          <Property Name="Cate_Fecha_Modificacion" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="tbFacturas_Encabezados" Relationship="Self.FK_tbFacturas_Encabezados_tbTipo_Pagos_Tipo_Id" FromRole="tbTipo_Pagos" ToRole="tbFacturas_Encabezados" />
-          <Property Name="Tipo_Estado" Type="Boolean" />
         </EntityType>
         <EntityType Name="tbClientes">
           <Key>
@@ -1404,9 +1336,9 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
           <Property Name="Clie_Usua_Modifica" Type="Int32" />
           <Property Name="Clie_Fecha_Modifica" Type="DateTime" Precision="0" />
           <Property Name="Clie_Estado" Type="Boolean" />
-          <NavigationProperty Name="tbFacturas_Encabezados" Relationship="Self.FK_tbFacturas_Encabezados_tbClientes_Clie_Id" FromRole="tbClientes" ToRole="tbFacturas_Encabezados" />
           <NavigationProperty Name="tbEstado_Civil" Relationship="Self.FK_tbClientes_tbEstado_Civil_Esta_Id" FromRole="tbClientes" ToRole="tbEstado_Civil" />
           <NavigationProperty Name="tbMunicipio" Relationship="Self.FK_tbClientes_tbMunicipio_Muni_Id" FromRole="tbClientes" ToRole="tbMunicipio" />
+          <NavigationProperty Name="tbFacturas_Encabezados" Relationship="dbSsitemascinesModel.FK_tbFacturas_Encabezados_tbClientes_Clie_Id" FromRole="tbClientes" ToRole="tbFacturas_Encabezados" />
         </EntityType>
         <EntityType Name="tbEmpleados">
           <Key>
@@ -1427,24 +1359,12 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
           <Property Name="Empl_Usua_Modifica" Type="Int32" />
           <Property Name="Empl_Fecha_Modifica" Type="DateTime" Precision="0" />
           <Property Name="Empl_Estado" Type="Boolean" />
-          <NavigationProperty Name="tbUsuarios" Relationship="Self.FK_tbUsuario_tbEmpleados_Empl_Id" FromRole="tbEmpleados" ToRole="tbUsuarios" />
-          <NavigationProperty Name="tbFacturas_Encabezados" Relationship="Self.FK_tbFacturas_Encabezados_tbEmpleado_Empl_Id" FromRole="tbEmpleados" ToRole="tbFacturas_Encabezados" />
           <NavigationProperty Name="tbCargos" Relationship="Self.FK_tbEmpleado_tbCargos_Carg_Id" FromRole="tbEmpleados" ToRole="tbCargos" />
           <NavigationProperty Name="tbEstado_Civil" Relationship="Self.FK_tbEmpleado_tbEstado_Civil_Esta_Id" FromRole="tbEmpleados" ToRole="tbEstado_Civil" />
           <NavigationProperty Name="tbMunicipio" Relationship="Self.FK_tbEmpleado_tbMunicipio_Muni_Id" FromRole="tbEmpleados" ToRole="tbMunicipio" />
+          <NavigationProperty Name="tbFacturas_Encabezados" Relationship="dbSsitemascinesModel.FK_tbFacturas_Encabezados_tbEmpleado_Empl_Id" FromRole="tbEmpleados" ToRole="tbFacturas_Encabezados" />
+          <NavigationProperty Name="tbUsuarios" Relationship="dbSsitemascinesModel.FK_tbUsuario_tbEmpleados_Empl_Id" FromRole="tbEmpleados" ToRole="tbUsuarios" />
         </EntityType>
-        <Association Name="FK_tbPantalla_Roles_tbPantallas_Pant_Id">
-          <End Role="tbPantallas" Type="Self.tbPantallas" Multiplicity="0..1" />
-          <End Role="tbPantalla_Roles" Type="Self.tbPantalla_Roles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbPantallas">
-              <PropertyRef Name="Pant_Id" />
-            </Principal>
-            <Dependent Role="tbPantalla_Roles">
-              <PropertyRef Name="Pant_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_tbPantalla_Roles_tbRoles_Role_Id">
           <End Role="tbRoles" Type="Self.tbRoles" Multiplicity="0..1" />
           <End Role="tbPantalla_Roles" Type="Self.tbPantalla_Roles" Multiplicity="*" />
@@ -1454,30 +1374,6 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
             </Principal>
             <Dependent Role="tbPantalla_Roles">
               <PropertyRef Name="Role_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbUsuario_tbPantalla_Roles_Paro_Id">
-          <End Role="tbPantalla_Roles" Type="Self.tbPantalla_Roles" Multiplicity="0..1" />
-          <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbPantalla_Roles">
-              <PropertyRef Name="Paro_Id" />
-            </Principal>
-            <Dependent Role="tbUsuarios">
-              <PropertyRef Name="Paro_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbUsuario_tbEmpleados_Empl_Id">
-          <End Role="tbEmpleados" Type="Self.tbEmpleados" Multiplicity="0..1" />
-          <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbEmpleados">
-              <PropertyRef Name="Empl_Id" />
-            </Principal>
-            <Dependent Role="tbUsuarios">
-              <PropertyRef Name="Empl_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1514,54 +1410,6 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
             </Principal>
             <Dependent Role="tbSucursales">
               <PropertyRef Name="Muni_Codigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbFacturas_Detalles_tbFacturas_Encabezados_Fact_Id">
-          <End Role="tbFacturas_Encabezados" Type="Self.tbFacturas_Encabezados" Multiplicity="0..1" />
-          <End Role="tbFacturas_Detalles" Type="Self.tbFacturas_Detalles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbFacturas_Encabezados">
-              <PropertyRef Name="Fact_Id" />
-            </Principal>
-            <Dependent Role="tbFacturas_Detalles">
-              <PropertyRef Name="Fact_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbFacturas_Encabezados_tbClientes_Clie_Id">
-          <End Role="tbClientes" Type="Self.tbClientes" Multiplicity="0..1" />
-          <End Role="tbFacturas_Encabezados" Type="Self.tbFacturas_Encabezados" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbClientes">
-              <PropertyRef Name="Clie_Id" />
-            </Principal>
-            <Dependent Role="tbFacturas_Encabezados">
-              <PropertyRef Name="Clie_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbFacturas_Encabezados_tbEmpleado_Empl_Id">
-          <End Role="tbEmpleados" Type="Self.tbEmpleados" Multiplicity="0..1" />
-          <End Role="tbFacturas_Encabezados" Type="Self.tbFacturas_Encabezados" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbEmpleados">
-              <PropertyRef Name="Empl_Id" />
-            </Principal>
-            <Dependent Role="tbFacturas_Encabezados">
-              <PropertyRef Name="Empl_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbFacturas_Encabezados_tbTipo_Pagos_Tipo_Id">
-          <End Role="tbTipo_Pagos" Type="Self.tbTipo_Pagos" Multiplicity="0..1" />
-          <End Role="tbFacturas_Encabezados" Type="Self.tbFacturas_Encabezados" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbTipo_Pagos">
-              <PropertyRef Name="Tipo_Id" />
-            </Principal>
-            <Dependent Role="tbFacturas_Encabezados">
-              <PropertyRef Name="Tipo_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1675,14 +1523,11 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
         </Association>
         <EntityContainer Name="dbSsitemascinesEntities5" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tbPantalla_Roles" EntityType="Self.tbPantalla_Roles" />
-          <EntitySet Name="tbPantallas" EntityType="Self.tbPantallas" />
           <EntitySet Name="tbRoles" EntityType="Self.tbRoles" />
-          <EntitySet Name="tbUsuarios" EntityType="Self.tbUsuarios" />
           <EntitySet Name="tbEntradas" EntityType="Self.tbEntradas" />
           <EntitySet Name="tbSucursales" EntityType="Self.tbSucursales" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="tbFacturas_Detalles" EntityType="Self.tbFacturas_Detalles" />
-          <EntitySet Name="tbFacturas_Encabezados" EntityType="Self.tbFacturas_Encabezados" />
           <EntitySet Name="tbButacas_Salas" EntityType="Self.tbButacas_Salas" />
           <EntitySet Name="tbCargos" EntityType="Self.tbCargos" />
           <EntitySet Name="tbDepartamentos" EntityType="Self.tbDepartamentos" />
@@ -1692,24 +1537,11 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
           <EntitySet Name="tbPrecios" EntityType="Self.tbPrecios" />
           <EntitySet Name="tbPromociones" EntityType="Self.tbPromociones" />
           <EntitySet Name="tbSalas" EntityType="Self.tbSalas" />
-          <EntitySet Name="tbTipo_Pagos" EntityType="Self.tbTipo_Pagos" />
           <EntitySet Name="tbClientes" EntityType="Self.tbClientes" />
           <EntitySet Name="tbEmpleados" EntityType="Self.tbEmpleados" />
-          <AssociationSet Name="FK_tbPantalla_Roles_tbPantallas_Pant_Id" Association="Self.FK_tbPantalla_Roles_tbPantallas_Pant_Id">
-            <End Role="tbPantallas" EntitySet="tbPantallas" />
-            <End Role="tbPantalla_Roles" EntitySet="tbPantalla_Roles" />
-          </AssociationSet>
           <AssociationSet Name="FK_tbPantalla_Roles_tbRoles_Role_Id" Association="Self.FK_tbPantalla_Roles_tbRoles_Role_Id">
             <End Role="tbRoles" EntitySet="tbRoles" />
             <End Role="tbPantalla_Roles" EntitySet="tbPantalla_Roles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbUsuario_tbPantalla_Roles_Paro_Id" Association="Self.FK_tbUsuario_tbPantalla_Roles_Paro_Id">
-            <End Role="tbPantalla_Roles" EntitySet="tbPantalla_Roles" />
-            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbUsuario_tbEmpleados_Empl_Id" Association="Self.FK_tbUsuario_tbEmpleados_Empl_Id">
-            <End Role="tbEmpleados" EntitySet="tbEmpleados" />
-            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
           </AssociationSet>
           <AssociationSet Name="FK_tbEntradas_tbSalas_Sala_Id" Association="Self.FK_tbEntradas_tbSalas_Sala_Id">
             <End Role="tbSalas" EntitySet="tbSalas" />
@@ -1722,22 +1554,6 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
           <AssociationSet Name="FK_tbSucursales_tbMunicipio_Muni_Codigo" Association="Self.FK_tbSucursales_tbMunicipio_Muni_Codigo">
             <End Role="tbMunicipio" EntitySet="tbMunicipio" />
             <End Role="tbSucursales" EntitySet="tbSucursales" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbFacturas_Detalles_tbFacturas_Encabezados_Fact_Id" Association="Self.FK_tbFacturas_Detalles_tbFacturas_Encabezados_Fact_Id">
-            <End Role="tbFacturas_Encabezados" EntitySet="tbFacturas_Encabezados" />
-            <End Role="tbFacturas_Detalles" EntitySet="tbFacturas_Detalles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbFacturas_Encabezados_tbClientes_Clie_Id" Association="Self.FK_tbFacturas_Encabezados_tbClientes_Clie_Id">
-            <End Role="tbClientes" EntitySet="tbClientes" />
-            <End Role="tbFacturas_Encabezados" EntitySet="tbFacturas_Encabezados" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbFacturas_Encabezados_tbEmpleado_Empl_Id" Association="Self.FK_tbFacturas_Encabezados_tbEmpleado_Empl_Id">
-            <End Role="tbEmpleados" EntitySet="tbEmpleados" />
-            <End Role="tbFacturas_Encabezados" EntitySet="tbFacturas_Encabezados" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbFacturas_Encabezados_tbTipo_Pagos_Tipo_Id" Association="Self.FK_tbFacturas_Encabezados_tbTipo_Pagos_Tipo_Id">
-            <End Role="tbTipo_Pagos" EntitySet="tbTipo_Pagos" />
-            <End Role="tbFacturas_Encabezados" EntitySet="tbFacturas_Encabezados" />
           </AssociationSet>
           <AssociationSet Name="FK_tbSalas_tbButacas_Salas_Buta_Id" Association="Self.FK_tbSalas_tbButacas_Salas_Buta_Id">
             <End Role="tbButacas_Salas" EntitySet="tbButacas_Salas" />
@@ -2144,6 +1960,48 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
             <End Role="tbCarteleras" EntitySet="tbCarteleras" />
             <End Role="tbSucursales" EntitySet="tbSucursales" />
           </AssociationSet>
+          <EntitySet Name="tbPantallas" EntityType="dbSsitemascinesModel.tbPantallas" />
+          <AssociationSet Name="FK_tbPantalla_Roles_tbPantallas_Pant_Id" Association="dbSsitemascinesModel.FK_tbPantalla_Roles_tbPantallas_Pant_Id">
+            <End Role="tbPantallas" EntitySet="tbPantallas" />
+            <End Role="tbPantalla_Roles" EntitySet="tbPantalla_Roles" />
+          </AssociationSet>
+          <EntitySet Name="tbFacturas_Encabezados" EntityType="dbSsitemascinesModel.tbFacturas_Encabezados" />
+          <AssociationSet Name="FK_tbFacturas_Detalles_tbFacturas_Encabezados_Fact_Id" Association="dbSsitemascinesModel.FK_tbFacturas_Detalles_tbFacturas_Encabezados_Fact_Id">
+            <End Role="tbFacturas_Encabezados" EntitySet="tbFacturas_Encabezados" />
+            <End Role="tbFacturas_Detalles" EntitySet="tbFacturas_Detalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbFacturas_Encabezados_tbClientes_Clie_Id" Association="dbSsitemascinesModel.FK_tbFacturas_Encabezados_tbClientes_Clie_Id">
+            <End Role="tbClientes" EntitySet="tbClientes" />
+            <End Role="tbFacturas_Encabezados" EntitySet="tbFacturas_Encabezados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbFacturas_Encabezados_tbEmpleado_Empl_Id" Association="dbSsitemascinesModel.FK_tbFacturas_Encabezados_tbEmpleado_Empl_Id">
+            <End Role="tbEmpleados" EntitySet="tbEmpleados" />
+            <End Role="tbFacturas_Encabezados" EntitySet="tbFacturas_Encabezados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbFacturas_Encabezados_tbPromociones_Prom_Id" Association="dbSsitemascinesModel.FK_tbFacturas_Encabezados_tbPromociones_Prom_Id">
+            <End Role="tbPromociones" EntitySet="tbPromociones" />
+            <End Role="tbFacturas_Encabezados" EntitySet="tbFacturas_Encabezados" />
+          </AssociationSet>
+          <EntitySet Name="tbUsuarios" EntityType="dbSsitemascinesModel.tbUsuarios" />
+          <AssociationSet Name="FK_tbUsuario_tbPantalla_Roles_Paro_Id" Association="dbSsitemascinesModel.FK_tbUsuario_tbPantalla_Roles_Paro_Id">
+            <End Role="tbRoles" EntitySet="tbRoles" />
+            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbUsuario_tbEmpleados_Empl_Id" Association="dbSsitemascinesModel.FK_tbUsuario_tbEmpleados_Empl_Id">
+            <End Role="tbEmpleados" EntitySet="tbEmpleados" />
+            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+          </AssociationSet>
+          <EntitySet Name="tbTipo_Pagos" EntityType="dbSsitemascinesModel.tbTipo_Pagos" />
+          <AssociationSet Name="FK_tbFacturas_Encabezados_tbTipo_Pagos_Tipo_Id" Association="dbSsitemascinesModel.FK_tbFacturas_Encabezados_tbTipo_Pagos_Tipo_Id">
+            <End Role="tbTipo_Pagos" EntitySet="tbTipo_Pagos" />
+            <End Role="tbFacturas_Encabezados" EntitySet="tbFacturas_Encabezados" />
+          </AssociationSet>
+          <FunctionImport Name="Sp_tbPantalla_Roles_Eliminar1" ReturnType="Collection(Int32)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_tbPantalla_Roles_Eliminar2" ReturnType="Collection(Int32)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_tbUsuarios_InicioSesion_Result">
           <Property Type="Int32" Name="Usua_Id" Nullable="false" />
@@ -2408,6 +2266,168 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="tbPantallas">
+          <Key>
+            <PropertyRef Name="Pant_Id" />
+          </Key>
+          <Property Name="Pant_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pant_Descripcion" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Pant_Identificador" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Pant_Creacion" Type="Int32" />
+          <Property Name="Pant_Fecha_Creacion" Type="DateTime" Precision="0" />
+          <Property Name="Pant_Modifica" Type="Int32" />
+          <Property Name="Pant_Fecha_Modifica" Type="DateTime" Precision="0" />
+          <Property Name="Pant_Estado" Type="Boolean" />
+          <NavigationProperty Name="tbPantalla_Roles" Relationship="dbSsitemascinesModel.FK_tbPantalla_Roles_tbPantallas_Pant_Id" FromRole="tbPantallas" ToRole="tbPantalla_Roles" />
+        </EntityType>
+        <Association Name="FK_tbPantalla_Roles_tbPantallas_Pant_Id">
+          <End Type="dbSsitemascinesModel.tbPantallas" Role="tbPantallas" Multiplicity="0..1" />
+          <End Type="dbSsitemascinesModel.tbPantalla_Roles" Role="tbPantalla_Roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPantallas">
+              <PropertyRef Name="Pant_Id" />
+            </Principal>
+            <Dependent Role="tbPantalla_Roles">
+              <PropertyRef Name="Pant_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tbFacturas_Encabezados">
+          <Key>
+            <PropertyRef Name="Fact_Id" />
+          </Key>
+          <Property Name="Fact_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fact_Fecha" Type="DateTime" Precision="0" />
+          <Property Name="Clie_Id" Type="Int32" />
+          <Property Name="Empl_Id" Type="Int32" />
+          <Property Name="Tipo_Id" Type="Int32" />
+          <Property Name="Fact_Usua_Creacion" Type="Int32" />
+          <Property Name="Fact_Fecha_Creacion" Type="DateTime" Precision="0" />
+          <Property Name="Fact_Usua_Modifica" Type="Int32" />
+          <Property Name="Fact_Fecha_Modifica" Type="DateTime" Precision="0" />
+          <Property Name="Fact_Estado" Type="Boolean" />
+          <Property Name="Prom_Id" Type="Int32" />
+          <NavigationProperty Name="tbFacturas_Detalles" Relationship="dbSsitemascinesModel.FK_tbFacturas_Detalles_tbFacturas_Encabezados_Fact_Id" FromRole="tbFacturas_Encabezados" ToRole="tbFacturas_Detalles" />
+          <NavigationProperty Name="tbClientes" Relationship="dbSsitemascinesModel.FK_tbFacturas_Encabezados_tbClientes_Clie_Id" FromRole="tbFacturas_Encabezados" ToRole="tbClientes" />
+          <NavigationProperty Name="tbEmpleados" Relationship="dbSsitemascinesModel.FK_tbFacturas_Encabezados_tbEmpleado_Empl_Id" FromRole="tbFacturas_Encabezados" ToRole="tbEmpleados" />
+          <NavigationProperty Name="tbPromociones" Relationship="dbSsitemascinesModel.FK_tbFacturas_Encabezados_tbPromociones_Prom_Id" FromRole="tbFacturas_Encabezados" ToRole="tbPromociones" />
+          <NavigationProperty Name="tbTipo_Pagos" Relationship="dbSsitemascinesModel.FK_tbFacturas_Encabezados_tbTipo_Pagos_Tipo_Id" FromRole="tbFacturas_Encabezados" ToRole="tbTipo_Pagos" />
+        </EntityType>
+        <Association Name="FK_tbFacturas_Detalles_tbFacturas_Encabezados_Fact_Id">
+          <End Type="dbSsitemascinesModel.tbFacturas_Encabezados" Role="tbFacturas_Encabezados" Multiplicity="0..1" />
+          <End Type="dbSsitemascinesModel.tbFacturas_Detalles" Role="tbFacturas_Detalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbFacturas_Encabezados">
+              <PropertyRef Name="Fact_Id" />
+            </Principal>
+            <Dependent Role="tbFacturas_Detalles">
+              <PropertyRef Name="Fact_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbFacturas_Encabezados_tbClientes_Clie_Id">
+          <End Type="dbSsitemascinesModel.tbClientes" Role="tbClientes" Multiplicity="0..1" />
+          <End Type="dbSsitemascinesModel.tbFacturas_Encabezados" Role="tbFacturas_Encabezados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbClientes">
+              <PropertyRef Name="Clie_Id" />
+            </Principal>
+            <Dependent Role="tbFacturas_Encabezados">
+              <PropertyRef Name="Clie_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbFacturas_Encabezados_tbEmpleado_Empl_Id">
+          <End Type="dbSsitemascinesModel.tbEmpleados" Role="tbEmpleados" Multiplicity="0..1" />
+          <End Type="dbSsitemascinesModel.tbFacturas_Encabezados" Role="tbFacturas_Encabezados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbEmpleados">
+              <PropertyRef Name="Empl_Id" />
+            </Principal>
+            <Dependent Role="tbFacturas_Encabezados">
+              <PropertyRef Name="Empl_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbFacturas_Encabezados_tbPromociones_Prom_Id">
+          <End Type="dbSsitemascinesModel.tbPromociones" Role="tbPromociones" Multiplicity="0..1" />
+          <End Type="dbSsitemascinesModel.tbFacturas_Encabezados" Role="tbFacturas_Encabezados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPromociones">
+              <PropertyRef Name="Prom_Id" />
+            </Principal>
+            <Dependent Role="tbFacturas_Encabezados">
+              <PropertyRef Name="Prom_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tbUsuarios">
+          <Key>
+            <PropertyRef Name="Usua_Id" />
+          </Key>
+          <Property Name="Usua_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usua_Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Usua_Contraseña" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Empl_Id" Type="Int32" />
+          <Property Name="Role_Id" Type="Int32" />
+          <Property Name="Usua_Creacion" Type="Int32" />
+          <Property Name="Usua_Fecha_Creacion" Type="DateTime" Precision="0" />
+          <Property Name="Usua_Modifica" Type="Int32" />
+          <Property Name="Usua_Fecha_Modifica" Type="DateTime" Precision="0" />
+          <Property Name="Usua_Estado" Type="Boolean" />
+          <Property Name="Usua_Administrador" Type="Boolean" />
+          <NavigationProperty Name="tbRoles" Relationship="dbSsitemascinesModel.FK_tbUsuario_tbPantalla_Roles_Paro_Id" FromRole="tbUsuarios" ToRole="tbRoles" />
+          <NavigationProperty Name="tbEmpleados" Relationship="dbSsitemascinesModel.FK_tbUsuario_tbEmpleados_Empl_Id" FromRole="tbUsuarios" ToRole="tbEmpleados" />
+        </EntityType>
+        <Association Name="FK_tbUsuario_tbPantalla_Roles_Paro_Id">
+          <End Type="dbSsitemascinesModel.tbRoles" Role="tbRoles" Multiplicity="0..1" />
+          <End Type="dbSsitemascinesModel.tbUsuarios" Role="tbUsuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbRoles">
+              <PropertyRef Name="Role_Id" />
+            </Principal>
+            <Dependent Role="tbUsuarios">
+              <PropertyRef Name="Role_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbUsuario_tbEmpleados_Empl_Id">
+          <End Type="dbSsitemascinesModel.tbEmpleados" Role="tbEmpleados" Multiplicity="0..1" />
+          <End Type="dbSsitemascinesModel.tbUsuarios" Role="tbUsuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbEmpleados">
+              <PropertyRef Name="Empl_Id" />
+            </Principal>
+            <Dependent Role="tbUsuarios">
+              <PropertyRef Name="Empl_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tbTipo_Pagos">
+          <Key>
+            <PropertyRef Name="Tipo_Id" />
+          </Key>
+          <Property Name="Tipo_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo_Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Cate_Usuario_Creacion" Type="Int32" />
+          <Property Name="Cate_Fecha_Creacion" Type="DateTime" Precision="3" />
+          <Property Name="Cate_Usuario_Modificacion" Type="Int32" />
+          <Property Name="Cate_Fecha_Modificacion" Type="DateTime" Precision="3" />
+          <Property Name="Tipo_Estado" Type="Boolean" />
+          <NavigationProperty Name="tbFacturas_Encabezados" Relationship="dbSsitemascinesModel.FK_tbFacturas_Encabezados_tbTipo_Pagos_Tipo_Id" FromRole="tbTipo_Pagos" ToRole="tbFacturas_Encabezados" />
+        </EntityType>
+        <Association Name="FK_tbFacturas_Encabezados_tbTipo_Pagos_Tipo_Id">
+          <End Type="dbSsitemascinesModel.tbTipo_Pagos" Role="tbTipo_Pagos" Multiplicity="0..1" />
+          <End Type="dbSsitemascinesModel.tbFacturas_Encabezados" Role="tbFacturas_Encabezados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbTipo_Pagos">
+              <PropertyRef Name="Tipo_Id" />
+            </Principal>
+            <Dependent Role="tbFacturas_Encabezados">
+              <PropertyRef Name="Tipo_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2428,20 +2448,6 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbPantallas">
-            <EntityTypeMapping TypeName="dbSsitemascinesModel.tbPantallas">
-              <MappingFragment StoreEntitySet="tbPantallas">
-                <ScalarProperty Name="Pant_Id" ColumnName="Pant_Id" />
-                <ScalarProperty Name="Pant_Descripcion" ColumnName="Pant_Descripcion" />
-                <ScalarProperty Name="Pant_Identificador" ColumnName="Pant_Identificador" />
-                <ScalarProperty Name="Pant_Creacion" ColumnName="Pant_Creacion" />
-                <ScalarProperty Name="Pant_Fecha_Creacion" ColumnName="Pant_Fecha_Creacion" />
-                <ScalarProperty Name="Pant_Modifica" ColumnName="Pant_Modifica" />
-                <ScalarProperty Name="Pant_Fecha_Modifica" ColumnName="Pant_Fecha_Modifica" />
-                <ScalarProperty Name="Pant_Estado" ColumnName="Pant_Estado" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tbRoles">
             <EntityTypeMapping TypeName="dbSsitemascinesModel.tbRoles">
               <MappingFragment StoreEntitySet="tbRoles">
@@ -2452,23 +2458,6 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
                 <ScalarProperty Name="Role_Modifica" ColumnName="Role_Modifica" />
                 <ScalarProperty Name="Role_Fecha_Modifica" ColumnName="Role_Fecha_Modifica" />
                 <ScalarProperty Name="Role_Estado" ColumnName="Role_Estado" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbUsuarios">
-            <EntityTypeMapping TypeName="dbSsitemascinesModel.tbUsuarios">
-              <MappingFragment StoreEntitySet="tbUsuarios">
-                <ScalarProperty Name="Usua_Administrador" ColumnName="Usua_Administrador" />
-                <ScalarProperty Name="Usua_Id" ColumnName="Usua_Id" />
-                <ScalarProperty Name="Usua_Nombre" ColumnName="Usua_Nombre" />
-                <ScalarProperty Name="Usua_Contraseña" ColumnName="Usua_Contraseña" />
-                <ScalarProperty Name="Empl_Id" ColumnName="Empl_Id" />
-                <ScalarProperty Name="Paro_Id" ColumnName="Paro_Id" />
-                <ScalarProperty Name="Usua_Creacion" ColumnName="Usua_Creacion" />
-                <ScalarProperty Name="Usua_Fecha_Creacion" ColumnName="Usua_Fecha_Creacion" />
-                <ScalarProperty Name="Usua_Modifica" ColumnName="Usua_Modifica" />
-                <ScalarProperty Name="Usua_Fecha_Modifica" ColumnName="Usua_Fecha_Modifica" />
-                <ScalarProperty Name="Usua_Estado" ColumnName="Usua_Estado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2526,22 +2515,6 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
                 <ScalarProperty Name="Fade_Usua_Modifica" ColumnName="Fade_Usua_Modifica" />
                 <ScalarProperty Name="Fade_Fecha_Modificacion" ColumnName="Fade_Fecha_Modificacion" />
                 <ScalarProperty Name="Fade_Estado" ColumnName="Fade_Estado" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbFacturas_Encabezados">
-            <EntityTypeMapping TypeName="dbSsitemascinesModel.tbFacturas_Encabezados">
-              <MappingFragment StoreEntitySet="tbFacturas_Encabezados">
-                <ScalarProperty Name="Fact_Id" ColumnName="Fact_Id" />
-                <ScalarProperty Name="Fact_Fecha" ColumnName="Fact_Fecha" />
-                <ScalarProperty Name="Clie_Id" ColumnName="Clie_Id" />
-                <ScalarProperty Name="Empl_Id" ColumnName="Empl_Id" />
-                <ScalarProperty Name="Tipo_Id" ColumnName="Tipo_Id" />
-                <ScalarProperty Name="Fact_Usua_Creacion" ColumnName="Fact_Usua_Creacion" />
-                <ScalarProperty Name="Fact_Fecha_Creacion" ColumnName="Fact_Fecha_Creacion" />
-                <ScalarProperty Name="Fact_Usua_Modifica" ColumnName="Fact_Usua_Modifica" />
-                <ScalarProperty Name="Fact_Fecha_Modifica" ColumnName="Fact_Fecha_Modifica" />
-                <ScalarProperty Name="Fact_Estado" ColumnName="Fact_Estado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2665,19 +2638,6 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbTipo_Pagos">
-            <EntityTypeMapping TypeName="dbSsitemascinesModel.tbTipo_Pagos">
-              <MappingFragment StoreEntitySet="tbTipo_Pagos">
-                <ScalarProperty Name="Tipo_Estado" ColumnName="Tipo_Estado" />
-                <ScalarProperty Name="Tipo_Id" ColumnName="Tipo_Id" />
-                <ScalarProperty Name="Tipo_Descripcion" ColumnName="Tipo_Descripcion" />
-                <ScalarProperty Name="Cate_Usuario_Creacion" ColumnName="Cate_Usuario_Creacion" />
-                <ScalarProperty Name="Cate_Fecha_Creacion" ColumnName="Cate_Fecha_Creacion" />
-                <ScalarProperty Name="Cate_Usuario_Modificacion" ColumnName="Cate_Usuario_Modificacion" />
-                <ScalarProperty Name="Cate_Fecha_Modificacion" ColumnName="Cate_Fecha_Modificacion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tbClientes">
             <EntityTypeMapping TypeName="dbSsitemascinesModel.tbClientes">
               <MappingFragment StoreEntitySet="tbClientes">
@@ -2731,7 +2691,6 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Sp_tbPantalla_Roles_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPantalla_Roles_Editar" />
-          <FunctionImportMapping FunctionImportName="Sp_tbPantalla_Roles_Eliminar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPantalla_Roles_Eliminar" />
           <FunctionImportMapping FunctionImportName="Sp_tbPantalla_Roles_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPantalla_Roles_Insertar" />
           <FunctionImportMapping FunctionImportName="Sp_tbPantalla_Roles_Mostrar" FunctionName="dbSsitemascinesModel.Store.Sp_tbPantalla_Roles_Mostrar">
             <ResultMapping>
@@ -3039,6 +2998,68 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tbPantallas">
+            <EntityTypeMapping TypeName="dbSsitemascinesModel.tbPantallas">
+              <MappingFragment StoreEntitySet="tbPantallas">
+                <ScalarProperty Name="Pant_Estado" ColumnName="Pant_Estado" />
+                <ScalarProperty Name="Pant_Fecha_Modifica" ColumnName="Pant_Fecha_Modifica" />
+                <ScalarProperty Name="Pant_Modifica" ColumnName="Pant_Modifica" />
+                <ScalarProperty Name="Pant_Fecha_Creacion" ColumnName="Pant_Fecha_Creacion" />
+                <ScalarProperty Name="Pant_Creacion" ColumnName="Pant_Creacion" />
+                <ScalarProperty Name="Pant_Identificador" ColumnName="Pant_Identificador" />
+                <ScalarProperty Name="Pant_Descripcion" ColumnName="Pant_Descripcion" />
+                <ScalarProperty Name="Pant_Id" ColumnName="Pant_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbFacturas_Encabezados">
+            <EntityTypeMapping TypeName="dbSsitemascinesModel.tbFacturas_Encabezados">
+              <MappingFragment StoreEntitySet="tbFacturas_Encabezados">
+                <ScalarProperty Name="Prom_Id" ColumnName="Prom_Id" />
+                <ScalarProperty Name="Fact_Estado" ColumnName="Fact_Estado" />
+                <ScalarProperty Name="Fact_Fecha_Modifica" ColumnName="Fact_Fecha_Modifica" />
+                <ScalarProperty Name="Fact_Usua_Modifica" ColumnName="Fact_Usua_Modifica" />
+                <ScalarProperty Name="Fact_Fecha_Creacion" ColumnName="Fact_Fecha_Creacion" />
+                <ScalarProperty Name="Fact_Usua_Creacion" ColumnName="Fact_Usua_Creacion" />
+                <ScalarProperty Name="Tipo_Id" ColumnName="Tipo_Id" />
+                <ScalarProperty Name="Empl_Id" ColumnName="Empl_Id" />
+                <ScalarProperty Name="Clie_Id" ColumnName="Clie_Id" />
+                <ScalarProperty Name="Fact_Fecha" ColumnName="Fact_Fecha" />
+                <ScalarProperty Name="Fact_Id" ColumnName="Fact_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbUsuarios">
+            <EntityTypeMapping TypeName="dbSsitemascinesModel.tbUsuarios">
+              <MappingFragment StoreEntitySet="tbUsuarios">
+                <ScalarProperty Name="Usua_Administrador" ColumnName="Usua_Administrador" />
+                <ScalarProperty Name="Usua_Estado" ColumnName="Usua_Estado" />
+                <ScalarProperty Name="Usua_Fecha_Modifica" ColumnName="Usua_Fecha_Modifica" />
+                <ScalarProperty Name="Usua_Modifica" ColumnName="Usua_Modifica" />
+                <ScalarProperty Name="Usua_Fecha_Creacion" ColumnName="Usua_Fecha_Creacion" />
+                <ScalarProperty Name="Usua_Creacion" ColumnName="Usua_Creacion" />
+                <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+                <ScalarProperty Name="Empl_Id" ColumnName="Empl_Id" />
+                <ScalarProperty Name="Usua_Contraseña" ColumnName="Usua_Contraseña" />
+                <ScalarProperty Name="Usua_Nombre" ColumnName="Usua_Nombre" />
+                <ScalarProperty Name="Usua_Id" ColumnName="Usua_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbTipo_Pagos">
+            <EntityTypeMapping TypeName="dbSsitemascinesModel.tbTipo_Pagos">
+              <MappingFragment StoreEntitySet="tbTipo_Pagos">
+                <ScalarProperty Name="Tipo_Estado" ColumnName="Tipo_Estado" />
+                <ScalarProperty Name="Cate_Fecha_Modificacion" ColumnName="Cate_Fecha_Modificacion" />
+                <ScalarProperty Name="Cate_Usuario_Modificacion" ColumnName="Cate_Usuario_Modificacion" />
+                <ScalarProperty Name="Cate_Fecha_Creacion" ColumnName="Cate_Fecha_Creacion" />
+                <ScalarProperty Name="Cate_Usuario_Creacion" ColumnName="Cate_Usuario_Creacion" />
+                <ScalarProperty Name="Tipo_Descripcion" ColumnName="Tipo_Descripcion" />
+                <ScalarProperty Name="Tipo_Id" ColumnName="Tipo_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Sp_tbPantalla_Roles_Eliminar2" FunctionName="dbSsitemascinesModel.Store.Sp_tbPantalla_Roles_Eliminar" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

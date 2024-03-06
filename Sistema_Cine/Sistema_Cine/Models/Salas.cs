@@ -18,7 +18,6 @@ namespace Sistema_Cine.Models
         [Display(Name = "Salas Id:")]
         public int Sala_Id { get; set; }
         [Display(Name = "Descripcion:")]
-   
         [Required(ErrorMessage = "El campos {0} es requerido")]
         public string Sala_Descripcion { get; set; }
         [Display(Name = "Butacas:")]

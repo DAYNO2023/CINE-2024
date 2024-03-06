@@ -19,7 +19,6 @@ namespace Sistema_Cine.Models
         [Display(Name = "Pantalla_ID")]
         public int Pant_Id { get; set; }
         [Display(Name = "Descripcion")]
-        [RegularExpression("^[a-zA-Z ]+$", ErrorMessage = "El dato es incorrecto")]
         [Required(ErrorMessage = "El campos {0} es requerido")]
         public string Pant_Descripcion { get; set; }
         [Display(Name = "Identificador")]

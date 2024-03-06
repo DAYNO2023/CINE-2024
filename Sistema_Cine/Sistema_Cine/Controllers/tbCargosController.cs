@@ -49,27 +49,16 @@ namespace Sistema_Cine.Controllers
         public ActionResult Create([Bind(Include = "Carg_Id,Carg_Descripcion,Carg_Usuario_Creacion,Carg_Fecha_Creacion,Carg_Usuario_Modificacion,Carg_Fecha_Modificacion")] tbCargos tbCargos)
         {
             ModelState.Remove("Carg_Fecha_Creacion");
-            ModelState.Remove("Carg_Fecha_Creacion");
-            ModelState.Remove("Carg_Usuario_Creacion");
-            ModelState.Remove("Carg_Fecha_Creacion");
+            ModelState.Remove("Carg_Fecha_Modificacion");
 
 
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    int usuario = Convert.ToInt32(Session["idusaio"]);
-                    db.Sp_tbCargos_Insertar(tbCargos.Carg_Descripcion, usuario, DateTime.Now, true);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                catch (FormatException ex)
-                {
-                    // Handle the exception (e.g., log it, show an error message)
-                    TempData["Error"] = "Error converting id to int: " + ex.Message;
-                    return RedirectToAction("Index");
-                }
+                // db.SP_tbCategoria_Insert()
+                db.tbCargos.Add(tbCargos);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
 
             return View(tbCargos);
@@ -99,25 +88,22 @@ namespace Sistema_Cine.Controllers
         {
             if (ModelState.IsValid)
             {
-                try
+                int id = Convert.ToInt32(Session["idtipo"]);
+
+                // Buscar el registro existente en la base de datos
+                var cargosExistente = db.tbCargos.Find(id);
+
+                if (cargosExistente != null)
                 {
-                    int id = Convert.ToInt32(Session["idtipo"]);
-                    int usuario = Convert.ToInt32(Session["idusaio"]);
-                    db.Sp_tbCargos_Editar(id, tbCargos.Carg_Descripcion, usuario, DateTime.Now, true);
-
-
                     // Actualizar las propiedades del registro existente con los valores del modelo recibido
+                    cargosExistente.Carg_Descripcion = tbCargos.Carg_Descripcion;
 
+                    // Cambiar el estado de la entidad a modificada
+                    db.Entry(cargosExistente).State = EntityState.Modified;
 
                     // Guardar los cambios en la base de datos
                     db.SaveChanges();
 
-                    return RedirectToAction("Index");
-                }
-                catch (FormatException ex)
-                {
-                    // Handle the exception (e.g., log it, show an error message)
-                    TempData["Error"] = "Error converting id to int: " + ex.Message;
                     return RedirectToAction("Index");
                 }
             }
@@ -146,7 +132,6 @@ namespace Sistema_Cine.Controllers
         {
             tbCargos tbCargos = db.tbCargos.Find(id);
             db.tbCargos.Remove(tbCargos);
-            //db.Sp_tbCargos_Eliminar(id);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

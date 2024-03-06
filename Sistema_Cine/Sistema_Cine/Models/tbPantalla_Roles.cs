@@ -14,12 +14,6 @@ namespace Sistema_Cine.Models
     
     public partial class tbPantalla_Roles
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tbPantalla_Roles()
-        {
-            this.tbUsuarios = new HashSet<tbUsuarios>();
-        }
-    
         public int Paro_Id { get; set; }
         public Nullable<int> Role_Id { get; set; }
         public Nullable<int> Pant_Id { get; set; }
@@ -29,9 +23,7 @@ namespace Sistema_Cine.Models
         public Nullable<System.DateTime> Pant_Fecha_Modifica { get; set; }
         public Nullable<bool> Pant_Estado { get; set; }
     
-        public virtual tbPantallas tbPantallas { get; set; }
         public virtual tbRoles tbRoles { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbUsuarios> tbUsuarios { get; set; }
+        public virtual tbPantallas tbPantallas { get; set; }
     }
 }

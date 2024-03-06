@@ -5,14 +5,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 <div class="card-body"></div>
 <div class="card">
     <div class="card-header">
         <h2 style="text-align:center">Detalle del Cliente</h2>
         <div class="d-flex justify-content-end">
             @*<button type="button" class="btn btn-primary" onclick="window.location.href='@Url.Action("Edit", "Edit", new { id = Model.Clie_Id })'">
-                    Editar
-                </button>*@
+            Editar
+        </button>*@
             @Html.ActionLink("Edit", "Edit", new { id = Model.Clie_Id }, new { @class = "btn btn-warning" })
             ||
             <button type="button" class="btn btn-primary" onclick="window.location.href='@Url.Action("Index")'">
@@ -100,9 +101,7 @@
                 </div>
             </div>
         </div>
-        </div>
-    </div>
-        <table class="table table-striped table-bordered table-hover dataTables-example" id="tablaOne">
+        <table class="table table-dark">
             <thead>
                 <tr>
                     <th>Acciones</th>
@@ -114,17 +113,19 @@
             <tbody>
                 <tr>
                     <th scope="row">Creador</th>
-                    <td>  @Html.DisplayFor(model => model.Clie_Usua_Creacion)</td>
-                    <td> @Html.DisplayFor(model => model.Clie_Fecha_Creacion)</td>
+                    <td>@Html.DisplayFor(model => model.Clie_Usua_Creacion) </td>
+                    <td>@Html.DisplayFor(model => model.Clie_Fecha_Creacion)</td>
 
                 </tr>
                 <tr>
                     <th scope="row">Modificar</th>
-                    <td> @Html.DisplayFor(model => model.Clie_Usua_Modifica)</td>
-                    <td> @Html.DisplayFor(model => model.Clie_Fecha_Modifica)</td>
+                    <td>@Html.DisplayFor(model => model.Clie_Usua_Modifica)</td>
+                    <td>@Html.DisplayFor(model => model.Clie_Fecha_Modifica)</td>
                 </tr>
             </tbody>
         </table>
+    </div>
+    </div>
 
 
 

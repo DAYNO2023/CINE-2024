@@ -725,60 +725,23 @@
     <!-- Toastr -->
     <script src="~/Content/js/plugins/toastr/toastr.min.js"></script>
 
-    <script src="../Content/plugins/jquery/jquery.js"></script>
 
     <script>
         $(document).ready(function () {
 
 
-            $("input.nombre").bind('keypress', function (event) {
-                var regex = new RegExp("^[a-zA-Z ]+$");
-                var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-                if (!regex.test(key)) {
-                    event.preventDefault();
-                    return false;
-                }
-            });
-            $("input.num").bind('keypress', function (event) {
-                var regex = new RegExp("^[0-9]+$");
-                var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-                if (!regex.test(key)) {
-                    event.preventDefault();
-                    return false;
-                }
-            });
-            //Alphanumérico y espacios
-            $("input.al").bind('keypress', function (event) {
-                var regex = new RegExp("^[a-zA-Z0-9 ]+$");
-                var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-                if (!regex.test(key)) {
-                    event.preventDefault();
-                    return false;
-                }
-            });
+      
 
+            //setTimeout(function () {
+            //    toastr.options = {
+            //        closeButton: true,
+            //        progressBar: true,
+            //        showMethod: 'slideDown',
+            //        timeOut: 4000
+            //    };
+            //    toastr.success('Responsive Admin Theme', 'Welcome to INSPINIA');
 
-
-            setTimeout(function () {
-                toastr.options = {
-                    closeButton: true,
-                    progressBar: true,
-                    showMethod: 'fadeIn',
-                    timeOut: 4000
-                };
-                toastr.success('Local de locales', 'Bienvenido a Cine+');
-
-            }, 1300);
-
-            @if(TempData["Exito"] != null)
-            {
-                @:toastr.success('@TempData["Exito"]', 'Exito');
-            }
-              @if(TempData["Error"] != null)
-            {
-                @:toastr.success('@TempData["Error"]', 'Error');
-            }
-            
+            //}, 1300);
 
 
             var data1 = [
@@ -869,6 +832,30 @@
     </script>
     <script>
         $(document).ready(function () {
+
+            $("#tablaOneRoles").DataTable({
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+
+                }
+            })
             $("#tablaOne").DataTable({
                 language: {
                     "decimal": "",

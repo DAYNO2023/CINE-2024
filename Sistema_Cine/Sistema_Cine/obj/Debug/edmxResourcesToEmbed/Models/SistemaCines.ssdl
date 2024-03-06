@@ -19,7 +19,7 @@
     </Key>
     <Property Name="Pant_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Pant_Descripcion" Type="varchar" MaxLength="60" />
-    <Property Name="Pant_Identificador" Type="bit" />
+    <Property Name="Pant_Identificador" Type="varchar" MaxLength="50" />
     <Property Name="Pant_Creacion" Type="int" />
     <Property Name="Pant_Fecha_Creacion" Type="date" />
     <Property Name="Pant_Modifica" Type="int" />
@@ -45,14 +45,14 @@
     <Property Name="Usua_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Usua_Nombre" Type="varchar" MaxLength="60" />
     <Property Name="Usua_Contraseña" Type="varchar(max)" />
-    <Property Name="Usua_Administrador" Type="bit" />
     <Property Name="Empl_Id" Type="int" />
-    <Property Name="Paro_Id" Type="int" />
+    <Property Name="Role_Id" Type="int" />
     <Property Name="Usua_Creacion" Type="int" />
     <Property Name="Usua_Fecha_Creacion" Type="date" />
     <Property Name="Usua_Modifica" Type="int" />
     <Property Name="Usua_Fecha_Modifica" Type="date" />
     <Property Name="Usua_Estado" Type="bit" />
+    <Property Name="Usua_Administrador" Type="bit" />
   </EntityType>
   <EntityType Name="tbCarteleras">
     <Key>
@@ -137,6 +137,7 @@
     <Property Name="Fact_Usua_Modifica" Type="int" />
     <Property Name="Fact_Fecha_Modifica" Type="date" />
     <Property Name="Fact_Estado" Type="bit" />
+    <Property Name="Prom_Id" Type="int" />
   </EntityType>
   <EntityType Name="tbButacas_Salas">
     <Key>
@@ -222,17 +223,6 @@
     <Property Name="Prec_Fecha_Modificacion" Type="date" />
     <Property Name="Prec_Estado" Type="bit" />
   </EntityType>
-  <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPrecios_Bitacora' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="tbPrecios_Bitacora">
-          <Property Name="Bitp_Id" Type="int" />
-          <Property Name="Bitp_Descuento" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="Bitp_Descripcion" Type="varchar" MaxLength="100" />
-          <Property Name="Bitp_Usuario_Creacion" Type="int" />
-          <Property Name="Bitp_Fecha_Creacion" Type="date" />
-          <Property Name="Bitp_Usuario_Modificacion" Type="int" />
-          <Property Name="Bitp_Fecha_Modificacion" Type="date" />
-        </EntityType>-->
   <EntityType Name="tbPromociones">
     <Key>
       <PropertyRef Name="Prom_Id" />
@@ -247,17 +237,6 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPrecios_Bitacora' no 
     <Property Name="Prom_Fecha_Modificacion" Type="date" />
     <Property Name="Prom_Estado" Type="bit" />
   </EntityType>
-  <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="tbPromociones_Bitacora">
-          <Property Name="Bita_Id" Type="int" />
-          <Property Name="Bita_Descuento" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="Bita_Descripcion" Type="varchar" MaxLength="100" />
-          <Property Name="Bita_Usuario_Creacion" Type="int" />
-          <Property Name="Bita_Fecha_Creacion" Type="date" />
-          <Property Name="Bita_Usuario_Modificacion" Type="int" />
-          <Property Name="Bita_Fecha_Modificacion" Type="date" />
-        </EntityType>-->
   <EntityType Name="tbSalas">
     <Key>
       <PropertyRef Name="Sala_Id" />
@@ -278,9 +257,9 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
     <Property Name="Tipo_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Tipo_Descripcion" Type="varchar" MaxLength="100" />
     <Property Name="Cate_Usuario_Creacion" Type="int" />
-    <Property Name="Cate_Fecha_Creacion" Type="date" />
+    <Property Name="Cate_Fecha_Creacion" Type="datetime" />
     <Property Name="Cate_Usuario_Modificacion" Type="int" />
-    <Property Name="Cate_Fecha_Modificacion" Type="date" />
+    <Property Name="Cate_Fecha_Modificacion" Type="datetime" />
     <Property Name="Tipo_Estado" Type="bit" />
   </EntityType>
   <EntityType Name="tbClientes">
@@ -466,6 +445,18 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_tbFacturas_Encabezados_tbPromociones_Prom_Id">
+    <End Role="tbPromociones" Type="Self.tbPromociones" Multiplicity="0..1" />
+    <End Role="tbFacturas_Encabezados" Type="Self.tbFacturas_Encabezados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbPromociones">
+        <PropertyRef Name="Prom_Id" />
+      </Principal>
+      <Dependent Role="tbFacturas_Encabezados">
+        <PropertyRef Name="Prom_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_tbFacturas_Encabezados_tbTipo_Pagos_Tipo_Id">
     <End Role="tbTipo_Pagos" Type="Self.tbTipo_Pagos" Multiplicity="0..1" />
     <End Role="tbFacturas_Encabezados" Type="Self.tbFacturas_Encabezados" Multiplicity="*" />
@@ -611,14 +602,14 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_tbUsuario_tbPantalla_Roles_Paro_Id">
-    <End Role="tbPantalla_Roles" Type="Self.tbPantalla_Roles" Multiplicity="0..1" />
+    <End Role="tbRoles" Type="Self.tbRoles" Multiplicity="0..1" />
     <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="tbPantalla_Roles">
-        <PropertyRef Name="Paro_Id" />
+      <Principal Role="tbRoles">
+        <PropertyRef Name="Role_Id" />
       </Principal>
       <Dependent Role="tbUsuarios">
-        <PropertyRef Name="Paro_Id" />
+        <PropertyRef Name="Role_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -893,7 +884,7 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
     <Parameter Name="Tipo_Id" Type="int" Mode="In" />
     <Parameter Name="Tipo_Descripcion" Type="varchar" Mode="In" />
     <Parameter Name="Cate_Usuario_Modificacion" Type="varchar" Mode="In" />
-    <Parameter Name="Cate_Fecha_Modificacion" Type="date" Mode="In" />
+    <Parameter Name="Cate_Fecha_Modificacion" Type="datetime" Mode="In" />
   </Function>
   <Function Name="Sp_tbTipo_Pagos_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
     <Parameter Name="Id" Type="int" Mode="In" />
@@ -1042,6 +1033,10 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
       <End Role="tbEmpleados" EntitySet="tbEmpleados" />
       <End Role="tbFacturas_Encabezados" EntitySet="tbFacturas_Encabezados" />
     </AssociationSet>
+    <AssociationSet Name="FK_tbFacturas_Encabezados_tbPromociones_Prom_Id" Association="Self.FK_tbFacturas_Encabezados_tbPromociones_Prom_Id">
+      <End Role="tbPromociones" EntitySet="tbPromociones" />
+      <End Role="tbFacturas_Encabezados" EntitySet="tbFacturas_Encabezados" />
+    </AssociationSet>
     <AssociationSet Name="FK_tbFacturas_Encabezados_tbTipo_Pagos_Tipo_Id" Association="Self.FK_tbFacturas_Encabezados_tbTipo_Pagos_Tipo_Id">
       <End Role="tbTipo_Pagos" EntitySet="tbTipo_Pagos" />
       <End Role="tbFacturas_Encabezados" EntitySet="tbFacturas_Encabezados" />
@@ -1091,7 +1086,7 @@ advertencia 6013: La tabla o vista 'dbSsitemascines.Gral.tbPromociones_Bitacora'
       <End Role="tbUsuarios" EntitySet="tbUsuarios" />
     </AssociationSet>
     <AssociationSet Name="FK_tbUsuario_tbPantalla_Roles_Paro_Id" Association="Self.FK_tbUsuario_tbPantalla_Roles_Paro_Id">
-      <End Role="tbPantalla_Roles" EntitySet="tbPantalla_Roles" />
+      <End Role="tbRoles" EntitySet="tbRoles" />
       <End Role="tbUsuarios" EntitySet="tbUsuarios" />
     </AssociationSet>
   </EntityContainer>

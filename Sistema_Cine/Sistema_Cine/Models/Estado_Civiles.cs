@@ -21,7 +21,7 @@ namespace Sistema_Cine.Models
 
         public int Esta_Id { get; set; }
         [Display(Name = "Estado Civil")]
-        [RegularExpression("^[a-zA-Z ]+$", ErrorMessage = "El dato es incorrecto")]
+        [RegularExpression("^[a-zA-Z ]+$ El Datos es incorrecto")]
         public string Esta_Descripcion { get; set; }
         [Display(Name = "User Creacion")]
         public Nullable<int> Esta_Usuario_Creacion { get; set; }

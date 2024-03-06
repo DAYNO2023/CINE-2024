@@ -19,7 +19,6 @@ namespace Sistema_Cine.Models
         [Display(Name = "Sucursales Id:")]
         public int Sucu_Id { get; set; }
         [Display(Name = "Descripcion :")]
-        [RegularExpression("^[a-zA-Z ]+$", ErrorMessage = "El dato es incorrecto")]
         [Required(ErrorMessage = "El campos {0} es requerido")]
         public string Sucu_Descripcion { get; set; }
         [Display(Name = "Direccion:")]

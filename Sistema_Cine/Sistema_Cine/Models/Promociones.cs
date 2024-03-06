@@ -20,11 +20,9 @@ namespace Sistema_Cine.Models
         [Display(Name = "Promociones Id:")]
         public int Prom_Id { get; set; }
         [Display(Name = "Descuentos:")]
-        [RegularExpression("^[0-9]+$", ErrorMessage = "El dato debe ser numérico")]
         [Required(ErrorMessage = "El campos {0} es requerido")]
         public Nullable<decimal> Prom_Descuento { get; set; }
-        [Display(Name = "Promociones:")]
-        [RegularExpression("^[a-zA-Z ]+$", ErrorMessage = "El dato es incorrecto")]
+        [Display(Name = "Descripcion:")]
         [Required(ErrorMessage = "El campos {0} es requerido")]
         public string Prom_Descripcion { get; set; }
         [Display(Name = "Precio Id:")]

@@ -30,11 +30,13 @@ namespace Sistema_Cine.Models
         public Nullable<int> Fact_Usua_Modifica { get; set; }
         public Nullable<System.DateTime> Fact_Fecha_Modifica { get; set; }
         public Nullable<bool> Fact_Estado { get; set; }
+        public Nullable<int> Prom_Id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbFacturas_Detalles> tbFacturas_Detalles { get; set; }
         public virtual tbClientes tbClientes { get; set; }
         public virtual tbEmpleados tbEmpleados { get; set; }
+        public virtual tbPromociones tbPromociones { get; set; }
         public virtual tbTipo_Pagos tbTipo_Pagos { get; set; }
     }
 }

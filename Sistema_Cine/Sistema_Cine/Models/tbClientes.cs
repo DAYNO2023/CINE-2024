@@ -35,9 +35,9 @@ namespace Sistema_Cine.Models
         public Nullable<System.DateTime> Clie_Fecha_Modifica { get; set; }
         public Nullable<bool> Clie_Estado { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbFacturas_Encabezados> tbFacturas_Encabezados { get; set; }
         public virtual tbEstado_Civil tbEstado_Civil { get; set; }
         public virtual tbMunicipio tbMunicipio { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbFacturas_Encabezados> tbFacturas_Encabezados { get; set; }
     }
 }

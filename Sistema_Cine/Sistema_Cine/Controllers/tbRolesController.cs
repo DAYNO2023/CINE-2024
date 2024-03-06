@@ -13,7 +13,6 @@ namespace Sistema_Cine.Controllers
     public class tbRolesController : Controller
     {
         private dbSsitemascinesEntities5 db = new dbSsitemascinesEntities5();
-
         // GET: tbRoles
         public ActionResult Index()
         {
@@ -35,9 +34,46 @@ namespace Sistema_Cine.Controllers
             return View(tbRoles);
         }
 
+        [HttpGet]
+        public ActionResult BuscarPantallasPorRol(string roleDescripcion)
+        {
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(roleDescripcion))
+                {
+                    var pantallasRolesList = db.tbPantalla_Roles
+                        .Include(pr => pr.tbRoles)
+                        .Include(pr => pr.tbPantallas)
+                        .Where(pr => pr.tbRoles.Role_Descripcion.Contains(roleDescripcion))
+                        .ToList();
+
+                    var pantallasFiltradas = pantallasRolesList
+                        .Select(pr => new
+                        {
+                            Role_Id = pr.tbRoles.Role_Id,
+                            Role_Descripcion = pr.tbRoles.Role_Descripcion,
+                            Pant_Id = pr.tbPantallas.Pant_Id,
+                            Pant_Descripcion = pr.tbPantallas.Pant_Descripcion,
+                })
+                        .Distinct()
+                        .ToList();
+
+                    return Json(new { success = true, pantallasFiltradas }, JsonRequestBehavior.AllowGet);
+                }
+
+                return Json(new { success = false, message = "La descripción de rol está vacía o nula." }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = "Error en la búsqueda: " + ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
         // GET: tbRoles/Create
         public ActionResult Create()
         {
+            ViewBag.PantallasList = db.tbPantallas.ToList();
+            ViewBag.PantallasRolesList = db.tbPantalla_Roles.Include(pr => pr.tbRoles).Include(pr => pr.tbPantallas).ToList();
             return View();
         }
 
@@ -48,32 +84,73 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Role_Id,Role_Descripcion,Role_Creacion,Role_Fecha_Creacion,Role_Modifica,Role_Fecha_Modifica,Role_Estado")] tbRoles tbRoles)
         {
-
-            ModelState.Remove("Role_Creacion");
-            ModelState.Remove("Role_Fecha_Creacion");
-            ModelState.Remove("Role_Modifica");
-            ModelState.Remove("Role_Fecha_Modifica");
-            ModelState.Remove("Role_Estado");
             if (ModelState.IsValid)
             {
-                try
-                {
-                    db.Sp_tbRoles_Insertar(tbRoles.Role_Descripcion, tbRoles.Role_Creacion, DateTime.Now);
-
-                    //db.tbRoles.Add(tbRoles);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                catch (FormatException ex)
-                {
-                    // Handle the exception (e.g., log it, show an error message)
-                    TempData["Error"] = "Error converting id to int: " + ex.Message;
-                    return RedirectToAction("Index");
-                }
+                db.tbRoles.Add(tbRoles);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-
+            ViewBag.PantallasList = db.tbPantallas.ToList();
+            ViewBag.PantallasRolesList = db.tbPantalla_Roles.Include(pr => pr.tbRoles).Include(pr => pr.tbPantallas).ToList();
             return View(tbRoles);
         }
+        [HttpPost]
+        public ActionResult AgregarPantallaRol(string Role_Descripcion, string Pant_Descripcion)
+        {
+            try
+            {
+                var existingRole = db.tbRoles.FirstOrDefault(r => r.Role_Descripcion == Role_Descripcion);
+
+                int roleId;
+
+                if (existingRole == null)
+                {
+                    var nuevoRol = new tbRoles
+                    {
+                        Role_Descripcion = Role_Descripcion,
+                    };
+
+                    db.tbRoles.Add(nuevoRol);
+                    db.SaveChanges();
+
+                    roleId = nuevoRol.Role_Id;
+                }
+                else
+                {
+                    roleId = existingRole.Role_Id;
+                }
+                var pantalla = db.tbPantallas.FirstOrDefault(p => p.Pant_Descripcion == Pant_Descripcion);
+
+                if (pantalla != null)
+                {
+                    var nuevaRelacion = new tbPantalla_Roles
+                    {
+                        Role_Id = roleId, 
+                        Pant_Id = pantalla.Pant_Id,
+                    };
+
+                    db.tbPantalla_Roles.Add(nuevaRelacion);
+                    db.SaveChanges();
+
+                    var pantallasRolesList = db.tbPantalla_Roles
+                        .Include(pr => pr.tbRoles)
+                        .Include(pr => pr.tbPantallas)
+                        .ToList();
+                    ViewBag.PantallasRolesList = pantallasRolesList;
+                    return Json(new { success = true, message = "Relación y rol agregados correctamente." });
+                }
+                else
+                {
+                    return Json(new { success = false, message = "La pantalla especificada no existe." });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = "Error al agregar la relación y el rol." });
+            }
+        }
+
+
 
         // GET: tbRoles/Edit/5
         public ActionResult Edit(int? id)
@@ -87,6 +164,8 @@ namespace Sistema_Cine.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.PantallasList = db.tbPantallas.ToList();
+            ViewBag.PantallasRolesList = db.tbPantalla_Roles.Include(pr => pr.tbRoles).Include(pr => pr.tbPantallas).ToList();
             return View(tbRoles);
         }
 
@@ -97,26 +176,24 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Role_Id,Role_Descripcion,Role_Creacion,Role_Fecha_Creacion,Role_Modifica,Role_Fecha_Modifica,Role_Estado")] tbRoles tbRoles)
         {
-            ModelState.Remove("Role_Creacion");
-            ModelState.Remove("Role_Fecha_Creacion");
-            ModelState.Remove("Role_Modifica");
-            ModelState.Remove("Role_Fecha_Modifica");
-            ModelState.Remove("Role_Estado");
             if (ModelState.IsValid)
             {
-                try{
-                    int id = Convert.ToInt32(Session["idtipo"]);
-                    int usuario = Convert.ToInt32(Session["idusaio"]);
-                    db.Sp_tbRoles_Editar(id, tbRoles.Role_Descripcion, usuario, DateTime.Now, true);
-                    return RedirectToAction("Index");
-                }
-                catch (FormatException ex)
+
+                int id = Convert.ToInt32(Session["idtipo"]);
+                var rolesexistenete = db.tbRoles.Find(id);
+
+                if (rolesexistenete != null)
                 {
-                    // Handle the exception (e.g., log it, show an error message)
-                    TempData["Error"] = "Error converting id to int: " + ex.Message;
+                    db.Entry(rolesexistenete).Reload();
+                    rolesexistenete.Role_Descripcion = tbRoles.Role_Descripcion;
+
+
+                    db.SaveChanges();
                     return RedirectToAction("Index");
                 }
             }
+            ViewBag.PantallasList = db.tbPantallas.ToList();
+            ViewBag.PantallasRolesList = db.tbPantalla_Roles.Include(pr => pr.tbRoles).Include(pr => pr.tbPantallas).ToList();
             return View(tbRoles);
         }
 
@@ -142,7 +219,6 @@ namespace Sistema_Cine.Controllers
         {
             tbRoles tbRoles = db.tbRoles.Find(id);
             db.tbRoles.Remove(tbRoles);
-            //db.Sp_tbRoles_Eliminar(id);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -155,5 +231,16 @@ namespace Sistema_Cine.Controllers
             }
             base.Dispose(disposing);
         }
+
+        [HttpPost]
+        public ActionResult EliminarPantallaRol(int id)
+        {
+            db.Sp_tbPantalla_Roles_Eliminar(id);
+            db.SaveChanges();
+            return Redirect("Index");
+        }
+
+
+
     }
 }

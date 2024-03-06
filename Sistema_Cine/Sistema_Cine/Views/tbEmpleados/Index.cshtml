@@ -24,6 +24,9 @@
                             @Html.DisplayNameFor(model => model.Empl_Nombre)
                         </th>
                         <th>
+                            @Html.DisplayNameFor(model => model.Empl_Apellido)
+                        </th>
+                        <th>
                             @Html.DisplayNameFor(model => model.Empl_Identidad)
                         </th>
                         <th>
@@ -32,31 +35,30 @@
                         <th>
                             @Html.DisplayNameFor(model => model.Empl_Telefono)
                         </th>
-                        @* <th>
-            @Html.DisplayNameFor(model => model.Empl_FecNacimiento)
-        </th>
-        <th>
-                @Html.DisplayNameFor(model => model.Empl_Usua_Creacion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Empl_Fecha_Creacion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Empl_Usua_Modifica)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Empl_Fecha_Modifica)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Empl_Estado)
-            </th>
-                             <th>
-                            @Html.DisplayNameFor(model => model.tbEstado_Civil.Esta_Descripcion)
+                        <th>
+                            @Html.DisplayNameFor(model => model.Empl_FecNacimiento)
+                        </th>
+                        @*<th>
+                            @Html.DisplayNameFor(model => model.Empl_Usua_Creacion)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Empl_Fecha_Creacion)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Empl_Usua_Modifica)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Empl_Fecha_Modifica)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Empl_Estado)
                         </th>*@
                         <th>
                             @Html.DisplayNameFor(model => model.tbCargos.Carg_Descripcion)
                         </th>
-
+                        <th>
+                            @Html.DisplayNameFor(model => model.tbEstado_Civil.Esta_Descripcion)
+                        </th>
                         <th>
                             @Html.DisplayNameFor(model => model.tbMunicipio.Muni_Descripcion)
                         </th>
@@ -66,56 +68,55 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Empl_Nombre)
-                            @Html.DisplayFor(modelItem => item.Empl_Apellido)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Empl_Identidad)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Empl_Sexo)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Empl_Telefono)
-                        </td>
-                        @*<td>
-            @Html.DisplayFor(modelItem => item.Empl_FecNacimiento)
-        </td>
-        <td>
-                @Html.DisplayFor(modelItem => item.Empl_Usua_Creacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Empl_Fecha_Creacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Empl_Usua_Modifica)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Empl_Fecha_Modifica)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Empl_Estado)
-            </td><td>
-                            @Html.DisplayFor(modelItem => item.tbEstado_Civil.Esta_Descripcion)
-                        </td>*@
-                        <td>
-                            @Html.DisplayFor(modelItem => item.tbCargos.Carg_Descripcion)
-                        </td>
-
-                        <td>
-                            @Html.DisplayFor(modelItem => item.tbMunicipio.Muni_Descripcion)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Empl_Id }, new { @class = "btn btn-warning" }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.Empl_Id }, new { @class = "btn btn-default" }) |
-                            <p class="btn btn-danger" id="elimnartipo" style="height:auto" onclick="elimnartipo('@item.Empl_Id')">
-                                Eliminar
-                            </p>
-                            @*@Html.ActionLink("Delete", "Delete", new { id = item.Empl_Id }, new { @class = "btn btn-danger" })*@
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Empl_Nombre)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Empl_Apellido)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Empl_Identidad)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Empl_Sexo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Empl_Telefono)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Empl_FecNacimiento)
+                            </td>
+                            @*<td>
+                                @Html.DisplayFor(modelItem => item.Empl_Usua_Creacion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Empl_Fecha_Creacion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Empl_Usua_Modifica)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Empl_Fecha_Modifica)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Empl_Estado)
+                            </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tbCargos.Carg_Descripcion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tbEstado_Civil.Esta_Descripcion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tbMunicipio.Muni_Descripcion)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Empl_Id }, new { @class = "btn btn-warning" }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.Empl_Id }, new { @class = "btn btn-default" }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Empl_Id }, new { @class = "btn btn-danger" })
+                            </td>
+                        </tr>
                     }
                 </tbody>
 
@@ -123,34 +124,3 @@
         </div>
     </div>
 </div>
-
-
-<div class="modal fade" id="elimnarmodal" tabindex="-1" role="dialog" aria-hidden="false">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-
-                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
-            </div>
-            @Html.Partial("_Delete", new Sistema_Cine.Models.tbEmpleados())
-        </div>
-    </div>
-</div>
-
-
-<script>
-    $("#btnmodal").click(function () {
-        $("#exampleModal").modal('show');
-    })
-    //$("#bteditar").click(function () {
-    //    $("#exampleModal").modal('show');
-    //})
-    function elimnartipo(id) {
-        $("#elimnarmodal").modal('show')
-        $("#id").val(id);
-    }
-
-</script>
-
-
-

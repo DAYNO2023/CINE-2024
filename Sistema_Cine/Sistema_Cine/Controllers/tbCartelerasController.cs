@@ -52,27 +52,11 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Cart_Id,Cart_Descripcion,Gene_Id,Prom_Id,Entra_Id,Cart_Fecha_Estreno,Cart_Usuario_Creacion,Cart_Fecha_Creacion,Cart_Usuario_Modificacion,Cart_Fecha_Modificacion")] tbCarteleras tbCarteleras)
         {
-
-            ModelState.Remove("Cart_Usuario_Creacion");
-            ModelState.Remove("Cart_Fecha_Creacion");
-            ModelState.Remove("Cart_Usuario_Modificacion");
-            ModelState.Remove("Carg_Fecha_Creacion");
-
             if (ModelState.IsValid)
             {
-                try
-                {
-                    db.tbCarteleras.Add(tbCarteleras);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-
-                }
-                catch (FormatException ex)
-                {
-                    // Handle the exception (e.g., log it, show an error message)
-                    TempData["Error"] = "Error converting id to int: " + ex.Message;
-                    return RedirectToAction("Index");
-                }
+                db.tbCarteleras.Add(tbCarteleras);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
 
             ViewBag.Entra_Id = new SelectList(db.tbEntradas, "Entra_Id", "Entra_Id", tbCarteleras.Entra_Id);
@@ -106,29 +90,11 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Cart_Id,Cart_Descripcion,Gene_Id,Prom_Id,Entra_Id,Cart_Fecha_Estreno,Cart_Usuario_Creacion,Cart_Fecha_Creacion,Cart_Usuario_Modificacion,Cart_Fecha_Modificacion")] tbCarteleras tbCarteleras)
         {
-            ModelState.Remove("Cart_Usuario_Creacion");
-            ModelState.Remove("Cart_Fecha_Creacion");
-            ModelState.Remove("Cart_Usuario_Modificacion");
-            ModelState.Remove("Cart_Fecha_Modificacion");
             if (ModelState.IsValid)
             {
-                try
-                {
-                    int id = Convert.ToInt32(Session["idtipo"]);
-                    int usuario = Convert.ToInt32(Session["idusaio"]);
-                    db.Sp_tbCarteleras_Editar(id, tbCarteleras.Cart_Descripcion, tbCarteleras.Gene_Id, tbCarteleras.Prom_Id, tbCarteleras.Entra_Id, tbCarteleras.Cart_Fecha_Estreno, usuario, DateTime.Now, true);
-
-
-
-
-                    return RedirectToAction("Index");
-                }
-                catch (FormatException ex)
-                {
-                    // Handle the exception (e.g., log it, show an error message)
-                    TempData["Error"] = "Error converting id to int: " + ex.Message;
-                    return RedirectToAction("Index");
-                }
+                db.Entry(tbCarteleras).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
             ViewBag.Entra_Id = new SelectList(db.tbEntradas, "Entra_Id", "Entra_Id", tbCarteleras.Entra_Id);
             ViewBag.Gene_Id = new SelectList(db.tbGeneros, "Gene_Id", "Gene_Descripcion", tbCarteleras.Gene_Id);
@@ -158,7 +124,6 @@ namespace Sistema_Cine.Controllers
         {
             tbCarteleras tbCarteleras = db.tbCarteleras.Find(id);
             db.tbCarteleras.Remove(tbCarteleras);
-            //db.Sp_tbCarteleras_Eliminar(id);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

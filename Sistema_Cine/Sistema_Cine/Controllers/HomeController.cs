@@ -51,6 +51,7 @@ namespace Sistema_Cine.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CerrarSesion()
+
         {
             // Eliminar todos los datos de la sesión
             Session.Clear();
@@ -181,15 +182,7 @@ namespace Sistema_Cine.Controllers
 
         }
 
-        public JsonResult obtenerIDpant(int tipoID)
-        {
-            var tipo = db.tbPantallas.Find(tipoID);
-            Session["idtipo"] = tipoID;
 
-
-            return Json(new { success = true, description = tipo.Pant_Descripcion }, JsonRequestBehavior.AllowGet);
-
-        }
 
 
 

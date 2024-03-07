@@ -17,8 +17,9 @@ namespace Sistema_Cine.Controllers
         // GET: tbFacturas_Encabezados
         public ActionResult Index()
         {
-            var tbFacturas_Encabezados = db.tbFacturas_Encabezados.Include(t => t.tbClientes).Include(t => t.tbEmpleados).Include(t => t.tbTipo_Pagos).Include(t => t.tbPromociones);
-            ViewBag.Clie_Id = new SelectList(db.tbClientes, "Clie_Id", "Clie_Nombre");
+            var tbFacturas_Encabezados = db.tbFacturas_Encabezados.Include(t => t.tbClientes).Include(t => t.tbEmpleados).Include(t => t.tbTipo_Pagos).Include(t => t.tbPromociones).ToList();
+            //ViewBag.Clie_Id = new SelectList(db.tbClientes, "Clie_Id", "Clie_Nombre");
+            ViewBag.Clie_Id = new SelectList(db.tbClientes, "Clie_Id", "Clie_Identidad");
             ViewBag.Empl_Id = new SelectList(db.tbEmpleados, "Empl_Id", "Empl_Nombre");
             ViewBag.Tipo_Id = new SelectList(db.tbTipo_Pagos, "Tipo_Id", "Tipo_Descripcion");
             ViewBag.Prom_Id = new SelectList(db.tbPromociones, "Prom_Id", "Prom_Descripcion");
@@ -40,14 +41,109 @@ namespace Sistema_Cine.Controllers
             return View(tbFacturas_Encabezados);
         }
 
+        [HttpGet]
+        public ActionResult ObtenerNombreCliente(int dni)
+        {
+            // Verificar si el DNI es válido
+           
+
+            // Buscar el cliente por el DNI proporcionado
+            var cliente = db.tbClientes.FirstOrDefault(c => c.Clie_Id == dni);
+
+            // Verificar si se encontró el cliente
+            if (cliente != null)
+            {
+                // Devolver el nombre del cliente como un objeto JSON
+                return Json(new { nombre = cliente.Clie_Nombre }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                // Si no se encontró el cliente, devolver un mensaje de error
+                return HttpNotFound();
+            }
+        }
+
+
+
+        public ActionResult ObtenerDetallesFactura(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var detallesFactura = db.tbFacturas_Detalles.Where(d => d.Fact_Id == id).ToList();
+
+            if (detallesFactura == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(detallesFactura);
+        }
+
+        public ActionResult GuardarDetalleFactura1(int ticket, string cartelera, string factura, int cantidad)
+        {
+            // Aquí puedes hacer lo que necesites con los valores de ticket, cartelera, factura y cantidad
+            // Por ejemplo, puedes guardar estos valores en la base de datos
+            int usuario = Convert.ToInt32(Session["idusuario"]); // Ajusta según cómo obtienes el ID del usuario
+            tbFacturas_Detalles detalle = new tbFacturas_Detalles
+            {
+                Fade_ticket = ticket,
+                Cart_Id = int.Parse(cartelera), // Asumiendo que Cart_Id es de tipo int
+                Fact_Id = int.Parse(factura), // Asumiendo que Fact_Id es de tipo int
+                Fade_Usua_Creacion = usuario, // Puedes obtener el usuario actual de alguna manera
+                Fade_Fecha_Creacion = DateTime.Now,
+                Fade_Estado = true // Cambia esto según tus necesidades
+            };
+
+            // Agregar el detalle a la base de datos
+            db.tbFacturas_Detalles.Add(detalle);
+            db.SaveChanges();
+
+            // Puedes retornar alguna respuesta JSON si lo necesitas
+            return Json(new { success = true });
+        }
+
+
+
+
+
+
+
+        public ActionResult GuardarDetalleFactura(int ticket, string cartelera, string factura, int cantidad)
+        {
+            // Aquí puedes hacer lo que necesites con los valores de ticket, cartelera, factura y cantidad
+            // Por ejemplo, puedes guardar estos valores en la base de datos
+            int usuario = Convert.ToInt32(Session["idusaio"]);
+            tbFacturas_Detalles detalle = new tbFacturas_Detalles
+            {
+                Fade_ticket = ticket,
+                Cart_Id = int.Parse(cartelera), // Asumiendo que Cart_Id es de tipo int
+                Fact_Id = int.Parse(factura), // Asumiendo que Fact_Id es de tipo int
+                Fade_Usua_Creacion = usuario, // Puedes obtener el usuario actual de alguna manera
+                Fade_Fecha_Creacion = DateTime.Now,
+                Fade_Estado = true // Cambia esto según tus necesidades
+            };
+
+            // Agregar el detalle a la base de datos
+            db.tbFacturas_Detalles.Add(detalle);
+            db.SaveChanges();
+
+            // Puedes retornar alguna respuesta JSON si lo necesitas
+            return Json(new { success = true });
+        }
+
+
         // GET: tbFacturas_Encabezados/Create
         public ActionResult Create()
         {
-            ViewBag.Clie_Id = new SelectList(db.tbClientes, "Clie_Id", "Clie_Nombre");
+            ViewBag.Clie_Id = new SelectList(db.tbClientes, "Clie_Id", "Clie_Identidad");
+            //ViewBag.Clie_Id = new SelectList(db.tbClientes, "Clie_Id", "Clie_Identidad");
             ViewBag.Empl_Id = new SelectList(db.tbEmpleados, "Empl_Id", "Empl_Nombre");
             ViewBag.Tipo_Id = new SelectList(db.tbTipo_Pagos, "Tipo_Id", "Tipo_Descripcion");
             ViewBag.Prom_Id = new SelectList(db.tbPromociones, "Prom_Id", "Prom_Descripcion");
-           
+            ViewBag.facturacionencabezadoList = db.tbFacturas_Encabezados.Include(t => t.tbPromociones).Include(t => t.tbClientes).Include(t => t.tbEmpleados).Include(t => t.tbTipo_Pagos).ToList();
             ViewBag.FacturaDetalleList = db.tbFacturas_Detalles.Include(t => t.tbCarteleras).Include(t => t.tbFacturas_Encabezados).ToList();
             return View();
         }
@@ -63,10 +159,11 @@ namespace Sistema_Cine.Controllers
             {
                 db.tbFacturas_Encabezados.Add(tbFacturas_Encabezados);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create");
             }
 
-            ViewBag.Clie_Id = new SelectList(db.tbClientes, "Clie_Id", "Clie_Nombre", tbFacturas_Encabezados.Clie_Id);
+            ViewBag.Clie_Id = new SelectList(db.tbClientes, "Clie_Id", "Clie_Identidad", tbFacturas_Encabezados.Clie_Id);
+            //ViewBag.Clie_Id = new SelectList(db.tbClientes, "Clie_Id", "Clie_Identidad", tbFacturas_Encabezados.Clie_Id);
             ViewBag.Empl_Id = new SelectList(db.tbEmpleados, "Empl_Id", "Empl_Nombre", tbFacturas_Encabezados.Empl_Id);
             ViewBag.Tipo_Id = new SelectList(db.tbTipo_Pagos, "Tipo_Id", "Tipo_Descripcion", tbFacturas_Encabezados.Tipo_Id);
             ViewBag.Prom_Id = new SelectList(db.tbPromociones, "Prom_Id", "Prom_Descripcion", tbFacturas_Encabezados.Prom_Id);
@@ -86,7 +183,8 @@ namespace Sistema_Cine.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Clie_Id = new SelectList(db.tbClientes, "Clie_Id", "Clie_Nombre", tbFacturas_Encabezados.Clie_Id);
+            ViewBag.Clie_Id = new SelectList(db.tbClientes, "Clie_Id", "Clie_Identidad", tbFacturas_Encabezados.Clie_Id);
+            //ViewBag.Clie_Id = new SelectList(db.tbClientes, "Clie_Id", "Clie_Identidad", tbFacturas_Encabezados.Clie_Id);
             ViewBag.Empl_Id = new SelectList(db.tbEmpleados, "Empl_Id", "Empl_Nombre", tbFacturas_Encabezados.Empl_Id);
             ViewBag.Tipo_Id = new SelectList(db.tbTipo_Pagos, "Tipo_Id", "Tipo_Descripcion", tbFacturas_Encabezados.Tipo_Id);
 
@@ -107,7 +205,7 @@ namespace Sistema_Cine.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Clie_Id = new SelectList(db.tbClientes, "Clie_Id", "Clie_Nombre", tbFacturas_Encabezados.Clie_Id);
+            ViewBag.Clie_Id = new SelectList(db.tbClientes, "Clie_Id", "Clie_Identidad", tbFacturas_Encabezados.Clie_Id);
             ViewBag.Empl_Id = new SelectList(db.tbEmpleados, "Empl_Id", "Empl_Nombre", tbFacturas_Encabezados.Empl_Id);
             ViewBag.Tipo_Id = new SelectList(db.tbTipo_Pagos, "Tipo_Id", "Tipo_Descripcion", tbFacturas_Encabezados.Tipo_Id);
             ViewBag.Prom_Id = new SelectList(db.tbPromociones, "Prom_Id", "Prom_Descripcion", tbFacturas_Encabezados.Prom_Id);

@@ -18,7 +18,7 @@ namespace Sistema_Cine.Controllers
         public ActionResult Index()
         {
             ViewBag.Cart_Id = new SelectList(db.tbCarteleras, "Cart_Id", "Cart_Descripcion");
-            ViewBag.Entra_Id = new SelectList(db.tbEntradas, "Entra_Id", "Entra_Id");
+            ViewBag.Entra_Id = new SelectList(db.tbEntradas, "Entra_Id", "Entra_Cantidad");
             var tbSucursales = db.tbSucursales.Include(t => t.tbCarteleras).Include(t => t.tbEntradas).Include(t => t.tbMunicipio);
             return View(tbSucursales.ToList());
         }
@@ -42,7 +42,7 @@ namespace Sistema_Cine.Controllers
         public ActionResult Create()
         {
             ViewBag.Cart_Id = new SelectList(db.tbCarteleras, "Cart_Id", "Cart_Descripcion");
-            ViewBag.Entra_Id = new SelectList(db.tbEntradas, "Entra_Id", "Entra_Id");
+            ViewBag.Entra_Id = new SelectList(db.tbEntradas, "Entra_Id", "Entra_Cantidad");
             ViewBag.Muni_Codigo = new SelectList(db.tbMunicipio, "Muni_Codigo", "Muni_Descripcion");
             return View();
         }
@@ -99,7 +99,7 @@ namespace Sistema_Cine.Controllers
                 return HttpNotFound();
             }
             ViewBag.Cart_Id = new SelectList(db.tbCarteleras, "Cart_Id", "Cart_Descripcion", tbSucursales.Cart_Id);
-            ViewBag.Entra_Id = new SelectList(db.tbEntradas, "Entra_Id", "Entra_Id", tbSucursales.Entra_Id);
+            ViewBag.Entra_Id = new SelectList(db.tbEntradas, "Entra_Id", "Entra_Cantidad", tbSucursales.Entra_Id);
             ViewBag.Muni_Codigo = new SelectList(db.tbMunicipio, "Muni_Codigo", "Muni_Descripcion", tbSucursales.Muni_Codigo);
             return View(tbSucursales);
         }

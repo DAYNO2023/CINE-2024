@@ -37,6 +37,22 @@ namespace Sistema_Cine.Controllers
             return View(tbPromociones);
         }
 
+        public ActionResult ObtenerPrecioPorDescripcion(int descripcionId)
+        {
+            // Buscar el precio por el ID de la promoción
+            var precio = db.tbPrecios.FirstOrDefault(p => p.Prec_Id == descripcionId);
+
+            if (precio == null)
+            {
+                return HttpNotFound();
+            }
+
+            // Devolver el precio encontrado como JSON
+            return Json(new { precio = precio.Prec_Descripcion }, JsonRequestBehavior.AllowGet);
+        }
+
+
+
         // GET: tbPromociones/Create
         public ActionResult Create()
         {

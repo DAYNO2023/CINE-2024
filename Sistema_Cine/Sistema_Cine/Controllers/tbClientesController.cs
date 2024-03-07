@@ -35,6 +35,28 @@ namespace Sistema_Cine.Controllers
             }
             return View(tbClientes);
         }
+        public ActionResult ObtenerClientePorDNI(string dni)
+        {
+            // Verificar si el DNI es válido
+            if (string.IsNullOrWhiteSpace(dni))
+            {
+                return HttpNotFound();
+            }
+
+            // Buscar el cliente por el DNI proporcionado
+            var cliente = db.tbClientes.FirstOrDefault(c => c.Clie_Identidad == dni);
+
+            // Verificar si se encontró el cliente
+            if (cliente == null)
+            {
+                // Si no se encontró el cliente, devolver un mensaje de error
+                return Json(new { nombre = "Cliente no encontrado" }, JsonRequestBehavior.AllowGet);
+            }
+
+            // Si se encontró el cliente, devolver su nombre como JSON
+            return Json(new { nombre = cliente.Clie_Nombre }, JsonRequestBehavior.AllowGet);
+        }
+
 
         // GET: tbClientes/Create
         public ActionResult Create()

@@ -17,7 +17,7 @@ namespace Sistema_Cine.Controllers
         // GET: tbUsuarios
         public ActionResult Index()
         {
-            ViewBag.Role_Id = new SelectList(db.tbRoles, "Role_Id", "Role_Id");
+            ViewBag.Role_Id = new SelectList(db.tbRoles, "Role_Id", "Role_Descripcion");
             ViewBag.Empl_Id = new SelectList(db.tbEmpleados, "Empl_Id", "Empl_Nombre");
             var tbUsuarios = db.tbUsuarios.Include(t => t.tbRoles).Include(t => t.tbEmpleados);
             return View(tbUsuarios.ToList());
@@ -41,7 +41,7 @@ namespace Sistema_Cine.Controllers
         // GET: tbUsuarios/Create
         public ActionResult Create()
         {
-            ViewBag.Role_Id = new SelectList(db.tbRoles, "Role_Id", "Role_Id");
+            ViewBag.Role_Id = new SelectList(db.tbRoles, "Role_Id", "Role_Descripcion");
             ViewBag.Empl_Id = new SelectList(db.tbEmpleados, "Empl_Id", "Empl_Nombre");
             return View();
         }
@@ -79,7 +79,7 @@ namespace Sistema_Cine.Controllers
             }
 
 
-            ViewBag.Role_Id = new SelectList(db.tbRoles, "Role_Id", "Role_Id");
+            ViewBag.Role_Id = new SelectList(db.tbRoles, "Role_Id", "Role_Descripcion");
             ViewBag.Empl_Id = new SelectList(db.tbEmpleados, "Empl_Id", "Empl_Nombre");
             return View(tbUsuarios);
         }
@@ -96,7 +96,7 @@ namespace Sistema_Cine.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Role_Id = new SelectList(db.tbRoles, "Role_Id", "Role_Id");
+            ViewBag.Role_Id = new SelectList(db.tbRoles, "Role_Id", "Role_Descripcion");
             ViewBag.Empl_Id = new SelectList(db.tbEmpleados, "Empl_Id", "Empl_Nombre");
             return View(tbUsuarios);
         }
@@ -131,7 +131,7 @@ namespace Sistema_Cine.Controllers
                 }
 
             }
-            ViewBag.Role_Id = new SelectList(db.tbRoles, "Role_Id", "Role_Id");
+            ViewBag.Role_Id = new SelectList(db.tbRoles, "Role_Id", "Role_Descripcion");
             ViewBag.Empl_Id = new SelectList(db.tbEmpleados, "Empl_Id", "Empl_Nombre");
             return View(tbUsuarios);
         }

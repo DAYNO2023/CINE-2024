@@ -17,7 +17,11 @@ namespace Sistema_Cine.Controllers
         // GET: tbFacturas_Encabezados
         public ActionResult Index()
         {
-            var tbFacturas_Encabezados = db.tbFacturas_Encabezados.Include(t => t.tbClientes).Include(t => t.tbEmpleados).Include(t => t.tbTipo_Pagos);
+            var tbFacturas_Encabezados = db.tbFacturas_Encabezados.Include(t => t.tbClientes).Include(t => t.tbEmpleados).Include(t => t.tbTipo_Pagos).Include(t => t.tbPromociones);
+            ViewBag.Clie_Id = new SelectList(db.tbClientes, "Clie_Id", "Clie_Nombre");
+            ViewBag.Empl_Id = new SelectList(db.tbEmpleados, "Empl_Id", "Empl_Nombre");
+            ViewBag.Tipo_Id = new SelectList(db.tbTipo_Pagos, "Tipo_Id", "Tipo_Descripcion");
+            ViewBag.Prom_Id = new SelectList(db.tbPromociones, "Prom_Id", "Prom_Descripcion");
             return View(tbFacturas_Encabezados.ToList());
         }
 
@@ -42,6 +46,7 @@ namespace Sistema_Cine.Controllers
             ViewBag.Clie_Id = new SelectList(db.tbClientes, "Clie_Id", "Clie_Nombre");
             ViewBag.Empl_Id = new SelectList(db.tbEmpleados, "Empl_Id", "Empl_Nombre");
             ViewBag.Tipo_Id = new SelectList(db.tbTipo_Pagos, "Tipo_Id", "Tipo_Descripcion");
+            ViewBag.Prom_Id = new SelectList(db.tbPromociones, "Prom_Id", "Prom_Descripcion");
             return View();
         }
 
@@ -62,6 +67,8 @@ namespace Sistema_Cine.Controllers
             ViewBag.Clie_Id = new SelectList(db.tbClientes, "Clie_Id", "Clie_Nombre", tbFacturas_Encabezados.Clie_Id);
             ViewBag.Empl_Id = new SelectList(db.tbEmpleados, "Empl_Id", "Empl_Nombre", tbFacturas_Encabezados.Empl_Id);
             ViewBag.Tipo_Id = new SelectList(db.tbTipo_Pagos, "Tipo_Id", "Tipo_Descripcion", tbFacturas_Encabezados.Tipo_Id);
+            ViewBag.Prom_Id = new SelectList(db.tbPromociones, "Prom_Id", "Prom_Descripcion", tbFacturas_Encabezados.Prom_Id);
+          
             return View(tbFacturas_Encabezados);
         }
 
@@ -80,6 +87,8 @@ namespace Sistema_Cine.Controllers
             ViewBag.Clie_Id = new SelectList(db.tbClientes, "Clie_Id", "Clie_Nombre", tbFacturas_Encabezados.Clie_Id);
             ViewBag.Empl_Id = new SelectList(db.tbEmpleados, "Empl_Id", "Empl_Nombre", tbFacturas_Encabezados.Empl_Id);
             ViewBag.Tipo_Id = new SelectList(db.tbTipo_Pagos, "Tipo_Id", "Tipo_Descripcion", tbFacturas_Encabezados.Tipo_Id);
+
+            ViewBag.Prom_Id = new SelectList(db.tbPromociones, "Prom_Id", "Prom_Descripcion", tbFacturas_Encabezados.Prom_Id);
             return View(tbFacturas_Encabezados);
         }
 
@@ -99,6 +108,7 @@ namespace Sistema_Cine.Controllers
             ViewBag.Clie_Id = new SelectList(db.tbClientes, "Clie_Id", "Clie_Nombre", tbFacturas_Encabezados.Clie_Id);
             ViewBag.Empl_Id = new SelectList(db.tbEmpleados, "Empl_Id", "Empl_Nombre", tbFacturas_Encabezados.Empl_Id);
             ViewBag.Tipo_Id = new SelectList(db.tbTipo_Pagos, "Tipo_Id", "Tipo_Descripcion", tbFacturas_Encabezados.Tipo_Id);
+            ViewBag.Prom_Id = new SelectList(db.tbPromociones, "Prom_Id", "Prom_Descripcion", tbFacturas_Encabezados.Prom_Id);
             return View(tbFacturas_Encabezados);
         }
 

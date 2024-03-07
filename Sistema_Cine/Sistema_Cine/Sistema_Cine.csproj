@@ -1887,12 +1887,10 @@
     <Content Include="Views\tbCarteleras\Delete.cshtml" />
     <Content Include="Views\tbCarteleras\Edit.cshtml" />
     <Content Include="Views\tbCarteleras\Index.cshtml" />
-    <Content Include="Views\tbFacturas_Encabezados\Create.cshtml" />
     <Content Include="Views\tbFacturas_Encabezados\Delete.cshtml" />
     <Content Include="Views\tbFacturas_Encabezados\Details.cshtml" />
     <Content Include="Views\tbFacturas_Encabezados\Edit.cshtml" />
     <Content Include="Views\tbFacturas_Encabezados\Index.cshtml" />
-    <Content Include="Views\tbFacturas_Detalles\Create.cshtml" />
     <Content Include="Views\tbFacturas_Detalles\Delete.cshtml" />
     <Content Include="Views\tbFacturas_Detalles\Details.cshtml" />
     <Content Include="Views\tbFacturas_Detalles\Edit.cshtml" />
@@ -1976,6 +1974,8 @@
     <Content Include="Views\tbButacas_Salas\Details.cshtml" />
     <Content Include="Views\tbUsuarios\Create.cshtml" />
     <Content Include="Views\tbClientes\_Delete.cshtml" />
+    <Content Include="Views\tbFacturas_Detalles\Create.cshtml" />
+    <Content Include="Views\tbFacturas_Encabezados\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

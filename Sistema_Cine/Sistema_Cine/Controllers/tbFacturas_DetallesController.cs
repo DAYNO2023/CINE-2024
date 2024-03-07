@@ -41,6 +41,7 @@ namespace Sistema_Cine.Controllers
         {
             ViewBag.Cart_Id = new SelectList(db.tbCarteleras, "Cart_Id", "Cart_Descripcion");
             ViewBag.Fact_Id = new SelectList(db.tbFacturas_Encabezados, "Fact_Id", "Fact_Id");
+            ViewBag.facturacionencabezadoList = db.tbFacturas_Encabezados.Include(t => t.tbPromociones).Include(t => t.tbClientes).Include(t => t.tbEmpleados).Include(t => t.tbTipo_Pagos).ToList();
             return View();
         }
 

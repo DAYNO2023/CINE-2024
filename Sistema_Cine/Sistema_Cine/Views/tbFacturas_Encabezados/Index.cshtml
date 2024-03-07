@@ -5,7 +5,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Crear", "Create")
@@ -16,7 +15,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Fact_Fecha)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Fact_Usua_Creacion)
         </th>
         <th>
@@ -30,7 +29,7 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Fact_Estado)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.tbClientes.Clie_Nombre)
         </th>
@@ -40,15 +39,18 @@
         <th>
             @Html.DisplayNameFor(model => model.tbTipo_Pagos.Tipo_Descripcion)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbPromociones.Prom_Descripcion)
+        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fact_Fecha)
-        </td>
-        <td>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Fact_Fecha)
+    </td>
+    @*<td>
             @Html.DisplayFor(modelItem => item.Fact_Usua_Creacion)
         </td>
         <td>
@@ -62,22 +64,25 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Fact_Estado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tbClientes.Clie_Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tbEmpleados.Empl_Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tbTipo_Pagos.Tipo_Descripcion)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Fact_Id },new {@class = "btn btn-warning"} ) |
-            @Html.ActionLink("Details", "Details", new { id=item.Fact_Id },new {@class = "btn btn-default"}) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Fact_Id },new {@class = "btn btn-danger"})
-        </td>
-    </tr>
+        </td>*@
+    <td>
+        @Html.DisplayFor(modelItem => item.tbClientes.Clie_Nombre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.tbEmpleados.Empl_Nombre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.tbTipo_Pagos.Tipo_Descripcion)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.tbPromociones.Prom_Descripcion)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Fact_Id }, new { @class = "btn btn-warning" }) |
+        @Html.ActionLink("Details", "Details", new { id = item.Fact_Id }, new { @class = "btn btn-default" }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Fact_Id }, new { @class = "btn btn-danger" })
+    </td>
+</tr>
 }
 
 </table>

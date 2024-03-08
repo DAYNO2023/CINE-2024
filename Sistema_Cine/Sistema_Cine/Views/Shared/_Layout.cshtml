@@ -30,79 +30,149 @@
     <div id="wrapper">
         <nav class="navbar-default navbar-static-side" role="navigation">
             <div class="sidebar-collapse">
+
                 <ul class="nav metismenu" id="side-menu">
+
+
                     <li class="nav-header">
+
                         <div class="dropdown profile-element">
-                            <a href="https://localhost:44307/Home/Index"><img alt="image" class="rounded-circle" src="~/Content/img/jugador.png" /></a>
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                @*<span class="block m-t-xs font-bold">@HttpContext.Current.Session["NombreUsuario"].ToString()</span>*@
-                                @{
-                                    var nombreUsuario = HttpContext.Current.Session != null && HttpContext.Current.Session["NombreUsuario"] != null
-                                        ? HttpContext.Current.Session["NombreUsuario"].ToString()
-                                        : "Usuario desconocido";
+                            <hr />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img alt="image" class="rounded-circle" height="50" src="https://th.bing.com/th/id/R.c3631c652abe1185b1874da24af0b7c7?rik=XBP%2fc%2fsPy7r3HQ&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fpng-user-icon-circled-user-icon-2240.png&ehk=z4ciEVsNoCZtWiFvQQ0k4C3KTQ6wt%2biSysxPKZHGrCc%3d&risl=&pid=ImgRaw&r=0" />
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3"></div>
+                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                        <span class="block m-t-xs font-bold">@HttpContext.Current.Session["NombreUsuario"]</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="logo-element " style="background-color:black">
+                            Cars
+                        </div>
+                    </li>
+                    @{
+
+                        var pantallas = Session["Pantallas"] as List<string>;
+                        var Admin = Session["Admin"] as List<string>;
+                    }
+                    @if (pantallas != null && pantallas.Contains("Acceso") || Admin != null && Admin.Contains("Si"))
+                    {
+                        <li id="quitar" style="background-color: #B5121C;">
+                            <a href="index.html"><i class="fa fa-address-book-o"></i> <span class="nav-label">Acceso</span> <span class="fa arrow"></span></a>
+
+                            <ul class="nav nav-second-level">
+                                @if (pantallas != null && pantallas.Contains("Usuarios") || Admin != null && Admin.Contains("Si"))
+                                {
+                                    <li style="color:black">@Html.ActionLink("Usuarios", "Index", "tbUsuarios")</li>
                                 }
-                                <span class="block m-t-xs font-bold">@nombreUsuario</span>
-                                <span class="text-muted text-xs block">Administrados <b class="caret"></b></span>
-                            </a>
+                                @if (pantallas != null && pantallas.Contains("Roles") || Admin != null && Admin.Contains("Si"))
+                                {
+                                    <li style="color:black">@Html.ActionLink("Roles", "Index", "tbRoles")</li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                    @if (pantallas != null && pantallas.Contains("General") || Admin != null && Admin.Contains("Si"))
+                    {
+                        <li id="quitar4" style="background-color: #B5121C; ">
+                            <a href="index.html"><i class="fa fa-share-alt"></i> <span class="nav-label">Generales</span> <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                @if (pantallas != null && pantallas.Contains("Departamentos") || Admin != null && Admin.Contains("Si"))
+                                {
+                                    <li style="color:black">@Html.ActionLink("Departamentos", "Index", "tbDepartamentos")</li>
+                                }
+                                @if (pantallas != null && pantallas.Contains("Municipios") || Admin != null && Admin.Contains("Si"))
+                                {
+                                    <li style="color:black">@Html.ActionLink("Municipios", "Index", "tbMunicipios")</li>
+                                }
+                                @if (pantallas != null && pantallas.Contains("Cargo") || Admin != null && Admin.Contains("Si"))
+                                {
+                                    <li style="color:black">@Html.ActionLink("Cargos", "Index", "tbCargos")</li>
+                                }
+                                @if (pantallas != null && pantallas.Contains("Sala") || Admin != null && Admin.Contains("Si"))
+                                {
+                                    <li style="color:black">@Html.ActionLink("Sala", "Index", "tbSalas")</li>
+                                }
+                                @if (pantallas != null && pantallas.Contains("Promocion") || Admin != null && Admin.Contains("Si"))
+                                {
+                                    <li style="color:black">@Html.ActionLink("Promociones", "Index", "tbPromociones")</li>
+                                }
+                                @if (pantallas != null && pantallas.Contains("Tipo_Pago") || Admin != null && Admin.Contains("Si"))
+                                {
+                                    <li style="color:black">@Html.ActionLink("Tipos de Pagos", "Index", "tbTipo_Pagos")</li>
+                                }
+                                @if (pantallas != null && pantallas.Contains("Precios") || Admin != null && Admin.Contains("Si"))
+                                {
+                                    <li style="color:black">@Html.ActionLink("Precio", "Index", "tbPrecios")</li>
+                                }
+                                @if (pantallas != null && pantallas.Contains("Butacas") || Admin != null && Admin.Contains("Si"))
+                                {
+                                    <li style="color:black">@Html.ActionLink("Butaca", "Index", "tbButacas_Salas")</li>
+                                }
+                                @if (pantallas != null && pantallas.Contains("Genero") || Admin != null && Admin.Contains("Si"))
+                                {
+                                    <li style="color:black">@Html.ActionLink("Genero", "Index", "tbGeneros")</li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                    @if (pantallas != null && pantallas.Contains("Registro") || Admin != null && Admin.Contains("Si"))
+                    {
+                        <li id="quitar2" style="background-color: #B5121C;">
+                            <a href="#"><i class="fa fa-database"></i> <span class="nav-label">Registro</span><span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse">
+                                @if (pantallas != null && pantallas.Contains("Clientes") || Admin != null && Admin.Contains("Si"))
+                                {
+                                    <li style="color:black">@Html.ActionLink("Clientes", "Index", "tbClientes")</li>
+                                }
+                                @if (pantallas != null && pantallas.Contains("Empleados") || Admin != null && Admin.Contains("Si"))
+                                {
+                                    <li style="color:black">@Html.ActionLink("Empleados", "Index", "tbEmpleados")</li>
+                                }
 
-                        </div>
-                        <div class="logo-element">
-                            CINE+
-                        </div>
-                    </li>
-                    <li class="">
-                        <a href="index.html"><i class="fa fa-address-book-o"></i> <span class="nav-label">Accesos</span> <span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li><a href="https://localhost:44307/tbRoles/Index" class="active">Roles</a></li>
-                            @*<li><a href="https://localhost:44307/tbPantallas/Index" class="active">Pantallas</a></li>
-                                <li><a href="https://localhost:44307/tbPantalla_Roles/Index" class="active">Rol por Pantalla</a></li>*@
-                            <li><a href="https://localhost:44307/tbUsuarios/Index" class="active">Usuarios</a></li>
-                        </ul>
-                    </li>
-                    <li class="">
-                        <a href="index.html"><i class="fa fa-share-alt"></i> <span class="nav-label">Generales</span> <span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li><a href="https://localhost:44307/tbGeneros/Index" class="active">Generos</a></li>
-                            <li><a href="https://localhost:44307/tbButacas_Salas/Index" class="active">Butacas</a></li>
-                            <li><a href="https://localhost:44307/tbCargos/Index" class="active">Cargo</a></li>
-                            <li><a href="https://localhost:44307/tbDepartamentos/Index" class="active">Departamento</a></li>
-                            <li><a href="https://localhost:44307/tbMunicipios/Index" class="active">Municipio</a></li>
-                            <li><a href="https://localhost:44307/tbPrecios/Index" class="active">Precio</a></li>
-                            <li><a href="https://localhost:44307/tbPromociones/Index" class="active">Promocion</a></li>
-                            <li><a href="https://localhost:44307/tbSalas/Index" class="active">sala</a></li>
-                            <li><a href="https://localhost:44307/tbTipo_Pagos/Index" class="active">Tipo de pago</a></li>
-                        </ul>
-                    </li>
-                    <li class="">
-                        <a href="index.html"><i class="fa fa-database"></i> <span class="nav-label">Reguistro</span> <span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li><a href="https://localhost:44307/tbClientes/Index" class="active">Cliente</a></li>
-                            <li><a href="https://localhost:44307/tbEmpleados/Index" class="active">Empleado</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="">
-                        <a href="index.html"><i class="fa fa-play"></i> <span class="nav-label">Cines</span> <span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li><a href="https://localhost:44307/tbSucursales/Index" class="active">Sucursal</a></li>
-                            <li><a href="https://localhost:44307/tbEntradas/Index" class="active">Entradas</a></li>
-                            <li><a href="https://localhost:44307/tbCarteleras/Index" class="active">Cartelera</a></li>
-
-                        </ul>
-                    </li>
-                    <li class="">
-                        <a href="index.html"><i class="fa fa-print"></i> <span class="nav-label">Facturas</span> <span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li><a href="https://localhost:44307/tbFacturas_Encabezados/Index" class="active">Factura</a></li>
-                            <li><a href="https://localhost:44307/tbFacturas_Detalles/Index" class="active">Factura Detalle</a></li>
-
-                        </ul>
-                    </li>
-
-
-
-
-
+                            </ul>
+                        </li>
+                    }
+                    @if (pantallas != null && pantallas.Contains("Cine") || Admin != null && Admin.Contains("Si"))
+                    {
+                        <li id="quitar3" style="background-color: #B5121C;">
+                            <a href="index.html"><i class="fa fa-play"></i> <span class="nav-label">Cine</span> <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                @if (pantallas != null && pantallas.Contains("Sucursales") || Admin != null && Admin.Contains("Si"))
+                                {
+                                    <li style="color:black">@Html.ActionLink("Sucursal", "Index", "tbSucursales")</li>
+                                }
+                                @if (pantallas != null && pantallas.Contains("Entradas") || Admin != null && Admin.Contains("Si"))
+                                {
+                                    <li style="color:black">@Html.ActionLink("Entradas", "Index", "tbEntradas")</li>
+                                }
+                                @if (pantallas != null && pantallas.Contains("Carteleras") || Admin != null && Admin.Contains("Si"))
+                                {
+                                    <li style="color:black">@Html.ActionLink("Cartelera", "Index", "tbCarteleras")</li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                    @if (pantallas != null && pantallas.Contains("Facturas") || Admin != null && Admin.Contains("Si"))
+                    {
+                        <li id="quitar3" style="background-color: #B5121C;">
+                            <a href="index.html"><i class="fa fa-print"></i> <span class="nav-label">Facturas</span> <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                @if (pantallas != null && pantallas.Contains("Factura_Encabezado") || Admin != null && Admin.Contains("Si"))
+                                {
+                                    <li style="color:black">@Html.ActionLink("Factura", "Index", "tbFacturas_Encabezados")</li>
+                                }
+                                @if (pantallas != null && pantallas.Contains("Factura_Detalle") || Admin != null && Admin.Contains("Si"))
+                                {
+                                    <li style="color:black">@Html.ActionLink("Factura Detalle", "Index", "tbFacturas_Detalles")</li>
+                                }
+                            </ul>
+                        </li>
+                    }
                 </ul>
 
             </div>
@@ -178,9 +248,7 @@
 
 
                         <li>
-                            <a href="#" id="cerrarSesionBtn">
-                                <i class="fa fa-sign-out"></i> Cerrar Sesión
-                            </a>
+                            @Html.ActionLink("Salir", "cerrarsession", "Home")
                         </li>
 
 
@@ -893,39 +961,10 @@
 
                 }
             })
-      
-
         })
-        //$(document).ready(function () {
-        //    $('.dataTables-example').DataTable({
-        //        pageLength: 25,
-        //        responsive: true,
-        //        dom: '<"html5buttons"B>lTfgitp',
-        //        buttons: [
-        //            { extend: 'copy' },
-        //            { extend: 'csv' },
-        //            { extend: 'excel', title: 'ExampleFile' },
-        //            { extend: 'pdf', title: 'ExampleFile' },
-
-        //            {
-        //                extend: 'print',
-        //                customize: function (win) {
-        //                    $(win.document.body).addClass('white-bg');
-        //                    $(win.document.body).css('font-size', '10px');
-
-        //                    $(win.document.body).find('table')
-        //                        .addClass('compact')
-        //                        .css('font-size', 'inherit');
-        //                }
-        //            }
-        //        ]
-
-        //    });
-
-        //});
 
 
     </script>
 
 </body>
-</html >
+</html>

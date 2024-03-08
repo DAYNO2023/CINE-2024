@@ -7,9 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Sistema_Cine.Models;
-
+using Sistema_Cine.ValidarSession;
 namespace Sistema_Cine.Controllers
 {
+    [ValidarSesion]
+    [ValidarSessionFacturas_Detalles]
     public class tbFacturas_DetallesController : Controller
     {
         private dbSsitemascinesEntities5 db = new dbSsitemascinesEntities5();
@@ -17,6 +19,8 @@ namespace Sistema_Cine.Controllers
         // GET: tbFacturas_Detalles
         public ActionResult Index()
         {
+            ViewBag.Cart_Id = new SelectList(db.tbCarteleras, "Cart_Id", "Cart_Descripcion");
+            ViewBag.Fact_Id = new SelectList(db.tbFacturas_Encabezados, "Fact_Id", "Fact_Id");
             var tbFacturas_Detalles = db.tbFacturas_Detalles.Include(t => t.tbCarteleras).Include(t => t.tbFacturas_Encabezados);
             return View(tbFacturas_Detalles.ToList());
         }
@@ -41,9 +45,9 @@ namespace Sistema_Cine.Controllers
         {
             ViewBag.Cart_Id = new SelectList(db.tbCarteleras, "Cart_Id", "Cart_Descripcion");
             ViewBag.Fact_Id = new SelectList(db.tbFacturas_Encabezados, "Fact_Id", "Fact_Id");
-            ViewBag.facturacionencabezadoList = db.tbFacturas_Encabezados.Include(t => t.tbPromociones).Include(t => t.tbClientes).Include(t => t.tbEmpleados).Include(t => t.tbTipo_Pagos).ToList();
             return View();
         }
+
 
         // POST: tbFacturas_Detalles/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
@@ -52,9 +56,14 @@ namespace Sistema_Cine.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Fade_Id,Fact_Id,Cart_Id,Fade_ticket,Fade_Usua_Creacion,Fade_Fecha_Creacion,Fade_Usua_Modifica,Fade_Fecha_Modificacion,Fade_Estado")] tbFacturas_Detalles tbFacturas_Detalles)
         {
+
+
+
             if (ModelState.IsValid)
             {
-                db.tbFacturas_Detalles.Add(tbFacturas_Detalles);
+                int Fact_Id = Convert.ToInt32(Session["idFact"]);
+                int usuario = Convert.ToInt32(Session["idusaio"]);
+                db.Sp_tbFacturas_Detalles_Insertar(Fact_Id, tbFacturas_Detalles.Cart_Id, tbFacturas_Detalles.Fade_ticket, usuario, DateTime.Now, true);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

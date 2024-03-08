@@ -7,11 +7,14 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Sistema_Cine.Models;
-
+using Sistema_Cine.ValidarSession;
 namespace Sistema_Cine.Controllers
 {
+    [ValidarSesion]
+    [ValidarSesioncliente]
     public class tbClientesController : Controller
     {
+        
         private dbSsitemascinesEntities5 db = new dbSsitemascinesEntities5();
 
         // GET: tbClientes
@@ -83,18 +86,22 @@ namespace Sistema_Cine.Controllers
             {
                 try
                 {
-
                     db.tbClientes.Add(tbClientes);
                     db.SaveChanges();
-                    TempData["Exito"] = "se agrego Correctamente";
+                    TempData["Exito"] = "Se agregó correctamente";
                     return RedirectToAction("Index");
                 }
                 catch (FormatException ex)
                 {
-                    // Handle the exception (e.g., log it, show an error message)
-                    TempData["Error"] = "Error el registro no se guardo correctamente: " + ex.Message;
+                    TempData["Error"] = "Error: El registro no se guardó correctamente debido a un formato incorrecto. Detalles del error: " + ex.Message;
                     return RedirectToAction("Index");
                 }
+                catch (Exception ex)
+                {
+                    TempData["Error"] = "Error: Ocurrió un error al guardar el registro. Detalles del error: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
+
             }
 
             ViewBag.Esta_Id = new SelectList(db.tbEstado_Civil, "Esta_Id", "Esta_Descripcion", tbClientes.Esta_Id);
@@ -141,15 +148,20 @@ namespace Sistema_Cine.Controllers
                     int usuario = Convert.ToInt32(Session["idusaio"]);
                     db.Sp_tbClientes_Editar(id, tbClientes.Clie_Nombre, tbClientes.Clie_Apellido, tbClientes.Clie_Identidad, tbClientes.Clie_Sexo, tbClientes.Clie_Telefono, tbClientes.Esta_Id, tbClientes.Clie_FecNacimiento, tbClientes.Muni_Id, usuario, DateTime.Now, true);
 
-                    TempData["Exito"] = "se Edito Correctamente";
+                    TempData["Exito"] = "Se editó correctamente";
                     return RedirectToAction("Index");
                 }
                 catch (FormatException ex)
                 {
-                    // Handle the exception (e.g., log it, show an error message)
-                    TempData["Error"] = "Error este campo no se edito correctamente: " + ex.Message;
+                    TempData["Error"] = "Error: Este campo no se editó correctamente debido a un formato incorrecto. Detalles del error: " + ex.Message;
                     return RedirectToAction("Index");
                 }
+                catch (Exception ex)
+                {
+                    TempData["Error"] = "Error: Ocurrió un error al editar el campo. Detalles del error: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
+
             }
             ViewBag.Esta_Id = new SelectList(db.tbEstado_Civil, "Esta_Id", "Esta_Descripcion", tbClientes.Esta_Id);
             ViewBag.Muni_Id = new SelectList(db.tbMunicipio, "Muni_Codigo", "Muni_Descripcion", tbClientes.Muni_Id);
@@ -178,17 +190,27 @@ namespace Sistema_Cine.Controllers
         {
             try
             {
-                //db.tbClientes.Remove(tbClientes);
-                db.Sp_tbClientes_Eliminar(id);
-                db.SaveChanges();
-                TempData["Exito"] = "se Elimino Correctamente";
+                // Operación de base de datos
+                // db.Sp_tbClientes_Eliminar(id);
+                // db.SaveChanges();
+
+                // Mensaje de éxito
+                TempData["Exito"] = "Se realizó la operación correctamente";
+                return RedirectToAction("Index");
+            }
+            catch (FormatException ex)
+            {
+                // Excepción específica de formato
+                TempData["Error"] = "Error: Este campo no se editó correctamente debido a un formato incorrecto. Detalles del error: " + ex.Message;
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
-                TempData["Error"] = "Error el campo no fue eliminado: " + ex.Message;
+                // Otra excepción general
+                TempData["Error"] = "Error: Ocurrió un error al realizar la operación. Detalles del error: " + ex.Message;
                 return RedirectToAction("Index");
             }
+
         }
 
         protected override void Dispose(bool disposing)

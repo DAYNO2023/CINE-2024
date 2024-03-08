@@ -7,9 +7,12 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Sistema_Cine.Models;
+using Sistema_Cine.ValidarSession;
 
 namespace Sistema_Cine.Controllers
 {
+    [ValidarSesion]
+    [ValidarSesionprecio]
     public class tbPreciosController : Controller
     {
         private dbSsitemascinesEntities5 db = new dbSsitemascinesEntities5();
@@ -61,17 +64,22 @@ namespace Sistema_Cine.Controllers
                 {
                     int usuario = Convert.ToInt32(Session["idusaio"]);
                     db.Sp_tbPrecios_Insertar(tbPrecios.Prec_Descripcion, usuario, DateTime.Now, true);
-                    //db.tbPrecios.Add(tbPrecios);
+                    // db.tbPrecios.Add(tbPrecios);
                     db.SaveChanges();
-                    TempData["Exito"] = "se agrego Correctamente";
+                    TempData["Exito"] = "Se agregó correctamente";
                     return RedirectToAction("Index");
                 }
                 catch (FormatException ex)
                 {
-                    // Handle the exception (e.g., log it, show an error message)
-                    TempData["Error"] = "Error el registro no se guardo correctamente: " + ex.Message;
+                    TempData["Error"] = "Error: El registro no se guardó correctamente debido a un formato incorrecto. Detalles del error: " + ex.Message;
                     return RedirectToAction("Index");
                 }
+                catch (Exception ex)
+                {
+                    TempData["Error"] = "Error: Ocurrió un error al guardar el registro. Detalles del error: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
+
             }
 
             return View(tbPrecios);

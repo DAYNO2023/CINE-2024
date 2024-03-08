@@ -240,6 +240,9 @@
     <Compile Include="Models\Sp_tbUsuarios_Mostrar_Result.cs">
       <DependentUpon>SistemaCines.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SP_tbUsuarios_seccionentrar_Result.cs">
+      <DependentUpon>SistemaCines.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Sucursales.cs" />
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>SistemaCines.tt</DependentUpon>
@@ -310,6 +313,27 @@
     <Compile Include="Models\TiposDePagos.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValidarSession\ValidarSesionAttribute.cs" />
+    <Compile Include="ValidarSession\ValidarSesionButacas.cs" />
+    <Compile Include="ValidarSession\ValidarSesioncargo.cs" />
+    <Compile Include="ValidarSession\ValidarSesioncartelera.cs" />
+    <Compile Include="ValidarSession\ValidarSesioncliente.cs" />
+    <Compile Include="ValidarSession\ValidarSesiondepartamento.cs" />
+    <Compile Include="ValidarSession\ValidarSesionempleado.cs" />
+    <Compile Include="ValidarSession\ValidarSesionentradas.cs" />
+    <Compile Include="ValidarSession\ValidarSesiongeneros.cs" />
+    <Compile Include="ValidarSession\ValidarSesionmunicipio.cs" />
+    <Compile Include="ValidarSession\ValidarSesionPantalla_Roles.cs" />
+    <Compile Include="ValidarSession\ValidarSesionprecio.cs" />
+    <Compile Include="ValidarSession\ValidarSesionpromocion.cs" />
+    <Compile Include="ValidarSession\ValidarSesionroles.cs" />
+    <Compile Include="ValidarSession\ValidarSesionsucursales.cs" />
+    <Compile Include="ValidarSession\ValidarSesiontipopagocs.cs" />
+    <Compile Include="ValidarSession\ValidarSesionusuario.cs" />
+    <Compile Include="ValidarSession\ValidarSessionFacturas_Detalles.cs" />
+    <Compile Include="ValidarSession\ValidarSessionFacturas_emcabezados.cs" />
+    <Compile Include="ValidarSession\ValidarSessionsalas.cs" />
+    <Compile Include="ValidarSession\ValidarsessionTipo_Pago.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -1887,12 +1911,6 @@
     <Content Include="Views\tbCarteleras\Delete.cshtml" />
     <Content Include="Views\tbCarteleras\Edit.cshtml" />
     <Content Include="Views\tbCarteleras\Index.cshtml" />
-    <Content Include="Views\tbFacturas_Encabezados\Delete.cshtml" />
-    <Content Include="Views\tbFacturas_Encabezados\Details.cshtml" />
-    <Content Include="Views\tbFacturas_Detalles\Delete.cshtml" />
-    <Content Include="Views\tbFacturas_Detalles\Details.cshtml" />
-    <Content Include="Views\tbFacturas_Detalles\Edit.cshtml" />
-    <Content Include="Views\tbFacturas_Detalles\Index.cshtml" />
     <Content Include="Views\tbDepartamentos\Create.cshtml" />
     <Content Include="Views\tbDepartamentos\Delete.cshtml" />
     <Content Include="Views\tbDepartamentos\Edit.cshtml" />
@@ -1920,11 +1938,6 @@
     <Content Include="Views\tbMunicipios\_Create.cshtml" />
     <Content Include="Views\tbEntradas\_Create.cshtml" />
     <Content Include="Views\tbTipo_Pagos\_Edit.cshtml" />
-    <Content Include="Views\tbSucursales\Create.cshtml" />
-    <Content Include="Views\tbSucursales\Delete.cshtml" />
-    <Content Include="Views\tbSucursales\Details.cshtml" />
-    <Content Include="Views\tbSucursales\Edit.cshtml" />
-    <Content Include="Views\tbSucursales\Index.cshtml" />
     <Content Include="Views\tbGeneros\_Edit.cshtml" />
     <Content Include="Views\tbButacas_Salas\_Edit.cshtml" />
     <Content Include="Views\tbCargos\_Edit.cshtml" />
@@ -1953,7 +1966,6 @@
     <Content Include="Views\tbUsuarios\_Delete.cshtml" />
     <Content Include="Views\tbUsuarios\Edit.cshtml" />
     <Content Include="Views\tbTipo_Pagos\Details.cshtml" />
-    <Content Include="Views\tbSucursales\_Delete.cshtml" />
     <Content Include="Views\tbSalas\Details.cshtml" />
     <Content Include="Views\tbRoles\Details.cshtml" />
     <Content Include="Views\tbPromociones\Details.cshtml" />
@@ -1972,10 +1984,22 @@
     <Content Include="Views\tbButacas_Salas\Details.cshtml" />
     <Content Include="Views\tbUsuarios\Create.cshtml" />
     <Content Include="Views\tbClientes\_Delete.cshtml" />
-    <Content Include="Views\tbFacturas_Detalles\Create.cshtml" />
+    <Content Include="Views\tbSucursales\Create.cshtml" />
+    <Content Include="Views\tbSucursales\Delete.cshtml" />
+    <Content Include="Views\tbSucursales\Details.cshtml" />
+    <Content Include="Views\tbSucursales\Edit.cshtml" />
+    <Content Include="Views\tbSucursales\Index.cshtml" />
+    <Content Include="Views\tbSucursales\_Delete.cshtml" />
     <Content Include="Views\tbFacturas_Encabezados\Create.cshtml" />
+    <Content Include="Views\tbFacturas_Encabezados\Delete.cshtml" />
+    <Content Include="Views\tbFacturas_Encabezados\Details.cshtml" />
     <Content Include="Views\tbFacturas_Encabezados\Edit.cshtml" />
     <Content Include="Views\tbFacturas_Encabezados\Index.cshtml" />
+    <Content Include="Views\tbFacturas_Detalles\Create.cshtml" />
+    <Content Include="Views\tbFacturas_Detalles\Delete.cshtml" />
+    <Content Include="Views\tbFacturas_Detalles\Details.cshtml" />
+    <Content Include="Views\tbFacturas_Detalles\Edit.cshtml" />
+    <Content Include="Views\tbFacturas_Detalles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

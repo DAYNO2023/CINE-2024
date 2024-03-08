@@ -360,9 +360,7 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="Sp_tbSucursales_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbSucursales_Editar" />
     <FunctionImportMapping FunctionImportName="Sp_tbSucursales_Eliminar" FunctionName="dbSsitemascinesModel.Store.Sp_tbSucursales_Eliminar" />
-    <FunctionImportMapping FunctionImportName="Sp_tbSucursales_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbSucursales_Insertar" />
     <FunctionImportMapping FunctionImportName="Sp_tbSucursales_Mostrar" FunctionName="dbSsitemascinesModel.Store.Sp_tbSucursales_Mostrar">
       <ResultMapping>
         <ComplexTypeMapping TypeName="dbSsitemascinesModel.Sp_tbSucursales_Mostrar_Result">
@@ -627,5 +625,22 @@
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="Sp_tbPantalla_Roles_Eliminar2" FunctionName="dbSsitemascinesModel.Store.Sp_tbPantalla_Roles_Eliminar" />
     <FunctionImportMapping FunctionImportName="Sp_tbUsuarios_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbUsuarios_Editar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbSucursales_Editar" FunctionName="dbSsitemascinesModel.Store.Sp_tbSucursales_Editar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbSucursales_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbSucursales_Insertar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbFacturas_Detalles_Insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbFacturas_Detalles_Insertar" />
+    <FunctionImportMapping FunctionImportName="Sp_tbtbFacturas_Encabezados_insertar" FunctionName="dbSsitemascinesModel.Store.Sp_tbtbFacturas_Encabezados_insertar" />
+    <FunctionImportMapping FunctionImportName="SP_tbUsuarios_seccionentrar" FunctionName="dbSsitemascinesModel.Store.SP_tbUsuarios_seccionentrar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbSsitemascinesModel.SP_tbUsuarios_seccionentrar_Result">
+          <ScalarProperty Name="Usua_Id" ColumnName="Usua_Id" />
+          <ScalarProperty Name="Usua_Nombre" ColumnName="Usua_Nombre" />
+          <ScalarProperty Name="Usua_Contraseña" ColumnName="Usua_Contraseña" />
+          <ScalarProperty Name="Empl_Empleado" ColumnName="Empl_Empleado" />
+          <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+          <ScalarProperty Name="Role_Descripcion" ColumnName="Role_Descripcion" />
+          <ScalarProperty Name="Usua_Administrador" ColumnName="Usua_Administrador" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

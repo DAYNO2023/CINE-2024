@@ -7,9 +7,12 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Sistema_Cine.Models;
+using Sistema_Cine.ValidarSession;
 
 namespace Sistema_Cine.Controllers
 {
+    [ValidarSesion]
+    [ValidarSesionButacas]
     public class tbButacas_SalasController : Controller
     {
         private dbSsitemascinesEntities5 db = new dbSsitemascinesEntities5();
@@ -54,19 +57,34 @@ namespace Sistema_Cine.Controllers
             ModelState.Remove("Buta_Fecha_Modificacion");
             if (ModelState.IsValid)
             {
-                try
+                if (ModelState.IsValid)
                 {
-                    int usuario = Convert.ToInt32(Session["idusaio"]);
-                    db.Sp_tbButacas_Salas_Insertar(tbButacas_Salas.Buta_Descripcion, usuario, DateTime.Now, true);
-                    //db.tbButacas_Salas.Add(tbButacas_Salas);
-                    db.SaveChanges();
-                    TempData["Exito"] = "se agrego Correctamente";
-                    return RedirectToAction("Index");
+                    try
+                    {
+                        if (Session["idusaio"] != null)
+                        {
+                            int usuario = Convert.ToInt32(Session["idusaio"]);
+                            db.Sp_tbButacas_Salas_Insertar(tbButacas_Salas.Buta_Descripcion, usuario, DateTime.Now, true);
+                            db.SaveChanges();
+                            TempData["Exito"] = "se agregó correctamente";
+                            return RedirectToAction("Index");
+                        }
+                        else
+                        {
+                            TempData["Error"] = "Error: La sesión del usuario es nula.";
+                            return RedirectToAction("Index");
+                        }
+                    }
+                    catch (FormatException ex)
+                    {
+                        // Handle the exception (e.g., log it, show an error message)
+                        TempData["Error"] = "Error: El registro no se guardó correctamente. Detalles del error: " + ex.Message;
+                        return RedirectToAction("Index");
+                    }
                 }
-                catch (FormatException ex)
+                else
                 {
-                    // Handle the exception (e.g., log it, show an error message)
-                    TempData["Error"] = "Error el registro no se guardo correctamente: " + ex.Message;
+                    TempData["Error"] = "Error: ModelState no es válido.";
                     return RedirectToAction("Index");
                 }
             }
@@ -103,30 +121,34 @@ namespace Sistema_Cine.Controllers
 
             if (ModelState.IsValid)
             {
-                try
+                if (ModelState.IsValid)
                 {
-                    int id = Convert.ToInt32(Session["idtipo"]);
-                    int usuario = Convert.ToInt32(Session["idusaio"]);
-                    db.Sp_tbButacas_Salas_Editar(id, tbButacas_Salas.Buta_Descripcion, usuario, DateTime.Now, true);
+                    try
+                    {
+                        if (Session["idusaio"] != null && Session["idtipo"] != null)
+                        {
+                            int id = Convert.ToInt32(Session["idtipo"]);
+                            int usuario = Convert.ToInt32(Session["idusaio"]);
+                            db.Sp_tbButacas_Salas_Editar(id, tbButacas_Salas.Buta_Descripcion, usuario, DateTime.Now, true);
 
-
-                    //if (butacasExistente != null)
-                    //{
-                    //    // Actualizar las propiedades del registro existente con los valores del modelo recibido
-                    //    butacasExistente.Buta_Descripcion = tbButacas_Salas.Buta_Descripcion;
-
-                    //    // Cambiar el estado de la entidad a modificada
-                    //    db.Entry(butacasExistente).State = EntityState.Modified;
-
-                    //    // Guardar los cambios en la base de datos
-                    //    db.SaveChanges();
-                    TempData["Exito"] = "se Edito Correctamente";
-                    return RedirectToAction("Index");
+                            TempData["Exito"] = "Se editó correctamente";
+                            return RedirectToAction("Index");
+                        }
+                        else
+                        {
+                            TempData["Error"] = "Error: La sesión del usuario o el tipo de ID son nulos.";
+                            return RedirectToAction("Index");
+                        }
+                    }
+                    catch (FormatException ex)
+                    {
+                        TempData["Error"] = "Error: El registro no se editó correctamente debido a un formato incorrecto. Detalles del error: " + ex.Message;
+                        return RedirectToAction("Index");
+                    }
                 }
-                catch (FormatException ex)
+                else
                 {
-                    // Handle the exception (e.g., log it, show an error message)
-                    TempData["Error"] = "Error este campo no se edito correctamente: " + ex.Message;
+                    TempData["Error"] = "Error: ModelState no es válido.";
                     return RedirectToAction("Index");
                 }
             }
@@ -156,18 +178,25 @@ namespace Sistema_Cine.Controllers
             try
             {
                 tbButacas_Salas tbButacas_Salas = db.tbButacas_Salas.Find(id);
-                db.tbButacas_Salas.Remove(tbButacas_Salas);
-                //db.Sp_tbButacas_Salas_Eliminar(id);
-                db.SaveChanges();
-                TempData["Exito"] = "El campo se elimino correctamente";
-                return RedirectToAction("Index");
+                if (tbButacas_Salas != null)
+                {
+                    db.tbButacas_Salas.Remove(tbButacas_Salas);
+                    db.SaveChanges();
+                    TempData["Exito"] = "El campo se eliminó correctamente";
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    TempData["Error"] = "Error: No se encontró el registro a eliminar.";
+                    return RedirectToAction("Index");
+                }
             }
-            catch (FormatException ex)
+            catch (Exception ex)
             {
-                // Handle the exception (e.g., log it, show an error message)
-                TempData["Error"] = "Error no se pudo eliminar el campo de la Butaca: " + ex.Message;
+                TempData["Error"] = "Error: No se pudo eliminar el campo de la Butaca. Detalles del error: " + ex.Message;
                 return RedirectToAction("Index");
             }
+
         }
 
         protected override void Dispose(bool disposing)

@@ -7,9 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Sistema_Cine.Models;
-
+using Sistema_Cine.ValidarSession;
 namespace Sistema_Cine.Controllers
 {
+    [ValidarSesion]
+    [ValidarSesionmunicipio]
     public class tbMunicipiosController : Controller
     {
         private dbSsitemascinesEntities5 db = new dbSsitemascinesEntities5();
@@ -62,15 +64,20 @@ namespace Sistema_Cine.Controllers
                 {
                     db.tbMunicipio.Add(tbMunicipio);
                     db.SaveChanges();
-                    TempData["Exito"] = "se agrego Correctamente";
+                    TempData["Exito"] = "Se agregó correctamente";
                     return RedirectToAction("Index");
                 }
                 catch (FormatException ex)
                 {
-                    // Handle the exception (e.g., log it, show an error message)
-                    TempData["Error"] = "Error el registro no se guardo correctamente: " + ex.Message;
+                    TempData["Error"] = "Error: El registro no se guardó correctamente debido a un formato incorrecto. Detalles del error: " + ex.Message;
                     return RedirectToAction("Index");
                 }
+                catch (Exception ex)
+                {
+                    TempData["Error"] = "Error: Ocurrió un error al guardar el registro. Detalles del error: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
+
             }
 
             ViewBag.Depa_Codigo = new SelectList(db.tbDepartamentos, "Depa_Codigo", "Depa_Descripcion", tbMunicipio.Depa_Codigo);
@@ -104,26 +111,35 @@ namespace Sistema_Cine.Controllers
             {
                 try
                 {
-
                     int id = Convert.ToInt32(Session["idtipo"]);
-                    var municipiosexistenete = db.tbMunicipio.Find(id);
+                    var municipiosexistente = db.tbMunicipio.Find(id);
 
-                    if (municipiosexistenete != null)
+                    if (municipiosexistente != null)
                     {
-                        db.Entry(municipiosexistenete).Reload();
-                        municipiosexistenete.Muni_Descripcion = tbMunicipio.Muni_Descripcion;
-                        municipiosexistenete.Depa_Codigo = tbMunicipio.Depa_Codigo;
-                        TempData["Exito"] = "se Edito Correctamente";
+                        db.Entry(municipiosexistente).Reload();
+                        municipiosexistente.Muni_Descripcion = tbMunicipio.Muni_Descripcion;
+                        municipiosexistente.Depa_Codigo = tbMunicipio.Depa_Codigo;
+                        TempData["Exito"] = "Se editó correctamente";
                         db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        TempData["Error"] = "Error: El municipio a editar no existe.";
                         return RedirectToAction("Index");
                     }
                 }
                 catch (FormatException ex)
                 {
-                    // Handle the exception (e.g., log it, show an error message)
-                    TempData["Error"] = "Error este campo no se edito correctamente: " + ex.Message;
+                    TempData["Error"] = "Error: Este campo no se editó correctamente debido a un formato incorrecto. Detalles del error: " + ex.Message;
                     return RedirectToAction("Index");
                 }
+                catch (Exception ex)
+                {
+                    TempData["Error"] = "Error: Ocurrió un error al editar el campo. Detalles del error: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
+
             }
             ViewBag.Depa_Codigo = new SelectList(db.tbDepartamentos, "Depa_Codigo", "Depa_Descripcion", tbMunicipio.Depa_Codigo);
             return View(tbMunicipio);

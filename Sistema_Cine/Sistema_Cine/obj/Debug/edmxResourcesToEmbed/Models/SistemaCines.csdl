@@ -585,8 +585,6 @@
       <Parameter Name="FechaEstreno" Mode="In" Type="DateTime" />
       <Parameter Name="Creacion" Mode="In" Type="Int32" />
       <Parameter Name="FechaCreacion" Mode="In" Type="DateTime" />
-      <Parameter Name="Modifica" Mode="In" Type="Int32" />
-      <Parameter Name="FechaModifica" Mode="In" Type="DateTime" />
       <Parameter Name="Estado" Mode="In" Type="Boolean" />
     </FunctionImport>
     <FunctionImport Name="Sp_tbCarteleras_Mostrar" ReturnType="Collection(dbSsitemascinesModel.Sp_tbCarteleras_Mostrar_Result)" />
@@ -606,25 +604,8 @@
       <Parameter Name="Estado" Mode="In" Type="Boolean" />
     </FunctionImport>
     <FunctionImport Name="Sp_tbEntradas_Mostrar" ReturnType="Collection(dbSsitemascinesModel.Sp_tbEntradas_Mostrar_Result)" />
-    <FunctionImport Name="Sp_tbSucursales_Editar" ReturnType="Collection(Int32)">
-      <Parameter Name="Id" Mode="In" Type="Int32" />
-      <Parameter Name="Descripcion" Mode="In" Type="String" />
-      <Parameter Name="Direccion" Mode="In" Type="String" />
-      <Parameter Name="MunicipioCodigo" Mode="In" Type="String" />
-      <Parameter Name="Modifica" Mode="In" Type="Int32" />
-      <Parameter Name="FechaModifica" Mode="In" Type="DateTime" />
-      <Parameter Name="Estado" Mode="In" Type="Boolean" />
-    </FunctionImport>
     <FunctionImport Name="Sp_tbSucursales_Eliminar" ReturnType="Collection(Int32)">
       <Parameter Name="Id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="Sp_tbSucursales_Insertar" ReturnType="Collection(Int32)">
-      <Parameter Name="Descripcion" Mode="In" Type="String" />
-      <Parameter Name="Direccion" Mode="In" Type="String" />
-      <Parameter Name="MunicipioCodigo" Mode="In" Type="String" />
-      <Parameter Name="Creacion" Mode="In" Type="Int32" />
-      <Parameter Name="FechaCreacion" Mode="In" Type="DateTime" />
-      <Parameter Name="Estado" Mode="In" Type="Boolean" />
     </FunctionImport>
     <FunctionImport Name="Sp_tbSucursales_Mostrar" ReturnType="Collection(dbSsitemascinesModel.Sp_tbSucursales_Mostrar_Result)" />
     <FunctionImport Name="sp_alterdiagram">
@@ -792,8 +773,6 @@
       <Parameter Name="Muni_Id" Mode="In" Type="String" />
       <Parameter Name="UsuaCreacion" Mode="In" Type="Int32" />
       <Parameter Name="FechaCreacion" Mode="In" Type="DateTime" />
-      <Parameter Name="UsuaModifica" Mode="In" Type="Int32" />
-      <Parameter Name="FechaModifica" Mode="In" Type="DateTime" />
       <Parameter Name="Estado" Mode="In" Type="Boolean" />
     </FunctionImport>
     <FunctionImport Name="Sp_tbClientes_Mostrar" ReturnType="Collection(dbSsitemascinesModel.Sp_tbClientes_Mostrar_Result)" />
@@ -902,6 +881,48 @@
       <Parameter Name="Modifica" Mode="In" Type="Int32" />
       <Parameter Name="FechaModifica" Mode="In" Type="DateTime" />
       <Parameter Name="Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_tbSucursales_Editar" ReturnType="Collection(Int32)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="Direccion" Mode="In" Type="String" />
+      <Parameter Name="MunicipioCodigo" Mode="In" Type="String" />
+      <Parameter Name="Modifica" Mode="In" Type="Int32" />
+      <Parameter Name="FechaModifica" Mode="In" Type="DateTime" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_tbSucursales_Insertar" ReturnType="Collection(Int32)">
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="Direccion" Mode="In" Type="String" />
+      <Parameter Name="MunicipioCodigo" Mode="In" Type="String" />
+      <Parameter Name="Cart_Id" Mode="In" Type="Int32" />
+      <Parameter Name="Entra_Id" Mode="In" Type="Int32" />
+      <Parameter Name="Creacion" Mode="In" Type="Int32" />
+      <Parameter Name="FechaCreacion" Mode="In" Type="DateTime" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_tbFacturas_Detalles_Insertar">
+      <Parameter Name="Fact_Id" Mode="In" Type="Int32" />
+      <Parameter Name="Cart_Id" Mode="In" Type="Int32" />
+      <Parameter Name="Fade_ticket" Mode="In" Type="Int32" />
+      <Parameter Name="Fade_Usua_Creacion" Mode="In" Type="Int32" />
+      <Parameter Name="Fade_Fecha_Creacion" Mode="In" Type="DateTime" />
+      <Parameter Name="Fade_Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_tbtbFacturas_Encabezados_insertar">
+      <Parameter Name="Fact_Fecha" Mode="In" Type="DateTime" />
+      <Parameter Name="Clie_Id" Mode="In" Type="Int32" />
+      <Parameter Name="Empl_Id" Mode="In" Type="Int32" />
+      <Parameter Name="Tipo_Id" Mode="In" Type="Int32" />
+      <Parameter Name="Fact_Usua_Creacion" Mode="In" Type="Int32" />
+      <Parameter Name="Fact_Fecha_Creacion" Mode="In" Type="DateTime" />
+      <Parameter Name="Fact_Estado" Mode="In" Type="Boolean" />
+      <Parameter Name="Prom_Id" Mode="In" Type="Int32" />
+      <Parameter Name="Fact_Id" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_tbUsuarios_seccionentrar" ReturnType="Collection(dbSsitemascinesModel.SP_tbUsuarios_seccionentrar_Result)">
+      <Parameter Name="Usuario" Mode="In" Type="String" />
+      <Parameter Name="Contra" Mode="In" Type="String" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="SP_tbUsuarios_InicioSesion_Result">
@@ -1329,4 +1350,13 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <ComplexType Name="SP_tbUsuarios_seccionentrar_Result">
+    <Property Type="Int32" Name="Usua_Id" Nullable="false" />
+    <Property Type="String" Name="Usua_Nombre" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="Usua_Contraseña" Nullable="true" />
+    <Property Type="String" Name="Empl_Empleado" Nullable="true" MaxLength="101" />
+    <Property Type="Int32" Name="Role_Id" Nullable="false" />
+    <Property Type="String" Name="Role_Descripcion" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="Usua_Administrador" Nullable="false" MaxLength="2" />
+  </ComplexType>
 </Schema>

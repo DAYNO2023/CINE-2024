@@ -97,7 +97,7 @@
                                 <tr>
                                     <th>Rol</th>
                                     <th>Pantalla</th>
-                                    <th>Accion</th>
+                                    @*<th>Accion</th>*@
 
                                 </tr>
                             </thead>
@@ -107,11 +107,11 @@
                                     <tr>
                                         <td>@pantallaRol.tbRoles.Role_Descripcion</td>
                                         <td>@pantallaRol.tbPantallas.Pant_Descripcion</td>
-                                        <td>
-                                            <button type="button" class="btn btn-danger btnEliminar" data-id="@pantallaRol.Paro_Id">
+                                        <!--<td>-->
+                                        @*<button type="button" class="btn btn-danger btnEliminar" data-id="@pantallaRol.Paro_Id">
                                                 Eliminar
-                                            </button>
-                                        </td>
+                                            </button>*@
+                                        <!--</td>-->
                                     </tr>
                                 }
                             </tbody>
@@ -173,9 +173,9 @@
                                     var newRow = '<tr>' +
                                         '<td>' + pantallaRol.tbRoles.Role_Descripcion + '</td>' +
                                         '<td>' + pantallaRol.tbPantallas.Pant_Descripcion + '</td>' +
-                                        '<td><button type="button" class="btn btn-danger btnEliminar" data-id="' + pantallaRol.Paro_Id + '">Eliminar</button></td>' +
+                                        /*'<td><button type="button" class="btn btn-danger btnEliminar" data-id="' + pantallaRol.Paro_Id + '">Eliminar</button></td>' +*/
                                         '</tr>';
-    
+
                                     $('#tablaOneRoles tbody').append(newRow);
                                 });
 
@@ -200,7 +200,7 @@
                 var id = $(this).data("id");
 
                 $.ajax({
-                    url: "/tbRoles/EliminarPantallaRol",
+                    url: "/tbPantalla_Roles/EliminarPantallaRol",
                     type: "POST",
                     data: { id: id },
                     success: function (response) {
@@ -272,7 +272,7 @@
                                 var newRow = '<tr>' +
                                     '<td>' + pantalla.Role_Descripcion + '</td>' +
                                     '<td>' + pantalla.Pant_Descripcion + '</td>' +
-                                    '<td><button type="button" class="btn btn-danger btnEliminar" data-id="' + pantalla.Id + '">Eliminar</button></td>' +
+                                    /*'<td><button type="button" class="btn btn-danger btnEliminar" data-id="' + pantalla.Id + '">Eliminar</button></td>' +*/
                                     '</tr>';
 
                                 $('#tablaOneRoles tbody').append(newRow);

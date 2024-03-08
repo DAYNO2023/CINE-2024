@@ -694,6 +694,10 @@
     <Parameter Name="Estado" Type="bit" Mode="In" />
   </Function>
   <Function Name="Sp_tbUsuarios_Mostrar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce" />
+  <Function Name="SP_tbUsuarios_seccionentrar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce">
+    <Parameter Name="Usuario" Type="varchar" Mode="In" />
+    <Parameter Name="Contra" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="Sp_tbCarteleras_Editar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Cine">
     <Parameter Name="Id" Type="int" Mode="In" />
     <Parameter Name="Descripcion" Type="varchar" Mode="In" />
@@ -716,8 +720,6 @@
     <Parameter Name="FechaEstreno" Type="datetime" Mode="In" />
     <Parameter Name="Creacion" Type="int" Mode="In" />
     <Parameter Name="FechaCreacion" Type="date" Mode="In" />
-    <Parameter Name="Modifica" Type="int" Mode="In" />
-    <Parameter Name="FechaModifica" Type="date" Mode="In" />
     <Parameter Name="Estado" Type="bit" Mode="In" />
   </Function>
   <Function Name="Sp_tbCarteleras_Mostrar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Cine" />
@@ -753,6 +755,8 @@
     <Parameter Name="Descripcion" Type="varchar" Mode="In" />
     <Parameter Name="Direccion" Type="varchar" Mode="In" />
     <Parameter Name="MunicipioCodigo" Type="varchar" Mode="In" />
+    <Parameter Name="Cart_Id" Type="int" Mode="In" />
+    <Parameter Name="Entra_Id" Type="int" Mode="In" />
     <Parameter Name="Creacion" Type="int" Mode="In" />
     <Parameter Name="FechaCreacion" Type="date" Mode="In" />
     <Parameter Name="Estado" Type="bit" Mode="In" />
@@ -789,6 +793,25 @@
     <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_tbFacturas_Detalles_Insertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Fact">
+    <Parameter Name="Fact_Id" Type="int" Mode="In" />
+    <Parameter Name="Cart_Id" Type="int" Mode="In" />
+    <Parameter Name="Fade_ticket" Type="int" Mode="In" />
+    <Parameter Name="Fade_Usua_Creacion" Type="int" Mode="In" />
+    <Parameter Name="Fade_Fecha_Creacion" Type="datetime" Mode="In" />
+    <Parameter Name="Fade_Estado" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="Sp_tbtbFacturas_Encabezados_insertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Fact">
+    <Parameter Name="Fact_Fecha" Type="date" Mode="In" />
+    <Parameter Name="Clie_Id" Type="int" Mode="In" />
+    <Parameter Name="Empl_Id" Type="int" Mode="In" />
+    <Parameter Name="Tipo_Id" Type="int" Mode="In" />
+    <Parameter Name="Fact_Usua_Creacion" Type="int" Mode="In" />
+    <Parameter Name="Fact_Fecha_Creacion" Type="datetime" Mode="In" />
+    <Parameter Name="Fact_Estado" Type="bit" Mode="In" />
+    <Parameter Name="Prom_Id" Type="int" Mode="In" />
+    <Parameter Name="Fact_Id" Type="int" Mode="InOut" />
+  </Function>
   <Function Name="Sp_tbButacas_Salas_Editar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
     <Parameter Name="Id" Type="int" Mode="In" />
     <Parameter Name="Descripcion" Type="varchar" Mode="In" />
@@ -924,8 +947,6 @@
     <Parameter Name="Muni_Id" Type="varchar" Mode="In" />
     <Parameter Name="UsuaCreacion" Type="int" Mode="In" />
     <Parameter Name="FechaCreacion" Type="date" Mode="In" />
-    <Parameter Name="UsuaModifica" Type="int" Mode="In" />
-    <Parameter Name="FechaModifica" Type="date" Mode="In" />
     <Parameter Name="Estado" Type="bit" Mode="In" />
   </Function>
   <Function Name="Sp_tbClientes_Mostrar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Regi" />

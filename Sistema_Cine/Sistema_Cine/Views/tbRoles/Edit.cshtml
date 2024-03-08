@@ -1,26 +1,29 @@
 ﻿@model Sistema_Cine.Models.tbRoles
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="card-body"></div>
 <div class="Card center-block">
+    <button type="button" class="btn btn-primary" onclick="window.location.href='@Url.Action("Index")'" style="text-align:right">
+        Regresar
+    </button>
     <div class="card-header">
         <h3>Modificar Permisos</h3>
     </div>
-
+    <hr />
     <div class="row">
         <div class="col-md-12">
-            @using (Html.BeginForm("Create", "tbRoles", FormMethod.Post, new { @class = "form-horizontal" }))
+            @using (Html.BeginForm("Edit", "tbRoles", FormMethod.Post, new { @class = "form-horizontal" }))
             {
                 @Html.AntiForgeryToken()
                 <hr />
                 <div class="form-group">
                     @Html.LabelFor(model => model.Role_Descripcion, "Rol", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Role_Descripcion, new { htmlAttributes = new { @class = "form-control", id = "Role_Descripcion" } })
+                        @Html.EditorFor(model => model.Role_Descripcion, new { htmlAttributes = new { @class = "form-control", id = "Role_Descripcion", @readonly = "readonly" } })
                         @Html.ValidationMessageFor(model => model.Role_Descripcion, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -29,9 +32,6 @@
             }
         </div>
     </div>
-    <button type="button" class="btn btn-primary" onclick="window.location.href='@Url.Action("Index")'">
-        Regresar
-    </button>
     <hr />
     <div class="row">
         <div class="col-md-6">
@@ -143,7 +143,54 @@
     <script>
         $(document).ready(function () {
 
+            // Función para realizar la búsqueda
+            function realizarBusqueda() {
+                var searchText = $('#Role_Descripcion').val().trim();
 
+                if (searchText !== '') {
+                    $.ajax({
+                        url: '/tbRoles/BuscarPantallasPorRol',
+                        type: 'GET',
+                        data: { roleDescripcion: searchText },
+                        success: function (data) {
+                            console.log("DATA ELIMINAR: ", data);
+
+                            if (data.success) {
+                                $('#tablaOneRoles tbody').empty();
+
+                                $.each(data.pantallasFiltradas, function (index, pantalla) {
+                                    var newRow = '<tr>' +
+                                        '<td>' + pantalla.Role_Descripcion + '</td>' +
+                                        '<td>' + pantalla.Pant_Descripcion + '</td>' +
+                                        '<td><button type="button" class="btn btn-danger btnEliminar" onclick="eliminarPantalla(' + pantalla.Paro_Id + ')">Eliminar</button></td>' +
+                                        '</tr>';
+
+                                    $('#tablaOneRoles tbody').append(newRow);
+                                });
+
+                                $('.tablaOneRolesContainer').removeClass('d-none');
+                            } else {
+                                console.error("Error en la búsqueda: ", data.message);
+                                alert('Error al realizar la búsqueda.');
+                            }
+                        },
+                        error: function (xhr, textStatus, errorThrown) {
+                            console.error("Error en la solicitud AJAX:", textStatus, errorThrown);
+                            alert('Error al realizar la búsqueda.');
+                        }
+                    });
+                } else {
+                    $('.tablaOneRolesContainer').addClass('d-none');
+                }
+            }
+
+            // Ejecuta la búsqueda al cargar la página
+            realizarBusqueda();
+
+            // Ejecuta la búsqueda cuando cambia el valor del campo
+            $('#Role_Descripcion').on('change', function () {
+                realizarBusqueda();
+            });
 
             $('.btnAgregar').click(function () {
                 var roleDescripcion = $('#Role_Descripcion').val();
@@ -166,6 +213,7 @@
                         type: 'POST',
                         data: { Role_Descripcion: roleDescripcion, Pant_Descripcion: pantallaDescripcion },
                         success: function (data) {
+                            console.log(data);
                             if (data.success) {
                                 $('#tablaOneRoles tbody').empty();
 
@@ -186,6 +234,7 @@
                                 $('#mensajeOperacion').text('Error: ' + data.message);
                             }
                         },
+
                         error: function () {
                             $('#mensajeOperacion').text('Error al realizar la solicitud.');
                         }
@@ -196,98 +245,37 @@
             });
 
 
-            function eliminar(id) {
 
-                console.log("Error: " + id);
-                $.ajax({
-                    url: "/tbRoles/EliminarPantallaRol",
-                    type: "POST",
-                    data: { id: id },
-                    success: function (response) {
-                        if (response.success) {
-                            console.log("Éxito: " + response.message);
-                        } else {
-                            console.error("Error: " + response.message);
-                        }
-                    },
-                    error: function (error) {
-                        console.error("Error en la solicitud AJAX: " + error.statusText);
-                        console.log(error);
-                    }
-                });
-            }
-
-            //$('#tablaOneRoles').on('click', '.btnEliminar', function () {
-            //    var id = $(this).data('id');
-            //    console.log('Botón eliminar clickeado, ID:', id);
-
-            //    if (id) {
-            //        eliminarPantallaRol(id);
-            //    } else {
-            //        console.error('ID no válido:', id);
-            //    }
-            //});
-
-
-            //function eliminarPantallaRol(id) {
-            //    console.log('Eliminando pantalla y rol con ID: ' + id);
-
-            //    if (!id) {
-            //        console.log('ID no válido.');
-            //        return;
-            //    }
-
-            //    $.ajax({
-            //        url: '/tbRoles/EliminarPantallaRol/' + id,
-            //        type: 'GET',
-            //        dataType: 'json',
-            //        success: function (data) {
-            //            if (data.success) {
-            //                console.log('Éxito: ' + data.message);
-            //            } else {
-            //                console.log('Error en el servidor: ' + data.message);
-            //            }
-            //        },
-            //        error: function (xhr, status, error) {
-            //            console.log('Error en la llamada AJAX:', status, error);
-            //            console.log('Detalles del error:', xhr.responseText);
-            //        }
-            //    });
-
-
-            //}
-
-            $('#Role_Descripcion').keyup(function () {
-                var searchText = $(this).val().trim();
-                if (searchText !== '') {
-                    $.ajax({
-                        url: '/tbRoles/BuscarPantallasPorRol',
-                        type: 'GET',
-                        data: { roleDescripcion: searchText },
-                        success: function (data) {
-                            $('#tablaOneRoles tbody').empty();
-
-                            $.each(data.pantallasFiltradas, function (index, pantalla) {
-                                var newRow = '<tr>' +
-                                    '<td>' + pantalla.Role_Descripcion + '</td>' +
-                                    '<td>' + pantalla.Pant_Descripcion + '</td>' +
-                                    '<td><button type="button" class="btn btn-danger btnEliminar" onclick=eliminar(' + pantalla.Id + ') ">Eliminar</button></td>' +
-                                    '</tr>';
-
-                                $('#tablaOneRoles tbody').append(newRow);
-                            });
-                            $('.tablaOneRolesContainer').removeClass('d-none');
-                        },
-                        error: function () {
-                            alert('Error al realizar la búsqueda.');
-                        }
-                    });
-                } else {
-                    $('.tablaOneRolesContainer').addClass('d-none');
-                }
-            });
 
         });
+        function eliminarPantalla(id) {
+            $.ajax({
+                url: '/tbRoles/EliminarPantallaRol',
+                type: 'POST',
+                data: { id: id },
+
+                success: function (response) {
+                    if (response.success) {
+                        console.log("Éxito: se eliminó correctamente");
+
+                        // Refresca la página
+                        location.reload();
+                    } else {
+                        console.error("Error: " + response.message);
+                        // Maneja el error según tus necesidades
+                    }
+                },
+                error: function (error) {
+                    console.error("Error en la solicitud AJAX: " + error.statusText);
+                    console.log(error);
+                    // Maneja el error según tus necesidades
+                }
+            });
+        }
+
+
+
+
     </script>
 }
 

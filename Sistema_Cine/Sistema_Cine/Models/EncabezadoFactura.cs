@@ -19,7 +19,7 @@ namespace Sistema_Cine.Models
     public class EncabezadoFacturaMEta
     {
 
-        [Display(Name = "Encabezado_Factura ID")]
+        [Display(Name = "Encabezado_Factura ")]
         public int Fact_Id { get; set; }
         [Display(Name = "Fecha")]
         public Nullable<System.DateTime> Fact_Fecha { get; set; }

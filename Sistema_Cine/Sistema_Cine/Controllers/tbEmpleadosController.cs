@@ -7,9 +7,12 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Sistema_Cine.Models;
+using Sistema_Cine.ValidarSession;
 
 namespace Sistema_Cine.Controllers
 {
+    [ValidarSesion]
+    [ValidarSesionempleado]
     public class tbEmpleadosController : Controller
     {
         private dbSsitemascinesEntities5 db = new dbSsitemascinesEntities5();
@@ -64,17 +67,22 @@ namespace Sistema_Cine.Controllers
                 {
                     int usuario = Convert.ToInt32(Session["idusaio"]);
                     db.Sp_tbEmpleados_Insertar(tbEmpleados.Empl_Nombre, tbEmpleados.Empl_Apellido, tbEmpleados.Empl_Identidad, tbEmpleados.Empl_Sexo, tbEmpleados.Empl_Telefono, tbEmpleados.Esta_Id, tbEmpleados.Empl_FecNacimiento, tbEmpleados.Muni_Id, tbEmpleados.Carg_Id, usuario, DateTime.Now, true);
-                    //db.tbEmpleados.Add(tbEmpleados);
+                    // db.tbEmpleados.Add(tbEmpleados);
                     db.SaveChanges();
-                    TempData["Exito"] = "se agrego Correctamente";
+                    TempData["Exito"] = "Se agregó correctamente";
                     return RedirectToAction("Index");
                 }
                 catch (FormatException ex)
                 {
-                    // Handle the exception (e.g., log it, show an error message)
-                    TempData["Error"] = "Error el registro no se guardo correctamente: " + ex.Message;
+                    TempData["Error"] = "Error: El registro no se guardó correctamente debido a un formato incorrecto. Detalles del error: " + ex.Message;
                     return RedirectToAction("Index");
                 }
+                catch (Exception ex)
+                {
+                    TempData["Error"] = "Error: Ocurrió un error al guardar el registro. Detalles del error: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
+
             }
 
             ViewBag.Carg_Id = new SelectList(db.tbCargos, "Carg_Id", "Carg_Descripcion", tbEmpleados.Carg_Id);
@@ -115,25 +123,26 @@ namespace Sistema_Cine.Controllers
             ModelState.Remove("Empl_Estado");
             if (ModelState.IsValid)
             {
-
                 try
                 {
-
                     int id = Convert.ToInt32(Session["idtipo"]);
                     int usuario = Convert.ToInt32(Session["idusaio"]);
                     db.Sp_tbEmpleados_Editar(id, tbEmpleados.Empl_Nombre, tbEmpleados.Empl_Apellido, tbEmpleados.Empl_Identidad, tbEmpleados.Empl_Sexo, tbEmpleados.Empl_Telefono, tbEmpleados.Esta_Id, tbEmpleados.Empl_FecNacimiento, tbEmpleados.Muni_Id, tbEmpleados.Carg_Id, usuario, DateTime.Now, true);
 
-
-
-                    TempData["Exito"] = "se Edito Correctamente";
+                    TempData["Exito"] = "Se editó correctamente";
                     return RedirectToAction("Index");
                 }
                 catch (FormatException ex)
                 {
-                    // Handle the exception (e.g., log it, show an error message)
-                    TempData["Error"] = "Error este campo no se edito correctamente: " + ex.Message;
+                    TempData["Error"] = "Error: Este campo no se editó correctamente debido a un formato incorrecto. Detalles del error: " + ex.Message;
                     return RedirectToAction("Index");
                 }
+                catch (Exception ex)
+                {
+                    TempData["Error"] = "Error: Ocurrió un error al editar el campo. Detalles del error: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
+
             }
             ViewBag.Carg_Id = new SelectList(db.tbCargos, "Carg_Id", "Carg_Descripcion", tbEmpleados.Carg_Id);
             ViewBag.Esta_Id = new SelectList(db.tbEstado_Civil, "Esta_Id", "Esta_Descripcion", tbEmpleados.Esta_Id);

@@ -4,12 +4,15 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Sistema_Cine.Models;
-
+using Sistema_Cine.ValidarSession;
 namespace Sistema_Cine.Controllers
 {
+    [ValidarSesion]
+    [ValidarSesionroles]
     public class tbRolesController : Controller
     {
         private dbSsitemascinesEntities5 db = new dbSsitemascinesEntities5();
@@ -50,11 +53,12 @@ namespace Sistema_Cine.Controllers
                     var pantallasFiltradas = pantallasRolesList
                         .Select(pr => new
                         {
+                            Paro_Id = pr.Paro_Id,
                             Role_Id = pr.tbRoles.Role_Id,
                             Role_Descripcion = pr.tbRoles.Role_Descripcion,
                             Pant_Id = pr.tbPantallas.Pant_Id,
                             Pant_Descripcion = pr.tbPantallas.Pant_Descripcion,
-                })
+                        })
                         .Distinct()
                         .ToList();
 
@@ -68,6 +72,8 @@ namespace Sistema_Cine.Controllers
                 return Json(new { success = false, message = "Error en la búsqueda: " + ex.Message }, JsonRequestBehavior.AllowGet);
             }
         }
+
+
 
         // GET: tbRoles/Create
         public ActionResult Create()
@@ -114,18 +120,20 @@ namespace Sistema_Cine.Controllers
                     db.SaveChanges();
 
                     roleId = nuevoRol.Role_Id;
+                    TempData["Exito"] = "Se Agrego con exito";
                 }
                 else
                 {
                     roleId = existingRole.Role_Id;
                 }
                 var pantalla = db.tbPantallas.FirstOrDefault(p => p.Pant_Descripcion == Pant_Descripcion);
+                //var pantalla = db.tbPantallas.Where(x => !db.tbPantalla_Roles.Any(t => t.Role_Id == roleId && t.Pant_Id == x.Pant_Id)).FirstOrDefault(p => p.Pant_Descripcion == Pant_Descripcion);
 
                 if (pantalla != null)
                 {
                     var nuevaRelacion = new tbPantalla_Roles
                     {
-                        Role_Id = roleId, 
+                        Role_Id = roleId,
                         Pant_Id = pantalla.Pant_Id,
                     };
 
@@ -141,14 +149,32 @@ namespace Sistema_Cine.Controllers
                 }
                 else
                 {
-                    return Json(new { success = false, message = "La pantalla especificada no existe." });
+                    TempData["Error"] = "La pantalla especificada no existe.";
+                    return Json(new { success = false, message = "" });
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return Json(new { success = false, message = "Error al agregar la relación y el rol." });
             }
         }
+
+
+        [HttpPost]
+        public ActionResult EliminarPantallaRol(int id)
+        {
+            tbPantalla_Roles tbPantalla_Roles = db.tbPantalla_Roles.Find(id);
+            db.tbPantalla_Roles.Remove(tbPantalla_Roles);
+
+            db.SaveChanges();
+
+            TempData["Exito"] = "Se eliminó correctamente";
+
+            // Devuelve una señal (por ejemplo, un valor booleano) indicando que la eliminación fue exitosa
+            return Json(new { success = true });
+        }
+
+
 
 
 
@@ -164,7 +190,11 @@ namespace Sistema_Cine.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.PantallasList = db.tbPantallas.ToList();
+            // ViewBag.PantallasList = db.tbPantallas.ToList();
+
+
+            ViewBag.PantallasList = db.tbPantallas.Where(x => !db.tbPantalla_Roles.Any(t => t.Role_Id == id && t.Pant_Id == x.Pant_Id)).ToList();
+
             ViewBag.PantallasRolesList = db.tbPantalla_Roles.Include(pr => pr.tbRoles).Include(pr => pr.tbPantallas).ToList();
             return View(tbRoles);
         }
@@ -192,7 +222,10 @@ namespace Sistema_Cine.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            ViewBag.PantallasList = db.tbPantallas.ToList();
+            //ViewBag.PantallasList = db.tbPantallas.ToList();
+            ViewBag.PantallasList = db.tbPantallas.Where(x => !db.tbPantalla_Roles.Any(t => t.Role_Id == tbRoles.Role_Id && t.Pant_Id == x.Pant_Id)).ToList();
+
+
             ViewBag.PantallasRolesList = db.tbPantalla_Roles.Include(pr => pr.tbRoles).Include(pr => pr.tbPantallas).ToList();
             return View(tbRoles);
         }
@@ -231,15 +264,6 @@ namespace Sistema_Cine.Controllers
             }
             base.Dispose(disposing);
         }
-
-        [HttpPost]
-        public ActionResult EliminarPantallaRol(int id)
-        {
-            db.Sp_tbPantalla_Roles_Eliminar(id);
-            db.SaveChanges();
-            return Redirect("Index");
-        }
-
 
 
     }

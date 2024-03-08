@@ -7,9 +7,10 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Sistema_Cine.Models;
-
+using Sistema_Cine.ValidarSession;
 namespace Sistema_Cine.Controllers
 {
+    [ValidarSesion]
     public class tbEntradasController : Controller
     {
         private dbSsitemascinesEntities5 db = new dbSsitemascinesEntities5();
@@ -63,17 +64,22 @@ namespace Sistema_Cine.Controllers
                 {
                     int usuario = Convert.ToInt32(Session["idusaio"]);
                     db.Sp_tbEntradas_Insertar(tbEntradas.Entra_Cantidad, tbEntradas.Sala_Id, usuario, DateTime.Now, true);
-                    //db.tbEntradas.Add(tbEntradas);
+                    // db.tbEntradas.Add(tbEntradas);
                     db.SaveChanges();
-                    TempData["Exito"] = "se agrego Correctamente";
+                    TempData["Exito"] = "Se agregó correctamente";
                     return RedirectToAction("Index");
                 }
                 catch (FormatException ex)
                 {
-                    // Handle the exception (e.g., log it, show an error message)
-                    TempData["Error"] = "Error el registro no se guardo correctamente: " + ex.Message;
+                    TempData["Error"] = "Error: El registro no se guardó correctamente debido a un formato incorrecto. Detalles del error: " + ex.Message;
                     return RedirectToAction("Index");
                 }
+                catch (Exception ex)
+                {
+                    TempData["Error"] = "Error: Ocurrió un error al guardar el registro. Detalles del error: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
+
             }
 
             ViewBag.Sala_Id = new SelectList(db.tbSalas, "Sala_Id", "Sala_Descripcion", tbEntradas.Sala_Id);
@@ -119,15 +125,17 @@ namespace Sistema_Cine.Controllers
                     int usuario = Convert.ToInt32(Session["idusaio"]);
                     db.Sp_tbEntradas_Editar(id, tbEntradas.Entra_Cantidad, tbEntradas.Sala_Id, usuario, DateTime.Now, true);
 
-
-
-                    TempData["Exito"] = "se Edito Correctamente";
+                    TempData["Exito"] = "Se editó correctamente";
                     return RedirectToAction("Index");
                 }
                 catch (FormatException ex)
                 {
-                    // Handle the exception (e.g., log it, show an error message)
-                    TempData["Error"] = "Error este campo no se edito correctamente: " + ex.Message;
+                    TempData["Error"] = "Error: Este campo no se editó correctamente debido a un formato incorrecto. Detalles del error: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    TempData["Error"] = "Error: Ocurrió un error al editar el campo. Detalles del error: " + ex.Message;
                     return RedirectToAction("Index");
                 }
             }

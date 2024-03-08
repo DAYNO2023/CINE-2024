@@ -7,9 +7,12 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Sistema_Cine.Models;
+using Sistema_Cine.ValidarSession;
 
 namespace Sistema_Cine.Controllers
 {
+    [ValidarSesion]
+    [ValidarSesioncargo]
     public class tbCargosController : Controller
     {
         private dbSsitemascinesEntities5 db = new dbSsitemascinesEntities5();
@@ -62,15 +65,20 @@ namespace Sistema_Cine.Controllers
                     int usuario = Convert.ToInt32(Session["idusaio"]);
                     db.Sp_tbCargos_Insertar(tbCargos.Carg_Descripcion, usuario, DateTime.Now, true);
                     db.SaveChanges();
-                    TempData["Exito"] = "se agrego Correctamente";
+                    TempData["Exito"] = "Se agregó correctamente";
                     return RedirectToAction("Index");
                 }
                 catch (FormatException ex)
                 {
-                    // Handle the exception (e.g., log it, show an error message)
-                    TempData["Error"] = "Error el registro no se guardo correctamente: " + ex.Message;
+                    TempData["Error"] = "Error: El registro no se guardó correctamente debido a un formato incorrecto. Detalles del error: " + ex.Message;
                     return RedirectToAction("Index");
                 }
+                catch (Exception ex)
+                {
+                    TempData["Error"] = "Error: Ocurrió un error al guardar el registro. Detalles del error: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
+
             }
 
             return View(tbCargos);
@@ -106,21 +114,22 @@ namespace Sistema_Cine.Controllers
                     int usuario = Convert.ToInt32(Session["idusaio"]);
                     db.Sp_tbCargos_Editar(id, tbCargos.Carg_Descripcion, usuario, DateTime.Now, true);
 
-
-                    // Actualizar las propiedades del registro existente con los valores del modelo recibido
-
-
                     // Guardar los cambios en la base de datos
                     db.SaveChanges();
-                    TempData["Exito"] = "se Edito Correctamente";
+                    TempData["Exito"] = "Se editó correctamente";
                     return RedirectToAction("Index");
                 }
                 catch (FormatException ex)
                 {
-                    // Handle the exception (e.g., log it, show an error message)
-                    TempData["Error"] = "Error este campo no se edito correctamente: " + ex.Message;
+                    TempData["Error"] = "Error: Este campo no se editó correctamente debido a un formato incorrecto. Detalles del error: " + ex.Message;
                     return RedirectToAction("Index");
                 }
+                catch (Exception ex)
+                {
+                    TempData["Error"] = "Error: Ocurrió un error al editar el campo. Detalles del error: " + ex.Message;
+                    return RedirectToAction("Index");
+                }
+
             }
             return View(tbCargos);
         }
@@ -148,16 +157,26 @@ namespace Sistema_Cine.Controllers
             try
             {
                 tbCargos tbCargos = db.tbCargos.Find(id);
-                db.tbCargos.Remove(tbCargos);
-                //db.Sp_tbCargos_Eliminar(id);
-                db.SaveChanges();
-                TempData["Exito"] = "se Elimino Correctamente";
+                if (tbCargos != null)
+                {
+                    db.tbCargos.Remove(tbCargos);
+                    db.SaveChanges();
+                    TempData["Exito"] = "Se eliminó correctamente";
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    TempData["Error"] = "Error: No se encontró el registro a eliminar.";
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = "Error: No se pudo eliminar el campo. Detalles del error: " + ex.Message;
                 return RedirectToAction("Index");
             }
-            catch(Exception ex)
-            {
-                TempData["Error"] = "Error el campo no fue eliminado: " + ex.Message;            }
-            return RedirectToAction("Index");
+
+
         }
 
         protected override void Dispose(bool disposing)

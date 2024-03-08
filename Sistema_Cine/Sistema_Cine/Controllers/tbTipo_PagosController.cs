@@ -7,9 +7,12 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Sistema_Cine.Models;
+using Sistema_Cine.ValidarSession;
 
 namespace Sistema_Cine.Controllers
 {
+    [ValidarSesion]
+    [ValidarsessionTipo_Pago]
     public class tbTipo_PagosController : Controller
     {
         private dbSsitemascinesEntities5 db = new dbSsitemascinesEntities5();

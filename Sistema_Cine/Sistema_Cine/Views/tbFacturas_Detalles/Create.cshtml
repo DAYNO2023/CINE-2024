@@ -7,108 +7,98 @@
 
 
 
-<div class="card-body"></div>
-@using (Html.BeginForm())
+
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-    <div class="card" style="max-width: 800px; margin: auto;">
-        <div class="card-header bg-light">
-            <h2 style="text-align:center; margin-bottom: 0;">Factura</h2>
-            <div class="d-flex justify-content-end">
-                <button type="button" class="btn btn-primary" onclick="window.location.href='@Url.Action("Index")'">
-                    Regresar
-                </button>
+     <div class="card">
+    <div class="card-body">
+    <div class="form-group">
+   
+
+        <h4>tbFacturas_Detalles</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Fact_Id, "Fact_Id", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.DropDownList("Fact_Id", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Fact_Id, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="card-body">
-            <div class="container">
-                <br />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="row">
-                    <div class="col-sm-3">
-                        @Html.LabelFor(model => model.Fact_Id, "Factura", htmlAttributes: new { @class = "control-label " })
-
-                        @Html.DropDownList("Fact_Id", null, htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.Fact_Id, "", new { @class = "text-danger" })
-
-                    </div>
-
-                    <div class="col-sm-4">
-                        @Html.LabelFor(model => model.Cart_Id, "Cartelera", htmlAttributes: new { @class = "control-label " })
-
-                        @Html.DropDownList("Cart_Id", null, htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.Cart_Id, "", new { @class = "text-danger" })
-
-                    </div>
-
-                    <div class="col-sm-3">
-                        @Html.LabelFor(model => model.Fade_ticket, htmlAttributes: new { @class = "control-label " })
-
-                        @Html.EditorFor(model => model.Fade_ticket, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Fade_ticket, "", new { @class = "text-danger" })
-
-                    </div>
-                </div><hr />
-
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-20">
-                        <input type="submit" value="Crear" class="btn btn-primary" />
-                    </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Cart_Id, "Cart_Id", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.DropDownList("Cart_Id", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Cart_Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Fade_ticket, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.Fade_ticket, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Fade_ticket, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Fade_Usua_Creacion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.Fade_Usua_Creacion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Fade_Usua_Creacion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Fade_Fecha_Creacion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.Fade_Fecha_Creacion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Fade_Fecha_Creacion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Fade_Usua_Modifica, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.Fade_Usua_Modifica, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Fade_Usua_Modifica, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Fade_Fecha_Modificacion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.Fade_Fecha_Modificacion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Fade_Fecha_Modificacion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Fade_Estado, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Fade_Estado)
+                    @Html.ValidationMessageFor(model => model.Fade_Estado, "", new { @class = "text-danger" })
                 </div>
-
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-20">
+                <input type="submit" value="Crear" class="btn btn-primary" />
             </div>
         </div>
     </div>
+     </div>
+    </div>
+    
 }
 
-<hr />
-<div  class="container">
-    <div class="card">
-        <div class="card-header">
-            <h3> Factura detalle</h3>
-        </div>
-        <div class="card-body">
-            @if (ViewBag.facturacionencabezadoList != null && ((List<Sistema_Cine.Models.tbFacturas_Encabezados>)ViewBag.facturacionencabezadoList).Count > 0)
-            {
-
-                <table class="table table-striped table-bordered table-hover dataTables-example " id="tablaOne">
-                    <thead>
-                        <tr>
-                            <th>Fecha</th>
-                            <th>Cliente</th>
-                            <th>Empleado</th>
-                            <th>tipodePago</th>
-                            <th>Promociones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var detalle in (List<Sistema_Cine.Models.tbFacturas_Encabezados>)ViewBag.facturacionencabezadoList)
-                        {
-                        <tr>
-                            <td>@detalle.Fact_Fecha</td>
-                            <td>@detalle.tbClientes.Clie_Nombre</td>
-                            <td>@detalle.tbEmpleados.Empl_Nombre</td>
-                            <td>@detalle.tbTipo_Pagos.Tipo_Descripcion</td>
-                            <td>@detalle.Prom_Id</td>
-                            <td>
-                                @*<button type="button" class="btn btn-danger btnEliminar" data-id="@detalle.Paro_Id">
-                Eliminar
-            </button>*@
-                            </td>
-                        </tr>
-                        }
-                    </tbody>
-                </table>
-            }
-            else
-            {
-                <p>No hay factura deatlle</p>
-            }
-        </div>
-    </div>
+<div>
+    @Html.ActionLink("Regresar", "Index")
 </div>
-
-
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

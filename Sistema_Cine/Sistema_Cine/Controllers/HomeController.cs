@@ -11,28 +11,25 @@ namespace Sistema_Cine.Controllers
 
     {
         private dbSsitemascinesEntities5 db = new dbSsitemascinesEntities5();
-        public ActionResult Index()
-        {
-            return View();
-        }
-        public ActionResult Login()
-        {
-            return View();
-        }
-
+        [OutputCache(NoStore = true, Duration = 0, VaryByParam = "*")]
         [HttpPost]
         public ActionResult Login(string txtUser, string txtContra)
         {
 
-            var usuario = db.SP_tbUsuarios_InicioSesion(txtUser, txtContra).ToList();
+            var usuario = db.SP_tbUsuarios_seccionentrar(txtUser, txtContra).ToList();
 
             if (usuario.Count > 0)
 
             {
                 foreach (var iteam in usuario)
                 {
+
                     Session["idusaio"] = iteam.Usua_Id;
                     Session["NombreUsuario"] = iteam.Usua_Nombre;
+                    Session["Roles"] = usuario.Select(u => u.Role_Descripcion).ToList();
+                    var pantallasPorRol = db.tbPantalla_Roles.Where(p => p.Role_Id == iteam.Role_Id).Select(p => p.tbPantallas.Pant_Descripcion).ToList();
+                    Session["Pantallas"] = pantallasPorRol;
+                    Session["Admin"] = usuario.Select(u => u.Usua_Administrador).ToList();
                 }
                 if (Session["NombreUsuario"] != null)
                 {
@@ -45,9 +42,25 @@ namespace Sistema_Cine.Controllers
                 ModelState.AddModelError("ErrorLogin", "El Usuario o contraseña son incorrectos");
                 return View();
             }
-            
+
             //return View();
         }
+        public ActionResult cerrarsession()
+        {
+            Session["NombreUsuario"] = null;
+            Session.Clear();
+            return RedirectToAction("Login", "Home");
+        }
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+        public ActionResult Login()
+        {
+            return View();
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CerrarSesion()

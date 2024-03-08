@@ -7,9 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Sistema_Cine.Models;
-
+using Sistema_Cine.ValidarSession;
 namespace Sistema_Cine.Controllers
 {
+    [ValidarSesion]
+    [ValidarSesionusuario]
     public class tbUsuariosController : Controller
     {
         private dbSsitemascinesEntities5 db = new dbSsitemascinesEntities5();

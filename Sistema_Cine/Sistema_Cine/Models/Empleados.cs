@@ -26,6 +26,7 @@ namespace Sistema_Cine.Models
         [Required(ErrorMessage = "El campos {0} es requerido")]
         public string Empl_Identidad { get; set; }
         [Display(Name = "Sexo:")]
+        [RegularExpression("[FM]", ErrorMessage = "El sexo debe ser 'F' o 'M'.")]
         public string Empl_Sexo { get; set; }
         [Display(Name = "Telefono:")]
         public Nullable<int> Empl_Telefono { get; set; }
